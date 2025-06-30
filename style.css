@@ -38,17 +38,25 @@ h1, h2 {
   margin: 0;
 }
 
-.pdf-download {
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 30px;
 }
 
-.pdf-download a {
+.nav-buttons a {
   display: inline-block;
   background-color: #004080;
   color: #fff;
   padding: 10px 20px;
   border-radius: 6px;
   text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-buttons a:hover {
+  background-color: #0066cc;
 }
 
 .services {
@@ -125,7 +133,7 @@ h1, h2 {
   }
   .service,
   .intro,
-  .pdf-download a,
+  .nav-buttons a,
   .call-to-action a {
     background-color: #222;
   }
