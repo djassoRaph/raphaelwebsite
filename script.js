@@ -1,13 +1,20 @@
 function toggleLanguage() {
-  const current = window.location.pathname;
-  if (current.includes('_fr')) {
+  let path = window.location.pathname;
+
+  // Ensure we always target the index file when the URL ends with /
+  if (path.endsWith('/')) {
+    path += 'index.html';
+  }
+
+  if (path.includes('_fr')) {
     // replace _fr before the .html extension
-    window.location.href = current.replace('_fr', '');
-    return;
+    path = path.replace('_fr', '');
+  } else {
+    const dot = path.lastIndexOf('.');
+    if (dot !== -1) {
+      path = path.substring(0, dot) + '_fr' + path.substring(dot);
+    }
   }
-  const dot = current.lastIndexOf('.');
-  if (dot !== -1) {
-    const path = current.substring(0, dot) + '_fr' + current.substring(dot);
-    window.location.href = path;
-  }
+
+  window.location.href = path;
 }
