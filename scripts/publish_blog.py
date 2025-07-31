@@ -1,5 +1,5 @@
 import re, xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone
 from email.utils import format_datetime
 import os
 
@@ -33,7 +33,7 @@ ET.SubElement(channel, 'description').text = 'Latest posts'
 
 for block in articles[:20]:
     date_str = get_date(block)
-    dt = datetime.fromisoformat(date_str)
+    dt = datetime.fromisoformat(date_str).replace(tzinfo=timezone.utc)
     item = ET.SubElement(channel, 'item')
     title = re.search(r'<h2>(.*?)</h2>', block, re.DOTALL).group(1).strip()
     ET.SubElement(item, 'title').text = title
