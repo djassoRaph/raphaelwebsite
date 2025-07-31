@@ -22,10 +22,19 @@ jobs:
       - name: List public/ folder contents
         run: ls -lh public/
 
-      - name: Upload via FTP
+      - name: Upload full site via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: public/
+          local-dir: .
+          exclude: |
+            .github/**
+            scripts/**
+            *.py
+            *.txt
+            .gitignore
+            export.txt
+            token.txt
+      
