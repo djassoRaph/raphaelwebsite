@@ -4,11 +4,12 @@ from email.utils import format_datetime
 import os
 
 index_path = 'blog/index.html'
+
 with open(index_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
 articles = re.findall(r'(<article class="blog-post">.*?</article>)', html, flags=re.DOTALL)
-
+print("Generating feed.xml with", len(articles), "articles")
 def get_date(block):
     m = re.search(r'<time[^>]*datetime="(.*?)"', block)
     return m.group(1) if m else ''
@@ -52,3 +53,7 @@ for block in articles[:20]:
 
 os.makedirs('public', exist_ok=True)
 ET.ElementTree(rss_root).write('public/feed.xml', encoding='utf-8', xml_declaration=True)
+with open('public/feed.xml', 'ab') as f:
+    f.write(b'\n<!-- regenerated: %s -->\n' % datetime.now().isoformat().encode())
+
+print("Wrote feed.xml at: public/feed.xml")

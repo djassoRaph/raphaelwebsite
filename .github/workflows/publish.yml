@@ -19,6 +19,9 @@ jobs:
       - name: Run blog build script
         run: python3 scripts/publish_blog.py
 
+      - name: List public/ folder contents
+        run: ls -lh public/
+
       - name: Upload via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
