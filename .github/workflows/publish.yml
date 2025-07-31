@@ -41,4 +41,7 @@ jobs:
             -old.jpg
             grayscale_raphael.jpg
             portrait.jpeg
-          clean: true
+
+
+      - name: Print blog index footer
+        run: tail -n 10 blog/index.html
