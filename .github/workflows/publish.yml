@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     branches: [main]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -17,7 +17,7 @@ jobs:
           python-version: '3.11'
 
       - name: Run blog build script
-        run: python3 scripts/build_blog.py
+        run: python3 scripts/publish_blog.py
 
       - name: Upload via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -25,4 +25,4 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          local-dir: public
+          local-dir: public/
