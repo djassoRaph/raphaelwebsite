@@ -19,16 +19,6 @@ def get_date(block):
 
 articles.sort(key=get_date, reverse=True)
 
-# Update blog/index.html order (optional)
-new_html = re.sub(
-    r'(<div class="blog-posts">).*?(</div>)',
-    lambda m: m.group(1) + '\n' + '\n'.join(articles) + '\n' + m.group(2),
-    html,
-    flags=re.DOTALL,
-)
-with open(index_path, 'w', encoding='utf-8') as f:
-    f.write(new_html)
-
 os.makedirs('public', exist_ok=True)
 
 # ========== RSS ==========
