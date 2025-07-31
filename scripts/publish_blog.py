@@ -1,7 +1,8 @@
-import re, xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from email.utils import format_datetime
+import xml.etree.ElementTree as ET
 import os
+import re
 
 index_path = 'blog/index.html'
 
@@ -26,7 +27,9 @@ new_html = re.sub(
 with open(index_path, 'w', encoding='utf-8') as f:
     f.write(new_html)
 
-rss_root = ET.Element('rss', {'version': '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom'})
+
+ET.register_namespace('atom', 'http://www.w3.org/2005/Atom')
+rss_root = ET.Element('rss', version='2.0')
 channel = ET.SubElement(rss_root, 'channel')
 ET.SubElement(channel, '{http://www.w3.org/2005/Atom}link', {
     'href': 'https://raphaelreck.com/feed.xml',
