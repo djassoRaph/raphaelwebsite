@@ -30,15 +30,15 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./
           exclude: |
-            .git
-            .github/**
-            scripts/**
-            *.py
-            *.txt
+            **/.git*/**
+            **/.github/**
+            **/scripts/**
+            **/*.py
+            **/*.txt
             .gitignore
             export.txt
             token.txt
             -old.jpg
             grayscale_raphael.jpg
             portrait.jpeg
-      
+          clean: true
