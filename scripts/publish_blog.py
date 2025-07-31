@@ -7,7 +7,7 @@ index_path = 'blog/index.html'
 with open(index_path, 'r', encoding='utf-8') as f:
     html = f.read()
 
-articles = re.findall(r'(<article class="post">.*?</article>)', html, flags=re.DOTALL)
+articles = re.findall(r'(<article class="blog-post">.*?</article>)', html, flags=re.DOTALL)
 
 def get_date(block):
     m = re.search(r'<time[^>]*datetime="(.*?)"', block)
