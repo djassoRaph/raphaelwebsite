@@ -25,8 +25,13 @@ new_html = re.sub(
 with open(index_path, 'w', encoding='utf-8') as f:
     f.write(new_html)
 
-rss_root = ET.Element('rss', version='2.0')
+rss_root = ET.Element('rss', {'version': '2.0', 'xmlns:atom': 'http://www.w3.org/2005/Atom'})
 channel = ET.SubElement(rss_root, 'channel')
+ET.SubElement(channel, '{http://www.w3.org/2005/Atom}link', {
+    'href': 'https://raphaelreck.com/feed.xml',
+    'rel': 'self',
+    'type': 'application/rss+xml'
+})
 ET.SubElement(channel, 'title').text = 'Raphael Reck Blog'
 ET.SubElement(channel, 'link').text = 'https://raphaelreck.com/blog/'
 ET.SubElement(channel, 'description').text = 'Latest posts'
