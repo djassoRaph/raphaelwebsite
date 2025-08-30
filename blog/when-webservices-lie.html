@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Magical Drupal messages, Empty Emails and Wrong API Responses. | Blog | Raphaël Reck</title>
+  <meta name="description" content="A real debugging story: PowerPoint documentation, Drupal hooks that fire too early, and web services returning completely different data than promised—debugging through client screenshots."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/when-webservices-lie.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <script defer src="../script.js"></script>
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Magical Drupal messages, Empty Emails and Wrong API Responses."/>
+  <meta property="og:description" content="PowerPoint documentation, Drupal hooks firing too early, and web services returning different data than promised—what went wrong and how we fixed it."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/when-webservices-lie/html"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2025-08-30T10:00:00+02:00"/>
+  <meta property="article:tag" content="Drupal"/>
+  <meta property="article:tag" content="Web Services"/>
+  <meta property="article:tag" content="Debugging"/>
+  <!-- Optional: light code highlighting via CSS, if you have styles; otherwise plain <pre><code> renders fine -->
+  <style>
+    .post-header { margin-bottom: 1rem; }
+    .post-meta { opacity: .7; font-size: .9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+  </style>
+  <!-- JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"Magical Drupal messages, Empty Emails and Wrong API Responses.",
+    "datePublished":"2025-08-30T00:00:00+02:00",
+    "dateModified":"2025-08-30T00:00:00+02:00",
+    "author":{"@type":"Person","name":"Raphaël Reck"},
+    "publisher":{"@type":"Person","name":"Raphaël Reck"},
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://raphaelreck.com/blog/when-webservices-lie.html"},
+    "keywords":["Drupal","Web Services","Debugging","Legacy Systems","Integration"],
+    "description":"A real debugging story: PowerPoint documentation, Drupal hooks that fire too early, and web services returning completely different data than promised—debugging through client screenshots."
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav-buttons">
+      <a href="../index.html">Home</a>
+      <a href="https://github.com/djassoRaph" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank">LinkedIn</a>
+      <a href="./index.html">Blog</a>
+      <a href="../roots-time/manifesto.html">Roots Time</a>
+    </nav>
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>Magical Drupal messages, Empty Emails and Wrong API Responses.</h1>
+          <p class="post-meta">
+            <time datetime="2025-08-30">August 30, 2025</time>
+            <span>9 min read</span>
+            <span class="tag">Drupal</span>
+            <span class="tag">Web Services</span>
+            <span class="tag">Debugging</span>
+            <span class="tag">Legacy Systems</span>
+            <span class="tag">Mail Services</span>
+          </p>
+        </header>
+        <p><em>(Client and environment details anonymized.)</em></p>
+
+        <h2 id="setup">The Setup: PowerPoint Documentation Meets Reality</h2>
+
+        <p>Another day, another legacy system integration nightmare. This time it's about building integrations when "documentation" is a PowerPoint slide and debugging happens through client screenshots.</p>
+
+    <h2>The Setup</h2>
+
+        <p>Working on a multi-step employee benefits form for a municipal client. Classic government tech stack: aging Drupal, legacy databases, and web services held together by prayers.</p>
+
+        <p>No product owner. No project manager. Just clients who know they want "something" but try their best to articulate what. Communication happens through:</p>
+        <ul>
+          <li>PowerPoint slides with blurry screenshots</li>
+          <li>Word docs with tables that make no sense</li>
+          <li>"Can you just make it work like the old system?"</li> <code> <span style="color:blanchedalmond;"><i>Well I'm supposed to be here to improve this mess... </i></span></code>
+          <li>Endless back-and-forth meetings that clarify nothing</li>
+        </ul>
+
+        <p>The workflow was supposed to be straightforward:</p>
+        <pre>User checks eligibility → /mon_cet (separate webform)
+        | Does API the data pass over to the next page? euh well... ? who knows ? ¯\_(ツ)_/¯
+        ↓
+        User makes their savings choices → /demande_epargne (separate webform!?)
+        (if eligibilitechoix should happen here) (if email trigger with <span style="color:red">eligibiliteChoix</span>)
+        ↓
+        Validates options → /choix_des_options (separate webform again !)
+        ↓ 
+        Gets final confirmation → (email trigger)</pre>
+
+
+        <p>According to a 5-slide PowerPoint with <i>Comic Sans</i> font, the web service would return <code>eligibiliteChoix: "Yes"</code> for eligible users and <code>"No"</code> for ineligible ones.</p>
+
+        <p>Simple enough. Should work perfectly.</p>
+
+        <p><strong>Should.</strong></p>
+
+        <h2 id="the-double-problem">The Double Problem: Hooks + Hidden Truth</h2>
+
+        <p>Built the integration exactly as the PowerPoint "documented":</p>
+
+        <pre>
+            <code>
+                function processSubmission($webform_submission) {
+                    $data = $webform_submission->getData();
+                    
+                    if ($data['eligibilitechoix'] === 'Non') {
+                        // Handle ineligible user, send email.
+                        return;
+                    }
+                    
+                    // Process eligible user...
+                }   
+            </code>
+        </pre>
+
+        <p>But here's the double kicker:</p>
+        <ol>
+          <li><strong>You can't test any of this locally</strong></li>
+          <li><strong>Drupal hooks fire on every form step, not just completion</strong></li>
+        </ol>
+
+        <p>No dev environment that connects to the web service. No integration environment. The only way to test is on the production-adjacent staging environment, using the client's actual account.</p>
+
+        <p>Meanwhile, <code>hook_webform_submission_insert()</code> fires on <strong>every</strong> form submission in the multi-step workflow. Users see "1 request sent successfully" followed immediately by "Unable to send email" errors. Imagine all the double API calls? </p>
+
+        <h2 id="debugging-hell">The Debugging Hell: Screenshots and Guesswork</h2>
+
+        <p>The development cycle becomes:</p>
+        <ol>
+          <li>Make code changes blind</li>
+          <li>Ask client to deploy to staging</li>
+          <li>Wait for deployment</li>
+          <li>Ask client to test with their login</li>
+          <li>Get back screenshots (without URLs) of error messages</li>
+          <li>Try to decode what went wrong from limited context</li>
+          <li>Repeat this nightmare cycle</li>
+        </ol>
+
+        <p>Spent days debugging Drupal's hook behavior:</p>
+
+        <pre><code>\Drupal::logger('debug')->info("State: " . json_encode($webform_submission->getState()));</code></pre>
+
+        <p><strong>Result:</strong> <code>"completed"</code> for every single form submission. Each step in the multi-step workflow triggered the hook, thinking it was done.</p>
+
+        <p>The logging showed 4 total executions:</p>
+        <ul>
+          <li>2 calls for step 1 submission</li>
+          <li>2 calls for step 2 submission</li>
+        </ul>
+
+        <p>Each time convinced it was the final step. Each time wrong.</p>
+
+        <p>Tried everything:</p>
+        <ul>
+          <li>Different hooks (<code>hook_webform_submission_update</code>)</li>
+          <li>Custom completion flags</li>
+          <li>Queue-based delayed processing</li>
+          <li>Message suppression hacks</li>
+        </ul>
+
+        <p>Nothing worked because I was solving the wrong problem.</p>
+
+        <h2 id="real-culprit">The Real Culprit: PowerPoint "Documentation"</h2>
+
+        <p>After exhausting every Drupal debugging avenue, decided to actually <em>look</em> at the web service response instead of trusting the Comic Sans slides:</p>
+
+        <pre>
+            <code>
+                {
+                "eligibiliteChoix": "Yes",
+                "soldeCET": "0.00", 
+                "transfertrealise": [
+                    { "code":"BENEFIT_A", "valeur":"0.00" },
+                    { "code":"BENEFIT_B", "valeur":"0.00" }
+                ]
+                }
+            </code>
+        </pre>
+        <p><strong>Wait. What?</strong></p>
+
+        <p>The "eligibility choice" field was returning <code>"Yes"</code> or <code>"No"</code> like the PowerPoint claimed. But the actual webservice that was supplying wasn't doing their job.
+           The API was also returning numeric strings: <code>"value": "0.00"</code> for ineligible, non-zero values for eligible.</p>
+
+        <p><strong>The entire hook debugging rabbit hole was caused by trusting a PowerPoint slide over reality.</strong></p>
+
+        <div class="callout">
+          <p><strong>Classic scenario:</strong> "But the documentation says..."<br>
+          "That's a screenshot from 2024, not documentation"<br>
+          "Well, what should it return then?"<br>
+          "I don't know, ask the other team"<br>
+          "The other team doesn't exist anymore"<br>
+          "Can you just... make it work somehow?"</p>
+        </div>
+
+        <h2 id="the-fix">The Fix: Reality Check</h2>
+
+        <p>Updated the eligibility logic to match what the service actually returns:</p>
+
+        <pre><code>function processSubmission($webform_submission) {
+    $data = $webform_submission->getData();
+    
+    // Reality: service returns "0.00" for ineligible, not "No"  
+    if ($data['value'] === '0.00') {
+        // Handle ineligible user and send email!
+        return;
+    }
+
+    // Process eligible user... fixed after 6PM by e-mail because the client realized that "eligibiliteChoix" wasn't the right value to use.
+}</code></pre>
+
+        <p>Suddenly that part worked. No more premature hooks. No some blank emails. No more confused users.</p>
+
+        <h2 id="email">The Email Problem</h2>
+
+        <p>Of course, there was a bonus issue. The email template was skipping all zero values:</p>
+
+        <p>The way the logic was built was half front end/office</p>
+
+        <h2 id="hook-solutions">The Hook Solutions (That Actually Work)</h2>
+
+        <h3>Option 1: Use a different hook</h3>
+        <pre>
+            <code>
+                function hook_webform_submission_update($webform_submission) {
+                // Fires when submissions are updated, not initially created
+                }
+            </code>
+        </pre>
+
+        <h3>Option 2: Custom workflow tracking</h3>
+        <pre>
+            <code>
+                // Set a flag when entire process is complete
+                if ($form_id === 'final_step' && workflow_is_actually_complete($data)) {
+                    // Send email only now
+                }
+            </code>
+        </pre>
+
+        <h2 id="the-lesson">The Lesson</h2>
+
+        <p><strong>Never trust PowerPoint slides as technical specifications. 
+            And never work without proper testing environments.</strong></p>
+
+        <p>When you can't test locally, can't reproduce issues, 
+            and rely on client screenshots for debugging,
+             every assumption becomes a liability. The development cycle becomes:</p>
+
+        <ol>
+          <li>Build based on vague PowerPoint requirements</li>
+          <li>Deploy blindly to production-adjacent environment</li>
+          <li>Wait for client testing feedback via screenshots</li>
+          <li>Try to decode error messages without context</li>
+          <li>"That's not what we wanted"</li>
+          <li>"What did you want?"</li>
+          <li>"Something different..."</li>
+          <li>Repeat until everyone gives up</li>
+        </ol>
+
+        <p>I must admit over the days, I started to lose memory over what the client really wanted.</p>
+
+        <p>I spent days debugging Drupal hooks that were working perfectly. But having messages appear randomly from other modules killed me.
+            One issue was believing a PowerPoint presentation and not demanding proper API specifications upfront from the 3rd party managing the API</p>
+
+        <p>Key takeaways:</p>
+        <ul>
+          <li>Don't trust <code>getState()</code> for workflow completion. It lies.</li>
+          <li>Don't trust hooks to understand your business logic. They're dumb.</li>
+          <li>Don't trust PowerPoint slides as API documentation. They're fiction.</li>
+          <li>Demand proper testing environments and data format specs upfront</li>
+        </ul>
+
+        <h2 id="final-thought">Final Thought</h2>
+
+        <p>We used to build integrations with proper dev environments, clear specifications, 
+            and the ability to actually test our code. 
+            Now I have to build blindly, deploy to production, 
+            and pray the client's screenshots contain enough context to 
+            debug the inevitable failures.</p>
+
+        <p>When there's no real product owner, 
+            no project real manager, 
+            no actual documentation, 
+            and no testing environment — 
+            assume everything is wrong, 
+            demand better specs upfront, 
+            and prepare for the "Oh, did we mention..." 
+            conversations that happen after you've already deployed.</p>
+
+        <p>The classic "ask the team that doesn't exist anymore" scenario is just the cherry on top of this clusterfuck sundae.</p>
+        <hr>
+        <h2>The Kitchen Nightmare: An Allegory</h2>
+        <p>Picture this: You used to work in a proper restaurant kitchen. You had recipe cards with exact measurements, a prep station where you could taste and adjust seasonings, and a sous chef who'd sample everything before it went to the dining room. If something wasn't quite right, you could fix it before the customer ever saw it.</p>
+        <p>Now imagine you've been asked to cook for a high-end catering event, <b>13000 people</b>, but here's the catch: You have to prepare everything blindfolded, in a kitchen you've never seen before, using mystery ingredients. There's no recipe — just a crumpled napkin with "make it delicious" scrawled in crayon. You can't taste anything as you go. And once you're done cooking, you have to send the food directly to the guests' tables without ever seeing it yourself.</p>
+        <p>When the inevitable complaints come back ("This is too salty!" "Where's the garnish we ordered?" "This isn't even the right dish!"), you have to guess what went wrong based on blurry photos someone texted you from the dining room.</p>
+        <p>Oh, and there's no head chef to consult, no catering manager to clarify what the client actually wanted, and no written contract specifying the menu. The event planner quit last week, and when you ask for guidance, everyone just shrugs and says, "Ask the previous catering team" — the one that disbanded twleve months ago.</p>
+        <code> <span style="color:blanchedalmond;"><i>And on their way out. I kid you not, they said. "This is the cleanest project of the entire..."</span> <span style="color:red;">It's not</i></span></code>
+        <p>Your survival strategy? Assume the napkin-scrawled instructions are wrong. Demand to see a real menu with ingredients, portions, and cooking times before you even preheat the oven. And brace yourself for the inevitable phone call that starts with, "Oh, did we mention half the guests are vegan and three are allergic to everything?"</p>
+        <p>Because in this kitchen nightmare, the only thing you can count on is that nobody counted on anything going right.</p>
+        <hr>
+        <p><em>Thank you for reading.<br>No PowerPoint presentations were trusted in the making of this post.</em></p>
+
+        <hr>
+        <p><a href="index.html">← Back to Blog Index</a></p>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
