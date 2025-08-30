@@ -105,7 +105,41 @@ h1, h2 {
   font-size: 0.9em;
   color: #666;
 }
+.framework {
+  max-width: 100%;
+  height: auto;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  display: block;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
 
+
+@media (max-width: 768px) {
+  .framework {
+    padding: 0 15px;
+    max-height: 70vh; 
+    object-fit: contain; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .framework {
+    padding: 0 10px;
+    max-height: 60vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .framework {
+    max-width: 800px;
+  }
+}
 
 @media (prefers-color-scheme: dark) {
   body {
@@ -121,4 +155,5 @@ h1, h2 {
   h1, h2, .service-icon {
     color: #6ea0ff;
   }
+
 }
