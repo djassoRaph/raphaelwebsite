@@ -1,89 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>When AI‑Generated Code Meets Legacy Drupal: A Horror Story | Blog | Raphaël Reck</title>
-  <meta name="description" content="A real debugging story: conflicting email systems, redirect loops, and AI-generated boilerplate breaking a legacy Drupal workflow—and how we fixed it."/>
-  <link rel="canonical" href="https://raphaelreck.com/blog/yaygodot.html"/>
-  <link rel="stylesheet" href="../style.css"/>
-  <script defer src="../script.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Godot: From 2D buggy ideas to Functional Isometric 3D scene ! | Blog | Raphaël Reck</title>
+    <meta name="description" content="A real debugging story: how AI assistants (GPT, Claude, Gemini) helped fix character collisions and movement in a Godot 3D project, turning a buggy scene into a functional game prototype."/>
+    <link rel="canonical" href="https://raphaelreck.com/blog/yaygodot.html"/>
+    <link rel="stylesheet" href="../style.css"/>
+    <script defer src="../script.js"></script>
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="article"/>
-  <meta property="og:title" content="When AI‑Generated Code Meets Legacy Drupal: A Horror Story"/>
-  <meta property="og:description" content="Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow—what went wrong and how we fixed it."/>
-  <meta property="og:url" content="https://raphaelreck.com/blog/yaygodot.html"/>
-  <meta property="og:site_name" content="Raphaël Reck"/>
-  <meta property="article:author" content="Raphaël Reck"/>
-  <meta property="article:published_time" content="2025-08-30T00:00:00+02:00"/>
-  <meta property="article:tag" content="Drupal"/>
-  <meta property="article:tag" content="AI"/>
-  <meta property="article:tag" content="Debugging"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Godot: From 2D buggy ideas to Functional Isometric 3D scene !"/>
+    <meta property="og:description" content="Learn how I used AI to debug collision, physics, and scripting issues to build a working 3D character controller in Godot from scratch."/>
+    <meta property="og:url" content="https://raphaelreck.com/blog/yaygodot.html"/>
+    <meta property="og:site_name" content="Raphaël Reck"/>
+    <meta property="article:author" content="Raphaël Reck"/>
+    <meta property="article:published_time" content="2025-08-30T00:00:00+02:00"/>
+    <meta property="article:tag" content="Godot"/>
+    <meta property="article:tag" content="AI"/>
+    <meta property="article:tag" content="Debugging"/>
 
-  <!-- Optional: light code highlighting via CSS, if you have styles; otherwise plain <pre><code> renders fine -->
-  <style>
-    .post-header { margin-bottom: 1rem; }
-    .post-meta { opacity: .7; font-size: .9rem; }
-    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
-    pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; }
-    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
-    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
-  </style>
+    <style>
+        .post-header { margin-bottom: 1rem; }
+        .post-meta { opacity: .7; font-size: .9rem; }
+        .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+        pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+        .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+    </style>
 
-  <!-- JSON-LD for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BlogPosting",
-    "headline":"When AI‑Generated Code Meets Legacy Drupal: A Horror Story",
-    "datePublished":"2025-08-25T00:00:00+02:00",
-    "dateModified":"2025-08-25T00:00:00+02:00",
-    "author":{"@type":"Person","name":"Raphaël Reck"},
-    "publisher":{"@type":"Person","name":"Raphaël Reck"},
-    "mainEntityOfPage":{"@type":"WebPage","@id":"https://raphaelreck.com/blog/yaygodot.html"},
-    "keywords":["Godot","AI"],
-    "description":"Pending"
-  }
-  </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Godot: From 2D buggy ideas to Functional Isometric 3D scene !",
+        "datePublished": "2025-08-30T00:00:00+02:00",
+        "dateModified": "2025-08-30T00:00:00+02:00",
+        "author": { "@type": "Person", "name": "Raphaël Reck" },
+        "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://raphaelreck.com/blog/yaygodot.html" },
+        "keywords": ["Godot", "AI", "Debugging", "GameDev"],
+        "description": "A real debugging story: how AI assistants (GPT, Claude, Gemini) helped fix character collisions and movement in a Godot 3D project, turning a buggy scene into a functional game prototype."
+    }
+    </script>
 </head>
 <body>
-  <div class="container">
-    <nav class="nav-buttons">
-      <a href="../index.html">Home</a>
-      <a href="https://github.com/djassoRaph" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank">LinkedIn</a>
-      <a href="./index.html">Blog</a>
-      <a href="../roots-time/manifesto.html">Roots Time</a>
-    </nav>
-
-    <main>
-      <article class="blog-post">
-        <header class="post-header">
-          <h1>The Godot Gauntlet: From 2D buggy ideas to Functional Isometric 3D scene !</h1>
-          <p class="post-meta">
-            <time datetime="2025-08-30">August 30, 2025</time>
-            <span>~1 min read</span>
-            <span class="tag">AI</span>
-            <span class="tag">Godot</span>
-          </p>
-        </header>
-        <p>I've been working on a side project for some sort of videogame.</p>
-        
-        <p>I really went in blind and listened to GPT first, then Claude and eventually Gemini, because I ran out of credits with the others.</p>
-        <p>My first attempts where in 2D and failed a lot on GPT. I eventually switched to Claude and found more success, but it was still a struggle.</p>
-        <p> I watched a couple of youtube tutorials to help me along the way.</p>
-        <p>After a few days of tinkering with Godot and AI, 
-            I finally managed to create a functional isometric 3D scene. 
-            The journey was filled with challenges, from dealing with buggy 
-            AI-generated code to understanding the intricacies of Godot's engine. 
-            But the end result was worth it!
-        </p>
-        <p>Just keep going and asking questions untill you get it to work !</p>
-        <img class="framework" src="../public/letsgo.gif">
-        <p><a href="index.html">← Back to Blog Index</a></p>
-      </article>
-    </main>
-  </div>
+    <div class="container">
+        <nav class="nav-buttons">
+            <a href="../index.html">Home</a>
+            <a href="https://github.com/djassoRaph" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank">LinkedIn</a>
+            <a href="./index.html">Blog</a>
+            <a href="../roots-time/manifesto.html">Roots Time</a>
+        </nav>
+        <main>
+            <article class="blog-post">
+                <header class="post-header">
+                    <h1>Godot: From 2D buggy ideas to Functional Isometric 3D scene !</h1>
+                    <p class="post-meta">
+                        <time datetime="2025-08-30">August 30, 2025</time>
+                        <span>~1 min read</span>
+                        <span class="tag">AI</span>
+                        <span class="tag">Godot</span>
+                    </p>
+                </header>
+                <p>I've been working on a side project for some sort of videogame.</p>
+                <p>I really went in blind and listened to GPT first, then Claude and eventually Gemini, because I ran out of credits with the others.</p>
+                <p>My first attempts where in 2D and failed a lot on GPT. I eventually switched to Claude and found more success, but it was still a struggle.</p>
+                <p> I watched a couple of youtube tutorials to help me along the way.</p>
+                <p>After a few days of tinkering with Godot and AI, I finally managed to create a functional isometric 3D scene. The journey was filled with challenges, from dealing with buggy AI-generated code to understanding the intricacies of Godot's engine. But the end result was worth it!</p>
+                <p>Just keep going and asking questions untill you get it to work !</p>
+                <img class="framework" src="../public/letsgo.gif">
+                <p><a href="index.html">← Back to Blog Index</a></p>
+            </article>
+        </main>
+    </div>
 </body>
 </html>
