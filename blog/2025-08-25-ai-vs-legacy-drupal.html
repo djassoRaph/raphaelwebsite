@@ -85,9 +85,9 @@
 
         <h2 id="first-red-flag">The First Red Flag: <code>&lt;front&gt;</code></h2>
         <p>Buried in a form handler, I found this:</p>
-<pre><code class="language-php">&lt;?php
-return new RedirectResponse(Url::fromRoute('&lt;front&gt;')-&gt;toString());
-</code></pre>
+        <pre><code class="language-php">&lt;?php
+        return new RedirectResponse(Url::fromRoute('&lt;front&gt;')-&gt;toString());
+        </code></pre>
         <p>
           Looks harmless. In reality, <code>&lt;front&gt;</code> is generic boilerplate AI tools love to suggest.
           Here, it clashed with Drupal’s own form redirect flow—preventing user success messages from ever appearing.
@@ -188,6 +188,7 @@ if ($nb_demande &gt; 0) {
 
         <hr/>
         <p><em>Have you hit a similar AI‑code trap? I’m happy to review and untangle tricky integrations—reach out via LinkedIn or email.</em></p>
+        <p><a href="index.html">← Back to Blog Index</a></p>
       </article>
     </main>
   </div>
