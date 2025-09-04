@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Laravel, just make it work! | Blog | Raphaël Reck</title>
+  <meta name="description" content="A real debugging story: inheriting an unfinished Laravel codebase with foreign key nightmares, misleading table names, and validation bugs that took days to track down."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/laravel040925.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <script defer src="../script.js"></script>
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Laravel, just make it work!"/>
+  <meta property="og:description" content="Foreign key nightmares, table names that lie, and validation bugs in a legacy Laravel codebase—debugging enterprise code with misleading documentation."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/laravel040925.html"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2025-09-04T10:00:00+02:00"/>
+  <meta property="article:tag" content="Laravel"/>
+  <meta property="article:tag" content="Debugging"/>
+  <meta property="article:tag" content="Legacy Systems"/>
+  <meta property="article:tag" content="Enterprise"/>
+  <!-- Optional: light code highlighting via CSS -->
+  <style>
+    .post-header { margin-bottom: 1rem; }
+    .post-meta { opacity: .7; font-size: .9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    
+    /* Code block styling that integrates with your existing theme */
+    pre { 
+      max-width: 100%;
+      overflow-x: auto;
+      white-space: pre;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: .5rem;
+      background: #f8f9fa;
+      color: #333;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin: 1rem 0;
+    }
+    
+    code { 
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+      background: #f1f3f4;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 0.9em;
+    }
+    
+    pre code {
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      color: inherit;
+    }
+    
+    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+    .highlight { background-color: #ffeb3b; padding: 2px 4px; border-radius: 2px; }
+    .strike { text-decoration: line-through; opacity: 0.7; }
+    .insight { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 1rem; margin: 1rem 0; border-radius: 4px; }
+    .meta { font-style: italic; color: #666; margin-bottom: 1rem; }
+    footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee; font-style: italic; color: #666; }
+    
+    /* Mobile responsive code blocks (matching your existing CSS) */
+    @media (max-width: 768px) {
+      pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+        font-size: 0.85rem;
+        border-left: 3px solid #007acc;
+      }
+    }
+    
+    /* Dark mode support (matching your existing dark mode) */
+    @media (prefers-color-scheme: dark) {
+      pre { 
+        background: #222;
+        color: #eee;
+        border-color: #444;
+      }
+      code { 
+        background: #333;
+        color: #eee;
+      }
+      pre code {
+        background: transparent;
+      }
+      .insight {
+        background: #1a2332;
+        border-left-color: #6ea0ff;
+      }
+      .highlight {
+        background-color: #b8860b;
+        color: #000;
+      }
+      footer {
+        border-top-color: #444;
+        color: #999;
+      }
+    }
+  </style>
+  <!-- JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"Laravel, just make it work!",
+    "datePublished":"2025-09-04T10:00:00+02:00",
+    "dateModified":"2025-09-04T10:00:00+02:00",
+    "author":{"@type":"Person","name":"Raphaël Reck"},
+    "publisher":{"@type":"Person","name":"Raphaël Reck"},
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://raphaelreck.com/blog/laravel040925.html"},
+    "keywords":["Laravel","Debugging","Legacy Systems","Enterprise","Foreign Keys","Validation"],
+    "description":"A real debugging story: inheriting an unfinished Laravel codebase with foreign key nightmares, misleading table names, and validation bugs that took days to track down."
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav-buttons">
+      <a href="../index.html">Home</a>
+      <a href="https://github.com/djassoRaph" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank">LinkedIn</a>
+      <a href="./index.html">Blog</a>
+      <a href="../roots-time/manifesto.html">Roots Time</a>
+    </nav>
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>Laravel, just make it work!</h1>
+          <p class="post-meta">
+            <time datetime="2025-09-04">September 04, 2025</time>
+            <span>8 min read</span>
+            <span class="tag">Laravel</span>
+            <span class="tag">Debugging</span>
+            <span class="tag">Legacy Systems</span>
+            <span class="tag">Enterprise</span>
+          </p>
+        </header>
+
+        <div class="meta">Posted on September 2025</div>
+        <p>See this pile of trash? It's an unfinished website, make it work the way we want but we won't tell you how!</p>
+        <p>Here's some of the bugs I fixed just recently after inheriting the unfinished "legacy" code base.</p>
+        <p><em>//Author 'jesus'</em> (literally found in the code base)</p>
+        <hr>
+        
+        <h2>Tale #1: Foreign Key Nightmares and Table Names That Lie</h2>
+        <p>Spent two days chasing a phantom foreign key constraint error. Classic enterprise codebase — no docs, misleading table names, and MySQL throwing tantrums.</p>
+        
+        <h3>The Error That Started It All</h3>
+        <p>Laravel form submission dies with:</p>
+        <pre><code>SQLSTATE[23000]: Integrity constraint violation: 1452
+Cannot add or update a child row: foreign key constraint fails
+CONSTRAINT `FK_demande_vehicule_type_vehicule_pl` 
+FOREIGN KEY (`id_type_vehicule`) REFERENCES `type_vehicule_pl` (`id`)</code></pre>
+        <p>Form tries to insert <code>id_type_vehicule = 18</code>. Database says no. ID 18 doesn't exist in <code>type_vehicule_pl</code>.</p>
+        
+        <h3>Down the Rabbit Hole</h3>
+        <p>Frontend shows ID 18 as available. Backend returns ID 18 as valid. Database rejects ID 18. Something's not adding up.</p>
+        <p>Traced the data flow:</p>
+        <ul>
+            <li>JavaScript populates dropdown from API call</li>
+            <li>API calls <code>getTypeVehiculePl()</code> method</li>
+            <li>Method queries... wait for it... <code>TypeCategorieVehiculePl</code></li>
+        </ul>
+        <p>But the constraint points to <code>type_vehicule_pl</code>. Plot twist.</p>
+        
+        <h3>Detective Work: Logging Everything</h3>
+        <p>Added debug logging to see which table the IDs actually belonged to:</p>
+        <pre><code>foreach(array_unique($vehicule_types) as $type_id) {
+    $inCategories = TypeCategorieVehiculePl::where('id', $type_id)->exists();
+    $inTypes = TypeVehiculePl::where('id', $type_id)->exists();
+    Log::info("ID $type_id - Categories: $inCategories, Types: $inTypes");
+}</code></pre>
+        <p><strong>Results:</strong></p>
+        <ul>
+            <li>ID 1: Categories YES, Types YES ✅</li>
+            <li>ID 18: Categories YES, Types NO ❌</li>
+            <li>ID 19: Categories YES, Types NO ❌</li>
+            <li>ID 20: Categories YES, Types NO ❌</li>
+        </ul>
+        <p>The smoking gun. IDs 18-20 exist in categories but not in types.</p>
+        
+        <h3>The Plot Twist: <span class="highlight">Table Names That Lie</span></h3>
+        <p>Here's where it gets stupid:</p>
+        <blockquote>
+            "Table mal nommé, Type_vehicule, = habilitation et pas type de vehicule.."
+        </blockquote>
+        <p>Translation: The <code>type_vehicule_pl</code> table doesn't contain vehicle types. It contains <strong>driver qualifications</strong>.</p>
+        <p>So we have:</p>
+        <ul>
+            <li><code>type_categorie_vehicule_pl</code> = Actual vehicle categories</li>
+            <li><code>type_vehicule_pl</code> = Driver certifications (badly named)</li>
+        </ul>
+        <p>The constraint was pointing to the driver qualifications table when it should reference vehicle categories.</p>
+        
+        <h3>Resolution #1</h3>
+        <p>Updated the foreign key to point to the correct table. Two days of debugging solved by understanding what the tables actually contained.</p>
+        <hr>
+        
+        <h2>Tale #2: The One-Character Laravel Validation Bug</h2>
+        <p>This week I spent hours debugging what seemed like a JavaScript form submission issue. Turns out it was a one-character typo in a Laravel validation rule.</p>
+        
+        <h3>The Problem</h3>
+        <p>Vehicle request form kept throwing validation errors: <code>"Le champ id_chauffeur.0 sélectionné est invalide"</code></p>
+        <p>Translation: "The selected driver field is invalid."</p>
+        <p>Form had dynamic tables where users could add vehicle types, specific vehicles, and assign drivers. Everything looked fine on the frontend — dropdowns populated, values selected, submit button clicked.</p>
+        <p>But Laravel kept rejecting the driver selections.</p>
+        
+        <h3>Wrong Turns</h3>
+        <p>Started where most people do: <span class="strike">blaming JavaScript</span>.</p>
+        <ul>
+            <li><span class="strike">Maybe field names don't match between frontend and backend</span></li>
+            <li><span class="strike">Dynamic table generation screwing up array indices</span></li>
+            <li><span class="strike">FormData not capturing values correctly</span></li>
+            <li><span class="strike">Missing step.js for table management</span></li>
+        </ul>
+        <p>Added debug logging to see what the form was actually sending:</p>
+        <pre><code>console.log('=== DEBUGGING CHAUFFEUR VALUES ===')
+const chauffeurSelects = document.querySelectorAll('select[name="id_chauffeur[]"]')
+console.log('Number of chauffeur dropdowns found:', chauffeurSelects.length)
+
+chauffeurSelects.forEach((select, index) => {
+    console.log(`Chauffeur ${index}:`, {
+        value: select.value,
+        selectedText: select.options[select.selectedIndex]?.text,
+        hasValue: !!select.value
+    })
+})</code></pre>
+        <div class="insight">
+            <strong>Plot twist:</strong> JavaScript was working perfectly. Found 2 dropdowns, captured values "1" and "3", FormData contained the right entries.
+        </div>
+        
+        <h3>Database Check</h3>
+        <p>Pulled up phpMyAdmin to verify the driver data:</p>
+        <pre><code>SELECT * FROM chauffeur_pl WHERE id IN (1, 3);</code></pre>
+        <p>Both drivers existed. Both had <code>archive = 0</code> (active status). Database was fine.</p>
+        <p>Frontend working. Database valid. So why was Laravel validation failing?</p>
+        
+        <h3>The Real Culprit</h3>
+        <p>Finally checked the validation rules in <code>app/Http/Requests/DemandePl/Update.php</code>:</p>
+        <pre><code>$rules['id_chauffeur.*'] = 'required|exists:<span class="highlight">vehicule_pl</span>,id|numeric';</code></pre>
+        <p>There it was. The validation rule was checking if driver IDs exist in the <strong>vehicle</strong> table instead of the <strong>driver</strong> table.</p>
+        <p>Copy-paste error. Someone duplicated the vehicle validation rule and forgot to change the table name.</p>
+        
+        <h3>Resolution #2</h3>
+        <p>One line change:</p>
+        <pre><code>// Before
+$rules['id_chauffeur.*'] = 'required|exists:vehicule_pl,id|numeric';
+
+// After  
+$rules['id_chauffeur.*'] = 'required|exists:chauffeur_pl,id,archive,0|numeric';</code></pre>
+        <p>The <code>,archive,0</code> part ensures only active drivers are accepted.</p>
+        <hr>
+        
+        <h2>Lessons from the Trenches</h2>
+        <p><strong>Pattern Recognition:</strong> Both bugs shared the same root cause — <strong>misleading naming and poor documentation</strong>. Table names that lie, validation rules that check wrong tables, methods that query different tables than their names suggest.</p>
+        <p><strong>Debug Systematically:</strong> Don't blame the frontend first. Follow the data:</p>
+        <ol>
+            <li>Frontend data capture</li>
+            <li>Backend data processing</li>
+            <li>Database validation</li>
+            <li>Framework validation rules</li>
+        </ol>
+        <p><strong>Enterprise Codebase Reality Check:</strong></p>
+        <ul>
+            <li>Laravel validation error messages show <em>field names</em>, not <em>table names</em> being validated</li>
+            <li>When table names lie, trust the logging, not the naming convention</li>
+            <li>Copy-paste errors in validation can create silent bugs if IDs coincidentally match across tables</li>
+            <li>No documentation + misleading names = debugging nightmare</li>
+        </ul>
+        <p><strong>Framework Complexity:</strong> These bugs existed because we had to write validation rules by hand and foreign keys by hand instead of the database just... validating things automatically with proper naming conventions.</p>
+        <div class="insight">
+            <strong>Final thought:</strong> When you inherit a "legacy" codebase where the previous developer literally signed their work as "jesus", expect miracles to be required just to make basic forms work.
+        </div>
+        
+        <footer>
+            <p><em>// No enterprise databases were harmed in the making of these debug sessions</em></p>
+        </footer>
+
+        <hr>
+        <p><em>Thank you for reading.</em></p>
+        <hr>
+        <p><a href="index.html">← Back to Blog Index</a></p>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

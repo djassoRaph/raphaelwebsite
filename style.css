@@ -90,6 +90,10 @@ h1, h2 {
   margin: 50px 0;
 }
 
+.red {
+  color: red;
+}
+
 .call-to-action a {
   display: inline-block;
   background-color: #004080;
@@ -156,4 +160,29 @@ h1, h2 {
     color: #6ea0ff;
   }
 
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+@media (max-width: 768px) {
+  pre {
+    white-space: pre-wrap; /* Allow wrapping on mobile only */
+    word-break: break-word;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  pre {
+    border-left: 3px solid #007acc; /* Works in both themes */
+    padding: 1rem;
+    margin: 1rem 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 0.85rem;
+  }
 }
