@@ -1,0 +1,5 @@
+# Disable directory browsing
+Options -Indexes
+
+# Optional: Add custom error page for direct access attempts
+ErrorDocument 403 /index.html
