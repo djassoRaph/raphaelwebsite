@@ -1,0 +1,246 @@
+{
+  "v": "1.0",
+  "ts": 1761843939,
+  "s": {
+    "d": "raphaelreck.com",
+    "t": "prof_tech_blog",
+    "a": {
+      "n": "Raphaël Reck",
+      "r": "IT_sys_sw_consultant",
+      "exp": [
+        "drupal",
+        "laravel",
+        "sys_arch",
+        "debug",
+        "web_int"
+      ]
+    },
+    "nav": [
+      {
+        "l": "Home",
+        "u": "/"
+      },
+      {
+        "l": "Blog",
+        "u": "/blog/"
+      },
+      {
+        "l": "GitHub",
+        "u": "https://github.com/djassoRaph",
+        "ext": 1
+      },
+      {
+        "l": "LinkedIn",
+        "u": "https://linkedin.com/in/raphael-reck-link/",
+        "ext": 1
+      }
+    ]
+  },
+  "p": [
+    {
+      "id": "2025-10-08-juggling-fireballs",
+      "u": "/blog/2025-10-08-juggling-fireballs.html",
+      "d": "2025-10-08",
+      "tg": [
+        "prod",
+        "life",
+        "debug",
+        "burn",
+        "team"
+      ],
+      "rt": 4,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        -0.35,
+        0.66,
+        -0.95,
+        -0.58,
+        -0.75,
+        -0.2,
+        0.12,
+        -0.38
+      ],
+      "sum": "A reflection on managing a heavy workload alone while my 'working buddy' is out, and the lessons lea"
+    },
+    {
+      "id": "you-cant-get-them-all",
+      "u": "/blog/you-cant-get-them-all.html",
+      "d": "2025-09-22",
+      "tg": [
+        "prod",
+        "life",
+        "aikido",
+        "prior"
+      ],
+      "rt": 3,
+      "tc": 0,
+      "cb": 0,
+      "emb": [
+        0.44,
+        0.59,
+        -0.38,
+        -0.8,
+        -0.65,
+        -0.93,
+        0.01,
+        0.19
+      ],
+      "sum": "Being on too many frontlines makes you immobile. A reflection on priorities, expertise, and learning"
+    },
+    {
+      "id": "claudio",
+      "u": "/blog/claudio.html",
+      "d": "2025-09-06",
+      "tg": [
+        "claud",
+        "ai",
+        "devel",
+        "godot"
+      ],
+      "rt": 8,
+      "tc": 1,
+      "cb": 2,
+      "emb": [
+        -0.69,
+        -0.97,
+        0.79,
+        0.31,
+        0.88,
+        0.6,
+        0.92,
+        -0.65
+      ],
+      "sum": "When AI goes overboard: Claude creates an entire game project from a simple idea discussion, complet"
+    },
+    {
+      "id": "laravel040925",
+      "u": "/blog/laravel040925.html",
+      "d": "2025-09-04",
+      "tg": [
+        "laravel",
+        "debug",
+        "legacy",
+        "ent"
+      ],
+      "rt": 8,
+      "tc": 1,
+      "cb": 24,
+      "emb": [
+        0.29,
+        -0.92,
+        0.4,
+        -0.06,
+        -0.02,
+        0.22,
+        0.24,
+        0.21
+      ],
+      "sum": "Foreign key nightmares, table names that lie, and validation bugs in a legacy Laravel codebase—debug"
+    },
+    {
+      "id": "when-webservices-lie",
+      "u": "/blog/when-webservices-lie.html",
+      "d": "2025-08-30",
+      "tg": [
+        "drupal",
+        "ws",
+        "debug"
+      ],
+      "rt": 9,
+      "tc": 1,
+      "cb": 24,
+      "emb": [
+        -0.05,
+        0.13,
+        0.13,
+        -0.96,
+        -0.99,
+        0.46,
+        0.51,
+        0.56
+      ],
+      "sum": "PowerPoint documentation, Drupal hooks firing too early, and web services returning different data t"
+    },
+    {
+      "id": "yaygodot",
+      "u": "/blog/yaygodot.html",
+      "d": "2025-08-30",
+      "tg": [
+        "godot",
+        "ai",
+        "debug"
+      ],
+      "rt": 1,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        -0.06,
+        -0.97,
+        -0.33,
+        0.39,
+        -0.4,
+        -0.77,
+        0.3,
+        0.13
+      ],
+      "sum": "Learn how I used AI to debug collision, physics, and scripting issues to build a working 3D characte"
+    },
+    {
+      "id": "2025-08-25-ai-vs-legacy-drupal",
+      "u": "/blog/2025-08-25-ai-vs-legacy-drupal.html",
+      "d": "2025-08-25",
+      "tg": [
+        "drupal",
+        "ai",
+        "debug"
+      ],
+      "rt": 8,
+      "tc": 1,
+      "cb": 11,
+      "emb": [
+        0.51,
+        -0.93,
+        -0.84,
+        -0.06,
+        0.8,
+        -0.08,
+        0.95,
+        -0.01
+      ],
+      "sum": "Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow—what went "
+    }
+  ],
+  "serv": [
+    {
+      "t": "consulting",
+      "d": "Tech audits, team mentoring, roadmap planning"
+    },
+    {
+      "t": "dev",
+      "d": "Full-stack web apps, APIs, integrations"
+    },
+    {
+      "t": "web_int",
+      "d": "Responsive UI, third-party integration, performance"
+    },
+    {
+      "t": "it_support",
+      "d": "Infrastructure monitoring, user support, deployments"
+    },
+    {
+      "t": "network",
+      "d": "Wireless, A/V, GPS, surveillance systems"
+    },
+    {
+      "t": "sys_arch",
+      "d": "Cloud, on-prem, DevOps, security"
+    }
+  ],
+  "stats": {
+    "total_posts": 7,
+    "technical_posts": 6,
+    "total_code_blocks": 61,
+    "avg_read_time": 5.9
+  }
+}
