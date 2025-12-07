@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What's been in the Wind: Two Projects, One Developer Block | Blog | Raphaël Reck</title>
+  <meta name="description" content="From Egyptian pyramids to production pipelines: how pausing one game project led to launching two new ones — a civic engagement platform and an open-source social MMO."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/two-projects-one-block.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <script defer src="../script.js"></script>
+
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Two Projects, One Developer Block"/>
+  <meta property="og:description" content="Pivoting from burnout to building: launching a civic engagement platform and an open-source social MMO while navigating the transition from debugging to DevOps."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/two-projects-one-block.html"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2025-12-07T00:00:00+02:00"/>
+  <meta property="article:tag" content="Projects"/>
+  <meta property="article:tag" content="Open Source"/>
+  <meta property="article:tag" content="Game Development"/>
+  <meta property="article:tag" content="DevOps"/>
+
+  <style>
+    .post-header { margin-bottom: 1rem; }
+    .post-meta { opacity: .7; font-size: .9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+    .project-card { border-left: 4px solid #004080; padding: 1rem; margin: 1.5rem 0; background: rgba(0,64,128,.05); border-radius: 4px; }
+    ul { margin:1rem 0 1rem 1.25rem; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; background: #f1f3f4; padding: 2px 4px; border-radius: 3px; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What's been in the Wind: Two Projects, One Developer Block",
+    "datePublished": "2025-12-07T00:00:00+02:00",
+    "dateModified": "2025-12-07T00:00:00+02:00",
+    "author": { "@type": "Person", "name": "Raphaël Reck" },
+    "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://raphaelreck.com/blog/two-projects-one-block.html" },
+    "keywords": ["Projects","Open Source","Game Development","DevOps","Civic Tech"],
+    "description": "From Egyptian pyramids to production pipelines: how pausing one game project led to launching two new ones — a civic engagement platform and an open-source social MMO."
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav-buttons">
+      <a href="../index.html">Home</a>
+      <a href="https://github.com/djassoRaph" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank">LinkedIn</a>
+      <a href="./index.html">Blog</a>
+      <a href="../roots-time/manifesto.html">Roots Time</a>
+      <a href="https://webasix.com/" target="_blank">Consulting Work</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>What's been in the Wind: Two Projects, One Developer Block</h1>
+          <p class="post-meta">
+            <time datetime="2025-12-07">December 07, 2025</time>
+            <span>~6 min read</span>
+            <span class="tag">Projects</span>
+            <span class="tag">Open Source</span>
+            <span class="tag">Game Development</span>
+            <span class="tag">DevOps</span>
+          </p>
+        </header>
+
+        <p class="callout">Sometimes the best thing you can do with a stalled project is pause it and let your mind breathe.</p>
+
+        <h2>Travel to keep your mind off things</h2>
+        
+        <p>I was on a trip. I prefer not to disclose where or when. It's important to take breaks away from your daily routine. Allows you to reflect.</p>
+
+        <p>The timing was perfect. I'd just finished the intense debugging rush on my main client project. Happy to see it coming to conclusion. The kind of crunch where you're deep in legacy code, wrestling with functionalities, and the product owner not knowing the rules of his own product or forgetting them.</p>
+        <p>Teaching him minor debugging through client screenshots. Now we're transitioning from frantic bugfixes to the more methodical world of DevOps: building container images, setting up CI/CD pipelines, making infrastructure decisions. What I've been waiting for, for 2 years now.</p>
+
+        <p>It's a different kind of work. Less adrenaline, more architecture. And honestly? It's been a relief.</p>
+
+        <h2>My Game That Lost Its Wind</h2>
+
+        <p>I'd been working on a game project for months. Making progress, building systems, solving problems. Searching for fun games, ideas, looking at other people's work for inspiration. Then one day I opened the project file and just... didn't feel it anymore.</p>
+
+        <p>No dramatic reason. No major blocker. Just that subtle shift where what was exciting becomes work, and work becomes something you avoid.</p>
+
+        <p>So I did something I don't do enough: I paused it.</p>
+
+        <p>Not abandoned. Not deleted. Just set aside. Because I had a backlog of projects I'd been meaning to get to, and two of them were starting to feel more urgent than the game I'd lost steam on.</p>
+
+        <h2>Project One: Constituant — Civic Engagement That Actually Works</h2>
+
+        <div class="project-card">
+          <h3>🗳️ Constituant.fr</h3>
+          <p><strong>Live at:</strong> <a href="https://constituant.fr" target="_blank">constituant.fr</a></p>
+          <p><strong>Status:</strong> Deployed and functional (80% complete). Still in alpha phase.</p>
+          <p><strong>Stack:</strong> PHP, MySQL, vanilla JavaScript</p>
+        </div>
+
+        <p>This one went from idea to production in a single session. A civic engagement platform where people can vote on real EU and French legislation, see aggregate results, and follow links to the actual legislative texts.</p>
+
+        <p><strong>Why it matters:</strong> Most people have no idea what their representatives are voting on. Only what main stream media tells them. This makes it visible and participatory, I'd like to eventually have an IA decrypt it so the comman individual can understand what's at play.</p>
+
+        <h3>What Works</h3>
+        <ul>
+          <li>Real-time voting system (Pour, Contre, Abstention)</li>
+          <li>Live vote counts with progress bars</li>
+          <li>Direct links to official legislative documents</li>
+          <li>Secure admin panel for managing bills</li>
+          <li>Mobile-responsive design</li>
+          <li>IP-based duplicate vote prevention</li>
+        </ul>
+
+        <h3>What Broke (And Got Fixed)</h3>
+        <ul>
+          <li><strong>French Assembly URLs were 404ing</strong> — turns out the legislative period changed (dyn/16 → dyn/17). Switched to using <em>dossier URLs</em> instead of <em>texte URLs</em> because dossiers track the entire legislative process and never expire.</li>
+          <li><strong>Files were nested too deep</strong> — classic o2switch multi-domain setup issue. Had to configure the domain root correctly.</li>
+          <li><strong>Missing .htaccess file</strong> — no security headers, no directory protection, no URL rewriting. Created a comprehensive configuration.</li>
+          <li><strong>Admin panel edit/delete buttons broken</strong> — bill titles with newlines breaking JavaScript. Documented for future fix.</li>
+        </ul>
+
+        <p>The platform is live. It works. Early testers can use it. And I documented everything — 11 comprehensive guides covering deployment, troubleshooting, and French legislative URL structure.</p>
+
+        <p><strong>Next steps:</strong> Turn it into an association loi 1901, get community involvement, build trust with transparency.</p>
+
+        <h2>Project Two: DreamLoom — The Furcadia Successor We Deserve</h2>
+
+        <div class="project-card">
+          <h3>🌙 DreamLoom (Open Dreams)</h3>
+          <p><strong>GitHub:</strong> <a href="https://github.com/djassoRaph/dreamloom" target="_blank">github.com/djassoRaph/dreamloom</a></p>
+          <p><strong>Status:</strong> Foundation built, hitting writer's block on minigames</p>
+          <p><strong>Stack:</strong> Godot 4 (client), Rust WebSocket server, AGPL-3.0 license</p>
+        </div>
+
+        <p>This one's personal. A spiritual successor to Furcadia — that cozy isometric social MMO from the late 90s where players could create their own worlds, roleplay, and just... exist together in creative spaces.</p>
+
+        <p>But with modern twists:</p>
+        <ul>
+          <li><strong>Furcadia + Roll20 + AI art generation</strong> — players write roleplay actions and generate AI art from their descriptions</li>
+          <li><strong>Self-hostable shards</strong> — communities can run their own servers</li>
+          <li><strong>Light RPG mechanics</strong> — 1-10 stats, dice rolls, optional combat</li>
+          <li><strong>Broad fantasy avatars</strong> — not just furry, any fantasy character</li>
+          <li><strong>Simple scripting</strong> — text-based DreamScript for world creation</li>
+        </ul>
+
+        <h3>What I've Built So Far</h3>
+        <ul>
+          <li>✅ Complete project documentation (GDD, README, CONTRIBUTING)</li>
+          <li>✅ Godot 4 client with isometric movement and chat UI</li>
+          <li>✅ Rust WebSocket server for real-time communication</li>
+          <li>✅ Tilemap system with isometric rendering</li>
+          <li>✅ AGPL-3.0 license (keeps it open forever)</li>
+          <li>✅ GitHub repo set up and public</li>
+        </ul>
+
+        <h3>The Writer's Block</h3>
+
+        <p>I've built minigames. Systems work. The foundation is solid. But now I'm stuck.</p>
+
+        <p>Not technically stuck — creatively stuck. I know what the game should <em>feel</em> like, but translating that feeling into actual gameplay loops and progression systems? That's where I'm hitting the wall.</p>
+
+        <p>The core vision is clear:</p>
+        <blockquote>
+          <em>"Community over commerce. DreamLoom will never have pay-to-win mechanics, lootboxes, or paywalled gameplay features. The codebase stays open forever, sustained by community contributions, grants, and optional services around the free core."</em>
+        </blockquote>
+
+        <p>But the specific game mechanics — how do stats interact? What makes exploration rewarding? How do we balance creative freedom with structured play? — that's the part I'm wrestling with.</p>
+
+        <h2>The Current Blocker</h2>
+
+        <p>Right now, DreamLoom has technical blockers too:</p>
+        <ul>
+          <li>GDScript errors with tilemap constants</li>
+          <li>Spritesheet paths need fixing</li>
+          <li>Rust won't compile — missing Visual Studio Build Tools</li>
+        </ul>
+
+        <p>But those are solvable. The harder block is the design one: <strong>what makes DreamLoom worth playing beyond nostalgia?</strong></p>
+
+        <h2>The Pattern I'm Noticing</h2>
+
+        <p>Both projects started from the same place: frustration with how things currently work. I learned something as well : <quote>I want to bring value to the world.</quote></p>
+
+        <p><strong>Constituant</strong> exists because civic engagement is broken. People don't know what their representatives vote on. There's no easy way to track legislation or signal your preferences.</p>
+
+        <p><strong>DreamLoom</strong> exists because modern MMOs forgot how to be cozy. Everything's about grinding, monetization, and FOMO. I wanted something that felt like Furcadia did in 2000 — a place to just exist, create, and play without pressure.</p>
+
+        <p>Both are reactions to systems that prioritize profit over people.</p>
+
+        <h2>What's Next</h2>
+
+        <p><strong>For Constituant:</strong> Testing with early users, fixing the admin panel JavaScript bug, updating French Assembly URLs, and starting the process to formalize it as an association.</p>
+
+        <p><strong>For DreamLoom:</strong> Installing Visual Studio Build Tools, fixing the compile errors, and then... figuring out what the core loop actually is. Maybe that means building a simple prototype and seeing what feels fun. Maybe it means stepping back and playing more isometric MMOs to understand what works.</p>
+
+        <p><strong>For the paused game project:</strong> Let it breathe. Maybe I'll come back to it with fresh eyes. Maybe I won't. Either way, I'm not forcing it.</p>
+
+        <h2>The Lesson (Again)</h2>
+
+        <p>I keep learning this lesson and then forgetting it: <strong>You can't force creative work when the wind isn't there.</strong></p>
+
+        <p>Sometimes the best move is to pivot to something that has momentum. Let the stalled project rest. Trust that if it's meant to continue, the energy will return.</p>
+
+        <p>And in the meantime? Build something else. Ship something. Make progress somewhere.</p>
+
+        <p>That's what I'm doing. Two projects, one developer, and a growing suspicion that the blockages aren't technical — they're creative signals telling me to slow down and think harder about what actually matters.</p>
+
+        <hr>
+        <p><em>If you're curious about either project, feel free to reach out. Constituant is live and looking for early testers. DreamLoom is open source and looking for contributors who remember what made Furcadia special.</em></p>
+        <hr>
+        <p><a href="index.html">← Back to Blog Index</a></p>
+      </article>
+    </main>
+  </div>
+</body>
+</html>
