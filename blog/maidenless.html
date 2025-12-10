@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script defer src="../script.js"></script>
 
     <!-- Open Graph -->
     <meta property="og:type" content="article"/>
@@ -58,155 +57,221 @@
 </head>
 
 <body>
-<div class="container">
+  <!-- Theme Toggle Button - OUTSIDE container, fixed position -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
 
+  <!-- Mobile Menu Toggle Button - OUTSIDE container, fixed position -->
+  <button 
+    id="mobile-menu-toggle" 
+    class="mobile-menu-toggle" 
+    aria-label="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Overlay - OUTSIDE container -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <!-- Sliding Menu - OUTSIDE container -->
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+    </div>
+
+    <!-- Primary Navigation -->
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="../index.html" class="mobile-nav-link">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="index.html" class="mobile-nav-link">
+          <i class="fas fa-blog"></i>
+          <span>Blog</span>
+        </a>
+        <a href="../public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
+          <i class="fas fa-file-pdf"></i>
+          <span>Download CV</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mobile-nav-divider"></div>
+
+    <!-- Projects -->
+    <div class="mobile-nav-section">
+      <h3>Projects</h3>
+      <div class="mobile-nav-links">
+        <a href="../roots-time/manifesto.html" class="mobile-nav-link">
+          <i class="fas fa-book"></i>
+          <span>Roots Time Corporation</span>
+        </a>
+        <a href="../memes/laugh.html" class="mobile-nav-link">
+          <i class="fas fa-laugh"></i>
+          <span>Universal Darwinism</span>
+        </a>
+        <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
+          <i class="fas fa-briefcase"></i>
+          <span>Consulting Work</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mobile-nav-divider"></div>
+
+    <!-- Social -->
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Container - STARTS HERE -->
+  <div class="container">
+    <!-- Desktop Primary Navigation -->
     <nav class="nav-primary">
-        <a href="../public/raphael-reck.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
-        <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
-        <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+      <a href="../public/raphael-reck.pdf" target="_blank" download class="nav-btn">
+        <i class="fas fa-file-pdf"></i> Download CV
+      </a>
+      <a href="index.html" class="nav-btn">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn">
+        <i class="fab fa-github"></i> GitHub
+      </a>
     </nav>
 
+    <!-- Desktop Secondary Navigation -->
     <nav class="nav-secondary">
-        <a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
-        <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
-        <a href="../memes/laugh.html" class="link-btn"><i class="fas fa-laugh"></i> Universal Darwinism</a>
-        <a href="https://webasix.com/" target="_blank" class="link-btn"><i class="fas fa-briefcase"></i> Consulting Work</a>
+      <a href="../index.html" class="link-btn">
+        <i class="fas fa-arrow-left"></i> Home Page
+      </a>
+      <a href="../roots-time/manifesto.html" class="link-btn">
+        <i class="fas fa-book-open"></i> Roots Time Corporation
+      </a>
+      <a href="../memes/laugh.html" class="link-btn">
+        <i class="fas fa-laugh"></i> Universal Darwinism
+      </a>
+      <a href="https://webasix.com/" target="_blank" class="link-btn">
+        <i class="fas fa-briefcase"></i> Consulting Work
+      </a>
     </nav>
 
     <main>
-        <article class="blog-post">
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>Unfortunately, for you, however you are maidenless.</h1>
+          <p class="post-meta">
+            <time datetime="2025-12-10">December 10, 2025</time>
+            <span class="tag">Productivity</span>
+            <span class="tag">AI</span>
+            <span class="tag">Tools</span>
+            <span class="tag">Work</span>
+            <span class="tag">Efficiency</span>
+            <span class="tag">Creative</span>
+          </p>
+        </header>
 
-            <header class="post-header">
-                <h1>Unfortunately, for you, however you are maidenless.</h1>
-                <p class="post-meta">
-                    <time datetime="2025-12-10">December 10, 2025</time>
-                    <span class="tag">Productivity</span>
-                    <span class="tag">AI</span>
-                    <span class="tag">Tools</span>
-                    <span class="tag">Work</span>
-                    <span class="tag">Efficiency</span>
-                    <span class="tag">Creative</span>
-                </p>
-            </header>
-            <section>
-                <h2>Having the support and sssistance of an AI</h2>
-                <p>Sometimes I wonder, yes, my brain should do the work, and not rely on the assistance of an IA.</p>
-                <p>I do take the time to do some things by myself. I could be lazy and just tell the IA to do everything, but then I think of the tokens and the cost associated with it.</p>
-                <p>So when Claude/IA/LLM is 'cooked' or when I'm deep in something. I go around and do it myself. The thinking, the research and the writing and coding.</p>
-                
-                <p>Just the other day, it was funny to see, my company had co pilot disabled or not working. So I had to go do research the <i>old way</i> via google and looking on stack over flow.</p>
-                <p>It was worrysome because there wasn't really any recent articles related to my topic. I mean digging into data that dates back to 2007... Eugh. I felt kind of weird.</p>
-                <p>Prompting my current circumstances, with context really goes a long way, faster than googling and going through pages trying to find the right topic.</p>
-                <p>I didn't really find any helpful information, and I had to do a lot of digging to get my docker images up and running.</p>
-                <br>
-                <h3>Over designing it.</h3>
-                <p>We finally pushed through some requested evolutions at work and are working on actually migrating the project from WAMP to DOCKER with wsl! Amazing</p>
-                <p>At first, I wanted to just copy the project and make it identical. Wrong move my dear, after an afternoon, I came to a realization.</p>
-                <p>Then suddenly out of no where, "<b>boilerplate</b>!" </p>
-                <quote>Boilerplate is basically some code that is required every time you develop a project. By using a boilerplate, you save a lot of time. </quote>
-                <p>So I went ahead and started all over my project, rather than migrating a single instance of a single site. I've decided to make and adapt images for ALL the websites of my current client!</p>
-                <p>I still have to finish this. Time was up for the day. Other tasks awaited!</p>
-                <p>I restarted everything. Instead of migrating a single website, I am building and adapting Docker images for every website of the client. One unified base. Much cleaner.</p>
-                
-                <h3>Another project !</h3>
-                <p>On another note, I am also working on getting my own LLM working on my own computer, I just just heard about it as I was writing this. Mistral released an open source local LLM ? I might be wrong I must dig further</p>
-                <br>
-                <h3>Conclusion</h3>
-                <p>Now we go back to the title of the blogpost. The title makes sense now.</p>
-                <blockquote><b>Unfortunately, for you, however you are maidenless.</b></blockquote>
-                <p>This line blends the Elden Ring “Maidenless” meme with the “No bitches?” meme from Megamind. With AI, working today feels having an electric power drill. While before you were working with a traditional old hand drill.</p>
-                <p>So yes, working today without IA assitance, the level of productivity declines drastically unless you know your "phone numbers" and "GPS" locations <i>off by heart</i>.</p>
-                <p>Isn't it interesting that in order to know something perfectly, the expression is related to the heart, and not the mind? I don't have the origin or the reason <i>off the top of my head...</i></p>
-                
+        <section>
+          <h2>Having the support and assistance of an AI</h2>
+          <p>Sometimes I wonder, yes, my brain should do the work, and not rely on the assistance of an AI.</p>
+          <p>I do take the time to do some things by myself. I could be lazy and just tell the AI to do everything, but then I think of the tokens and the cost associated with it.</p>
+          <p>So when Claude/AI/LLM is 'cooked' or when I'm deep in something, I go around and do it myself. The thinking, the research, the writing and coding.</p>
+          <br>
+          <p>Just the other day, it was funny to see my company had Copilot disabled or not working. So I had to go do research the <i>old way</i> via Google and looking on Stack Overflow.</p>
+          <p>It was worrisome because there wasn't really any recent articles related to my topic. I mean digging into data that dates back to 2007... Eugh. I felt kind of weird.</p>
+          <p>Prompting my current circumstances with context really goes a long way, faster than googling and going through pages trying to find the right topic.</p>
+          <p>I didn't really find any helpful information, and I had to do a lot of digging to get my docker images up and running.</p>
+          <br>
+          <h3>Over designing it.</h3>
+          <p>We finally pushed through some requested evolutions at work and are working on actually migrating the project from WAMP to DOCKER with WSL! Amazing!</p>
+          <p>At first, I wanted to just copy the project and make it identical. Wrong move my dear. After an afternoon, I came to a realization.</p>
+          <p>Then suddenly out of nowhere: "<b>boilerplate</b>!"</p>
+          <blockquote>Boilerplate is basically some code that is required every time you develop a project. By using a boilerplate, you save a lot of time.</blockquote>
+          <p>So I went ahead and started all over my project. Rather than migrating a single instance of a single site, I've decided to make and adapt images for ALL the websites of my current client!</p>
+          <p>I still have to finish this. Time was up for the day. Other tasks awaited!</p>
+          <p>I restarted everything. Instead of migrating a single website, I am building and adapting Docker images for every website of the client. One unified base. Much cleaner.</p>
+          <br>
+          <h3>Another project!</h3>
+          <p>On another note, I am also working on getting my own LLM working on my own computer. I just heard about it as I was writing this. Mistral released an open source local LLM? I might be wrong, I must dig further.</p>
+          <br>
+          <h3>Conclusion</h3>
+          <p>Now we go back to the title of the blog post. The title makes sense now.</p>
+          <blockquote><b>Unfortunately, for you, however you are maidenless.</b></blockquote>
+          <p>This line blends the Elden Ring "Maidenless" meme with the "No bitches?" meme from Megamind. With AI, working today feels like having an electric power drill. While before you were working with a traditional old hand drill.</p>
+          <p>So yes, working today without AI assistance, the level of productivity declines drastically unless you know your "phone numbers" and "GPS" locations <i>off by heart</i>.</p>
+          <p>Isn't it interesting that in order to know something perfectly, the expression is related to the heart, and not the mind? I don't have the origin or the reason <i>off the top of my head...</i></p>
+        </section>
 
-            </section>
-            <br>
-            <button class="link-btn"><a href="index.html">← Back to Blog Index</a></button>
-
-        </article>
+        <hr>
+        <p><a href="index.html" class="link-btn">← Back to Blog Index</a></p>
+      </article>
     </main>
-</div>
+
+    <footer class="footer">
+      <p>&copy; 2025 Raphael Reck — IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Theme Toggle Script -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    
+    function updateIcon(theme) {
+      if (theme === 'dark') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    }
+  </script>
+
+  <!-- Mobile Navigation Script -->
   <script src="../mobile-nav.js"></script>
-  <!-- Mobile Menu Toggle Button -->
-<button 
-  id="mobile-menu-toggle" 
-  class="mobile-menu-toggle" 
-  aria-label="Toggle navigation menu"
-  aria-expanded="false">
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</button>
-
-<!-- Overlay -->
-<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
-
-<!-- Sliding Menu -->
-<nav id="mobile-menu" class="mobile-menu">
-  <div class="mobile-menu-header">
-    <h2 class="mobile-menu-title">Navigation</h2>
-    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
-  </div>
-
-  <!-- Primary Navigation -->
-  <div class="mobile-nav-section">
-    <h3>Main</h3>
-    <div class="mobile-nav-links">
-      <a href="../index.html" class="mobile-nav-link">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="index.html" class="mobile-nav-link">
-        <i class="fas fa-blog"></i>
-        <span>Blog</span>
-      </a>
-      <a href="../public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-file-pdf"></i>
-        <span>Download CV</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Projects -->
-  <div class="mobile-nav-section">
-    <h3>Projects</h3>
-    <div class="mobile-nav-links">
-      <a href="../roots-time/manifesto.html" class="mobile-nav-link">
-        <i class="fas fa-book"></i>
-        <span>Roots Time Corporation</span>
-      </a>
-      <a href="../memes/laugh.html" class="mobile-nav-link">
-        <i class="fas fa-dna"></i>
-        <span>Universal Darwinism</span>
-      </a>
-      <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-briefcase"></i>
-        <span>Consulting Work</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Social -->
-  <div class="mobile-nav-section">
-    <h3>Connect</h3>
-    <div class="mobile-nav-links">
-      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-    </div>
-  </div>
-</nav>
 </body>
 </html>
