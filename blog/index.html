@@ -7,6 +7,7 @@
     <meta name="description" content="Welcome to my blog. I document my journey in software development, including bugs, AI-powered projects, architectural decisions, and philosophical ramblings. New posts usually arrive on Wednesdays."/>
     <link rel="canonical" href="https://raphaelreck.com/blog/index.html"/>
     <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
     <link rel="alternate" type="application/atom+xml" title="Atom" href="/atom.xml" />
     <link rel="alternate" type="application/json" title="JSON Feed" href="/feed.json" />
@@ -32,51 +33,61 @@
     </script>
 </head>
 <body>
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <div class="container">
-    <nav class="nav-buttons">
-      <a href="../index.html">Home</a>
-      <a href="https://github.com/djassoRaph" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank">LinkedIn</a>
-      <a href="index.html">Blog</a>
-      <a href="../roots-time/manifesto.html">Roots Time Corporation</a>
-      <a href="../memes/laugh.html">Universal Darwinism</a>
-      <a href="https://webasix.com/" target="_blank">Consulting Work</a>
+    <nav class="nav-primary">
+      <a href="../public/raphael-reck.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../memes/laugh.html" class="link-btn"><i class="fas fa-laugh"></i> Universal Darwinism</a>
+      <a href="https://webasix.com/" target="_blank" class="link-btn"><i class="fas fa-briefcase"></i> Consulting Work</a>
     </nav>
 
-    <h1>Blog</h1>
+    <h1>Web Blog</h1>
     <p>Posts coming weekly, usually Wednesdays.</p>
 
     <section>
       <p>
-        Welcome to my log. I document things here bugs, ideas, architecture wins, AI ramblings, time audits, and the occasional philosophical spiral.
+        Welcome to my corner of the internet. I document things here bugs, ideas, architecture wins, AI ramblings, time audits, and the occasional philosophical spiral.
       </p>
       <blockquote class="quote">
         If you really want something to work... keep it simple.
       </blockquote>
     </section>
     <div class="blog-posts">
-       <article class="blog-post">
+      <article class="blog-post">
         <p><em>December 07, 2025</em></p>
         <h2><a href="2025-12-07-whats_in_the_wind.html">What's been in the Wind: Two Projects, One Developer Block</a></h2>
         <p>How pausing one game project led to launching two new ones : a civic engagement platform and an open-source social MMO.</p>
       </article>
-    <div class="blog-posts">
-       <article class="blog-post">
+      <hr>
+      <article class="blog-post">
         <p><em>October 30, 2025</em></p>
         <h2><a href="llmr.html">Introducing LLMR: RSS for the AI Era</a></h2>
         <p>Jibberish mode but for LLMs when browsing websites.</p>
       </article>
+      <hr>
       <article class="blog-post">
         <p><em>October 08, 2025</em></p>
         <h2><a href="2025-10-08-juggling-fireballs.html">Juggling balls on fire</a></h2>
         <p>What do you do when your team of two becomes a team of one, and the projects are on fire?</p>
       </article>
+      <hr>
       <article class="blog-post">
         <p><em>September 22, 2025</em></p>
         <h2><a href="you-cant-get-them-all.html">You can't get them all.</a></h2>
         <p>But you can get the right ones.</p>
         <p>Sometimes I wish days were 72 hours long, so I could get more things done.</p>
       </article>
+      <hr>
       <article class="blog-post">
         <p><em>September 06, 2025</em></p>
         <h2><a href="claudio.html">Claude behaves unexpectedly!</a></h2>
@@ -104,91 +115,39 @@
       </article>
       <hr>
       <article class="blog-post">
-        <p><em><time datetime="2025-08-25">Posted on August the 25th, 2025</time></em></p>
-        <h2>Why I switched from GPT to Claude for coding</h2>
-        <p>
-          After using GPT for a while, I found that Claude's approach to coding tasks was more aligned with my workflow. Claude seemed to understand context better and provided more relevant suggestions.
-        </p>
-        <p>Except now it doesn't anymore, and I'm not sure why.</p>
-          <h2>
+        <div>
+          <p><em><time datetime="2025-08-25">Posted on August the 25th, 2025</time></em></p>
+          <h2>Why I switched from GPT to Claude for coding</h2>
+          <p>
+            After using GPT for a while, I found that Claude's approach to coding tasks was more aligned with my workflow. Claude seemed to understand context better and provided more relevant suggestions.
+          </p>
+          <p>Except now it doesn't anymore, and I'm not sure why.</p>
+        </div>
+      </article>
+      <hr>
+      <article class="blog-post">
+        <h2>
         <a href="2025-08-25-ai-vs-legacy-drupal.html">
-          When AI-Generated Code Meets Legacy Drupal: A Horror Story
+        When AI-Generated Code Meets Legacy Drupal: A Horror Story
         </a>
       </h2>
       <p class="post-meta">
         <time datetime="2025-08-25">August 25, 2025</time> · Debugging · Drupal · AI
       </p>
-      <p>
-        What started as a “quick bugfix” spiraled into a multi-day nightmare:
-        conflicting email systems, redirect loops, and AI boilerplate that
-        clashed with legacy Drupal architecture…
-      </p>
+      <p>What started as a "quick bugfix" spiraled into a multi-day nightmare></p>
       </article>
       <hr>
       <article class="blog-post">
-        <h2>Bitcoin Scam Attempt: How a Script Kiddy Tried to Extort Me for $200</h2>
+        <h2><a href="bitcoinscam.html">Bitcoin Scam Attempt: How a Script Kiddy Tried to Extort Me for $200</a></h2>
         <p><em><time datetime="2025-08-18">Posted on August 18, 2025</time></em></p>
-
-        <div>
-          <p>Online scams are everywhere — phishing emails, fake logins, ransomware, and extortion schemes. Sometimes the attackers aren’t sophisticated cybercriminals. Sometimes they’re just <em>script kiddies</em> — amateurs who copy tools they don’t fully understand.</p>
-          <p>Here’s the story of how one of them tried to extort me for <strong>$200 in Bitcoin</strong>, what happened to a friend who tested the file in a VM, and what you can do to stay safe.</p>
-
-          <h3>The Bitcoin extortion email</h3>
-          <blockquote>
-            “you have to pay 200 dollars if you want ur stuffs back and stay alone”
-          </blockquote>
-          <p>The sender called themselves <code>yakuza haha</code>. Instead of panicking, I replied with short, unhelpful answers like “why?” or “I have to go back to work.” The intimidation fell apart quickly — there was no real leverage behind the threats.</p>
-
-          <h3>Inside the extortion emails</h3>
-          <p>Here’s a snapshot of the actual exchange I had with the scammer:</p>
-          <blockquote>
-            <p><strong>Scammer:</strong> “You have to pay 200 dollars if you want your stuffs back and stay alone.”</p>
-            <p><strong>Me:</strong> “Why?”</p>
-            <p><strong>Scammer:</strong> “Are you going to pay or not?”</p>
-            <p><strong>Me:</strong> “I have to go back to work.”</p>
-          </blockquote>
-          <p>That was the entire level of sophistication. No technical detail, no leverage — just repetition and pressure. It shows how these scams work: they hope fear will do the job for them.</p>
-
-          <h3>When my friend got caught anyway</h3>
-          <p><strong>One of my friends did get scammed by the same person.</strong> He opened the malicious file inside a <strong>virtual machine (VM)</strong> — a sandbox many tech folks use to test suspicious software — and still ran into issues. He trusted me. So he ran it on his own computer because on the VM it wasn't working.... Moral of the story: even if you’re being careful, things can go wrong. You really gotta be careful. Don't trust your friends online with files! </p>
-
-          <h3>What is a VM?</h3>
-          <p>A <strong>Virtual Machine</strong> is basically a computer inside your computer. It creates a sandboxed environment where software runs isolated from your main system. It helps — but it isn’t a silver bullet. Some malware can detect VMs or exploit misconfigurations. Learn more on 
-            <a href="https://en.wikipedia.org/wiki/Virtual_machine" target="_blank" rel="noopener">Wikipedia</a>.
-          </p>
-
-          <h3>Lessons learned</h3>
-          <ul>
-            <li><strong>Don’t panic, don’t pay.</strong> Fear is the whole playbook. Paying once marks you as a target.</li>
-            <li><strong>Harden accounts.</strong> Use a password manager, unique passwords, and 2FA everywhere.</li>
-            <li><strong>Backups win.</strong> Regular offline backups beat ransomware and extortion.</li>
-            <li><strong>VMs are magic.</strong> Useful, yes. Perfect, no. Treat them as one layer of defense.</li>
-            <li><strong>Document everything.</strong> Save emails, headers, screenshots, and file hashes if possible.</li>
-          </ul>
-
-          <h3>Tracking the scammer</h3>
-          <p>The attacker wasn’t very smart about covering their tracks. From my account security logs, I could see a <strong>successful sign-in from Turkey</strong> (IP address: <code>88.230.180.122</code>, using Chrome on Windows). They even passed part of a password reset challenge — proof this wasn’t just empty threats.</p>
-          <p>I reported the incident to the police, but unfortunately, <strong>nothing came of it</strong>. The case went nowhere.</p>
-          <p>The Turkish Police told me to contact the Turkish Consulate, which then told me to contact Turkish lawyers… it was never-ending. Lawyers never replied, and this is where it stands today: unreplied e-mails.</p>
-          <p>I warned my friends, so they removed my accounts from Discord and put me on silence on various platforms. <strong>If you get hacked on one platform, make sure you can still reach your friends on others</strong> — that way you can alert them, secure your account, and protect others from being scammed by your compromised profile.</p>
-          <p>On the bright side, I also reported the <strong>fake website hosting their malicious application</strong>, and the hosting provider did take it down. At least one door was closed on this scammer.</p>
-
-          <h3>Final thoughts</h3>
-          <p>In my case, the scammer failed. But my friend’s experience is a reminder: even clumsy attacks can waste time or cause damage. Stay skeptical, keep things simple, and secure the basics — they matter the most.</p>
-        </div>
+        <p>Online scams are everywhere</p>
       </article>
       <hr>
       <article class="blog-post">
-        <h2>Holidays and side projects.</h2>
+        <h2> <a href="HolidaysSideProject.html">Holidays and side projects.</a></h2>
         <p><em><time datetime="2025-08-17">Posted on August the 17th, 2025</time></em></p>
         <div>
-          <p>Sigh, summer is soon over. I've been working on side projects a lot. I've suffered a lot with the GPT 4o to GPT 5.</p>
-          <p>It just didn't work out</p>
-          <p>I moved over to Claude.ai for now, and it did great.</p>
-          <p>I've had a side project on Godot for a couple of weeks now it was working on python, great with GPT4o but to get it to work on Godot...</p>
-          <p>It just never clicked and failed multiple times.</p>
-          <p>I tried three days in a row with GPT. And did it in with Claude in the end and it finally works.</p>
-          <p>What took 3 days to fail with GPT, worked with Claude in one !</p>
+         <p>I've been working on side projects a lot</p>
         </div>
       </article>
       <hr>
@@ -196,7 +155,7 @@
         <h2>Productivity. And debugging.</h2>
         <p><em><time datetime="2025-07-30">Posted on July 31, 2025</time></em></p>
         <div>
-          <p>So I've been working on automatically updateing my blog simply by doing a git push.</p>
+          <p>So, I've been working on automatically updating my blog simply by doing a git push.</p>
           <p>This launches a workflow on my github. Then pushes everything to my FTP via a script.</p>
             <p>I'll have to study it.</p>
             <p> Because I just bindly thought it would do bash scripts, but no, it's calling some one elses script.</p>
@@ -205,100 +164,66 @@
       </article>
       <hr>
       <article class="blog-post">
-        <h2>CET headaches again. And procrastination.</h2>
+        <h2><a href="CETheadaches.html">CET headaches again. And procrastination.</a></h2>
         <p><em><time datetime="2025-07-30">Posted on July 30, 2025</time></em></p>
-        <p>
-          I’ve not been able to set my head straight to actually be productive. I’ve just not been able to produce the things on my list.
-          I’ve been working on a website that deals with a house bidding — to help sell a house. It’s available at 
-          <a href="https://julien.raphaelreck.com" target="_blank">julien.raphaelreck.com</a>. I'll be getting 400 Euros for making it.
-        </p>
-        <p>
-          It was nice to work with AI to code the website and generate prompts. It works, but nothing extraordinary.
-          Still, it might open other opportunities — I have a meeting with a potential client. Just sent him a quotation for a website.
-        </p>
-        <p>
-          I also revisited an old project: a smart mirror core with AI — the idea is to display workout images, with a timer and a motion detector to guide home workouts in front of a mirror.
-          I only have a Raspberry Pi so far. It’s early days, but the idea lives. <br> I saw this video recently. <br> <a href="https://www.youtube.com/watch?v=y8dx7ZimArc"> Building a Smart Morning Routine Dashboard (From a Jailbroken Lululemon Mirror) </a> I really like what they did. 
-        </p>
-        <p>
-          Other than that, I still need to finalize the Roots Time Corporation manifesto and upload the memes I like (and remade) to the site.
-        </p>
-        <p>
-          I managed just before leaving the office for my holidays to deliver some code for the client for them to test. Working for the city of Marseille with old code and practices and databases is a pain. No Git....
-        </p>
+        <div>
+          <p>
+            I've not been able to set my head straight to actually be productive. I've just not been able to produce the things on my list.
+          </p>
+      </div>
       </article>
       <hr>
       <article class="blog-post">
-        <h2>SVN/Git Wrangling, Laravel Rage, and CET Headaches</h2>
+        <h2><a href="SVNgit.html">SVN/Git Wrangling, Laravel Rage, and CET Headaches</a></h2>
         <p><em><time datetime="2025-07-06"></time>Posted on July 6, 2025</time></em></p>
-
-        <p>This week was chaos and cleanup. Here's the damage:</p>
-
-        <h3>Git vs SVN: The Migration No One Wants to Do</h3>
-        <p>
-          Tried migrating an old SVN project (AzurAgent) to GitLab. Did care about the history — just wanted to mirror the damn folder structure.
-          But Git decided to throw a tantrum: thought I was deleting files instead of moving them. Line endings (CRLF/LF) made diffs unreadable. Classic.
-        </p>
-        <p>
-          Lesson: Git doesn't forgive structural violence. Plan your moves like a game of chess, or prepare to revert everything with tears in your eyes.
-        </p>
-
-        <h3>Laravel: The Bidding Site and Codex Fatigue</h3>
-        <p>
-          I pushed live a Laravel app generated by Codex — a bidding system for a house. Deployed it at 
-          <a href="https://julien.raphaelreck.com" target="_blank">julien.raphaelreck.com</a>.
-        </p>
-        <p>This was my first time using Laravel for a project. Thanks GPT.</p>
-        <p>Issues, as expected:</p>
-        <ul>
-          <li>Root URL 404'd even though child routes worked.</li>
-          <li>Images failed to load — turns out the photos folder wasn’t in <code>/public</code>.</li>
-          <li>Codex-generated registration form had no validation for phone or email. No feedback. No regex. Just vibes.</li>
-          <li>Dropdown fields broke silently. Inspect, guess, cry, repeat.</li>
-        </ul>
-        <p>
-          Reminder: Don’t trust AI scaffolding tools to finish the job. They're good starters — but lazy interns if left alone.
-        </p>
-
-        <h3>CET Form: Webservice Shenanigans in Production</h3>
-        <p>
-          On the AzurAgent side, we pushed the CET webform to VA for live testing. Tried to submit a 5-day annual leave transfer — frontend looked fine, but backend didn’t call the WS or trigger the fallback email.
-        </p>
-        <p>Suspected areas:</p>
-        <ul>
-          <li>Silent WS push failure (PUSH_DEMANDE_ACTIONCET)</li>
-          <li>Fallback notification logic not firing</li>
-          <li>No way to trace unless I dig through VA logs</li>
-        </ul>
-        <p>
-          Deployed, tested, and now chasing ghosts. It works locally. On VA? Shrugs.
-        </p>
-
-        <h3>Final Thought: Stop the Framework Madness</h3>
-        <p>
-          Every time I touch a framework, something breaks that HTML never asked for. Bloat creeps in. Pages slow down. Errors multiply.
-          We used to build websites. Now we build excuses.
-        </p>
-        <p>If you want something to work — <strong>keep it simple</strong>.</p>
+        <div>
+        <p>This week was chaos and cleanup.</p>
 
         <p style="font-family: monospace; color: gray;">
           // no JS frameworks were harmed in the making of this log
         </p>
+        </div>
       </article>
       <hr>
       <article class="blog-post">
       <div>
         <p>Old thought</p>
         <p>
-      I believe the web should be simple. I don’t like frameworks. They bloat, obfuscate, and complicate things that HTML already did well decades ago.
-      The more we "frame" "work", the more tedious life becomes. <br>More stepping over things to actually get to the source of what you want. 
-      It's like climbing through a window each time. 
+      I believe the web should be simple. I don't like frameworks. They bloat, obfuscate, and complicate things that HTML already did well decades ago.
+      The more we "frame" "work", the more tedious life becomes. <br>More stepping over things to actually get to the source of what you want.
+      It's like climbing through a window each time.
       </p>
       <img class="framework" src="../public/climbingframeworks.png" alt="Climbing Frameworks">
       </div>
       </article>
       <hr>
-</div>
+    </div>
   </div>
+
+    <footer class="footer">
+      <p>&copy; 2025 Raphael Reck — IT Consultant. All rights reserved.</p>
+      <p><script>const user = "contact"; const domain = "raphaelreck.com"; const mail = `${user}@${domain}`; document.write(`<a href='mailto:${mail}'>${mail}</a>`);</script></p>
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
 </body>
 </html>

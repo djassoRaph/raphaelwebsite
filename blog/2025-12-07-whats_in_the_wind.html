@@ -7,6 +7,7 @@
   <meta name="description" content="From Egyptian pyramids to production pipelines: how pausing one game project led to launching two new ones — a civic engagement platform and an open-source social MMO."/>
   <link rel="canonical" href="https://raphaelreck.com/blog/two-projects-one-block.html"/>
   <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script defer src="../script.js"></script>
 
   <meta property="og:type" content="article"/>
@@ -47,14 +48,18 @@
   </script>
 </head>
 <body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
   <div class="container">
-    <nav class="nav-buttons">
-      <a href="../index.html">Home</a>
-      <a href="https://github.com/djassoRaph" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank">LinkedIn</a>
-      <a href="./index.html">Blog</a>
-      <a href="../roots-time/manifesto.html">Roots Time</a>
-      <a href="https://webasix.com/" target="_blank">Consulting Work</a>
+        <nav class="nav-primary">
+      <a href="../public/raphael-reck.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../memes/laugh.html" class="link-btn"><i class="fas fa-laugh"></i> Universal Darwinism</a>
+      <a href="https://webasix.com/" target="_blank" class="link-btn"><i class="fas fa-briefcase"></i> Consulting Work</a>
     </nav>
 
     <main>
@@ -212,9 +217,33 @@
         <hr>
         <p><em>If you're curious about either project, feel free to reach out. Constituant is live and looking for early testers. DreamLoom is open source and looking for contributors who remember what made Furcadia special.</em></p>
         <hr>
-        <p><a href="index.html">← Back to Blog Index</a></p>
+        <br>
+        <button class="link-btn"><a href="index.html">← Back to Blog Index</a></button>
       </article>
     </main>
+    <footer class="footer">
+      <p>&copy; 2025 Raphael Reck — IT Consultant. All rights reserved.</p>
+      <p><script>const user = "contact"; const domain = "raphaelreck.com"; const mail = `${user}@${domain}`; document.write(`<a href='mailto:${mail}'>${mail}</a>`);</script></p>
+    </footer>
   </div>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
 </body>
 </html>

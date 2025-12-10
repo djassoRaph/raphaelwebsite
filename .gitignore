@@ -2,3 +2,11 @@ export.txt
 -old.jpg
 token.txt
 
+blog/index.html.backup
+blog/laravel040925.html.bak
+update_theme_toggle.sh
+migrate_blog_posts.py
+create_gallery.py
+update_blog_posts.py
+update_posts_fixed.py
+.claude/settings.local.json
