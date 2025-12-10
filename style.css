@@ -88,7 +88,7 @@ body {
 .theme-toggle {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -536,7 +536,7 @@ body {
 
   .theme-toggle {
     top: 10px;
-    right: 10px;
+    left: 10px;
     width: 40px;
     height: 40px;
     font-size: 18px;
@@ -597,4 +597,299 @@ html {
 
 .blog-post {
   padding-bottom: 1.6em;
+}
+/* ============================================
+   MOBILE NAVIGATION - SLIDING MENU
+   ============================================ */
+
+/* Hamburger Button */
+.mobile-menu-toggle {
+  display: none; /* Hidden by default, shown only on mobile */
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: #004080;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.mobile-menu-toggle:hover {
+  background: #0066cc;
+  transform: scale(1.05);
+}
+
+.mobile-menu-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 24px;
+  height: 18px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animate hamburger to X when menu is open */
+.mobile-menu-toggle.active .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Overlay - Click to dismiss */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.mobile-menu-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Sliding Menu Container */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -320px; /* Hidden off-screen to the right */
+  width: 280px;
+  height: 100vh;
+  background: #fff;
+  z-index: 999;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.mobile-menu.active {
+  right: 0; /* Slide in */
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .mobile-menu {
+    background: #222;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .mobile-menu-toggle {
+    background: #6ea0ff;
+  }
+  
+  .mobile-menu-toggle:hover {
+    background: #8ab4ff;
+  }
+}
+
+/* Menu Header */
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-menu-header {
+    border-bottom-color: #444;
+  }
+}
+
+.mobile-menu-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #004080;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-menu-title {
+    color: #6ea0ff;
+  }
+}
+
+/* Close button (redundant but helpful for users who don't know about overlay) */
+.mobile-menu-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.mobile-menu-close:hover {
+  color: #004080;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-menu-close {
+    color: #999;
+  }
+  
+  .mobile-menu-close:hover {
+    color: #6ea0ff;
+  }
+}
+
+/* Navigation Links */
+.mobile-nav-section {
+  margin-bottom: 2rem;
+}
+
+.mobile-nav-section h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  margin: 0 0 0.75rem 0;
+  font-weight: 600;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #f4f4f4;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.mobile-nav-link:hover {
+  background: #004080;
+  color: #fff;
+  transform: translateX(-4px);
+}
+
+.mobile-nav-link.active {
+  background: #004080;
+  color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-nav-link {
+    background: #333;
+    color: #eee;
+  }
+  
+  .mobile-nav-link:hover {
+    background: #6ea0ff;
+    color: #000;
+  }
+  
+  .mobile-nav-link.active {
+    background: #6ea0ff;
+    color: #000;
+  }
+}
+
+.mobile-nav-link i {
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+/* Divider */
+.mobile-nav-divider {
+  height: 1px;
+  background: #ddd;
+  margin: 1.5rem 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-nav-divider {
+    background: #444;
+  }
+}
+
+/* Show mobile menu only on small screens */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  /* Hide desktop navigation on mobile */
+  .nav-buttons {
+    display: none;
+  }
+}
+
+/* Prevent body scroll when menu is open */
+body.mobile-menu-open {
+  overflow: hidden;
+}
+
+/* Accessibility improvements */
+.mobile-menu-toggle:focus,
+.mobile-nav-link:focus,
+.mobile-menu-close:focus {
+  outline: 2px solid #004080;
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobile-menu-toggle:focus,
+  .mobile-nav-link:focus,
+  .mobile-menu-close:focus {
+    outline-color: #6ea0ff;
+  }
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

@@ -64,7 +64,7 @@
       "u": "/blog/2025-08-25-ai-vs-legacy-drupal.html",
       "t": "BlogPosting",
       "ti": "When AI‑Generated Code Meets Legacy Drupal: A Horror Story | Blog | Raphaël Reck",
-      "d": "Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow—what went wrong and how we fixed it.",
+      "d": "Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow - what went wrong and how we fixed it.",
       "kw": [
         "form",
         "drupal",
@@ -234,7 +234,7 @@
       "u": "/blog/laravel040925.html",
       "t": "BlogPosting",
       "ti": "Laravel, just make it work! | Blog | Raphaël Reck",
-      "d": "Foreign key nightmares, table names that lie, and validation bugs in a legacy Laravel codebase—debugging enterprise code with misleading documentation.",
+      "d": "Foreign key nightmares, table names that lie, and validation bugs in a legacy Laravel codebase - debugging enterprise code with misleading documentation.",
       "kw": [
         "names",
         "laravel",
@@ -320,7 +320,7 @@
       "u": "/blog/when-webservices-lie.html",
       "t": "BlogPosting",
       "ti": "Magical Drupal messages, Empty Emails and Wrong API Responses. | Blog | Raphaël Reck",
-      "d": "PowerPoint documentation, Drupal hooks firing too early, and web services returning different data than promised—what went wrong and how we fixed it.",
+      "d": "PowerPoint documentation, Drupal hooks firing too early, and web services returning different data than promised - what went wrong and how we fixed it.",
       "kw": [
         "powerpoint",
         "drupal",

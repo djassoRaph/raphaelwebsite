@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Magical Drupal messages, Empty Emails and Wrong API Responses. | Blog | Raphaël Reck</title>
-  <meta name="description" content="A real debugging story: PowerPoint documentation, Drupal hooks that fire too early, and web services returning completely different data than promised—debugging through client screenshots."/>
+  <meta name="description" content="A real debugging story: PowerPoint documentation, Drupal hooks that fire too early, and web services returning completely different data than promised - debugging through client screenshots."/>
   <link rel="canonical" href="https://raphaelreck.com/blog/when-webservices-lie.html"/>
   <link rel="stylesheet" href="../style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -12,7 +12,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="article"/>
   <meta property="og:title" content="Magical Drupal messages, Empty Emails and Wrong API Responses."/>
-  <meta property="og:description" content="PowerPoint documentation, Drupal hooks firing too early, and web services returning different data than promised—what went wrong and how we fixed it."/>
+  <meta property="og:description" content="PowerPoint documentation, Drupal hooks firing too early, and web services returning different data than promised - what went wrong and how we fixed it."/>
   <meta property="og:url" content="https://raphaelreck.com/blog/when-webservices-lie/html"/>
   <meta property="og:site_name" content="Raphaël Reck"/>
   <meta property="article:author" content="Raphaël Reck"/>
@@ -41,7 +41,7 @@
     "publisher":{"@type":"Person","name":"Raphaël Reck"},
     "mainEntityOfPage":{"@type":"WebPage","@id":"https://raphaelreck.com/blog/when-webservices-lie.html"},
     "keywords":["Drupal","Web Services","Debugging","Legacy Systems","Integration"],
-    "description":"A real debugging story: PowerPoint documentation, Drupal hooks that fire too early, and web services returning completely different data than promised—debugging through client screenshots."
+    "description":"A real debugging story: PowerPoint documentation, Drupal hooks that fire too early, and web services returning completely different data than promised - debugging through client screenshots."
   }
   </script>
 </head>
@@ -297,7 +297,7 @@
         <p>When there's no real product owner, 
             no project real manager, 
             no actual documentation, 
-            and no testing environment — 
+            and no testing environment  -  
             assume everything is wrong, 
             demand better specs upfront, 
             and prepare for the "Oh, did we mention..." 
@@ -307,9 +307,9 @@
         <hr>
         <h2>The Kitchen Nightmare: An Allegory</h2>
         <p>Picture this: You used to work in a proper restaurant kitchen. You had recipe cards with exact measurements, a prep station where you could taste and adjust seasonings, and a sous chef who'd sample everything before it went to the dining room. If something wasn't quite right, you could fix it before the customer ever saw it.</p>
-        <p>Now imagine you've been asked to cook for a high-end catering event, <b>13000 people</b>, but here's the catch: You have to prepare everything blindfolded, in a kitchen you've never seen before, using mystery ingredients. There's no recipe — just a crumpled napkin with "make it delicious" scrawled in crayon. You can't taste anything as you go. And once you're done cooking, you have to send the food directly to the guests' tables without ever seeing it yourself.</p>
+        <p>Now imagine you've been asked to cook for a high-end catering event, <b>13000 people</b>, but here's the catch: You have to prepare everything blindfolded, in a kitchen you've never seen before, using mystery ingredients. There's no recipe  -  just a crumpled napkin with "make it delicious" scrawled in crayon. You can't taste anything as you go. And once you're done cooking, you have to send the food directly to the guests' tables without ever seeing it yourself.</p>
         <p>When the inevitable complaints come back ("This is too salty!" "Where's the garnish we ordered?" "This isn't even the right dish!"), you have to guess what went wrong based on blurry photos someone texted you from the dining room.</p>
-        <p>Oh, and there's no head chef to consult, no catering manager to clarify what the client actually wanted, and no written contract specifying the menu. The event planner quit last week, and when you ask for guidance, everyone just shrugs and says, "Ask the previous catering team" — the one that disbanded twleve months ago.</p>
+        <p>Oh, and there's no head chef to consult, no catering manager to clarify what the client actually wanted, and no written contract specifying the menu. The event planner quit last week, and when you ask for guidance, everyone just shrugs and says, "Ask the previous catering team"  -  the one that disbanded twleve months ago.</p>
         <code> <span style="color:blanchedalmond;"><i>And on their way out. I kid you not, they said. "This is the cleanest project of the entire..."</span> <span style="color:red;">It's not</i></span></code>
         <p>Your survival strategy? Assume the napkin-scrawled instructions are wrong. Demand to see a real menu with ingredients, portions, and cooking times before you even preheat the oven. And brace yourself for the inevitable phone call that starts with, "Oh, did we mention half the guests are vegan and three are allergic to everything?"</p>
         <p>Because in this kitchen nightmare, the only thing you can count on is that nobody counted on anything going right.</p>
@@ -322,7 +322,7 @@
       </article>
     </main>
     <footer class="footer">
-      <p>&copy; 2025 Raphael Reck — IT Consultant. All rights reserved.</p>
+      <p>&copy; 2025 Raphael Reck  -  IT Consultant. All rights reserved.</p>
       <p><script>const user = "contact"; const domain = "raphaelreck.com"; const mail = `${user}@${domain}`; document.write(`<a href='mailto:${mail}'>${mail}</a>`);</script></p>
     </footer>
   </div>
@@ -345,5 +345,88 @@
       else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
     }
   </script>
+  <script src="mobile-nav.js"></script>
+  <!-- Mobile Menu Toggle Button -->
+<button 
+  id="mobile-menu-toggle" 
+  class="mobile-menu-toggle" 
+  aria-label="Toggle navigation menu"
+  aria-expanded="false">
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</button>
+
+<!-- Overlay -->
+<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+<!-- Sliding Menu -->
+<nav id="mobile-menu" class="mobile-menu">
+  <div class="mobile-menu-header">
+    <h2 class="mobile-menu-title">Navigation</h2>
+    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+  </div>
+
+  <!-- Primary Navigation -->
+  <div class="mobile-nav-section">
+    <h3>Main</h3>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="blog/index.html" class="mobile-nav-link">
+        <i class="fas fa-blog"></i>
+        <span>Blog</span>
+      </a>
+      <a href="public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+        <span>Download CV</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider"></div>
+
+  <!-- Projects -->
+  <div class="mobile-nav-section">
+    <h3>Projects</h3>
+    <div class="mobile-nav-links">
+      <a href="roots-time/manifesto.html" class="mobile-nav-link">
+        <i class="fas fa-book"></i>
+        <span>Roots Time Corporation</span>
+      </a>
+      <a href="memes/laugh.html" class="mobile-nav-link">
+        <i class="fas fa-dna"></i>
+        <span>Universal Darwinism</span>
+      </a>
+      <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
+        <i class="fas fa-briefcase"></i>
+        <span>Consulting Work</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider"></div>
+
+  <!-- Social -->
+  <div class="mobile-nav-section">
+    <h3>Connect</h3>
+    <div class="mobile-nav-links">
+      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+</nav>
+</body>
+</html>
 </body>
 </html>

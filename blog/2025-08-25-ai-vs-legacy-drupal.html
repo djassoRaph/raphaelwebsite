@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>When AI‑Generated Code Meets Legacy Drupal: A Horror Story | Blog | Raphaël Reck</title>
-  <meta name="description" content="A real debugging story: conflicting email systems, redirect loops, and AI-generated boilerplate breaking a legacy Drupal workflow—and how we fixed it."/>
+  <meta name="description" content="A real debugging story: conflicting email systems, redirect loops, and AI-generated boilerplate breaking a legacy Drupal workflow - and how we fixed it."/>
   <link rel="canonical" href="https://raphaelreck.com/blog/2025-08-25-ai-vs-legacy-drupal.html"/>
   <link rel="stylesheet" href="../style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -13,7 +13,7 @@
   <!-- Open Graph -->
   <meta property="og:type" content="article"/>
   <meta property="og:title" content="When AI‑Generated Code Meets Legacy Drupal: A Horror Story"/>
-  <meta property="og:description" content="Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow—what went wrong and how we fixed it."/>
+  <meta property="og:description" content="Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow - what went wrong and how we fixed it."/>
   <meta property="og:url" content="https://raphaelreck.com/blog/2025-08-25-ai-vs-legacy-drupal.html"/>
   <meta property="og:site_name" content="Raphaël Reck"/>
   <meta property="article:author" content="Raphaël Reck"/>
@@ -44,7 +44,7 @@
     "publisher":{"@type":"Person","name":"Raphaël Reck"},
     "mainEntityOfPage":{"@type":"WebPage","@id":"https://raphaelreck.com/blog/2025-08-25-ai-vs-legacy-drupal.html"},
     "keywords":["Drupal","AI","Debugging","Architecture","Legacy code"],
-    "description":"A real debugging story: conflicting email systems, redirect loops, and AI-generated boilerplate breaking a legacy Drupal workflow—and how we fixed it."
+    "description":"A real debugging story: conflicting email systems, redirect loops, and AI-generated boilerplate breaking a legacy Drupal workflow - and how we fixed it."
   }
   </script>
 </head>
@@ -97,7 +97,7 @@
         </code></pre>
         <p>
           Looks harmless. In reality, <code>&lt;front&gt;</code> is generic boilerplate AI tools love to suggest.
-          Here, it clashed with Drupal’s own form redirect flow—preventing user success messages from ever appearing.
+          Here, it clashed with Drupal’s own form redirect flow, preventing user success messages from ever appearing.
         </p>
 
         <h2 id="cascade">The Cascade of Failures</h2>
@@ -120,7 +120,7 @@
   from_mail: _default
 </code></pre>
         <p>
-          Intended to resolve into real addresses—left literal instead.
+          Intended to resolve into real addresses, left literal instead.
           Result: attempts like “from info@example.com to <code>_default</code>”. Delivery: none.
         </p>
 
@@ -138,7 +138,7 @@ if ($nb_demande &gt; 0) {
 }
 </code></pre>
         <p>
-          If a backend rightly rejected the request, the user saw nothing—not even
+          If a backend rightly rejected the request, the user saw nothing - not even
           a “we got your submission” info. Confidence killer.
         </p>
 
@@ -149,7 +149,7 @@ if ($nb_demande &gt; 0) {
           <li>Email helpers overwriting their own recipient arrays</li>
           <li>Errors logged server‑side, zero UX feedback client‑side</li>
         </ul>
-        <p>Each snippet looked fine in isolation—together, they collapsed.</p>
+        <p>Each snippet looked fine in isolation - together, they collapsed.</p>
 
         <h2 id="fix">The Fix: Less Code, Not More</h2>
         <ol>
@@ -167,7 +167,7 @@ if ($nb_demande &gt; 0) {
         <h2 id="lessons">Lessons Learned</h2>
         <h3>For Developers</h3>
         <ul>
-          <li>AI‑generated code defaults to generic patterns—verify architectural fit.</li>
+          <li>AI‑generated code defaults to generic patterns - verify architectural fit.</li>
           <li>Multiple systems solving the same problem is a smell.</li>
           <li>Never couple user feedback to backend acceptance; acknowledge first, validate second.</li>
         </ul>
@@ -194,13 +194,13 @@ if ($nb_demande &gt; 0) {
         <p><strong>Sometimes the best code is the code you don’t write.</strong></p>
 
         <hr/>
-        <p><em>Have you hit a similar AI‑code trap? I’m happy to review and untangle tricky integrations—reach out via LinkedIn or email.</em></p>
+        <p><em>Have you hit a similar AI‑code trap? I’m happy to review and untangle tricky integrations - reach out via LinkedIn or email.</em></p>
         <br>
         <button class="link-btn"><a href="index.html">← Back to Blog Index</a></button>
       </article>
     </main>
     <footer class="footer">
-      <p>&copy; 2025 Raphael Reck — IT Consultant. All rights reserved.</p>
+      <p>&copy; 2025 Raphael Reck  -  IT Consultant. All rights reserved.</p>
       <p><script>const user = "contact"; const domain = "raphaelreck.com"; const mail = `${user}@${domain}`; document.write(`<a href='mailto:${mail}'>${mail}</a>`);</script></p>
     </footer>
   </div>
@@ -223,5 +223,88 @@ if ($nb_demande &gt; 0) {
       else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
     }
   </script>
+  <script src="mobile-nav.js"></script>
+  <!-- Mobile Menu Toggle Button -->
+<button 
+  id="mobile-menu-toggle" 
+  class="mobile-menu-toggle" 
+  aria-label="Toggle navigation menu"
+  aria-expanded="false">
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</button>
+
+<!-- Overlay -->
+<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+<!-- Sliding Menu -->
+<nav id="mobile-menu" class="mobile-menu">
+  <div class="mobile-menu-header">
+    <h2 class="mobile-menu-title">Navigation</h2>
+    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+  </div>
+
+  <!-- Primary Navigation -->
+  <div class="mobile-nav-section">
+    <h3>Main</h3>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="blog/index.html" class="mobile-nav-link">
+        <i class="fas fa-blog"></i>
+        <span>Blog</span>
+      </a>
+      <a href="public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+        <span>Download CV</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider"></div>
+
+  <!-- Projects -->
+  <div class="mobile-nav-section">
+    <h3>Projects</h3>
+    <div class="mobile-nav-links">
+      <a href="roots-time/manifesto.html" class="mobile-nav-link">
+        <i class="fas fa-book"></i>
+        <span>Roots Time Corporation</span>
+      </a>
+      <a href="memes/laugh.html" class="mobile-nav-link">
+        <i class="fas fa-dna"></i>
+        <span>Universal Darwinism</span>
+      </a>
+      <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
+        <i class="fas fa-briefcase"></i>
+        <span>Consulting Work</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider"></div>
+
+  <!-- Social -->
+  <div class="mobile-nav-section">
+    <h3>Connect</h3>
+    <div class="mobile-nav-links">
+      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+</nav>
+</body>
+</html>
 </body>
 </html>
