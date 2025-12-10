@@ -855,7 +855,9 @@ html {
   }
   
   /* Hide desktop navigation on mobile */
-  .nav-buttons {
+  .nav-buttons,
+  .nav-primary,
+  .nav-secondary {
     display: none;
   }
 }
