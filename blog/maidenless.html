@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Unfortunately, for you, however you are maidenless. | Raphaël Reck</title>
+
+    <meta name="description" content="Reflections on working without AI assistance, productivity challenges, over-engineering, and building proper boilerplates during a Docker migration."/>
+    <link rel="canonical" href="https://raphaelreck.com/blog/maidenless.html"/>
+
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script defer src="../script.js"></script>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Unfortunately, for you, however you are maidenless."/>
+    <meta property="og:description" content="Thoughts on productivity when AI tools fail, debugging legacy stacks, and the importance of boilerplates in modern development workflows."/>
+    <meta property="og:url" content="https://raphaelreck.com/blog/maidenless.html"/>
+    <meta property="og:site_name" content="Raphaël Reck"/>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Unfortunately, for you, however you are maidenless.",
+        "datePublished": "2025-12-10T00:00:00+02:00",
+        "dateModified": "2025-12-10T00:00:00+02:00",
+        "author": {
+            "@type": "Person",
+            "name": "Raphaël Reck"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Raphaël Reck"
+        },
+        "description": "Reflections on using and not using AI, debugging without assistance, and finding the right level of abstraction during a Docker migration.",
+        "keywords": [
+            "AI", "Productivity", "Tools", "Developer Workflow",
+            "Efficiency", "Creative", "Docker", "Boilerplate"
+        ],
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://raphaelreck.com/blog/maidenless.html"
+        }
+    }
+    </script>
+
+    <style>
+        .post-header { margin-bottom: 1rem; }
+        .post-meta { opacity: .7; font-size: .9rem; }
+        .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+        pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <nav class="nav-primary">
+        <a href="../public/raphael-reck.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+        <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+
+    <nav class="nav-secondary">
+        <a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+        <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+        <a href="../memes/laugh.html" class="link-btn"><i class="fas fa-laugh"></i> Universal Darwinism</a>
+        <a href="https://webasix.com/" target="_blank" class="link-btn"><i class="fas fa-briefcase"></i> Consulting Work</a>
+    </nav>
+
+    <main>
+        <article class="blog-post">
+
+            <header class="post-header">
+                <h1>Unfortunately, for you, however you are maidenless.</h1>
+                <p class="post-meta">
+                    <time datetime="2025-12-10">December 10, 2025</time>
+                    <span class="tag">Productivity</span>
+                    <span class="tag">AI</span>
+                    <span class="tag">Tools</span>
+                    <span class="tag">Work</span>
+                    <span class="tag">Efficiency</span>
+                    <span class="tag">Creative</span>
+                </p>
+            </header>
+            <section>
+                <h2>Having the support and sssistance of an AI</h2>
+                <p>Sometimes I wonder, yes, my brain should do the work, and not rely on the assistance of an IA.</p>
+                <p>I do take the time to do some things by myself. I could be lazy and just tell the IA to do everything, but then I think of the tokens and the cost associated with it.</p>
+                <p>So when Claude/IA/LLM is 'cooked' or when I'm deep in something. I go around and do it myself. The thinking, the research and the writing and coding.</p>
+                
+                <p>Just the other day, it was funny to see, my company had co pilot disabled or not working. So I had to go do research the <i>old way</i> via google and looking on stack over flow.</p>
+                <p>It was worrysome because there wasn't really any recent articles related to my topic. I mean digging into data that dates back to 2007... Eugh. I felt kind of weird.</p>
+                <p>Prompting my current circumstances, with context really goes a long way, faster than googling and going through pages trying to find the right topic.</p>
+                <p>I didn't really find any helpful information, and I had to do a lot of digging to get my docker images up and running.</p>
+                <br>
+                <h3>Over designing it.</h3>
+                <p>We finally pushed through some requested evolutions at work and are working on actually migrating the project from WAMP to DOCKER with wsl! Amazing</p>
+                <p>At first, I wanted to just copy the project and make it identical. Wrong move my dear, after an afternoon, I came to a realization.</p>
+                <p>Then suddenly out of no where, "<b>boilerplate</b>!" </p>
+                <quote>Boilerplate is basically some code that is required every time you develop a project. By using a boilerplate, you save a lot of time. </quote>
+                <p>So I went ahead and started all over my project, rather than migrating a single instance of a single site. I've decided to make and adapt images for ALL the websites of my current client!</p>
+                <p>I still have to finish this. Time was up for the day. Other tasks awaited!</p>
+                <p>I restarted everything. Instead of migrating a single website, I am building and adapting Docker images for every website of the client. One unified base. Much cleaner.</p>
+                
+                <h3>Another project !</h3>
+                <p>On another note, I am also working on getting my own LLM working on my own computer, I just just heard about it as I was writing this. Mistral released an open source local LLM ? I might be wrong I must dig further</p>
+                <br>
+                <h3>Conclusion</h3>
+                <p>Now we go back to the title of the blogpost. The title makes sense now.</p>
+                <blockquote><b>Unfortunately, for you, however you are maidenless.</b></blockquote>
+                <p>This line blends the Elden Ring “Maidenless” meme with the “No bitches?” meme from Megamind. With AI, working today feels having an electric power drill. While before you were working with a traditional old hand drill.</p>
+                <p>So yes, working today without IA assitance, the level of productivity declines drastically unless you know your "phone numbers" and "GPS" locations <i>off by heart</i>.</p>
+                <p>Isn't it interesting that in order to know something perfectly, the expression is related to the heart, and not the mind? I don't have the origin or the reason <i>off the top of my head...</i></p>
+                
+
+            </section>
+            <br>
+            <button class="link-btn"><a href="index.html">← Back to Blog Index</a></button>
+
+        </article>
+    </main>
+</div>
+</body>
+</html>
