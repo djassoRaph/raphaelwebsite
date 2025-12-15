@@ -1,3 +1,4 @@
+<?php $base_path = '../'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bitcoin Scam Attempt: How a Script Kiddy Tried to Extort Me for $200 | Blog | Raphaël Reck</title>
   <meta name="description" content="Online scams are everywhere. Here's the story of how one script kiddy tried to extort me for $200 in Bitcoin, what happened to a friend who tested the file in a VM, and what you can do to stay safe."/>
-  <link rel="canonical" href="https://raphaelreck.com/blog/bitcoinscam.html"/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/bitcoinscam.php"/>
   <link rel="stylesheet" href="../style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -33,18 +34,7 @@
 <body>
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
   <div class="container">
-    <nav class="nav-primary">
-      <a href="../public/raphael-reck.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
-      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
-    </nav>
-        <nav class="nav-secondary">
-      <a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
-      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
-      <a href="../memes/laugh.html" class="link-btn"><i class="fas fa-laugh"></i> Universal Darwinism</a>
-      <a href="https://webasix.com/" target="_blank" class="link-btn"><i class="fas fa-briefcase"></i> Consulting Work</a>
-    </nav>
+    <?php include __DIR__ . '/../includes/navigation.php'; ?>
 
     <main>
       <article class="blog-post">
@@ -101,116 +91,15 @@
         <h2>Final thoughts</h2>
         <p>In my case, the scammer failed. But my friend's experience is a reminder: even clumsy attacks can waste time or cause damage. Stay skeptical, keep things simple, and secure the basics  -  they matter the most.</p>
         <br>
-        <button class="link-btn"><a href="index.html">← Back to Blog Index</a></button>
+        <button class="link-btn"><a href="index.php">← Back to Blog Index</a></button>
       </article>
     </main>
 
-    <footer class="footer">
-      <p>&copy; 2025 Raphael Reck  -  IT Consultant. All rights reserved.</p>
-      <p><script>const user = "contact"; const domain = "raphaelreck.com"; const mail = `${user}@${domain}`; document.write(`<a href='mailto:${mail}'>${mail}</a>`);</script></p>
-    </footer>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
   </div>
 
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    const icon = themeToggle.querySelector('i');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    htmlElement.setAttribute('data-theme', currentTheme);
-    updateIcon(currentTheme);
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = htmlElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateIcon(newTheme);
-    });
-    function updateIcon(theme) {
-      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
-    }
-  </script>
-  <script src="../mobile-nav.js"></script>
-  <!-- Mobile Menu Toggle Button -->
-<button 
-  id="mobile-menu-toggle" 
-  class="mobile-menu-toggle" 
-  aria-label="Toggle navigation menu"
-  aria-expanded="false">
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</button>
-
-<!-- Overlay -->
-<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
-
-<!-- Sliding Menu -->
-<nav id="mobile-menu" class="mobile-menu">
-  <div class="mobile-menu-header">
-    <h2 class="mobile-menu-title">Navigation</h2>
-    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
-  </div>
-
-  <!-- Primary Navigation -->
-  <div class="mobile-nav-section">
-    <h3>Main</h3>
-    <div class="mobile-nav-links">
-      <a href="index.html" class="mobile-nav-link">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="blog/index.html" class="mobile-nav-link">
-        <i class="fas fa-blog"></i>
-        <span>Blog</span>
-      </a>
-      <a href="public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-file-pdf"></i>
-        <span>Download CV</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Projects -->
-  <div class="mobile-nav-section">
-    <h3>Projects</h3>
-    <div class="mobile-nav-links">
-      <a href="roots-time/manifesto.html" class="mobile-nav-link">
-        <i class="fas fa-book"></i>
-        <span>Roots Time Corporation</span>
-      </a>
-      <a href="memes/laugh.html" class="mobile-nav-link">
-        <i class="fas fa-dna"></i>
-        <span>Universal Darwinism</span>
-      </a>
-      <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-briefcase"></i>
-        <span>Consulting Work</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Social -->
-  <div class="mobile-nav-section">
-    <h3>Connect</h3>
-    <div class="mobile-nav-links">
-      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-    </div>
-  </div>
-</nav>
+  
+  <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
 </body>
 </html>
 </body>

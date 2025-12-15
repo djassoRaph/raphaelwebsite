@@ -1,3 +1,4 @@
+<?php $base_path = '../'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>You can't get them all. | Blog | Raphaël Reck</title>
   <meta name="description" content="Being on too many frontlines makes you immobile. A reflection on priorities, expertise, and learning to choose what matters."/>
-  <link rel="canonical" href="https://raphaelreck.com/blog/you-cant-get-them-all.html"/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/you-cant-get-them-all.php"/>
   <link rel="stylesheet" href="../style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <script defer src="../script.js"></script>
@@ -50,18 +51,7 @@
 <body>
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
   <div class="container">
-        <nav class="nav-primary">
-      <a href="../public/raphael-reck.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
-      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
-    </nav>
-        <nav class="nav-secondary">
-      <a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
-      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
-      <a href="../memes/laugh.html" class="link-btn"><i class="fas fa-laugh"></i> Universal Darwinism</a>
-      <a href="https://webasix.com/" target="_blank" class="link-btn"><i class="fas fa-briefcase"></i> Consulting Work</a>
-    </nav>
+        <?php include __DIR__ . '/../includes/navigation.php'; ?>
 
     <main>
       <article class="blog-post">
@@ -95,7 +85,7 @@
     
         <p>Training for your first Dan teaches you something crucial: progress happens through consistent, focused effort over time. You can't rush a black belt by training 16 hours one day and skipping the rest of the week.</p>
 
-        <p>This connects to something documented in <cite><a href="http://www.catb.org/jargon/html/physical.html" target="_blank" rel="noopener">The Jargon File, version 4.4.7</a></cite> about martial arts in hacker culture. As the File notes: "Many observers have noted it, and the connection has grown noticeably stronger over time. In the 1970s, many hackers admired martial arts disciplines from a distance, sensing a compatible ideal in their exaltation of skill through rigorous self-discipline and concentration."</p>
+        <p>This connects to something documented in <cite><a href="http://www.catb.org/jargon/html/physical.php" target="_blank" rel="noopener">The Jargon File, version 4.4.7</a></cite> about martial arts in hacker culture. As the File notes: "Many observers have noted it, and the connection has grown noticeably stronger over time. In the 1970s, many hackers admired martial arts disciplines from a distance, sensing a compatible ideal in their exaltation of skill through rigorous self-discipline and concentration."</p>
 
         <p>The parallel runs deeper than just physical training. "Today's hackers readily analogize assimilation into the hacker culture with the plot of a Jet Li movie: the aspiring newbie studies with masters of the tradition, develops his art through deep meditation, ventures forth to perform heroic feats of hacking, and eventually becomes a master who trains the next generation of newbies in the hacker way."</p>
 
@@ -106,114 +96,13 @@
 
         <hr>
         <br>
-        <button class="link-btn"><a href="index.html">← Back to Blog Index</a></button>
+        <button class="link-btn"><a href="index.php">← Back to Blog Index</a></button>
       </article>
     </main>
-    <footer class="footer">
-      <p>&copy; 2025 Raphael Reck - IT Consultant. All rights reserved.</p>
-      <p><script>const user = "contact"; const domain = "raphaelreck.com"; const mail = `${user}@${domain}`; document.write(`<a href='mailto:${mail}'>${mail}</a>`);</script></p>
-    </footer>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
   </div>
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    const icon = themeToggle.querySelector('i');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    htmlElement.setAttribute('data-theme', currentTheme);
-    updateIcon(currentTheme);
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = htmlElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateIcon(newTheme);
-    });
-    function updateIcon(theme) {
-      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
-    }
-  </script>
-  <script src="../mobile-nav.js"></script>
-  <!-- Mobile Menu Toggle Button -->
-<button 
-  id="mobile-menu-toggle" 
-  class="mobile-menu-toggle" 
-  aria-label="Toggle navigation menu"
-  aria-expanded="false">
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</button>
-
-<!-- Overlay -->
-<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
-
-<!-- Sliding Menu -->
-<nav id="mobile-menu" class="mobile-menu">
-  <div class="mobile-menu-header">
-    <h2 class="mobile-menu-title">Navigation</h2>
-    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
-  </div>
-
-  <!-- Primary Navigation -->
-  <div class="mobile-nav-section">
-    <h3>Main</h3>
-    <div class="mobile-nav-links">
-      <a href="index.html" class="mobile-nav-link">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="blog/index.html" class="mobile-nav-link">
-        <i class="fas fa-blog"></i>
-        <span>Blog</span>
-      </a>
-      <a href="public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-file-pdf"></i>
-        <span>Download CV</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Projects -->
-  <div class="mobile-nav-section">
-    <h3>Projects</h3>
-    <div class="mobile-nav-links">
-      <a href="roots-time/manifesto.html" class="mobile-nav-link">
-        <i class="fas fa-book"></i>
-        <span>Roots Time Corporation</span>
-      </a>
-      <a href="memes/laugh.html" class="mobile-nav-link">
-        <i class="fas fa-dna"></i>
-        <span>Universal Darwinism</span>
-      </a>
-      <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-briefcase"></i>
-        <span>Consulting Work</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Social -->
-  <div class="mobile-nav-section">
-    <h3>Connect</h3>
-    <div class="mobile-nav-links">
-      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-    </div>
-  </div>
-</nav>
+  
+  <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
 </body>
 </html>
 </body>

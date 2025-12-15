@@ -1,3 +1,4 @@
+<?php $base_path = '../'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Blog | Raphaël Reck</title>
     <meta name="description" content="Welcome to my blog. I document my journey in software development, including bugs, AI-powered projects, architectural decisions, and philosophical ramblings. New posts usually arrive on Wednesdays."/>
-    <link rel="canonical" href="https://raphaelreck.com/blog/index.html"/>
+    <link rel="canonical" href="https://raphaelreck.com/blog/index.php"/>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
@@ -33,24 +34,10 @@
     </script>
 </head>
 <body>
-  <!-- Theme Toggle -->
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-    <i class="fas fa-moon"></i>
-  </button>
+  <?php include __DIR__ . '/../includes/theme-toggle.php'; ?>
 
   <div class="container">
-    <nav class="nav-primary">
-      <a href="../public/raphael-reck.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
-      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
-    </nav>
-        <nav class="nav-secondary">
-      <a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
-      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
-      <a href="../memes/laugh.html" class="link-btn"><i class="fas fa-laugh"></i> Universal Darwinism</a>
-      <a href="https://webasix.com/" target="_blank" class="link-btn"><i class="fas fa-briefcase"></i> Consulting Work</a>
-    </nav>
+    <?php include __DIR__ . '/../includes/navigation.php'; ?>
 
     <h1>Web Blog</h1>
     <p>Posts coming weekly, usually Wednesdays.</p>
@@ -67,58 +54,58 @@
     <div class="blog-posts">
       <article class="blog-post">
         <p><em>December 10, 2025</em></p>
-        <h2><a href="maidenless.html"> Unfortunately, for you, however you are maidenless.</a></h2>
+        <h2><a href="maidenless.php"> Unfortunately, for you, however you are maidenless.</a></h2>
         <p>Some of my thoughts, and experience, with artificial intelligence in enhancing productivity and creativity.</p>
       </article>
       <hr>
       <article class="blog-post">
         <p><em>December 07, 2025</em></p>
-        <h2><a href="2025-12-07-whats_in_the_wind.html">What's been in the Wind: Two Projects, One Developer Block</a></h2>
+        <h2><a href="2025-12-07-whats_in_the_wind.php">What's been in the Wind: Two Projects, One Developer Block</a></h2>
         <p>How pausing one game project led to launching two new ones : a civic engagement platform and an open-source social MMO.</p>
       </article>
       <hr>
       <article class="blog-post">
         <p><em>October 30, 2025</em></p>
-        <h2><a href="llmr.html">Introducing LLMR: RSS for the AI Era</a></h2>
+        <h2><a href="llmr.php">Introducing LLMR: RSS for the AI Era</a></h2>
         <p>Jibberish mode but for LLMs when browsing websites.</p>
       </article>
       <hr>
       <article class="blog-post">
         <p><em>October 08, 2025</em></p>
-        <h2><a href="2025-10-08-juggling-fireballs.html">Juggling balls on fire</a></h2>
+        <h2><a href="2025-10-08-juggling-fireballs.php">Juggling balls on fire</a></h2>
         <p>What do you do when your team of two becomes a team of one, and the projects are on fire?</p>
       </article>
       <hr>
       <article class="blog-post">
         <p><em>September 22, 2025</em></p>
-        <h2><a href="you-cant-get-them-all.html">You can't get them all.</a></h2>
+        <h2><a href="you-cant-get-them-all.php">You can't get them all.</a></h2>
         <p>But you can get the right ones.</p>
         <p>Sometimes I wish days were 72 hours long, so I could get more things done.</p>
       </article>
       <hr>
       <article class="blog-post">
         <p><em>September 06, 2025</em></p>
-        <h2><a href="claudio.html">Claude behaves unexpectedly!</a></h2>
+        <h2><a href="claudio.php">Claude behaves unexpectedly!</a></h2>
         <p>Hey Claude. I wanna bounce ideas about my game project.</p>
         <p><i>Sure thing. Here's your... entire project. Just coded from top to buttom. That doesn't work... ^^</i></p>
       </article>
       <hr>
       <article class="blog-post">
         <p><em>September 04, 2025</em></p>
-        <h2><a href="laravel040925.html">Laravel, just make it work!</a></h2>
+        <h2><a href="laravel040925.php">Laravel, just make it work!</a></h2>
         <p>See this pile of trash ? It's an unfinished website, make it work the way we want but we wont tell you how!</p>
         <p>Here's some of the bugs I fixed just recently after inheriting the unfinished "legacy" code base</p>
       </article>
       <hr>
       <article class="blog-post">
         <p><em>August 30, 2025</em></p>
-        <h2><a href="yaygodot.html">Godot: From 2D buggy ideas to Functional Isometric 3D scene !</a></h2>
+        <h2><a href="yaygodot.php">Godot: From 2D buggy ideas to Functional Isometric 3D scene !</a></h2>
         <p>A real debugging story: how AI assistants (GPT, Claude, Gemini) helped fix character collisions and movement in a Godot 3D project, turning a buggy scene into a functional game prototype.</p>
       </article>
       <hr>
       <article class="blog-post">
         <p><em>August 30, 2025</em></p>
-        <h2><a href="when-webservices-lie.html">Magical Drupal messages, Empty Emails and Wrong API Responses.</a></h2>
+        <h2><a href="when-webservices-lie.php">Magical Drupal messages, Empty Emails and Wrong API Responses.</a></h2>
         <p>Another legacy system integration nightmare featuring PowerPoint "documentation," Drupal hooks that fire too early, and web services that return completely different data than promised. When you can't test locally and debugging happens through client screenshots, every assumption becomes a liability. Spoiler: the eligibility check wasn't returning "Yes" or "No" like the specs claimed.</p>
       </article>
       <hr>
@@ -135,7 +122,7 @@
       <hr>
       <article class="blog-post">
         <h2>
-        <a href="2025-08-25-ai-vs-legacy-drupal.html">
+        <a href="2025-08-25-ai-vs-legacy-drupal.php">
         When AI-Generated Code Meets Legacy Drupal: A Horror Story
         </a>
       </h2>
@@ -146,13 +133,13 @@
       </article>
       <hr>
       <article class="blog-post">
-        <h2><a href="bitcoinscam.html">Bitcoin Scam Attempt: How a Script Kiddy Tried to Extort Me for $200</a></h2>
+        <h2><a href="bitcoinscam.php">Bitcoin Scam Attempt: How a Script Kiddy Tried to Extort Me for $200</a></h2>
         <p><em><time datetime="2025-08-18">Posted on August 18, 2025</time></em></p>
         <p>Online scams are everywhere</p>
       </article>
       <hr>
       <article class="blog-post">
-        <h2> <a href="HolidaysSideProject.html">Holidays and side projects.</a></h2>
+        <h2> <a href="HolidaysSideProject.php">Holidays and side projects.</a></h2>
         <p><em><time datetime="2025-08-17">Posted on August the 17th, 2025</time></em></p>
         <div>
          <p>I've been working on side projects a lot</p>
@@ -172,7 +159,7 @@
       </article>
       <hr>
       <article class="blog-post">
-        <h2><a href="CETheadaches.html">CET headaches again. And procrastination.</a></h2>
+        <h2><a href="CETheadaches.php">CET headaches again. And procrastination.</a></h2>
         <p><em><time datetime="2025-07-30">Posted on July 30, 2025</time></em></p>
         <div>
           <p>
@@ -182,7 +169,7 @@
       </article>
       <hr>
       <article class="blog-post">
-        <h2><a href="SVNgit.html">SVN/Git Wrangling, Laravel Rage, and CET Headaches</a></h2>
+        <h2><a href="SVNgit.php">SVN/Git Wrangling, Laravel Rage, and CET Headaches</a></h2>
         <p><em><time datetime="2025-07-06"></time>Posted on July 6, 2025</time></em></p>
         <div>
         <p>This week was chaos and cleanup.</p>
@@ -208,111 +195,10 @@
     </div>
   </div>
 
-    <footer class="footer">
-      <p>&copy; 2025 Raphael Reck  -  IT Consultant. All rights reserved.</p>
-      <p><script>const user = "contact"; const domain = "raphaelreck.com"; const mail = `${user}@${domain}`; document.write(`<a href='mailto:${mail}'>${mail}</a>`);</script></p>
-    </footer>
+    <?php include __DIR__ . '/../includes/footer.php'; ?>
   </div>
 
-  <script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    const icon = themeToggle.querySelector('i');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    htmlElement.setAttribute('data-theme', currentTheme);
-    updateIcon(currentTheme);
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = htmlElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateIcon(newTheme);
-    });
-    function updateIcon(theme) {
-      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
-      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
-    }
-  </script>
-  <script src="../mobile-nav.js"></script>
-  <!-- Mobile Menu Toggle Button -->
-<button 
-  id="mobile-menu-toggle" 
-  class="mobile-menu-toggle" 
-  aria-label="Toggle navigation menu"
-  aria-expanded="false">
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</button>
-
-<!-- Overlay -->
-<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
-
-<!-- Sliding Menu -->
-<nav id="mobile-menu" class="mobile-menu">
-  <div class="mobile-menu-header">
-    <h2 class="mobile-menu-title">Navigation</h2>
-    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
-  </div>
-
-  <!-- Primary Navigation -->
-  <div class="mobile-nav-section">
-    <h3>Main</h3>
-    <div class="mobile-nav-links">
-      <a href="../index.html" class="mobile-nav-link">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="index.html" class="mobile-nav-link">
-        <i class="fas fa-blog"></i>
-        <span>Blog</span>
-      </a>
-      <a href="../public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-file-pdf"></i>
-        <span>Download CV</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Projects -->
-  <div class="mobile-nav-section">
-    <h3>Projects</h3>
-    <div class="mobile-nav-links">
-      <a href="../roots-time/manifesto.html" class="mobile-nav-link">
-        <i class="fas fa-book"></i>
-        <span>Roots Time Corporation</span>
-      </a>
-      <a href="../memes/laugh.html" class="mobile-nav-link">
-        <i class="fas fa-dna"></i>
-        <span>Universal Darwinism</span>
-      </a>
-      <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-briefcase"></i>
-        <span>Consulting Work</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Social -->
-  <div class="mobile-nav-section">
-    <h3>Connect</h3>
-    <div class="mobile-nav-links">
-      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-    </div>
-  </div>
-</nav>
+  
+  <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
 </body>
 </html>

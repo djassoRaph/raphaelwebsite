@@ -1,3 +1,4 @@
+<?php $base_path = ''; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
     <meta property="og:description" content="Raphaël Reck - An independent IT Systems and Software Consultant offering expertise in software development, architecture, and tech guidance."/>
     <meta property="og:url" content="https://raphaelreck.com/index.html"/>
     <meta property="og:image" content="https://raphaelreck.com/public/raphaelreck.png"/>
-    
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -35,10 +36,7 @@
     </script>
 </head>
 <body>
-  <!-- Theme Toggle -->
-  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-    <i class="fas fa-moon"></i>
-  </button>
+  <?php include 'includes/theme-toggle.php'; ?>
 
   <div class="container">
     <!-- Hero Section -->
@@ -51,33 +49,7 @@
       </div>
     </div>
 
-    <!-- Primary Navigation -->
-    <nav class="nav-primary">
-      <a href="public/raphael-reck.pdf" target="_blank" download class="nav-btn">
-        <i class="fas fa-file-pdf"></i> Download CV
-      </a>
-      <a href="blog/index.html" class="nav-btn">
-        <i class="fas fa-blog"></i> Blog
-      </a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn">
-        <i class="fab fa-linkedin"></i> LinkedIn
-      </a>
-      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn">
-        <i class="fab fa-github"></i> GitHub
-      </a>
-    </nav>
-    <!-- Quick Links -->
-    <nav class="nav-secondary">
-      <a href="roots-time/manifesto.html" class="link-btn">
-        <i class="fas fa-book-open"></i> Roots Time Corporation
-      </a>
-      <a href="memes/laugh.html" class="link-btn">
-        <i class="fas fa-laugh"></i> Universal Darwinism
-      </a>
-      <a href="https://webasix.com/" target="_blank" class="link-btn">
-        <i class="fas fa-briefcase"></i> Consulting Work
-      </a>
-    </nav>
+    <?php include 'includes/navigation.php'; ?>
 
     <!-- Services Section -->
     <section class="services-section">
@@ -162,7 +134,7 @@
         </div>
       </div>
     </section>
-    
+
     <!-- Featured Projects Section -->
     <section class="featured-projects">
       <h2 class="section-title">Featured Projects</h2>
@@ -196,130 +168,9 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2025 Raphael Reck  -  IT Consultant. All rights reserved.</p>
-      <p>
-        <script>
-          const user = "contact";
-          const domain = "raphaelreck.com";
-          const mail = `${user}@${domain}`;
-          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
-        </script>
-      </p>
-    </footer>
+    <?php include 'includes/footer.php'; ?>
   </div>
 
-  <script>
-    // Theme Toggle Functionality
-    const themeToggle = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-    const icon = themeToggle.querySelector('i');
-
-    // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    htmlElement.setAttribute('data-theme', currentTheme);
-    updateIcon(currentTheme);
-
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = htmlElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      htmlElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-      updateIcon(newTheme);
-    });
-
-    function updateIcon(theme) {
-      if (theme === 'dark') {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-      }
-    }
-  </script>
-  <script src="mobile-nav.js"></script>
-  <!-- Mobile Menu Toggle Button -->
-<button 
-  id="mobile-menu-toggle" 
-  class="mobile-menu-toggle" 
-  aria-label="Toggle navigation menu"
-  aria-expanded="false">
-  <div class="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-</button>
-
-<!-- Overlay -->
-<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
-
-<!-- Sliding Menu -->
-<nav id="mobile-menu" class="mobile-menu">
-  <div class="mobile-menu-header">
-    <h2 class="mobile-menu-title">Navigation</h2>
-    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
-  </div>
-
-  <!-- Primary Navigation -->
-  <div class="mobile-nav-section">
-    <h3>Main</h3>
-    <div class="mobile-nav-links">
-      <a href="index.html" class="mobile-nav-link">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="blog/index.html" class="mobile-nav-link">
-        <i class="fas fa-blog"></i>
-        <span>Blog</span>
-      </a>
-      <a href="public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-file-pdf"></i>
-        <span>Download CV</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Projects -->
-  <div class="mobile-nav-section">
-    <h3>Projects</h3>
-    <div class="mobile-nav-links">
-      <a href="roots-time/manifesto.html" class="mobile-nav-link">
-        <i class="fas fa-book"></i>
-        <span>Roots Time Corporation</span>
-      </a>
-      <a href="memes/laugh.html" class="mobile-nav-link">
-        <i class="fas fa-dna"></i>
-        <span>Universal Darwinism</span>
-      </a>
-      <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
-        <i class="fas fa-briefcase"></i>
-        <span>Consulting Work</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="mobile-nav-divider"></div>
-
-  <!-- Social -->
-  <div class="mobile-nav-section">
-    <h3>Connect</h3>
-    <div class="mobile-nav-links">
-      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-github"></i>
-        <span>GitHub</span>
-      </a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
-        <i class="fab fa-linkedin"></i>
-        <span>LinkedIn</span>
-      </a>
-    </div>
-  </div>
-</nav>
+  <?php include 'includes/mobile-menu.php'; ?>
 </body>
 </html>
