@@ -10,7 +10,6 @@
   <link rel="canonical" href="https://raphaelreck.com/blog/when-webservices-lie.php"/>
   <link rel="stylesheet" href="../style.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <script defer src="../script.js"></script>
   <!-- Open Graph -->
   <meta property="og:type" content="article"/>
   <meta property="og:title" content="Magical Drupal messages, Empty Emails and Wrong API Responses."/>

@@ -12,7 +12,6 @@
     <link rel="canonical" href="https://raphaelreck.com/roots-time/manifesto.php"/>
     <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script defer src="../script.js"></script>
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Roots Time Corporation – A Manifesto for a New Kind of Company"/>
     <meta property="og:description" content="A company rooted in resilience, reflection, and renewal. Our manifesto details our commitment to human-first principles and ethical technology.">

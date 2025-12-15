@@ -10,7 +10,6 @@
     <link rel="canonical" href="https://raphaelreck.com/blog/yaygodot.php"/>
     <link rel="stylesheet" href="../style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <script defer src="../script.js"></script>
 
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="Godot: From 2D buggy ideas to Functional Isometric 3D scene !"/>
