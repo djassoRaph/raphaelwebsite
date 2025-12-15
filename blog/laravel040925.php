@@ -292,5 +292,3 @@ $rules['id_chauffeur.*'] = 'required|exists:chauffeur_pl,id,archive,0|numeric';<
   <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
 </body>
 </html>
-</body>
-</html>

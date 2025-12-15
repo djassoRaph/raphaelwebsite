@@ -9,9 +9,10 @@
   const htmlElement = document.documentElement;
   const icon = themeToggle.querySelector('i');
 
-  // Check for saved theme preference or default to light mode
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  htmlElement.setAttribute('data-theme', currentTheme);
+  // Get current theme (already set by theme-init.php in <head>)
+  const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+
+  // Update icon to match current theme
   updateIcon(currentTheme);
 
   themeToggle.addEventListener('click', () => {

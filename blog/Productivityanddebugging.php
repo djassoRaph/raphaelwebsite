@@ -50,5 +50,3 @@
   <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
 </body>
 </html>
-</body>
-</html>
