@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Constituant: Building Democracy 2.0 While Admitting It's Broken | Raphaël Reck</title>
+
+    <meta name="description" content="How I'm building a civic engagement platform that lets French citizens vote on real legislation - while being brutally honest about its limitations and long-term vision."/>
+    <link rel="canonical" href="https://raphaelreck.com/blog/constituant-democracy-experiment.html"/>
+
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Constituant: Building Democracy 2.0 While Admitting It's Broken"/>
+    <meta property="og:description" content="A civic tech experiment in radical transparency - building a platform for citizens to vote on real legislation, with all the messy truths included."/>
+    <meta property="og:url" content="https://raphaelreck.com/blog/constituant-democracy-experiment.html"/>
+    <meta property="og:site_name" content="Raphaël Reck"/>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Constituant: Building Democracy 2.0 While Admitting It's Broken",
+        "datePublished": "2025-12-25T00:00:00+02:00",
+        "dateModified": "2025-12-25T00:00:00+02:00",
+        "author": {
+            "@type": "Person",
+            "name": "Raphaël Reck"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "Raphaël Reck"
+        },
+        "description": "Building a civic engagement platform for French citizens while being brutally honest about democracy, automation, and the limits of good intentions.",
+        "keywords": [
+            "Civic Tech", "Democracy", "Direct Democracy", "France", 
+            "Legislation", "AI", "Automation", "Politics", "Transparency"
+        ],
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://raphaelreck.com/blog/constituant-democracy-experiment.html"
+        }
+    }
+    </script>
+
+    <style> /*-- Inline styles for this blog post formatting */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .post-header { margin-bottom: 1rem; }
+        .post-meta { opacity: .7; font-size: .9rem; }
+        .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+        pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+        .warning-box { 
+            border-left: 4px solid #ff6b6b; 
+            background: #fff3cd; 
+            padding: 1rem; 
+            margin: 1.5rem 0; 
+            border-radius: 4px;
+        }
+        .warning-box h4 { margin-top: 0; color: #856404; }
+    </style>
+</head>
+
+<body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+  <div class="container">
+          <?php include __DIR__ . '/../includes/nav.php'; ?>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>Constituant: Building Democracy 2.0 While Admitting It's Broken</h1>
+          <p class="post-meta">
+            <time datetime="2025-12-25">December 25, 2025</time>
+            <span class="tag">Civic Tech</span>
+            <span class="tag">Democracy</span>
+            <span class="tag">AI</span>
+            <span class="tag">Politics</span>
+            <span class="tag">France</span>
+          </p>
+        </header>
+
+        <section>
+          <h2>The Honest Pitch</h2>
+          <p>I'm building <a href="https://constituant.fr" target="_blank">Constituant</a>, a platform where French citizens can vote on real legislation from the European Parliament and National Assembly. Yes, anonymously. Yes, using AI summaries. And yes, I know exactly how broken that sounds.</p>
+          <br>
+          <p>But here's the thing: I'm not pretending this is perfect. I'm not claiming to have solved democracy. I'm building something that <i>acknowledges its own limitations upfront</i> while still trying to push the conversation forward.</p>
+          <p>For those outside of the French political system, this might seem like a radical idea. But for those who've seen how democracy has been co-opted by special interests and opaque lobbying, it's a necessary experiment.</p>
+          <p>For those outside of the IT world, what I mainly see is it seems like a real problem when it comes to security, voting influence and real data.</p>
+          <div class="warning-box">
+            <h4>The Elephant in the Room</h4>
+            <p><strong>This is an experiment in direct democracy with known flaws:</strong></p>
+            <ul style="margin-bottom: 0;">
+              <li>Votes are IP-based (VPNs exist, we know)</li>
+              <li>Summaries are AI-generated (human moderation coming)</li>
+              <li>This doesn't replace real democracy (it's a thermometer for public opinion)</li>
+              <li>Your vote helps build the case for formal citizen assemblies</li>
+            </ul>
+            <p>But then again, in every democracy you hear about voter fraud, and humans seem to easy to influence and corrupt. You throw them garbage on TV, and make them believe the last thing and they'll vote for the first kiddo on the block...</p>
+          </div>
+
+          <p>See? I said it first. Now we can actually talk about what this is trying to do.</p>
+          <br>
+          <h2>The Name: Constituant</h2>
+          <p>Let's define things, "constituant" means two things:</p>
+          <blockquote>
+            <strong>Constituant (noun):</strong> A constituent, a voter, someone who participates in democracy.<br>
+            <strong>Constituant (adjective):</strong> Constitution-making, the act of creating fundamental governance.
+          </blockquote>
+          
+          <p>That duality is the entire point. We start as passive voters (Phase 1), but the long-term vision is becoming active constitution-makers (Phase 3). Inspired by Étienne Chouard's philosophy on direct democracy and sortition, this is meant to be <i>"a weapon for the people against the opacity of political powers."</i></p>
+          <br>
+          <h2>What Actually Works Right Now</h2>
+          <p>Constituant is live at <a href="https://constituant.fr" target="_blank">constituant.fr</a>. Here's what the automated system does:</p>
+          <ul>
+            <li><strong>Fetches legislation</strong> from NosDéputés.fr, (Was also doing the EU Parliament but it died), and La Fabrique de la Loi via APIs connections</li>
+            <li><strong>Classifies bills</strong> using Mistral AI into thematic categories (95%+ confidence) - <i>Merci le sang</i></li>
+            <li><strong>Publishes everything</strong> automatically via a cron jobs - zero human intervention (Automatic midnight script.)</li>
+            <li><strong>Collects votes</strong> in real-time with mobile-first responsive design</li>
+          </ul>
+
+          <p>This is running on a simple o2switch shared hosting with a PHP/MySQL stack. Is it perfect? No. Does it work? Yes. Am I proud of the automation? Absolutely.</p>
+
+          <h3>The Critical Feedback That Changed Everything</h3>
+          <p>I recently got some brutal (and correct) criticism about the project. The core issue: <strong>You're building a popularity contest, not informed democracy.</strong></p>
+
+          <p>Showing people bills and letting them vote assumes citizens can make informed decisions with just an AI summary. That's false. Most legislation needs context: What problem does it solve? What are the trade-offs? What did experts say? What are the unintended consequences?</p>
+
+          <p>A plain language summary of a tax bill doesn't give citizens the tools to meaningfully evaluate it. You're creating the <i>illusion</i> of participation.</p>
+
+          <p>Eugh.</p>
+          <br>
+          <h2>The Solution: Progressive Disclosure with the <a href="https://en.wikipedia.org/wiki/Three-click_rule">Three-Click Rule</a></h2>
+          
+          <p>After some thinking... here's the new approach that respects people's TikTok-brain attention spans while still providing depth:</p>
+
+          <h3>Click 1: The Vote Card (Twitter/X length, immediate engagement)</h3>
+          <pre>
+            <code>[Titre de la loi - Twitter/X length]
+                [Résumé en une phrase - max 280 caractères]
+                [👍 Pour] [👎 Contre] [🤷 Besoin de contexte]
+                ▼ En savoir plus
+            </code>
+           </pre>
+          <br>
+          <p>The third button - <strong>"Besoin de contexte"</strong> is a proposition. It's honest. Most people DON'T understand complex bills. This signals demand for better explanation and shows where to prioritize education efforts.</p>
+          <p> I don't want cookies or anything on the website. I Wont sniff how users use the website. I clearly don't care at the moment. <br> I'll just add a buttom banner that says. "<s>Fuck</s> cookies. <b>I won't track you.</b>"</p>
+          
+          <h3>Click 2: The Summary (30 seconds, key arguments)</h3>
+          <pre>
+            <code>📋 Résumé (2-3 sentences, AI-generated)
+                Arguments principaux:
+                Pour: [One key argument, 1 sentence]
+                Contre: [One key argument, 1 sentence]
+                Texte complet sur NosDéputés.fr
+                Discussions Twitter/débats
+            </code>
+           </pre>
+          <br>
+          <h3>Click 3: Deep Dive (for the 5% who care)</h3>
+          <p>Full text, expert analysis, stakeholder comments, the works. Link always present to the official government source.</p>
+          <br>
+          <h2>Community Moderation: The Wikipedia/Twitter context Model (The Old One)</h2>
+          <p>Instead of me curating everything, let the community refine the AI's work:</p>
+           <p>That's the unfortunate part. I'll need to build a database and logging system. And all that security stuff....</p>
+          <pre>
+            <code>On each bill page:
+                [📝 Améliorer ce résumé]
+                → Opens simple form:
+                  - "L'IA a raté quoi?" (100 chars max)
+                  - "Contexte manquant?" (200 chars max)
+                  - [Soumettre pour modération]
+                  Community votes on corrections
+                  Top-voted corrections get merged (git style?)
+                  Contributors get credit
+                </code>
+            </pre>
+          <br>
+          <p>Automate the first draft, let humans refine. I'm not curating content - I'm curating <strong>community contributions</strong>. With all the weirdo contributors. I hoope for the best</p>
+          <br>
+          <h2>The Feedback Loop: Making Votes Matter</h2>
+          <p>What happens when 80% of citizens vote against a bill that passes? If nothing, you're teaching citizens their voice doesn't matter. So here's the plan:</p>
+
+          <h3>After each vote closes:</h3>
+          <pre>
+            <code>
+                📊 Résultats:
+                72% Pour | 23% Contre | 5% Besoin de contexte
+                🏛️ Vote à l'Assemblée: 
+                48% Pour | 52% Contre
+                
+                🚨 ÉCART DE -24% entre citoyens et députés
+                [Partager sur Twitter] [Envoyer aux députés concernés]</code></pre>
+
+          <p>The "Envoyer aux députés" button pre-fills a tweet calling out the discrepancy. Even if deputies ignore it, we're:</p>
+          <ul>
+            <li>Training citizens to engage representatives</li>
+            <li>Building a public record of disconnects</li>
+            <li>Creating shareable content that spreads organically</li>
+          </ul>
+
+          <h2>The Long Game: Association Loi 1901</h2>
+          <p>Eventually, I want to formalize this as a French association with two tiers:</p>
+
+          <blockquote>
+            <strong>Free tier (anonymous):</strong> Vote on all bills, view results, submit corrections<br><br>
+            <strong>Member tier (€12/year, identity verified):</strong> Weighted voting in association governance, propose priority bills for education content, early access to sortition experiments, create a community.
+          </blockquote>
+            <br>
+          <p>The paid tier funds content creation - articles, videos, podcasts explaining legislation. The free tier drives volume. But I won't launch the association until I have:</p>
+          <ul>
+            <li>1,000+ monthly active voters</li>
+            <li>50+ bills with completed votes</li>
+            <li>10+ community moderators actively contributing</li>
+            <li>Clear evidence people are sharing results</li>
+          </ul>
+          <p>I'll also adjust the price depending on the price of the API calls to the usage of IA to intepret law/bills...</p>
+          <p>The association should <strong>formalize an existing community</strong>, not create one from scratch.</p>
+          <br>
+          <h2>The Agora Vision</h2>
+          <p>Here's the philosophical that came to mind while reflecting on this: now that machines can do most of the work (automation isn't slavery, it's liberation), we have more time for the agora - discussing, deliberating, engaging in actual democracy.</p>
+
+          <p>The AI fetches bills, summarizes them, tallies votes. <b>Humans debate</b>, refine, engage representatives. We're not replacing human judgment with AI - we're <strong>freeing human judgment from tedious tasks</strong>.</p>
+          <br>
+          <h2>What I'm Building in the Next 30 Days</h2>
+          <p>Here's the MVP scope:</p>
+          <ul>
+            <li><strong>Week 1:</strong> Add "Besoin de contexte" option + pro/con arguments</li>
+            <li><strong>Week 2:</strong> Build results page with citizen vs. deputy comparison</li>
+            <li><strong>Week 3:</strong> Twitter share integration with pre-filled templates</li>
+            <li><strong>Week 4:</strong> Soft launch to 50 friends/family, collect feedback</li>
+          </ul>
+
+          <p>Then decide: association or more features?</p>
+
+          <h2>The Uncomfortable Truth</h2>
+          <p>Someone asked me: <i>"Is this tool to change democracy, or is it therapy for your frustration with democracy?"</i></p>
+
+          <p>Honestly? Maybe both. But at least I'm <strong>building something</strong> instead of just complaining. And I'm being honest about what it is and isn't.</p>
+
+          <p>I don't lack ways to express my opinions on legislation. I lack:</p>
+          <ul>
+            <li>Trust in our institutions</li></li>
+            <li>I want accountability mechanisms for <s>(corrupt?)</s> representatives</li>
+            <li>Ways to deliberate with fellow citizens across differences</li>
+            <li>Transparency into how legislation is made and who influences it</li>
+          </ul>
+
+          <p>A voting platform alone doesn't solve these. But combined with transparency, community moderation, direct representative engagement, and eventually proper sortition experiments? Maybe we can move the needle.</p>
+          <br>
+          <h2>Why I'm Writing This</h2>
+          <p>If it helps train even a small group of citizens to engage more critically with legislation and hold people accountable? That's progress.</p>
+          <br>
+          <h2>The Request</h2>
+          <p>If you made it this far... reading this and you care about democracy, transparency, or just think this is an interesting experiment:</p>
+          <ul>
+            <li>Visit <a href="https://constituant.fr" target="_blank">constituant.fr</a> and vote on a bill</li>
+            <li>Share results that show citizen/deputy disconnects on Twitter</li>
+            <li>Submit corrections when the AI gets something wrong</li>
+            <li>Tell me what's broken (I promise I'll work on fixing it!)</li>
+          </ul>
+
+          <p>This isn't about me having all the answers. It's about admitting we have a problem and trying <i>something</i> to address it.</p>
+
+          <h2>Final Thoughts</h2>
+          
+          <p>And for now. <a href="https://www.youtube.com/watch?v=1YJl9pOKWjo" target="_blank">I'm off to practice martial arts !</a></p>
+          <br>
+
+          <p><i>À bientôt, à l'agora.</i></p>
+        </section>
+
+        <hr>
+        <p><a href="index.html" class="link-btn">← Back to Blog Index</a></p>
+      </article>
+    </main>
+
+      <?php include __DIR__ . '/../includes/footer.php'; ?>
+    <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
+</div>
+  <?php include __DIR__ . '/../includes/theme-toggle-script.php'; ?>
+</body>
+</html>
