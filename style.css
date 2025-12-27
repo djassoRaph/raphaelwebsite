@@ -609,6 +609,15 @@ img.framework {
   box-shadow: var(--shadow-md);
 }
 
+.framework {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+}
+
 /* ============================================
    MOBILE NAVIGATION - SLIDING MENU
    ============================================ */
