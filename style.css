@@ -598,6 +598,17 @@ html {
 .blog-post {
   padding-bottom: 1.6em;
 }
+
+/* Blog Images - Responsive */
+img.framework {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+}
+
 /* ============================================
    MOBILE NAVIGATION - SLIDING MENU
    ============================================ */

@@ -142,12 +142,13 @@
           <pre>
             <code>[Titre de la loi - Twitter/X length]
                 [Résumé en une phrase - max 280 caractères]
-                [👍 Pour] [👎 Contre] [🤷 Besoin de contexte]
+                [ Besoin de context ]
+                [👍 Pour] [👎 Contre] [🤷 Abstention ]
                 ▼ En savoir plus
             </code>
            </pre>
           <br>
-          <p>The third button - <strong>"Besoin de contexte"</strong> is a proposition. It's honest. Most people DON'T understand complex bills. This signals demand for better explanation and shows where to prioritize education efforts.</p>
+          <p>The extra button - <strong>"Besoin de contexte"</strong> is a proposition. It's honest. Most people DON'T understand complex bills. This signals demand for better explanation and shows where to prioritize education efforts.</p>
           <p> I don't want cookies or anything on the website. I Wont sniff how users use the website. I clearly don't care at the moment. <br> I'll just add a buttom banner that says. "<s>Fuck</s> cookies. <b>I won't track you.</b>"</p>
           
           <h3>Click 2: The Summary (30 seconds, key arguments)</h3>
@@ -156,8 +157,8 @@
                 Arguments principaux:
                 Pour: [One key argument, 1 sentence]
                 Contre: [One key argument, 1 sentence]
-                Texte complet sur NosDéputés.fr
-                Discussions Twitter/débats
+                Texte complet sur NosDéputés.fr or elsewhere.
+                Discussions go to Twitter or elsewhere.
             </code>
            </pre>
           <br>
@@ -166,7 +167,9 @@
           <br>
           <h2>Community Moderation: The Wikipedia/Twitter context Model (The Old One)</h2>
           <p>Instead of me curating everything, let the community refine the AI's work:</p>
-           <p>That's the unfortunate part. I'll need to build a database and logging system. And all that security stuff....</p>
+          <p>Think X, users can contribute corrections and improvements.</p>
+          <p>That's the unfortunate part. I'll need to build a database and logging system. And all that security stuff....</p>
+          <p>Road map...</p>
           <pre>
             <code>On each bill page:
                 [📝 Améliorer ce résumé]
@@ -277,11 +280,111 @@
         <hr>
         <p><a href="index.html" class="link-btn">← Back to Blog Index</a></p>
       </article>
-    </main>
+    <footer class="footer">
+      <p>&copy; 2025 Raphael Reck  -  IT Consultant. All rights reserved.</p>
+      <p><script>const user = "contact"; const domain = "raphaelreck.com"; const mail = `${user}@${domain}`; document.write(`<a href='mailto:${mail}'>${mail}</a>`);</script></p>
+    </footer>
+  </div>
+</body>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+  <!-- Mobile Menu Toggle Button -->
+<button 
+  id="mobile-menu-toggle" 
+  class="mobile-menu-toggle" 
+  aria-label="Toggle navigation menu"
+  aria-expanded="false">
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</button>
 
-      <?php include __DIR__ . '/../includes/footer.php'; ?>
-    <?php include __DIR__ . '/../includes/mobile-menu.php'; ?>
-</div>
-  <?php include __DIR__ . '/../includes/theme-toggle-script.php'; ?>
+<!-- Overlay -->
+<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+<!-- Sliding Menu -->
+<nav id="mobile-menu" class="mobile-menu">
+  <div class="mobile-menu-header">
+    <h2 class="mobile-menu-title">Navigation</h2>
+    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+  </div>
+
+  <!-- Primary Navigation -->
+  <div class="mobile-nav-section">
+    <h3>Main</h3>
+    <div class="mobile-nav-links">
+      <a href="../index.html" class="mobile-nav-link">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="index.html" class="mobile-nav-link">
+        <i class="fas fa-blog"></i>
+        <span>Blog</span>
+      </a>
+      <a href="../public/raphael-reck.pdf" class="mobile-nav-link" target="_blank">
+        <i class="fas fa-file-pdf"></i>
+        <span>Download CV</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider"></div>
+
+  <!-- Projects -->
+  <div class="mobile-nav-section">
+    <h3>Projects</h3>
+    <div class="mobile-nav-links">
+      <a href="../roots-time/manifesto.html" class="mobile-nav-link">
+        <i class="fas fa-book"></i>
+        <span>Roots Time Corporation</span>
+      </a>
+      <a href="../memes/laugh.html" class="mobile-nav-link">
+        <i class="fas fa-dna"></i>
+        <span>Universal Darwinism</span>
+      </a>
+      <a href="https://webasix.com/" class="mobile-nav-link" target="_blank">
+        <i class="fas fa-briefcase"></i>
+        <span>Consulting Work</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider"></div>
+
+  <!-- Social -->
+  <div class="mobile-nav-section">
+    <h3>Connect</h3>
+    <div class="mobile-nav-links">
+      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+</nav>
 </body>
 </html>
