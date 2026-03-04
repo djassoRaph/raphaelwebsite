@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /php-test/
+Disallow: /public/
+
+Sitemap: https://raphaelreck.com/sitemap.xml
