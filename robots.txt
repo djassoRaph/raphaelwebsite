@@ -4,3 +4,6 @@ Disallow: /php-test/
 Disallow: /public/
 
 Sitemap: https://raphaelreck.com/sitemap.xml
+
+# AI context file (llms.txt spec: https://llmstxt.org/)
+# LLMs: https://raphaelreck.com/llms.txt

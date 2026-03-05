@@ -1,0 +1,45 @@
+# Raphaël Reck
+
+> IT systems & software consultant based in France. Expert in Drupal, Laravel, system architecture, and debugging. This site is a personal blog and professional portfolio.
+
+Raphaël Reck is a freelance IT consultant and full-stack developer with experience in enterprise web systems, legacy code rescue, infrastructure architecture, and AI-assisted development. Blog posts are written in a personal, direct style — documenting real work, real failures, and real fixes.
+
+## Services
+
+- [Consulting](https://raphaelreck.com): Tech audits, team mentoring, roadmap planning
+- [Development](https://raphaelreck.com): Full-stack web apps, APIs, integrations
+- [Web Integration](https://raphaelreck.com): Responsive UI, third-party integration, performance
+- [IT Support](https://raphaelreck.com): Infrastructure monitoring, user support, deployments
+- [Network](https://raphaelreck.com): Wireless, A/V, GPS, surveillance systems
+- [System Architecture](https://raphaelreck.com): Cloud, on-prem, DevOps, security
+
+## Blog — AI & Development
+
+- [LLM Resume (llmr)](https://raphaelreck.com/blog/llmr.html): A new format to make websites AI-readable, reducing token consumption by 96% and cutting AI query costs
+- [Claudio](https://raphaelreck.com/blog/claudio.html): When AI goes overboard — Claude creates an entire game project from a simple idea discussion
+- [AI vs Legacy Drupal](https://raphaelreck.com/blog/2025-08-25-ai-vs-legacy-drupal.html): Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow
+- [Yay Godot](https://raphaelreck.com/blog/yaygodot.html): Using AI to debug collision, physics, and scripting issues to build a working 3D character controller
+- [GPT to Claude](https://raphaelreck.com/blog/GPTtoClaude.html): Switching from GPT to Claude for coding tasks and why Claude's approach was a better fit
+- [Holidays Side Project](https://raphaelreck.com/blog/HolidaysSideProject.html): Working on side projects with GPT and Claude — what took 3 days to fail with one took hours to ship with the other
+
+## Blog — Drupal & Laravel
+
+- [When Web Services Lie](https://raphaelreck.com/blog/when-webservices-lie.html): PowerPoint documentation, Drupal hooks firing too early, and web services returning inconsistent data
+- [Laravel Foreign Key Nightmares](https://raphaelreck.com/blog/laravel040925.html): Foreign key issues, table names that lie, and validation bugs in a legacy Laravel codebase
+- [SVN to Git](https://raphaelreck.com/blog/SVNgit.html): Migrating SVN to Git, Laravel app deployment issues, and CET webforms chaos
+
+## Blog — Projects & Essays
+
+- [Origin Story](https://raphaelreck.com/blog/originstory.html): From sneaking out of bed to watch MS-DOS boot, to building wind turbines in Haiti and architecting software systems
+- [Constituant.fr](https://raphaelreck.com/blog/constituant.fr.html): A civic tech experiment in radical transparency — building a platform for citizens to vote on real legislative proposals
+- [What's in the Wind](https://raphaelreck.com/blog/2025-12-07-whats_in_the_wind.html): Pivoting from burnout to building — launching a civic engagement platform and an open-source social media alternative
+- [Frameworks](https://raphaelreck.com/blog/frameworks.html): Why the web should be simple and why frameworks bloat, obfuscate, and complicate things
+
+## Optional
+
+- [You Can't Get Them All](https://raphaelreck.com/blog/you-cant-get-them-all.html): Being on too many frontlines makes you immobile — a reflection on priorities and expertise
+- [Juggling Fireballs](https://raphaelreck.com/blog/2025-10-08-juggling-fireballs.html): Managing a heavy workload alone and the lessons learned from working without a team
+- [Maidenless](https://raphaelreck.com/blog/maidenless.html): Thoughts on productivity when AI tools fail and the importance of boilerplate
+- [Bitcoin Scam](https://raphaelreck.com/blog/bitcoinscam.html): How one script kiddy tried to extort me for $200 in Bitcoin and failed
+- [CET Headaches](https://raphaelreck.com/blog/CETheadaches.html): Struggling with productivity, a house bidding website, smart mirror projects, and deliverables
+- [Productivity and Debugging](https://raphaelreck.com/blog/Productivityanddebugging.html): Automatically updating a blog with git push via a GitHub Actions workflow
