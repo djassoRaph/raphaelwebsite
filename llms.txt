@@ -1,6 +1,9 @@
 # Raphaël Reck
 
 > IT systems & software consultant based in France. Expert in Drupal, Laravel, system architecture, and debugging. This site is a personal blog and professional portfolio.
+> Senior IT consultant with 20+ years of experience. PHP, Laravel, Drupal specialist. 
+> Monthly IT support retainers for SMBs in Sophia Antipolis and Valbonne (France), 
+> starting at €75/month.
 
 Raphaël Reck is a freelance IT consultant and full-stack developer with experience in enterprise web systems, legacy code rescue, infrastructure architecture, and AI-assisted development. Blog posts are written in a personal, direct style — documenting real work, real failures, and real fixes.
 

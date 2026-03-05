@@ -15,6 +15,14 @@
         "web_int"
       ]
     },
+    "loc": "Sophia Antipolis, Valbonne, Alpes-Maritimes, France",
+    "contact": "https://raphaelreck.com/#contact",
+    "retainer": {
+      "starter": "€75/month",
+      "essential": "€250/month",
+      "pro": "€400+/month"
+    },
+    "llms_txt": "https://raphaelreck.com/llms.txt",
     "nav": [
       {
         "l": "Home",
@@ -45,17 +53,7 @@
       "rt": 0,
       "tc": 1,
       "cb": 6,
-      "emb": [
-        0.74,
-        -0.97,
-        0.34,
-        -0.43,
-        0.37,
-        0.75,
-        -0.08,
-        0.12
-      ],
-      "sum": "From sneaking out of bed to watch MS-DOS boot, to building wind turbines in Haiti and architecting s"
+      "sum": "From sneaking out of bed to watch MS-DOS boot, to building wind turbines in Haiti and architecting software systems — the origin story of a developer shaped by curiosity and constraint."
     },
     {
       "id": "constituant.fr",
@@ -65,17 +63,7 @@
       "rt": 0,
       "tc": 1,
       "cb": 8,
-      "emb": [
-        -0.35,
-        0.95,
-        -0.34,
-        -0.96,
-        -0.62,
-        -0.34,
-        -0.42,
-        0.51
-      ],
-      "sum": "A civic tech experiment in radical transparency - building a platform for citizens to vote on real l"
+      "sum": "A civic tech experiment in radical transparency — building a platform for citizens to vote on real legislative proposals and hold elected officials accountable."
     },
     {
       "id": "blankblog",
@@ -89,17 +77,7 @@
       "rt": 0,
       "tc": 1,
       "cb": 0,
-      "emb": [
-        -0.25,
-        0.3,
-        0.35,
-        -0.85,
-        0.93,
-        0.49,
-        -0.36,
-        -0.49
-      ],
-      "sum": "blankblog"
+      "sum": "First post on the blog — a blank canvas and a note about what's coming."
     },
     {
       "id": "maidenless",
@@ -109,42 +87,22 @@
       "rt": 0,
       "tc": 1,
       "cb": 0,
-      "emb": [
-        -0.74,
-        0.35,
-        0.97,
-        -0.06,
-        -0.35,
-        -0.87,
-        0.02,
-        -0.7
-      ],
-      "sum": "Thoughts on productivity when AI tools fail, debugging legacy stacks, and the importance of boilerpl"
+      "sum": "Thoughts on productivity when AI tools fail, debugging legacy stacks, and the importance of boilerplate over clever solutions."
     },
     {
       "id": "2025-12-07-whats_in_the_wind",
       "u": "/blog/2025-12-07-whats_in_the_wind.html",
       "d": "2025-12-07",
       "tg": [
-        "proje",
-        "open ",
-        "game ",
-        "devop"
+        "projects",
+        "open-source",
+        "game-dev",
+        "devops"
       ],
       "rt": 6,
       "tc": 1,
       "cb": 0,
-      "emb": [
-        -0.79,
-        0.69,
-        0.89,
-        0.63,
-        0.92,
-        -0.66,
-        -0.91,
-        -0.47
-      ],
-      "sum": "Pivoting from burnout to building: launching a civic engagement platform and an open-source social M"
+      "sum": "Pivoting from burnout to building: launching a civic engagement platform and an open-source social media alternative while reflecting on what drives the work."
     },
     {
       "id": "llmr",
@@ -152,99 +110,59 @@
       "d": "2025-10-30",
       "tg": [
         "ai",
-        "web s",
-        "innov"
+        "web-standards",
+        "innovation"
       ],
       "rt": 8,
       "tc": 1,
       "cb": 12,
-      "emb": [
-        -0.4,
-        -0.26,
-        -0.02,
-        -0.04,
-        0.81,
-        0.86,
-        0.56,
-        -0.26
-      ],
-      "sum": "A new format to make websites AI-readable, reducing token consumption by 96% and cutting AI query co"
+      "sum": "A new format to make websites AI-readable, reducing token consumption by 96% and cutting AI query costs — the llmr.json spec proposal."
     },
     {
       "id": "2025-10-08-juggling-fireballs",
       "u": "/blog/2025-10-08-juggling-fireballs.html",
       "d": "2025-10-08",
       "tg": [
-        "prod",
-        "life",
+        "productivity",
+        "lifestyle",
         "debug",
-        "burn",
-        "team"
+        "burnout",
+        "teamwork"
       ],
       "rt": 4,
       "tc": 1,
       "cb": 0,
-      "emb": [
-        0.58,
-        -0.22,
-        -0.92,
-        -0.93,
-        0.76,
-        -0.31,
-        0.92,
-        -0.01
-      ],
-      "sum": "A reflection on managing a heavy workload alone while my 'working buddy' is out, and the lessons lea"
+      "sum": "A reflection on managing a heavy workload alone while my working buddy is out, and the lessons learned about delegation, focus, and knowing when to stop."
     },
     {
       "id": "you-cant-get-them-all",
       "u": "/blog/you-cant-get-them-all.html",
       "d": "2025-09-22",
       "tg": [
-        "prod",
-        "life",
+        "productivity",
+        "lifestyle",
         "aikido",
-        "prior"
+        "priorities"
       ],
       "rt": 3,
       "tc": 0,
       "cb": 0,
-      "emb": [
-        0.44,
-        0.59,
-        -0.38,
-        -0.8,
-        -0.65,
-        -0.93,
-        0.01,
-        0.19
-      ],
-      "sum": "Being on too many frontlines makes you immobile. A reflection on priorities, expertise, and learning"
+      "sum": "Being on too many frontlines makes you immobile — a reflection on priorities, expertise, and knowing when to say no, inspired by aikido principles."
     },
     {
       "id": "claudio",
       "u": "/blog/claudio.html",
       "d": "2025-09-06",
       "tg": [
-        "claud",
+        "claude",
         "ai",
-        "devel",
+        "development",
         "godot"
       ],
       "rt": 8,
       "tc": 1,
       "cb": 2,
-      "emb": [
-        0.47,
-        0.18,
-        0.4,
-        -0.59,
-        0.24,
-        -0.36,
-        -0.78,
-        -0.29
-      ],
-      "sum": "When AI goes overboard: Claude creates an entire game project from a simple idea discussion, complet"
+      "sum": "When AI goes overboard: Claude creates an entire game project from a simple idea discussion, complete with assets, scripts, and documentation nobody asked for."
     },
     {
       "id": "laravel040925",
@@ -254,22 +172,12 @@
         "laravel",
         "debug",
         "legacy",
-        "ent"
+        "enterprise"
       ],
       "rt": 8,
       "tc": 1,
       "cb": 24,
-      "emb": [
-        0.6,
-        -0.11,
-        -0.99,
-        0.12,
-        0.02,
-        -0.39,
-        -0.47,
-        -0.6
-      ],
-      "sum": "Foreign key nightmares, table names that lie, and validation bugs in a legacy Laravel codebase - deb"
+      "sum": "Foreign key nightmares, table names that lie, and validation bugs in a legacy Laravel codebase — debugging enterprise systems where the schema and the code disagree."
     },
     {
       "id": "when-webservices-lie",
@@ -277,23 +185,13 @@
       "d": "2025-08-30",
       "tg": [
         "drupal",
-        "ws",
+        "webservices",
         "debug"
       ],
       "rt": 9,
       "tc": 1,
       "cb": 24,
-      "emb": [
-        0.75,
-        -0.28,
-        -0.39,
-        0.44,
-        0.06,
-        0.38,
-        0.13,
-        0.84
-      ],
-      "sum": "PowerPoint documentation, Drupal hooks firing too early, and web services returning different data t"
+      "sum": "PowerPoint documentation, Drupal hooks firing too early, and web services returning different data than what's in the database — a war story from legacy enterprise Drupal."
     },
     {
       "id": "yaygodot",
@@ -307,17 +205,7 @@
       "rt": 1,
       "tc": 1,
       "cb": 0,
-      "emb": [
-        -0.06,
-        -0.97,
-        -0.33,
-        0.39,
-        -0.4,
-        -0.77,
-        0.3,
-        0.13
-      ],
-      "sum": "Learn how I used AI to debug collision, physics, and scripting issues to build a working 3D characte"
+      "sum": "How I used AI to debug collision, physics, and scripting issues to build a working 3D character controller in Godot."
     },
     {
       "id": "2025-08-25-ai-vs-legacy-drupal",
@@ -331,17 +219,7 @@
       "rt": 8,
       "tc": 1,
       "cb": 11,
-      "emb": [
-        -0.77,
-        0.09,
-        -0.76,
-        -0.78,
-        0.06,
-        -0.28,
-        -0.67,
-        0.43
-      ],
-      "sum": "Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow - what wen"
+      "sum": "Conflicting email systems, redirect loops, and AI-generated boilerplate in a legacy Drupal workflow — what went wrong and how it was fixed."
     },
     {
       "id": "GPTtoClaude",
@@ -351,17 +229,7 @@
       "rt": 0,
       "tc": 0,
       "cb": 0,
-      "emb": [
-        -0.83,
-        -0.16,
-        0.55,
-        0.19,
-        0.41,
-        0.71,
-        0.81,
-        0.84
-      ],
-      "sum": "After using GPT for a while, I found that Claude's approach to coding tasks was more aligned with my"
+      "sum": "After using GPT for a while, I found that Claude's approach to coding tasks was more aligned with my workflow — a comparison of both tools in practice."
     },
     {
       "id": "bitcoinscam",
@@ -371,17 +239,7 @@
       "rt": 0,
       "tc": 1,
       "cb": 2,
-      "emb": [
-        0.29,
-        0.77,
-        -0.59,
-        0.28,
-        0.7,
-        0.55,
-        0.12,
-        -0.12
-      ],
-      "sum": "Online scams are everywhere. Here's the story of how one script kiddy tried to extort me for $200 in"
+      "sum": "Online scams are everywhere. Here's the story of how a script kiddy tried to extort me for $200 in Bitcoin and failed spectacularly."
     },
     {
       "id": "HolidaysSideProject",
@@ -391,17 +249,7 @@
       "rt": 0,
       "tc": 0,
       "cb": 0,
-      "emb": [
-        -0.5,
-        -0.01,
-        0.29,
-        -0.58,
-        -0.74,
-        -0.87,
-        -0.13,
-        -0.67
-      ],
-      "sum": "Sigh, summer is soon over. Working on side projects with GPT and Claude - what took 3 days to fail w"
+      "sum": "Summer is almost over — working on side projects with GPT and Claude, and what took 3 days to fail with one took a few hours to ship with the other."
     },
     {
       "id": "CETheadaches",
@@ -411,17 +259,7 @@
       "rt": 0,
       "tc": 1,
       "cb": 0,
-      "emb": [
-        0.62,
-        0.88,
-        0.99,
-        0.26,
-        -0.01,
-        -0.83,
-        0.43,
-        0.56
-      ],
-      "sum": "Struggling with productivity, working on a house bidding website, smart mirror projects, and deliver"
+      "sum": "Struggling with productivity while working on a house bidding website, smart mirror hardware projects, and client deliverables all at once."
     },
     {
       "id": "Productivityanddebugging",
@@ -431,17 +269,7 @@
       "rt": 0,
       "tc": 1,
       "cb": 0,
-      "emb": [
-        0.23,
-        -0.26,
-        0.62,
-        0.0,
-        0.64,
-        -0.59,
-        -0.14,
-        0.44
-      ],
-      "sum": "Working on automatically updating my blog with git push. This launches a workflow on GitHub, then pu"
+      "sum": "Working on automatically updating the blog with git push — a GitHub Actions workflow that builds and deploys on every commit."
     },
     {
       "id": "SVNgit",
@@ -451,17 +279,7 @@
       "rt": 0,
       "tc": 1,
       "cb": 1,
-      "emb": [
-        -0.29,
-        0.29,
-        -0.84,
-        0.04,
-        -0.95,
-        0.55,
-        -0.39,
-        0.51
-      ],
-      "sum": "This week was chaos and cleanup: migrating SVN to Git, Laravel app deployment issues, and CET webfor"
+      "sum": "This week was chaos and cleanup: migrating SVN to Git, troubleshooting Laravel deployment issues, and untangling CET webforms."
     },
     {
       "id": "frameworks",
@@ -471,17 +289,7 @@
       "rt": 0,
       "tc": 0,
       "cb": 0,
-      "emb": [
-        -0.92,
-        0.06,
-        -0.73,
-        0.64,
-        -0.77,
-        0.68,
-        0.36,
-        -0.78
-      ],
-      "sum": "I believe the web should be simple. I don't like frameworks. They bloat, obfuscate, and complicate t"
+      "sum": "The web should be simple. Frameworks bloat, obfuscate, and complicate things that don't need to be complicated — a case for building without them."
     }
   ],
   "serv": [

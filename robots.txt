@@ -1,7 +1,18 @@
 User-agent: *
 Allow: /
 Disallow: /php-test/
-Disallow: /public/
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
 
 Sitemap: https://raphaelreck.com/sitemap.xml
 
