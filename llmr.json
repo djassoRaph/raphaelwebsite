@@ -1,0 +1,519 @@
+{
+  "v": "1.0",
+  "ts": 1772706458,
+  "s": {
+    "d": "raphaelreck.com",
+    "t": "prof_tech_blog",
+    "a": {
+      "n": "Raphaël Reck",
+      "r": "IT_sys_sw_consultant",
+      "exp": [
+        "drupal",
+        "laravel",
+        "sys_arch",
+        "debug",
+        "web_int"
+      ]
+    },
+    "nav": [
+      {
+        "l": "Home",
+        "u": "/"
+      },
+      {
+        "l": "Blog",
+        "u": "/blog/"
+      },
+      {
+        "l": "GitHub",
+        "u": "https://github.com/djassoRaph",
+        "ext": 1
+      },
+      {
+        "l": "LinkedIn",
+        "u": "https://linkedin.com/in/raphael-reck-link/",
+        "ext": 1
+      }
+    ]
+  },
+  "p": [
+    {
+      "id": "originstory",
+      "u": "/blog/originstory.html",
+      "d": "2026-02-26",
+      "tg": [],
+      "rt": 0,
+      "tc": 1,
+      "cb": 6,
+      "emb": [
+        0.74,
+        -0.97,
+        0.34,
+        -0.43,
+        0.37,
+        0.75,
+        -0.08,
+        0.12
+      ],
+      "sum": "From sneaking out of bed to watch MS-DOS boot, to building wind turbines in Haiti and architecting s"
+    },
+    {
+      "id": "constituant.fr",
+      "u": "/blog/constituant.fr.html",
+      "d": "2025-12-25",
+      "tg": [],
+      "rt": 0,
+      "tc": 1,
+      "cb": 8,
+      "emb": [
+        -0.35,
+        0.95,
+        -0.34,
+        -0.96,
+        -0.62,
+        -0.34,
+        -0.42,
+        0.51
+      ],
+      "sum": "A civic tech experiment in radical transparency - building a platform for citizens to vote on real l"
+    },
+    {
+      "id": "blankblog",
+      "u": "/blog/blankblog.html",
+      "d": "2025-12-10",
+      "tg": [
+        "godot",
+        "ai",
+        "debug"
+      ],
+      "rt": 0,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        -0.25,
+        0.3,
+        0.35,
+        -0.85,
+        0.93,
+        0.49,
+        -0.36,
+        -0.49
+      ],
+      "sum": "blankblog"
+    },
+    {
+      "id": "maidenless",
+      "u": "/blog/maidenless.html",
+      "d": "2025-12-10",
+      "tg": [],
+      "rt": 0,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        -0.74,
+        0.35,
+        0.97,
+        -0.06,
+        -0.35,
+        -0.87,
+        0.02,
+        -0.7
+      ],
+      "sum": "Thoughts on productivity when AI tools fail, debugging legacy stacks, and the importance of boilerpl"
+    },
+    {
+      "id": "2025-12-07-whats_in_the_wind",
+      "u": "/blog/2025-12-07-whats_in_the_wind.html",
+      "d": "2025-12-07",
+      "tg": [
+        "proje",
+        "open ",
+        "game ",
+        "devop"
+      ],
+      "rt": 6,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        -0.79,
+        0.69,
+        0.89,
+        0.63,
+        0.92,
+        -0.66,
+        -0.91,
+        -0.47
+      ],
+      "sum": "Pivoting from burnout to building: launching a civic engagement platform and an open-source social M"
+    },
+    {
+      "id": "llmr",
+      "u": "/blog/llmr.html",
+      "d": "2025-10-30",
+      "tg": [
+        "ai",
+        "web s",
+        "innov"
+      ],
+      "rt": 8,
+      "tc": 1,
+      "cb": 12,
+      "emb": [
+        -0.4,
+        -0.26,
+        -0.02,
+        -0.04,
+        0.81,
+        0.86,
+        0.56,
+        -0.26
+      ],
+      "sum": "A new format to make websites AI-readable, reducing token consumption by 96% and cutting AI query co"
+    },
+    {
+      "id": "2025-10-08-juggling-fireballs",
+      "u": "/blog/2025-10-08-juggling-fireballs.html",
+      "d": "2025-10-08",
+      "tg": [
+        "prod",
+        "life",
+        "debug",
+        "burn",
+        "team"
+      ],
+      "rt": 4,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        0.58,
+        -0.22,
+        -0.92,
+        -0.93,
+        0.76,
+        -0.31,
+        0.92,
+        -0.01
+      ],
+      "sum": "A reflection on managing a heavy workload alone while my 'working buddy' is out, and the lessons lea"
+    },
+    {
+      "id": "you-cant-get-them-all",
+      "u": "/blog/you-cant-get-them-all.html",
+      "d": "2025-09-22",
+      "tg": [
+        "prod",
+        "life",
+        "aikido",
+        "prior"
+      ],
+      "rt": 3,
+      "tc": 0,
+      "cb": 0,
+      "emb": [
+        0.44,
+        0.59,
+        -0.38,
+        -0.8,
+        -0.65,
+        -0.93,
+        0.01,
+        0.19
+      ],
+      "sum": "Being on too many frontlines makes you immobile. A reflection on priorities, expertise, and learning"
+    },
+    {
+      "id": "claudio",
+      "u": "/blog/claudio.html",
+      "d": "2025-09-06",
+      "tg": [
+        "claud",
+        "ai",
+        "devel",
+        "godot"
+      ],
+      "rt": 8,
+      "tc": 1,
+      "cb": 2,
+      "emb": [
+        0.47,
+        0.18,
+        0.4,
+        -0.59,
+        0.24,
+        -0.36,
+        -0.78,
+        -0.29
+      ],
+      "sum": "When AI goes overboard: Claude creates an entire game project from a simple idea discussion, complet"
+    },
+    {
+      "id": "laravel040925",
+      "u": "/blog/laravel040925.html",
+      "d": "2025-09-04",
+      "tg": [
+        "laravel",
+        "debug",
+        "legacy",
+        "ent"
+      ],
+      "rt": 8,
+      "tc": 1,
+      "cb": 24,
+      "emb": [
+        0.6,
+        -0.11,
+        -0.99,
+        0.12,
+        0.02,
+        -0.39,
+        -0.47,
+        -0.6
+      ],
+      "sum": "Foreign key nightmares, table names that lie, and validation bugs in a legacy Laravel codebase - deb"
+    },
+    {
+      "id": "when-webservices-lie",
+      "u": "/blog/when-webservices-lie.html",
+      "d": "2025-08-30",
+      "tg": [
+        "drupal",
+        "ws",
+        "debug"
+      ],
+      "rt": 9,
+      "tc": 1,
+      "cb": 24,
+      "emb": [
+        0.75,
+        -0.28,
+        -0.39,
+        0.44,
+        0.06,
+        0.38,
+        0.13,
+        0.84
+      ],
+      "sum": "PowerPoint documentation, Drupal hooks firing too early, and web services returning different data t"
+    },
+    {
+      "id": "yaygodot",
+      "u": "/blog/yaygodot.html",
+      "d": "2025-08-30",
+      "tg": [
+        "godot",
+        "ai",
+        "debug"
+      ],
+      "rt": 1,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        -0.06,
+        -0.97,
+        -0.33,
+        0.39,
+        -0.4,
+        -0.77,
+        0.3,
+        0.13
+      ],
+      "sum": "Learn how I used AI to debug collision, physics, and scripting issues to build a working 3D characte"
+    },
+    {
+      "id": "2025-08-25-ai-vs-legacy-drupal",
+      "u": "/blog/2025-08-25-ai-vs-legacy-drupal.html",
+      "d": "2025-08-25",
+      "tg": [
+        "drupal",
+        "ai",
+        "debug"
+      ],
+      "rt": 8,
+      "tc": 1,
+      "cb": 11,
+      "emb": [
+        -0.77,
+        0.09,
+        -0.76,
+        -0.78,
+        0.06,
+        -0.28,
+        -0.67,
+        0.43
+      ],
+      "sum": "Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow - what wen"
+    },
+    {
+      "id": "GPTtoClaude",
+      "u": "/blog/GPTtoClaude.html",
+      "d": "2025-08-25",
+      "tg": [],
+      "rt": 0,
+      "tc": 0,
+      "cb": 0,
+      "emb": [
+        -0.83,
+        -0.16,
+        0.55,
+        0.19,
+        0.41,
+        0.71,
+        0.81,
+        0.84
+      ],
+      "sum": "After using GPT for a while, I found that Claude's approach to coding tasks was more aligned with my"
+    },
+    {
+      "id": "bitcoinscam",
+      "u": "/blog/bitcoinscam.html",
+      "d": "2025-08-18",
+      "tg": [],
+      "rt": 0,
+      "tc": 1,
+      "cb": 2,
+      "emb": [
+        0.29,
+        0.77,
+        -0.59,
+        0.28,
+        0.7,
+        0.55,
+        0.12,
+        -0.12
+      ],
+      "sum": "Online scams are everywhere. Here's the story of how one script kiddy tried to extort me for $200 in"
+    },
+    {
+      "id": "HolidaysSideProject",
+      "u": "/blog/HolidaysSideProject.html",
+      "d": "2025-08-17",
+      "tg": [],
+      "rt": 0,
+      "tc": 0,
+      "cb": 0,
+      "emb": [
+        -0.5,
+        -0.01,
+        0.29,
+        -0.58,
+        -0.74,
+        -0.87,
+        -0.13,
+        -0.67
+      ],
+      "sum": "Sigh, summer is soon over. Working on side projects with GPT and Claude - what took 3 days to fail w"
+    },
+    {
+      "id": "CETheadaches",
+      "u": "/blog/CETheadaches.html",
+      "d": "2025-07-30",
+      "tg": [],
+      "rt": 0,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        0.62,
+        0.88,
+        0.99,
+        0.26,
+        -0.01,
+        -0.83,
+        0.43,
+        0.56
+      ],
+      "sum": "Struggling with productivity, working on a house bidding website, smart mirror projects, and deliver"
+    },
+    {
+      "id": "Productivityanddebugging",
+      "u": "/blog/Productivityanddebugging.html",
+      "d": "2025-07-30",
+      "tg": [],
+      "rt": 0,
+      "tc": 1,
+      "cb": 0,
+      "emb": [
+        0.23,
+        -0.26,
+        0.62,
+        0.0,
+        0.64,
+        -0.59,
+        -0.14,
+        0.44
+      ],
+      "sum": "Working on automatically updating my blog with git push. This launches a workflow on GitHub, then pu"
+    },
+    {
+      "id": "SVNgit",
+      "u": "/blog/SVNgit.html",
+      "d": "2025-07-06",
+      "tg": [],
+      "rt": 0,
+      "tc": 1,
+      "cb": 1,
+      "emb": [
+        -0.29,
+        0.29,
+        -0.84,
+        0.04,
+        -0.95,
+        0.55,
+        -0.39,
+        0.51
+      ],
+      "sum": "This week was chaos and cleanup: migrating SVN to Git, Laravel app deployment issues, and CET webfor"
+    },
+    {
+      "id": "frameworks",
+      "u": "/blog/frameworks.html",
+      "d": "2025-07-01",
+      "tg": [],
+      "rt": 0,
+      "tc": 0,
+      "cb": 0,
+      "emb": [
+        -0.92,
+        0.06,
+        -0.73,
+        0.64,
+        -0.77,
+        0.68,
+        0.36,
+        -0.78
+      ],
+      "sum": "I believe the web should be simple. I don't like frameworks. They bloat, obfuscate, and complicate t"
+    }
+  ],
+  "serv": [
+    {
+      "t": "consulting",
+      "d": "Tech audits, team mentoring, roadmap planning"
+    },
+    {
+      "t": "dev",
+      "d": "Full-stack web apps, APIs, integrations"
+    },
+    {
+      "t": "web_int",
+      "d": "Responsive UI, third-party integration, performance"
+    },
+    {
+      "t": "it_support",
+      "d": "Infrastructure monitoring, user support, deployments"
+    },
+    {
+      "t": "network",
+      "d": "Wireless, A/V, GPS, surveillance systems"
+    },
+    {
+      "t": "sys_arch",
+      "d": "Cloud, on-prem, DevOps, security"
+    }
+  ],
+  "stats": {
+    "total_posts": 20,
+    "technical_posts": 16,
+    "total_code_blocks": 90,
+    "avg_read_time": 2.8
+  }
+}
