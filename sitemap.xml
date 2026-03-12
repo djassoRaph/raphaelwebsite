@@ -28,6 +28,13 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Game -->
+  <url>
+    <loc>https://raphaelreck.com/public/secret/eternalguildgame/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Blog index -->
   <url>
     <loc>https://raphaelreck.com/blog/</loc>
@@ -87,6 +94,12 @@
   <url>
     <loc>https://raphaelreck.com/blog/Productivityanddebugging.html</loc>
     <lastmod>2025-09-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://raphaelreck.com/blog/HolidaysSideProject.html</loc>
+    <lastmod>2025-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
