@@ -1,1 +1,9 @@
 # Root .htaccess
+
+# Disable directory listing sitewide
+Options -Indexes
+
+# Redirect exposed folders with no index
+RedirectMatch 301 ^/roots-time/?$ https://raphaelreck.com/roots-time/manifesto.html
+RedirectMatch 301 ^/memes/?$ https://raphaelreck.com/fun.html
+RedirectMatch 301 ^/scripts/?$ https://raphaelreck.com/
