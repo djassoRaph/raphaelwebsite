@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Support Cost Calculator for Small Business | Raphaël Reck</title>
+    <meta name="description" content="Find out what IT support should cost for a business like yours. Answer 5 quick questions — get a realistic estimate and an honest recommendation.">
+    <meta name="keywords" content="IT support cost calculator, small business IT cost, remote IT support price, outsourced IT cost, monthly IT support fee">
+    <meta name="author" content="Raphael Reck">
+    <link rel="canonical" href="https://raphaelreck.com/it-cost-calculator.html">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="llm-index" type="application/json" href="/site.llmr">
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="IT Support Cost Calculator for Small Business | Raphaël Reck"/>
+    <meta property="og:description" content="Find out what IT support should cost for a business like yours. Answer 5 quick questions — get a realistic estimate and an honest recommendation."/>
+    <meta property="og:url" content="https://raphaelreck.com/it-cost-calculator.html"/>
+    <meta property="og:image" content="https://raphaelreck.com/public/raphaelreck.png"/>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "IT Support Cost Calculator",
+      "description": "Interactive calculator to estimate IT support costs for small businesses.",
+      "url": "https://raphaelreck.com/it-cost-calculator.html",
+      "author": {
+        "@type": "Person",
+        "name": "Raphaël Reck",
+        "url": "https://raphaelreck.com"
+      }
+    }
+    </script>
+
+    <style>
+      /* Calculator-specific styles — inherits everything from style.css */
+
+      .calc-wrapper {
+        max-width: 680px;
+        margin: 0 auto;
+      }
+
+      /* Step cards */
+      .calc-step {
+        display: none;
+        animation: stepIn .3s ease;
+      }
+      .calc-step.active {
+        display: block;
+      }
+      @keyframes stepIn {
+        from { opacity: 0; transform: translateY(12px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Progress bar */
+      .calc-progress {
+        display: flex;
+        gap: .5rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+      .calc-progress-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #555;
+        transition: background .3s;
+      }
+      .calc-progress-dot.done {
+        background: #4caf50;
+      }
+      .calc-progress-dot.current {
+        background: #888;
+        outline: 2px solid #888;
+        outline-offset: 2px;
+      }
+
+      /* Question label */
+      .calc-question {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: .5rem;
+        text-align: center;
+      }
+      .calc-sub {
+        text-align: center;
+        opacity: .65;
+        font-size: .9rem;
+        margin-bottom: 1.75rem;
+      }
+
+      /* Option buttons */
+      .calc-options {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+      }
+      .calc-option {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 1.25rem;
+        border: 1px solid #555;
+        border-radius: .6rem;
+        cursor: pointer;
+        transition: border-color .2s, background .2s;
+        text-align: left;
+        background: transparent;
+        color: inherit;
+        font-size: 1rem;
+        width: 100%;
+      }
+      .calc-option:hover {
+        border-color: #aaa;
+      }
+      .calc-option.selected {
+        border-color: #4caf50;
+        background: rgba(76, 175, 80, .08);
+      }
+      .calc-option-icon {
+        font-size: 1.3rem;
+        min-width: 1.5rem;
+        text-align: center;
+        opacity: .75;
+      }
+      .calc-option-text strong {
+        display: block;
+        margin-bottom: .1rem;
+      }
+      .calc-option-text span {
+        font-size: .85rem;
+        opacity: .6;
+      }
+
+      /* Nav buttons */
+      .calc-nav {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        gap: 1rem;
+      }
+      .calc-btn {
+        padding: .7rem 1.5rem;
+        border-radius: .5rem;
+        border: 1px solid #555;
+        background: transparent;
+        color: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: border-color .2s, opacity .2s;
+      }
+      .calc-btn:disabled {
+        opacity: .3;
+        cursor: not-allowed;
+      }
+      .calc-btn.primary {
+        border-color: #4caf50;
+        background: #4caf50;
+        color: #fff;
+        font-weight: 600;
+      }
+      .calc-btn.primary:hover:not(:disabled) {
+        background: #43a047;
+      }
+
+      /* Result card */
+      .calc-result {
+        display: none;
+        animation: stepIn .4s ease;
+      }
+      .calc-result.active {
+        display: block;
+      }
+
+      .result-estimate {
+        text-align: center;
+        padding: 2rem;
+        border: 1px solid #4caf50;
+        border-radius: .75rem;
+        margin-bottom: 1.5rem;
+        background: rgba(76,175,80,.05);
+      }
+      .result-estimate .result-label {
+        font-size: .9rem;
+        opacity: .6;
+        margin-bottom: .5rem;
+      }
+      .result-estimate .result-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: -1px;
+      }
+      .result-estimate .result-plan {
+        font-size: 1rem;
+        opacity: .75;
+        margin-top: .4rem;
+      }
+
+      .result-breakdown {
+        margin-bottom: 1.5rem;
+      }
+      .result-breakdown h3 {
+        font-size: 1rem;
+        margin-bottom: .75rem;
+        opacity: .7;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        font-size: .8rem;
+      }
+      .result-row {
+        display: flex;
+        justify-content: space-between;
+        padding: .6rem 0;
+        border-bottom: 1px solid rgba(128,128,128,.2);
+        font-size: .95rem;
+      }
+      .result-row:last-child {
+        border-bottom: none;
+      }
+      .result-row .label { opacity: .7; }
+      .result-row .value { font-weight: 500; }
+      .result-row .value.warn { color: #e57373; }
+      .result-row .value.good { color: #4caf50; }
+
+      .result-insight {
+        padding: 1.25rem;
+        border-left: 3px solid #4caf50;
+        background: rgba(76,175,80,.05);
+        border-radius: 0 .5rem .5rem 0;
+        margin-bottom: 1.5rem;
+        font-size: .95rem;
+        line-height: 1.6;
+      }
+
+      .result-cta {
+        text-align: center;
+        padding: 1.75rem;
+        border: 1px solid #555;
+        border-radius: .75rem;
+      }
+      .result-cta p {
+        opacity: .8;
+        margin-bottom: 1.25rem;
+        font-size: .95rem;
+      }
+      .result-cta a.cta-link {
+        display: inline-block;
+        padding: .85rem 2rem;
+        background: #4caf50;
+        color: #fff;
+        border-radius: .5rem;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: background .2s;
+      }
+      .result-cta a.cta-link:hover {
+        background: #43a047;
+      }
+      .result-restart {
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+        opacity: .5;
+        font-size: .85rem;
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: inherit;
+        text-decoration: underline;
+      }
+      .result-restart:hover { opacity: .8; }
+
+      /* Cost comparison table */
+      .compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        font-size: .9rem;
+      }
+      .compare-table th {
+        text-align: left;
+        padding: .6rem .75rem;
+        opacity: .6;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(128,128,128,.3);
+        font-size: .8rem;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+      }
+      .compare-table td {
+        padding: .7rem .75rem;
+        border-bottom: 1px solid rgba(128,128,128,.15);
+      }
+      .compare-table tr:last-child td { border-bottom: none; }
+      .compare-table .highlight td {
+        background: rgba(76,175,80,.07);
+        font-weight: 500;
+      }
+
+      @media (max-width: 480px) {
+        .calc-question { font-size: 1.1rem; }
+        .result-estimate .result-price { font-size: 2rem; }
+      }
+    </style>
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <img src="public/raphaelreck.png" alt="Photo of Raphael Reck" class="hero-image">
+      <div class="hero-text">
+        <h1>What Should IT Support Cost for Your Business?</h1>
+        <p>Five questions. Two minutes. A straight answer — no sales pitch.</p>
+      </div>
+    </div>
+
+    <!-- Primary Navigation -->
+    <nav class="nav-primary">
+      <a href="index.html" class="nav-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+      <a href="blog/index.html" class="nav-btn">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </nav>
+
+    <!-- Quick Links -->
+    <nav class="nav-secondary">
+      <a href="index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+      <a href="monthly-support.html" class="link-btn">
+        <i class="fas fa-headset"></i> Monthly IT Support
+      </a>
+      <a href="no-it-department.html" class="link-btn">
+        <i class="fas fa-building"></i> No IT Department?
+      </a>
+    </nav>
+
+    <!-- Calculator -->
+    <section class="services-section">
+
+      <div class="calc-wrapper">
+
+        <!-- Progress dots -->
+        <div class="calc-progress" id="calc-progress">
+          <div class="calc-progress-dot current" data-step="0"></div>
+          <div class="calc-progress-dot" data-step="1"></div>
+          <div class="calc-progress-dot" data-step="2"></div>
+          <div class="calc-progress-dot" data-step="3"></div>
+          <div class="calc-progress-dot" data-step="4"></div>
+        </div>
+
+        <!-- Step 1: Company size -->
+        <div class="calc-step active" data-step="0">
+          <p class="calc-question">How many people work at your company?</p>
+          <p class="calc-sub">Include part-timers and remote staff who use company tools.</p>
+          <div class="calc-options">
+            <button class="calc-option" data-value="micro" data-score="1">
+              <span class="calc-option-icon">🌱</span>
+              <span class="calc-option-text">
+                <strong>1–5 people</strong>
+                <span>Solo founder, tiny team, or micro-business</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="small" data-score="2">
+              <span class="calc-option-icon">🏢</span>
+              <span class="calc-option-text">
+                <strong>6–15 people</strong>
+                <span>Small team, probably growing</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="medium" data-score="3">
+              <span class="calc-option-icon">🏗️</span>
+              <span class="calc-option-text">
+                <strong>16–50 people</strong>
+                <span>Multiple teams, more moving parts</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="large" data-score="4">
+              <span class="calc-option-icon">🏭</span>
+              <span class="calc-option-text">
+                <strong>50+ people</strong>
+                <span>You probably need more than one person</span>
+              </span>
+            </button>
+          </div>
+          <div class="calc-nav">
+            <button class="calc-btn" disabled>← Back</button>
+            <button class="calc-btn primary" id="next-0" disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 2: Current IT situation -->
+        <div class="calc-step" data-step="1">
+          <p class="calc-question">How do you currently handle IT problems?</p>
+          <p class="calc-sub">Be honest — there's no wrong answer here.</p>
+          <div class="calc-options">
+            <button class="calc-option" data-value="myself" data-score="3">
+              <span class="calc-option-icon">🤦</span>
+              <span class="calc-option-text">
+                <strong>I fix it myself</strong>
+                <span>Or ask someone in the office who's "good with computers"</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="callout" data-score="4">
+              <span class="calc-option-icon">📞</span>
+              <span class="calc-option-text">
+                <strong>I call someone when things break</strong>
+                <span>Pay per incident, no ongoing relationship</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="agency" data-score="2">
+              <span class="calc-option-icon">🏬</span>
+              <span class="calc-option-text">
+                <strong>We have an IT agency or support contract</strong>
+                <span>But it's expensive and response time is slow</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="nothing" data-score="5">
+              <span class="calc-option-icon">🕳️</span>
+              <span class="calc-option-text">
+                <strong>Nothing — we just hope it doesn't break</strong>
+                <span>So far so good, but it's only a matter of time</span>
+              </span>
+            </button>
+          </div>
+          <div class="calc-nav">
+            <button class="calc-btn" data-back="1">← Back</button>
+            <button class="calc-btn primary" id="next-1" disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 3: How often things break -->
+        <div class="calc-step" data-step="2">
+          <p class="calc-question">How often does something IT-related go wrong?</p>
+          <p class="calc-sub">Email issues, software not working, someone can't access something — anything that stops work.</p>
+          <div class="calc-options">
+            <button class="calc-option" data-value="rarely" data-score="1">
+              <span class="calc-option-icon">😌</span>
+              <span class="calc-option-text">
+                <strong>Rarely — a few times a year</strong>
+                <span>When it happens it's annoying but manageable</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="monthly" data-score="2">
+              <span class="calc-option-icon">😐</span>
+              <span class="calc-option-text">
+                <strong>Monthly — something always needs attention</strong>
+                <span>Small things mostly, occasional bigger issues</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="weekly" data-score="3">
+              <span class="calc-option-icon">😤</span>
+              <span class="calc-option-text">
+                <strong>Weekly — it's a constant background noise</strong>
+                <span>Someone always has a problem to solve</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="crisis" data-score="4">
+              <span class="calc-option-icon">🚨</span>
+              <span class="calc-option-text">
+                <strong>We've had a serious incident recently</strong>
+                <span>Data loss, outage, hack, or major disruption</span>
+              </span>
+            </button>
+          </div>
+          <div class="calc-nav">
+            <button class="calc-btn" data-back="2">← Back</button>
+            <button class="calc-btn primary" id="next-2" disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 4: What's at stake -->
+        <div class="calc-step" data-step="3">
+          <p class="calc-question">What happens to your business if email or your systems go down for a day?</p>
+          <p class="calc-sub">This tells us how much downtime actually costs you.</p>
+          <div class="calc-options">
+            <button class="calc-option" data-value="inconvenient" data-score="1">
+              <span class="calc-option-icon">🙂</span>
+              <span class="calc-option-text">
+                <strong>Inconvenient but not critical</strong>
+                <span>We'd manage — most things can wait a day</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="costly" data-score="2">
+              <span class="calc-option-icon">😬</span>
+              <span class="calc-option-text">
+                <strong>Costly — clients notice, work backs up</strong>
+                <span>A lost day means catching up for two</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="serious" data-score="3">
+              <span class="calc-option-icon">😰</span>
+              <span class="calc-option-text">
+                <strong>Serious — revenue stops, clients complain</strong>
+                <span>An outage would genuinely hurt the business</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="critical" data-score="4">
+              <span class="calc-option-icon">🔴</span>
+              <span class="calc-option-text">
+                <strong>Critical — we can't operate at all</strong>
+                <span>Everything depends on systems being up</span>
+              </span>
+            </button>
+          </div>
+          <div class="calc-nav">
+            <button class="calc-btn" data-back="3">← Back</button>
+            <button class="calc-btn primary" id="next-3" disabled>Next →</button>
+          </div>
+        </div>
+
+        <!-- Step 5: Budget expectation -->
+        <div class="calc-step" data-step="4">
+          <p class="calc-question">What did you expect IT support to cost per month?</p>
+          <p class="calc-sub">No right answer — this helps calibrate the recommendation.</p>
+          <div class="calc-options">
+            <button class="calc-option" data-value="nothing" data-score="0">
+              <span class="calc-option-icon">🤷</span>
+              <span class="calc-option-text">
+                <strong>I have no idea</strong>
+                <span>That's why I'm here</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="low" data-score="1">
+              <span class="calc-option-icon">💶</span>
+              <span class="calc-option-text">
+                <strong>Under €100/month</strong>
+                <span>I'd want it to be very affordable</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="mid" data-score="2">
+              <span class="calc-option-icon">💶💶</span>
+              <span class="calc-option-text">
+                <strong>€100–€400/month</strong>
+                <span>Reasonable for what I'd get in return</span>
+              </span>
+            </button>
+            <button class="calc-option" data-value="high" data-score="3">
+              <span class="calc-option-icon">💶💶💶</span>
+              <span class="calc-option-text">
+                <strong>€400+/month</strong>
+                <span>Worth it if it genuinely protects the business</span>
+              </span>
+            </button>
+          </div>
+          <div class="calc-nav">
+            <button class="calc-btn" data-back="4">← Back</button>
+            <button class="calc-btn primary" id="calc-submit" disabled>See my estimate →</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="calc-result" id="calc-result">
+          <!-- Filled by JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Context section below calculator -->
+    <section class="services-section" id="context">
+      <h2 class="section-title">Why These Numbers?</h2>
+      <p style="text-align:center; max-width:620px; margin: 0 auto 1.5rem auto; opacity:.85;">
+        Most small businesses underestimate what IT problems actually cost. The calculator above looks at three things: how often problems happen, how much they cost when they do, and what prevention would save you over a year.
+      </p>
+
+      <table class="compare-table" style="max-width:620px; margin: 0 auto 2rem auto;">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Typical annual cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Break-fix: 4 call-outs per year at €200 each</td>
+            <td>€800 — plus your time</td>
+          </tr>
+          <tr>
+            <td>One serious incident (data loss, hack)</td>
+            <td>€2,000–€10,000+</td>
+          </tr>
+          <tr class="highlight">
+            <td>Monthly IT support — Essential plan</td>
+            <td>€3,000/year, fixed</td>
+          </tr>
+          <tr class="highlight">
+            <td>Monthly IT support — Starter plan</td>
+            <td>€900/year, fixed</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="text-align:center; max-width:620px; margin: 0 auto 1.5rem auto; opacity:.85;">
+        The break-fix model feels cheaper until the day it isn't. Monthly support is a predictable line in the budget; not a surprise invoice after a crisis.
+      </p>
+      <p style="text-align:center; opacity:.75; font-size:.9rem;">
+        See also: <a href="no-it-department.html">what it actually costs to have no IT department</a> ·
+        <a href="outsourced-it.html">what outsourced IT support gets you</a>
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck — IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+      <p style="margin-top:.5rem; font-size:.85rem; opacity:.6;">
+        Collaborators: <a href="https://webasix.com/" target="_blank" rel="noopener">Webasix</a>
+      </p>
+      <p><a href="fun.html">Personal &amp; Fun</a></p>
+    </footer>
+  </div>
+
+  <script>
+    // ─── Theme Toggle ────────────────────────────────────────────────
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const t = htmlElement.getAttribute('data-theme');
+      const nt = t === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', nt);
+      localStorage.setItem('theme', nt);
+      updateIcon(nt);
+    });
+    function updateIcon(t) {
+      icon.classList.toggle('fa-moon', t !== 'dark');
+      icon.classList.toggle('fa-sun', t === 'dark');
+    }
+
+    // ─── Calculator Logic ─────────────────────────────────────────────
+    let answers = {};  // { step: { value, score } }
+    const totalSteps = 5;
+
+    const steps    = document.querySelectorAll('.calc-step');
+    const dots     = document.querySelectorAll('.calc-progress-dot');
+    const resultEl = document.getElementById('calc-result');
+
+    // Select an option
+    document.querySelectorAll('.calc-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const step = parseInt(btn.closest('.calc-step').dataset.step);
+        // Deselect siblings
+        btn.closest('.calc-options').querySelectorAll('.calc-option')
+           .forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        answers[step] = { value: btn.dataset.value, score: parseInt(btn.dataset.score) };
+        // Enable next/submit
+        const nextBtn = document.getElementById(`next-${step}`) ||
+                        document.getElementById('calc-submit');
+        if (nextBtn) nextBtn.disabled = false;
+      });
+    });
+
+    // Next buttons
+    for (let i = 0; i < 5; i++) {
+      const btn = document.getElementById(`next-${i}`);
+      if (btn) btn.addEventListener('click', () => goToStep(i + 1));
+    }
+
+    // Back buttons
+    document.querySelectorAll('[data-back]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const step = parseInt(btn.dataset.back);
+        goToStep(step - 1);
+      });
+    });
+
+    // Submit
+    document.getElementById('calc-submit').addEventListener('click', showResult);
+
+    function goToStep(n) {
+      steps.forEach(s => s.classList.remove('active'));
+      steps[n].classList.add('active');
+      dots.forEach((d, i) => {
+        d.classList.remove('current', 'done');
+        if (i < n) d.classList.add('done');
+        if (i === n) d.classList.add('current');
+      });
+      window.scrollTo({ top: document.querySelector('.calc-wrapper').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    function showResult() {
+      // Hide steps, hide progress
+      steps.forEach(s => s.classList.remove('active'));
+      document.getElementById('calc-progress').style.display = 'none';
+
+      // Score calculation
+      const sizeScore     = answers[0]?.score || 1;
+      const situScore     = answers[1]?.score || 3;
+      const freqScore     = answers[2]?.score || 1;
+      const stakeScore    = answers[3]?.score || 1;
+      const budgetVal     = answers[4]?.value || 'nothing';
+
+      const totalScore = sizeScore + situScore + freqScore + stakeScore;
+
+      // Determine plan
+      let plan, price, planDesc, insight, annualRisk;
+
+      if (sizeScore >= 4) {
+        // 50+ employees — out of scope
+        plan     = 'Custom arrangement';
+        price    = 'Let\'s talk';
+        planDesc = 'Your company is large enough that a single-person monthly support service may not be the right fit. That said, I can help as a fractional technical lead or project consultant.';
+        insight  = 'With 50+ people, your IT needs likely require either a dedicated hire or a multi-person MSP. I\'m happy to give you an honest assessment of which direction makes sense for your specific situation.';
+        annualRisk = null;
+      } else if (totalScore <= 5) {
+        plan     = 'Starter';
+        price    = '€75/month';
+        planDesc = 'A safety net for small teams. Someone to call when it matters, without the overhead of a full support contract.';
+        insight  = buildInsight(answers, 'starter');
+        annualRisk = estimateRisk(freqScore, stakeScore);
+      } else if (totalScore <= 9) {
+        plan     = 'Essential';
+        price    = '€250/month';
+        planDesc = 'For growing companies where downtime has real consequences. Regular check-ins, monitoring, and a direct line to a senior engineer.';
+        insight  = buildInsight(answers, 'essential');
+        annualRisk = estimateRisk(freqScore, stakeScore);
+      } else {
+        plan     = 'Pro';
+        price    = '€400+/month';
+        planDesc = 'For companies where systems are central to operations and problems have serious consequences.';
+        insight  = buildInsight(answers, 'pro');
+        annualRisk = estimateRisk(freqScore, stakeScore);
+      }
+
+      // Render result
+      resultEl.innerHTML = `
+        <div class="result-estimate">
+          <p class="result-label">Recommended plan</p>
+          <p class="result-price">${price}</p>
+          <p class="result-plan">${plan} — ${planDesc}</p>
+        </div>
+
+        ${annualRisk ? `
+        <div class="result-breakdown">
+          <h3>Your current situation, roughly</h3>
+          <div class="result-row">
+            <span class="label">Estimated annual risk exposure (break-fix)</span>
+            <span class="value warn">${annualRisk.risk}</span>
+          </div>
+          <div class="result-row">
+            <span class="label">Monthly support cost (${plan})</span>
+            <span class="value good">${price}</span>
+          </div>
+          <div class="result-row">
+            <span class="label">Annual cost of monthly support</span>
+            <span class="value good">${annualRisk.annual}</span>
+          </div>
+        </div>` : ''}
+
+        <div class="result-insight">
+          ${insight}
+        </div>
+
+        <div class="result-cta">
+          <p>These numbers are estimates — your actual situation may be simpler or more complex. Write me a few lines and I'll give you a straight answer.</p>
+          <a href="monthly-support.html" class="cta-link">
+            <i class="fas fa-headset"></i> See how monthly IT support works
+          </a>
+        </div>
+
+        <button class="result-restart" id="restart-btn">← Start over</button>
+      `;
+
+      resultEl.classList.add('active');
+      document.getElementById('restart-btn').addEventListener('click', restart);
+      window.scrollTo({ top: document.querySelector('.calc-wrapper').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    function estimateRisk(freq, stake) {
+      const riskMap = {
+        '1_1': { risk: '€200–€500/year',    annual: '€900/year' },
+        '1_2': { risk: '€400–€1,000/year',  annual: '€900/year' },
+        '1_3': { risk: '€1,000–€3,000/year',annual: '€3,000/year' },
+        '1_4': { risk: '€2,000–€5,000/year',annual: '€3,000/year' },
+        '2_1': { risk: '€400–€800/year',    annual: '€3,000/year' },
+        '2_2': { risk: '€800–€2,000/year',  annual: '€3,000/year' },
+        '2_3': { risk: '€2,000–€5,000/year',annual: '€3,000/year' },
+        '2_4': { risk: '€3,000–€8,000/year',annual: '€4,800/year' },
+        '3_1': { risk: '€600–€1,500/year',  annual: '€3,000/year' },
+        '3_2': { risk: '€1,500–€4,000/year',annual: '€3,000/year' },
+        '3_3': { risk: '€4,000–€10,000/year',annual:'€4,800/year' },
+        '3_4': { risk: '€6,000–€15,000/year',annual:'€4,800+/year'},
+        '4_1': { risk: '€1,000–€3,000/year',annual: '€4,800+/year'},
+        '4_2': { risk: '€3,000–€8,000/year',annual: '€4,800+/year'},
+        '4_3': { risk: '€8,000–€20,000/year',annual:'€4,800+/year'},
+        '4_4': { risk: '€15,000+/year',     annual: '€4,800+/year'},
+      };
+      return riskMap[`${freq}_${stake}`] || { risk: 'Varies', annual: 'Varies' };
+    }
+
+    function buildInsight(answers, plan) {
+      const situVal  = answers[1]?.value;
+      const freqVal  = answers[2]?.value;
+      const stakeVal = answers[3]?.value;
+
+      let parts = [];
+
+      if (situVal === 'myself') {
+        parts.push('You\'re fixing IT problems yourself — which means every hour spent on that is an hour not spent running your business.');
+      } else if (situVal === 'callout') {
+        parts.push('Calling someone per incident feels controlled, but emergency rates add up fast, and the engineer who turns up has never seen your setup before.');
+      } else if (situVal === 'nothing') {
+        parts.push('Running without any IT support is a risk that compounds over time. The longer nothing goes wrong, the bigger the blind spots get.');
+      } else if (situVal === 'agency') {
+        parts.push('Agency contracts often mean slow ticket queues and junior staff. A direct line to a senior engineer changes that dynamic entirely.');
+      }
+
+      if (freqVal === 'crisis') {
+        parts.push('You\'ve had a serious incident recently — which means the vulnerabilities are already there. Prevention now costs a fraction of the next incident.');
+      } else if (freqVal === 'weekly') {
+        parts.push('Weekly problems are a sign something structural needs attention, not just repeated fixing.');
+      }
+
+      if (stakeVal === 'critical' || stakeVal === 'serious') {
+        parts.push('When downtime directly stops revenue, the cost of prevention is easy to justify. One avoided outage often covers months of support fees.');
+      }
+
+      if (parts.length === 0) {
+        parts.push('Your situation sounds manageable — but having someone to call before things go wrong is almost always cheaper than waiting until they do.');
+      }
+
+      return parts.join(' ');
+    }
+
+    function restart() {
+      answers = {};
+      resultEl.classList.remove('active');
+      resultEl.innerHTML = '';
+      document.getElementById('calc-progress').style.display = 'flex';
+      // Reset all selections
+      document.querySelectorAll('.calc-option').forEach(b => b.classList.remove('selected'));
+      document.querySelectorAll('.calc-btn.primary').forEach(b => b.disabled = true);
+      goToStep(0);
+    }
+  </script>
+  <script src="mobile-nav.js"></script>
+
+  <!-- Mobile Menu Toggle Button -->
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <!-- Sliding Menu -->
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+    </div>
+
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="blog/index.html" class="mobile-nav-link">
+          <i class="fas fa-blog"></i>
+          <span>Blog</span>
+        </a>
+        <a href="public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" class="mobile-nav-link" target="_blank">
+          <i class="fas fa-file-pdf"></i>
+          <span>Download CV</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mobile-nav-divider"></div>
+
+    <div class="mobile-nav-section">
+      <h3>Services</h3>
+      <div class="mobile-nav-links">
+        <a href="monthly-support.html" class="mobile-nav-link">
+          <i class="fas fa-headset"></i>
+          <span>Monthly IT Support</span>
+        </a>
+        <a href="outsourced-it.html" class="mobile-nav-link">
+          <i class="fas fa-building"></i>
+          <span>Outsourced IT</span>
+        </a>
+        <a href="no-it-department.html" class="mobile-nav-link">
+          <i class="fas fa-question-circle"></i>
+          <span>No IT Department?</span>
+        </a>
+        <a href="it-cost-calculator.html" class="mobile-nav-link" aria-current="page">
+          <i class="fas fa-calculator"></i>
+          <span>IT Cost Calculator</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="mobile-nav-divider"></div>
+
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>
