@@ -153,7 +153,9 @@ body {
 
 .hero-text {
   flex: 1;
-  min-width: 300px;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .hero-text h1 {
