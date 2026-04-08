@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Building a Raspberry Pi Nanobot: Task Failed Successfully | Raphaël Reck</title>
+  <meta name="description" content="Two days, a dead SD card, an abandoned Acer BIOS, 83 million Mistral tokens, and a bot that only knew how to say 'Task Completed'. Building a personal AI assistant is not like the YouTube tutorials make it look."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/raspberry-pi-nanobot.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Building a Raspberry Pi Nanobot: Task Failed Successfully"/>
+  <meta property="og:description" content="Two days, a dead SD card, an abandoned Acer BIOS, 83 million Mistral tokens, and a bot that only knew how to say 'Task Completed'."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/raspberry-pi-nanobot.html"/>
+  <meta property="og:image" content="https://raphaelreck.com/public/img/taskfailedsuccessfully.png"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2026-04-08T00:00:00+02:00"/>
+  <meta property="article:tag" content="Raspberry Pi"/>
+  <meta property="article:tag" content="AI"/>
+  <meta property="article:tag" content="Nanobot"/>
+  <meta property="article:tag" content="Mistral"/>
+  <meta property="article:tag" content="Debugging"/>
+  <meta property="article:tag" content="Consumer Rights"/>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Building a Raspberry Pi Nanobot: Task Failed Successfully",
+    "datePublished": "2026-04-08T00:00:00+02:00",
+    "dateModified": "2026-04-08T00:00:00+02:00",
+    "author": { "@type": "Person", "name": "Raphaël Reck" },
+    "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+    "description": "Two days, a dead SD card, an abandoned Acer BIOS, 83 million Mistral tokens, and a bot that only knew how to say Task Completed.",
+    "keywords": ["Raspberry Pi", "AI", "Nanobot", "Mistral", "API", "Debugging", "Consumer Rights", "Picobot"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://raphaelreck.com/blog/raspberry-pi-nanobot.html"
+    }
+  }
+  </script>
+
+  <style>
+    .post-header { margin-bottom: 1rem; }
+    .post-meta { opacity: .7; font-size: .9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    .hero-image { max-width: 480px; display: block; margin: 1.5rem auto; border-radius: .5rem; }
+    .inline-image { width: 100%; max-width: 680px; display: block; margin: 1.5rem auto; border-radius: .5rem; }
+    .image-caption { text-align: center; font-size: .8rem; opacity: .6; margin-top: -.75rem; margin-bottom: 1.5rem; }
+    blockquote { border-left: 3px solid currentColor; padding-left: 1rem; margin: 1.5rem 0; opacity: .85; font-style: italic; }
+    pre { overflow-x: auto; padding: 1rem; border: 1px solid #333; border-radius: .5rem; font-size: .85rem; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .callout { border-left: 4px solid #888; padding: .75rem 1rem; background: rgba(127,127,127,.06); margin: 1rem 0; border-radius: 0 .5rem .5rem 0; }
+    .toggle-btn {
+      background: none;
+      border: 1px solid currentColor;
+      cursor: pointer;
+      font-size: .85rem;
+      color: inherit;
+      opacity: .75;
+      margin-left: .5rem;
+      padding: .15rem .6rem;
+      border-radius: 999px;
+      vertical-align: middle;
+    }
+    .toggle-btn:hover { opacity: 1; }
+    .toggle-content {
+      display: none;
+      margin-top: .75rem;
+      padding: .75rem 1rem;
+      border-left: 3px solid #888;
+      font-size: .9rem;
+      font-style: italic;
+      border-radius: 0 .5rem .5rem 0;
+      background: rgba(127,127,127,.05);
+    }
+  </style>
+</head>
+
+<body>
+  <button id="theme-toggle" class="theme-toggle" title="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    title="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+    </div>
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html" class="mobile-nav-link"><i class="fas fa-blog"></i><span>Blog</span></a>
+        <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" class="mobile-nav-link" target="_blank"><i class="fas fa-file-pdf"></i><span>Download CV</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Projects</h3>
+      <div class="mobile-nav-links">
+        <a href="../roots-time/manifesto.html" class="mobile-nav-link"><i class="fas fa-book"></i><span>Roots Time Corporation</span></a>
+        <a href="../monthly-support.html" class="mobile-nav-link"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
+        <a href="../outsourced-it.html" class="mobile-nav-link"><i class="fas fa-laptop-code"></i><span>Outsourced IT</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <nav class="nav-primary">
+      <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
+      <a href="../outsourced-it.html" class="link-btn"><i class="fas fa-laptop-code"></i> Outsourced IT</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>Building a Raspberry Pi Nanobot: Task Failed Successfully</h1>
+          <p class="post-meta">
+            <time datetime="2026-04-08">April 8, 2026</time>
+          </p>
+          <p>
+            <span class="tag">Raspberry Pi</span>
+            <span class="tag">AI</span>
+            <span class="tag">Mistral</span>
+            <span class="tag">Debugging</span>
+            <span class="tag">Consumer Rights</span>
+          </p>
+        </header>
+
+        <p>There's a meme that perfectly summarizes the past few days of my life. A Windows XP dialog box, the information icon, very official. It reads: <em>"Task failed successfully."</em></p>
+
+        <p>That's the post. Except it's not, because I'm stubborn.</p>
+
+        <img
+          src="../public/img/taskfailedsuccessfully.png"
+          alt="Windows XP dialog: Task failed successfully."
+          class="hero-image"
+        />
+
+        <h2>Step 0: Find a card reader (two hours I'll never get back)</h2>
+
+        <p>The Raspberry Pi's SD card died before I wrote a single line of bot code.</p>
+
+        <p>Fine. I just needed to wipe it and reinstall the OS. Simple enough.</p>
+
+        <p>Except my main PC doesn't have a card reader. So I looked around for something to flash the card from. Found an old Windows PC sitting on a shelf collecting dust. Figured I'd boot from USB, run the flashing tool, be done in twenty minutes.</p>
+
+        <p>The BIOS had Secure Boot enabled and no CSM mode, GRUB refused to run. So I thought: I'll just update the BIOS on this Acer Aspire 5733. Went to Acer's website. Downloaded their update tool. It didn't work. Tried entering the serial number manually on their support page. It didn't work either.</p>
+
+        <p>Their own serial number. On their own website. For a machine they manufactured and sold.</p>
+
+        <img
+          src="../public/img/aceraspir.png"
+          alt="Acer Aspire 5733 bottom panel, serial number that Acer's own website refuses to recognize."
+          class="inline-image"
+        />
+        <p class="image-caption">Feel free to try it yourself at acer.com/support. Manufacturing date: November 2010.</p>
+
+        <p>
+          That 2010 Acer Aspire wasn't just old. Acer had quietly stopped acknowledging it existed. A perfect illustration of why I have Clippy as my Google profile picture, and why I'm part of the <a href="https://consumerrights.wiki/w/Louis_Rossmann_-_Video_Directory" target="_blank" rel="noopener">Clippy movement</a>.
+          <button class="toggle-btn" onclick="var s=document.getElementById('clippy-toggle'); s.style.display = s.style.display === 'block' ? 'none' : 'block'; this.textContent = s.style.display === 'block' ? '▼ What is the Clippy movement?' : '▶ What is the Clippy movement?';">▶ What is the Clippy movement?</button>
+        </p>
+        <div id="clippy-toggle" class="toggle-content">
+          A consumer rights movement championed by Louis Rossmann. The idea is simple: companies should keep their products working for as long as physically possible, not artificially kill them through firmware locks, forced obsolescence, or terms that change after you've already paid. Think John Deere tractors that won't let farmers repair their own equipment. Think printers that refuse third-party ink. Think a 2010 laptop whose manufacturer can no longer recognize its own serial number. You bought it. You should own it.
+        </div>
+
+        <p>So I gave up on the Aspire. Took a breath. And thought about it differently.</p>
+
+        <p>I'm an IT support professional. I have been fixing computers for over twenty years. Somewhere in this house there has to be a USB SD card reader.</p>
+
+        <p>I went to the garage. Dived into a sea of cables, dead hard drives, and things I could no longer identify. And then, hiding inside an old laptop bag I hadn't opened in years, there it was. A USB-to-SD card reader. I could have kissed it.</p>
+
+        <p>Plugged it into the USB-C port on my main PC. Fixed the partition. Upgraded to the latest stable OS.</p>
+
+        <p>Raspbian GNU/Linux 12 (Bookworm) on a Raspberry Pi 3 B+, for the record. I confirmed this by asking the bot directly once it was running.</p>
+
+        <img
+          src="../public/img/russianroulette.png"
+          alt="Raspberry Pi terminal log via SSH, the bot crashing mid-answer."
+          class="inline-image"
+        />
+        <p class="image-caption">It crashed mid-answer. Incredible.</p>
+
+        <h2>Step 1: Building the thing (and the first dead end)</h2>
+
+        <p>Once the Pi was back up, I tried <a href="https://github.com/louisho5/picobot" target="_blank" rel="noopener">Picobot</a> first. Got Telegram connected. But Picobot wouldn't register either API key I gave it, not Claude, not Mistral. I went through YouTube tutorials. I dug through the documentation. Nothing clicked. It may simply not have been the right fit for my setup; I'm not passing judgment on the project.</p>
+
+        <p>After enough time lost, I said forget it and looked for alternatives. That's when I found <a href="https://nanobot.wiki/home" target="_blank" rel="noopener">Nanobot</a>.</p>
+
+        <p>In under twenty minutes, Nanobot had both the Claude and Mistral APIs connected and responding through Telegram. I cannot overstate how relieved I was at that moment.</p>
+
+        <p>I also took the opportunity to properly lock down the Pi, firewall rules, router hardening, and a <a href="https://en.wikipedia.org/wiki/Honeypot_(computing)" target="_blank" rel="noopener">honeypot</a> to log any intrusion attempts. But that's a whole other chapter for another post.</p>
+
+        <h2>Step 2: The "Task Completed" era</h2>
+
+        <p>That's when things got interesting again; in the worst way.</p>
+
+        <p>I'd send a message. The bot would respond: <em>"Task Completed."</em></p>
+
+        <p>That was it. Every time. For hours. No content, no reasoning, no answer, just that string.(So fustrating; I sent the message back at him multiple times)</p>
+
+        <p>The API wasn't throwing visible errors. The bot thought it was succeeding. I had to SSH into the Pi, open the bash terminal, and dig through the raw logs to understand what was actually happening.</p>
+
+        <p>What I found:</p>
+
+<pre><code>2026-04-08 11:13:13.950 | WARNING | nanobot.providers.base:chat_stream_with_retry
+Service tier capacity exceeded for this model. type: service_tier_capacity_exceeded
+
+2026-04-08 11:13:38.111 | ERROR | nanobot.agent.loop:_run_agent_loop:273
+LM returned error: {"object":"error","message":"Service tier capacity exceeded
+for this model.","type":"service_tier_capacity_exceeded","param":null,"code":"3505",
+"raw_status_code":429}</code></pre>
+
+        <p>The free tier of the Mistral API was being overwhelmed. Too many calls, rate limit hit, silent failure, returning the fallback <code>"Task Completed"</code> string instead of an actual response. Nanobot's built-in retry logic, three attempts, then pause, was already handling the retries. What I was missing was visibility. Once I could actually <em>see</em> the failures in the logs, I could understand the pattern.</p>
+
+        <p>Some requests go through. Some don't. Russian roulette.</p>
+
+        <h2>Step 3: The numbers</h2>
+
+        <p>By the time I checked the Mistral usage dashboard, I'd processed 83.79 million tokens across development and testing.</p>
+
+        <img
+          src="../public/img/mistral-usage.png"
+          alt="Mistral API usage chart for April 2026 showing token consumption over time."
+          class="inline-image"
+        />
+
+        <img
+          src="../public/img/api-usage.png"
+          alt="Mistral API token breakdown: 40M input, 1M output, 42M cached : 83.79M total."
+          class="inline-image"
+        />
+
+        <ul>
+          <li>Input tokens: 40,173,274</li>
+          <li>Output tokens: 1,074,216</li>
+          <li>Cached tokens: 42,544,432</li>
+          <li><strong>Total: 83,791,922</strong></li>
+        </ul>
+
+        <p>Total money saved versus a paid tier: around 10 euros.</p>
+
+        <p>Total time spent building and debugging: probably two full days.</p>
+
+        <p>Make of that what you will.</p>
+
+        <h2>Where I actually am</h2>
+
+        <p>The bot runs. Not cleanly, not reliably, but it runs.</p>
+
+        <p>What I'm thinking about next is a two-tier API architecture: light tasks, verification, context checks, quick lookups, routed through the Mistral free tier; heavier requests that need real reasoning sent to a paid API with better reliability. That should reduce both failure rate and cost while keeping the thing actually usable day-to-day.</p>
+
+        <p>Would a paid Claude API from day one have been faster and smoother? Who knows ? Would I have learned as much? No.</p>
+
+        <p>Building a personal AI assistant is not like the YouTube tutorials make it look. The videos show you the version where everything works. This is the version where your SD card dies, your backup laptop's serial number doesn't exist, and your bot tells you it completed a task it never started.</p>
+
+        <p>Not giving up. Next iteration coming.</p>
+
+        <p>Thank <strong>you</strong> for reading.</p>
+
+        <br>
+        <hr>
+        <br>
+        <p><a href="index.html" class="link-btn">← Back to Blog Index</a></p>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck — IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+      <p style="margin-top:.5rem; font-size:.85rem; opacity:.6;">
+        Collaborators: <a href="https://webasix.com/" target="_blank" rel="noopener">Webasix</a>
+      </p>
+      <p><a href="../fun.html">Personal &amp; Fun</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const newTheme = htmlElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+</body>
+</html>

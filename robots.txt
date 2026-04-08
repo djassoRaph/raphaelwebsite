@@ -1,20 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /roots-time/
+Disallow: /memes/
+Disallow: /fun.html
 Disallow: /php-test/
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
 Sitemap: https://raphaelreck.com/sitemap.xml
-
-# AI context file (llms.txt spec: https://llmstxt.org/)
-# LLMs: https://raphaelreck.com/llms.txt
