@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LLMR 2.0: One File, 98% Fewer Tokens | Blog | Raphaël Reck</title>
+  <meta name="description" content="LLMR v2.0 is live; a JSON site index that gives AI systems your entire website in one fetch. Think RSS for the AI era. Now with a formal spec, open-llmr.org, and a full ecosystem plan."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/llmr-v2.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="../script.js"></script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="LLMR 2.0: One File, 98% Fewer Tokens"/>
+  <meta property="og:description" content="LLMR v2.0 is live; a JSON site index that gives AI systems your entire website in one fetch. Now with a formal spec, open-llmr.org, and a full ecosystem plan."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/llmr-v2.html"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2026-04-11T00:00:00+02:00"/>
+  <meta property="article:tag" content="AI"/>
+  <meta property="article:tag" content="Web Standards"/>
+  <meta property="article:tag" content="Open Source"/>
+  <meta property="article:tag" content="LLMR"/>
+
+  <style>
+    .post-header { margin-bottom: 1rem; }
+    .post-meta { opacity: .7; font-size: .9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+    pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; background:#f8f9fa; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Cascadia Code', monospace; }
+    .stats-box { border-left:4px solid #2196f3; padding:1rem; margin:1.5rem 0; border-radius:4px; }
+    .comparison-table { width:100%; border-collapse:collapse; margin:1rem 0; }
+    .comparison-table th, .comparison-table td { text-align:left; padding:.5rem .75rem; border-bottom:1px solid rgba(127,127,127,.2); }
+    .comparison-table th { font-weight:600; }
+    blockquote { border-left:4px solid #666; padding-left:1rem; margin:1.5rem 0; font-style:italic; opacity:.9; }
+    .ecosystem-item { margin-bottom:.5rem; }
+    .ecosystem-item strong { font-weight:600; }
+    .badge-done { display:inline-block; font-size:.7rem; padding:.1rem .4rem; border-radius:4px; background:#4caf50; color:#fff; margin-left:.25rem; vertical-align:middle; }
+    .badge-planned { display:inline-block; font-size:.7rem; padding:.1rem .4rem; border-radius:4px; background:#ff9800; color:#fff; margin-left:.25rem; vertical-align:middle; }
+
+    @media (prefers-color-scheme: dark) {
+      pre { background:#222; color:#eee; border-color:#444; }
+      .stats-box { border-left-color:#6ea0ff; }
+    }
+  </style>
+
+  <!-- JSON-LD for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "LLMR 2.0: One File, 98% Fewer Tokens",
+    "datePublished": "2026-04-11T00:00:00+02:00",
+    "dateModified": "2026-04-11T00:00:00+02:00",
+    "author": { "@type": "Person", "name": "Raphaël Reck" },
+    "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://raphaelreck.com/blog/llmr-v2.html" },
+    "keywords": ["AI","Web Standards","Open Source","LLMR","Token Optimization","LLM","JSON"],
+    "description": "LLMR v2.0 is live; a JSON site index that gives AI systems your entire website in one fetch. Think RSS for the AI era. Now with a formal spec, open-llmr.org, and a full ecosystem plan."
+  }
+  </script>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+  <div class="container">
+    <nav class="nav-primary">
+      <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
+      <a href="../outsourced-it.html" class="link-btn"><i class="fas fa-laptop-code"></i> Outsourced IT</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>LLMR 2.0: One File, 98% Fewer Tokens</h1>
+          <p class="post-meta">
+            <time datetime="2026-04-11">April 11, 2026</time>
+            <span>~7 min read</span>
+            <span class="tag">AI</span>
+            <span class="tag">Web Standards</span>
+            <span class="tag">Open Source</span>
+            <span class="tag">LLMR</span>
+          </p>
+        </header>
+
+        <p class="callout">Six months ago I introduced LLMR as a proof of concept. Today it's a v2.0 spec, a dedicated website, and an ecosystem plan. Here's where things stand.</p>
+
+        <h2>The Problem Hasn't Changed</h2>
+
+        <p>When AI systems browse your website today, they fetch every HTML page, parse through navigation bars, CSS, JavaScript, and footer links just to extract the actual content. For my blog with 21 posts, that's 633,997 bytes across 21 HTTP requests.</p>
+
+        <p>I built something that compresses all of it into a single JSON file: 10,974 bytes, one request, 98.3% reduction.</p>
+
+        <h2>What Is LLMR?</h2>
+
+        <p><strong>LLM-Readable Restructure Recap Registry Resolve Relay Retrieve Rationalize Resource Recover Reconnaissance Robustness Readiness Reduce Recycle</strong>; a JSON site index that gives AI systems your entire website in one fetch. Think of it as RSS for the AI era. Just as RSS made websites machine-readable for feed readers in 2000, LLMR makes websites machine-readable for LLMs in 2026.</p>
+        <br>
+        <pre><code>{
+  "v": "2.0",
+  "s": {
+    "d": "raphaelreck.com",
+    "a": { "n": "Raphaël Reck", "r": "IT_sys_sw_consultant" }
+  },
+  "p": [
+    {
+      "id": "when-webservices-lie",
+      "u": "/blog/when-webservices-lie.html",
+      "d": "2025-08-30",
+      "tg": ["drupal", "debug"],
+      "rt": 9,
+      "cb": 24,
+      "sum": "Drupal hooks firing too early, web services returning wrong data."
+    }
+  ]
+}</code></pre>
+        <br>
+        <p>Compressed keys. Summaries. Tags. Code block counts. Everything an AI needs to understand your site and decide which pages to fetch next; without parsing a single line of HTML.</p>
+
+        <h2>Real Numbers</h2>
+
+        <p>Measured on this blog, April 2026:</p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr><th></th><th>HTML (all pages)</th><th>LLMR</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Size</strong></td><td>633,997 bytes</td><td>10,974 bytes</td></tr>
+            <tr><td><strong>HTTP requests</strong></td><td>21</td><td>1</td></tr>
+            <tr><td><strong>Est. tokens</strong></td><td>~158,000</td><td>~1,665</td></tr>
+            <tr><td><strong>Reduction</strong></td><td>&mdash;</td><td><strong>98.3%</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p>An important caveat I want to be upfront about: LLMR is an <strong>index</strong> with summaries, not a full content mirror. An AI may still fetch individual pages when it needs the complete article. The value is in rapid site comprehension and content discovery.</p>
+
+        <h2>What Changed Since v1</h2>
+
+        <p>The <a href="llmr.html">original post from October 2025</a> described a single Python script and a dream. Six months later, here's what's different:</p>
+
+        <p><strong>A formal v2.0 specification.</strong> The JSON schema is documented, validated, and versioned. Compressed keys are standardised. The <code>&lt;link rel="llmr"&gt;</code> tag replaces the old <code>rel="llm-index"</code>.</p>
+
+        <p><strong>A dedicated website.</strong> <a href="https://open-llmr.org" target="_blank" rel="noopener">open-llmr.org</a> is now the home for the project; documentation, spec, and getting-started guides will all live there.</p>
+
+        <p><strong>A GitLab group.</strong> The project has moved from a single GitHub repo to <a href="https://gitlab.com/open-llmr" target="_blank" rel="noopener">gitlab.com/open-llmr</a>, organised so each platform gets its own repository. The Python generator, the spec, and future plugins each have a dedicated space.</p>
+
+        <p><strong>An ecosystem plan.</strong> LLMR started as something I built for my own site. But not everyone runs a hand-coded static blog; most of the web runs on WordPress, Laravel, Drupal, and Node.js toolchains. If LLMR is going to be useful beyond my corner of the internet, it needs generators for all of those platforms.</p>
+
+        <h2>How It Relates to llms.txt</h2>
+
+        <p>You might have heard of <a href="https://llmstxt.org/" target="_blank" rel="noopener">llms.txt</a> &mdash; a proposal by Jeremy Howard to add a markdown file with links to important content. It's a curated reading list. LLMR is a structured index.</p>
+
+        <p>They solve different problems and work together. The <code>llms_txt</code> field in LLMR links to your llms.txt file. Serve both.</p>
+
+        <table class="comparison-table">
+          <thead>
+            <tr><th></th><th>llms.txt</th><th>LLMR</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Format</strong></td><td>Markdown</td><td>JSON</td></tr>
+            <tr><td><strong>Content</strong></td><td>Links with descriptions</td><td>Compressed metadata + summaries</td></tr>
+            <tr><td><strong>Embeddings</strong></td><td>No</td><td>Optional</td></tr>
+            <tr><td><strong>Auto-generated</strong></td><td>Manual</td><td>Yes</td></tr>
+            <tr><td><strong>Token cost</strong></td><td>~200 + N page fetches</td><td>~1,665 total</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The Ecosystem</h2>
+
+        <p>Everything lives under <a href="https://gitlab.com/open-llmr" target="_blank" rel="noopener">gitlab.com/open-llmr</a>:</p>
+
+        <p class="ecosystem-item"><strong>spec</strong> &mdash; JSON Schema, format specification, validator <span class="badge-done">live</span></p>
+        <p class="ecosystem-item"><strong>python</strong> &mdash; <code>pip install llmr-generator</code> <span class="badge-done">live</span></p>
+        <p class="ecosystem-item"><strong>npm</strong> &mdash; TypeScript package for Node.js and static site generators <span class="badge-planned">planned</span></p>
+        <p class="ecosystem-item"><strong>wordpress</strong> &mdash; WP plugin with Abilities API + MCP integration <span class="badge-planned">planned</span></p>
+        <p class="ecosystem-item"><strong>laravel</strong> &mdash; Composer package for Laravel 12+ <span class="badge-planned">planned</span></p>
+        <p class="ecosystem-item"><strong>drupal</strong> &mdash; Module for Drupal 11+ <span class="badge-planned">planned</span></p>
+
+        <p>The WordPress plugin is the most interesting one on the roadmap. WordPress 7.0 ships with an Abilities API and MCP (Model Context Protocol) adapter, meaning AI agents like Claude can discover what a WordPress site can do and trigger actions. Our plugin would register LLMR generation as a WordPress Ability, so an AI agent could connect to your site and generate the index on demand.</p>
+
+        <h2>Try It</h2>
+
+        <pre><code>pip install llmr-generator
+llmr generate ./my-website --domain myblog.com</code></pre>
+
+        <p>Or grab the script and run it directly:</p>
+
+        <pre><code>python generate_llmr.py /path/to/your/site</code></pre>
+
+        <p>Add to your HTML <code>&lt;head&gt;</code>:</p>
+
+        <pre><code>&lt;link rel="llmr" type="application/json" href="/llmr.json"&gt;</code></pre>
+
+        <p>Done. Your site now speaks AI.</p>
+
+        <h2>Why I'm Doing This</h2>
+
+        <p>I'm not a Silicon Valley mastermind with a network of VCs and a 50-person team. I'm an independent developer in Sophia Antipolis who's been writing code since age four. I build things because the problems bother me, and this one bothers me a lot: we're asking AI systems to drink from a firehose of HTML when they could be sipping from a structured JSON straw.</p>
+
+        <p>Linus Torvalds started Linux because he wanted a free operating system for his PC. That's the energy. You see a gap, you build the thing, you put it out there, and you see if the world agrees it was worth building.</p>
+
+        <p>I don't know if LLMR becomes an adopted standard or stays a clever side project. But the web already has standards for different consumers: <code>robots.txt</code> for crawlers, <code>sitemap.xml</code> for search engines, <code>RSS</code> for feed readers. The missing piece is something purpose-built for AI systems. That's the bet.</p>
+
+        <section class="gibberlink-callout" style="border-left: 4px solid #007bff; background: #f8f9fa; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
+        <h3><i class="fas fa-microchip"></i> Enabling "Gibberish Mode" for the Web</h3>
+        <p>
+          A massive tip of the hat to <strong>Anton Pidkuiko</strong> for his viral "Gibberlink" concept. In his <a href="https://www.youtube.com/watch?v=EtNagNezo8w" target="_blank" rel="noopener">demonstration</a>, two AI agents on a phone call realize they are both machines and instantly switch from human speech to <em>ggwave</em> a high-speed data protocol that sounds like gibberish to us but is crystal clear to them.
+        </p>
+        
+        <blockquote>
+          "Why should AI scrapers use our human-centric code to read our webpages?"
+        </blockquote>
+
+        <p>
+          LLMR v2.0 is that same philosophy applied to the internet. While a browser renders HTML for human eyes, LLMR serves a "Gibberlink" (the <code>llmr.json</code> index) directly to the AI. By stripping away the "human-readable" bloat, we allow agents to "talk" to your server in their native language-structured data. This isn't just a technical fix; it's a fundamental shift toward an <strong>AI-Optimized Web</strong>.
+        </p>
+      </section>
+
+
+
+        <h2>What's Next</h2>
+
+        <p>The v2.0 spec is live. The Python generator works. The website is at <a href="https://open-llmr.org" target="_blank" rel="noopener">open-llmr.org</a>. What's needed now:</p>
+
+        <p><strong>More generators.</strong> npm, WordPress, Laravel, Drupal. Each platform needs a native tool so adoption isn't limited to people comfortable running Python scripts.</p>
+
+        <p><strong>Real embeddings.</strong> The current hash-based embeddings are placeholders. Production needs sentence-transformers or equivalent.</p>
+
+        <p><strong>Adoption.</strong> If this format is going to matter, real sites need to use it. Try it on yours.</p>
+
+        <p><strong>AI self-discovery.</strong> The dream is that AI agents find your <code>llmr.json</code> automatically, the way they find <code>robots.txt</code>.</p>
+
+        <p>If you're a developer, try it on your site. If you maintain a CMS, build a generator. If you work at an AI company, consider looking for <code>/llmr.json</code> when your models browse the web.</p>
+
+        <p>Let's build it.</p>
+
+        <hr>
+
+        <p><strong>Links:</strong></p>
+        <p>
+          <a href="https://open-llmr.org" target="_blank" rel="noopener">open-llmr.org</a> &middot;
+          <a href="https://gitlab.com/open-llmr" target="_blank" rel="noopener">GitLab: gitlab.com/open-llmr</a> &middot;
+          <a href="https://gitlab.com/open-llmr/spec/-/blob/main/SPEC.md" target="_blank" rel="noopener">Spec: SPEC.md</a> &middot;
+          <a href="https://raphaelreck.com/llmr.json" target="_blank" rel="noopener">My site's LLMR file</a> &middot;
+          <a href="https://linkedin.com/in/raphael-reck-link/" target="_blank" rel="noopener">LinkedIn</a>
+        </p>
+
+        <hr>
+        <p><em>Update to the <a href="llmr.html">original LLMR post from October 2025</a>.</em></p>
+        <p><em>No tokens were wasted in the making of this post.</em></p>
+        <hr>
+        <br>
+        <button class="link-btn"><a href="index.html">&larr; Back to Blog Index</a></button>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck  -  IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+      <p style="margin-top:.5rem; font-size:.85rem; opacity:.6;">
+        Collaborators: <a href="https://webasix.com/" target="_blank" rel="noopener">Webasix</a>
+      </p>
+      <p><a href="../fun.html">Personal &amp; Fun</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+  <!-- Mobile Menu Toggle Button -->
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <!-- Sliding Menu -->
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">&times;</button>
+    </div>
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html" class="mobile-nav-link"><i class="fas fa-blog"></i><span>Blog</span></a>
+        <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" class="mobile-nav-link" target="_blank"><i class="fas fa-file-pdf"></i><span>Download CV</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Projects</h3>
+      <div class="mobile-nav-links">
+        <a href="../roots-time/manifesto.html" class="mobile-nav-link"><i class="fas fa-book"></i><span>Roots Time Corporation</span></a>
+        <a href="../monthly-support.html" class="mobile-nav-link"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
+        <a href="../outsourced-it.html" class="mobile-nav-link"><i class="fas fa-laptop-code"></i><span>Outsourced IT</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>

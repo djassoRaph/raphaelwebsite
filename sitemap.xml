@@ -56,12 +56,18 @@
   <!-- Blog index -->
   <url>
     <loc>https://raphaelreck.com/blog/</loc>
-    <lastmod>2026-04-08</lastmod>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog posts -->
+  <url>
+    <loc>https://raphaelreck.com/blog/llmr-v2.html</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://raphaelreck.com/blog/raspberry-pi-nanobot.html</loc>
     <lastmod>2026-04-08</lastmod>
