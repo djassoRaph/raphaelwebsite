@@ -166,7 +166,7 @@ def ask_claude(site_name: str, data_block: str) -> list[dict]:
 Remember: return ONLY a JSON array of issue objects. No other text."""
 
     msg = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model="claude-sonnet-4-6",
         max_tokens=2000,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_message}],
