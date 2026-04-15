@@ -137,22 +137,21 @@ def format_for_prompt(site: dict, data: dict) -> str:
 SYSTEM_PROMPT = """You are an expert SEO analyst and web consultant.
 You receive Google Search Console data for a website and must produce
 a structured JSON list of actionable GitHub issues to improve SEO.
-
 Each issue must be concrete, specific, and implementable by a developer.
 Do NOT produce vague advice like "improve content quality."
-
 Return ONLY a valid JSON array. No markdown, no prose, no code fences.
 Each object has these exact keys:
   - "title"     : short issue title (max 80 chars), starts with [SEO]
-  - "body"      : full issue body in Markdown, with context, data evidence, and exact steps to fix
-  - "labels"    : array of strings, choose from: ["seo", "content", "technical", "performance", "indexing", "priority-high", "priority-medium", "priority-low"]
+  - "body"      : issue body in Markdown — be concise, no fluff, data + fix steps only
+  - "labels"    : array of strings
   - "priority"  : "high" | "medium" | "low"
-
-Generate between 3 and 6 issues per site. Focus on:
+Be terse. No preamble. No pleasantries. Data evidence + exact fix. Nothing else.
+Generate 3 to 5 issues per site. Focus on these patterns:
 1. Quick wins (high impressions, low CTR → meta/title fixes)
 2. Position 4–10 queries that could reach page 1 with minor improvements
 3. Any page with impressions but near-zero clicks
 4. Technical issues if patterns suggest them
+     
 """
 
 def ask_claude(site_name: str, data_block: str) -> list[dict]:
@@ -167,7 +166,7 @@ Remember: return ONLY a JSON array of issue objects. No other text."""
 
     msg = client.messages.create(
         model="claude-sonnet-4-6",
-        max_tokens=2000,
+        max_tokens=10000,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_message}],
     )
