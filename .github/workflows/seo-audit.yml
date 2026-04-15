@@ -1,0 +1,59 @@
+# =============================================================================
+# SEO Weekly Audit — raphaelreck.com + open-llmr.org
+# Runs every Friday at 12:00 Paris time (10:00 UTC in summer / CEST)
+# Creates GitHub Issues with SEO recommendations
+# =============================================================================
+#
+# SECRETS YOU MUST ADD in GitHub → Settings → Secrets and variables → Actions:
+#
+#   GOOGLE_SERVICE_ACCOUNT_JSON  ← full content of the service account .json key file
+#   ANTHROPIC_API_KEY            ← from console.anthropic.com
+#   SEO_GITHUB_TOKEN             ← your fine-grained PAT (needs Issues: Read & Write)
+#
+# =============================================================================
+
+name: SEO Weekly Audit
+
+on:
+  schedule:
+    # Friday 10:00 UTC = 12:00 Paris CEST (summer) / 11:00 Paris CET (winter)
+    - cron: '0 10 * * 5'
+  workflow_dispatch:
+    # Allows you to trigger manually from the Actions tab — useful for testing
+
+jobs:
+  seo-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install \
+            google-auth==2.29.0 \
+            google-auth-httplib2==0.2.0 \
+            google-api-python-client==2.127.0 \
+            anthropic==0.28.0 \
+            requests==2.32.3
+
+      - name: Run SEO audit and create issues
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.SEO_GITHUB_TOKEN }}
+          # Edit these two lines to match your actual GitHub repo names:
+          REPO_RAPHAELRECK: "djassoRaph/raphaelreck.com"
+          REPO_LLMR: "djassoRaph/open-llmr"
+        run: python .github/scripts/seo_audit.py
+
+      - name: Report completion
+        if: always()
+        run: echo "SEO audit finished at $(date -u '+%Y-%m-%d %H:%M UTC')"
