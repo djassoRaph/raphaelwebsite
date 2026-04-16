@@ -9,6 +9,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Other top-level pages -->
+  <url>
+    <loc>https://raphaelreck.com/fun.html</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Funnel pages -->
   <url>
     <loc>https://raphaelreck.com/monthly-support.html</loc>
@@ -51,6 +59,20 @@
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Other pages -->
+  <url>
+    <loc>https://raphaelreck.com/roots-time/manifesto.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://raphaelreck.com/memes/laugh.html</loc>
+    <lastmod>2025-06-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <!-- Blog index -->
