@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>hook_webform_submission_insert: A Practical Drupal Tutorial | Raphaël Reck</title>
+  <meta name="description" content="A hands-on tutorial for hook_webform_submission_insert in Drupal. Learn how to react to new webform submissions with real, copy-paste PHP code examples."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/hook-webform-submission-insert-drupal.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="../script.js"></script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="hook_webform_submission_insert: A Practical Drupal Tutorial"/>
+  <meta property="og:description" content="A hands-on tutorial for hook_webform_submission_insert in Drupal. Real, copy-paste PHP code examples for reacting to new form submissions."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/hook-webform-submission-insert-drupal.html"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2026-04-16T00:00:00+02:00"/>
+  <meta property="article:tag" content="Drupal"/>
+  <meta property="article:tag" content="Webform"/>
+  <meta property="article:tag" content="PHP"/>
+
+  <style>
+    .post-header { margin-bottom: 1rem; }
+    .post-meta { opacity: .7; font-size: .9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "hook_webform_submission_insert: A Practical Drupal Tutorial",
+    "datePublished": "2026-04-16T00:00:00+02:00",
+    "dateModified": "2026-04-16T00:00:00+02:00",
+    "author": {"@type": "Person", "name": "Raphaël Reck"},
+    "publisher": {"@type": "Person", "name": "Raphaël Reck"},
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://raphaelreck.com/blog/hook-webform-submission-insert-drupal.html"},
+    "keywords": ["Drupal", "Webform", "hook_webform_submission_insert", "PHP", "hooks"],
+    "description": "A hands-on tutorial for hook_webform_submission_insert in Drupal. Learn how to react to new webform submissions with real, copy-paste PHP code examples."
+  }
+  </script>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+  <div class="container">
+    <nav class="nav-primary">
+      <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
+      <a href="../outsourced-it.html" class="link-btn"><i class="fas fa-laptop-code"></i> Outsourced IT</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>hook_webform_submission_insert: A Practical Drupal Tutorial</h1>
+          <p class="post-meta">
+            <time datetime="2026-04-16">April 16, 2026</time>
+            · <span>~6 min read</span>
+            · <span class="tag">Drupal</span>
+            <span class="tag">Webform</span>
+            <span class="tag">PHP</span>
+          </p>
+        </header>
+
+        <p>
+          If you've ever needed to react immediately after a webform submission is saved — trigger an
+          external API, write to a custom table, send a tailored notification — <code>hook_webform_submission_insert</code>
+          is the hook you want. This post covers what it does, when it fires, and three real-world
+          patterns you can drop into your custom module today.
+        </p>
+
+        <h2 id="what-is-it">What is hook_webform_submission_insert?</h2>
+        <p>
+          <code>hook_webform_submission_insert</code> is a Drupal hook provided by the
+          <a href="https://www.drupal.org/project/webform" target="_blank" rel="noopener">Webform module</a>.
+          It fires once, after a new submission entity has been <strong>persisted to the database</strong>
+          for the first time. At this point the submission has a valid ID, all field values are finalized,
+          and you are free to read or react to them — but not to alter the saved data (for that, use
+          <code>hook_webform_submission_presave</code>).
+        </p>
+
+        <div class="callout">
+          <strong>Key distinction:</strong> <code>_insert</code> fires only on creation.
+          For updates use <code>hook_webform_submission_update</code>.
+          For both, use <code>hook_webform_submission_postsave</code>.
+        </div>
+
+        <h2 id="signature">Hook Signature</h2>
+        <p>Place this in your custom module's <code>.module</code> file (or a relevant <code>.inc</code>):</p>
+
+<pre><code class="language-php">&lt;?php
+
+use Drupal\webform\WebformSubmissionInterface;
+
+/**
+ * Implements hook_webform_submission_insert().
+ *
+ * Fires after a new webform submission is saved for the first time.
+ *
+ * @param \Drupal\webform\WebformSubmissionInterface $webform_submission
+ *   The webform submission entity that was just created.
+ */
+function mymodule_webform_submission_insert(WebformSubmissionInterface $webform_submission): void {
+  // Your logic here.
+}
+</code></pre>
+
+        <h2 id="reading-data">Reading Submission Data</h2>
+        <p>The most common first step: read the submitted values.</p>
+
+<pre><code class="language-php">&lt;?php
+
+function mymodule_webform_submission_insert(WebformSubmissionInterface $webform_submission): void {
+  // Get the webform ID to act only on a specific form.
+  $webform_id = $webform_submission->getWebform()->id();
+  if ($webform_id !== 'contact_form') {
+    return;
+  }
+
+  // Read individual field values.
+  $data    = $webform_submission->getData();
+  $name    = $data['full_name'] ?? '';
+  $email   = $data['email']     ?? '';
+  $message = $data['message']   ?? '';
+
+  // Read submission metadata.
+  $sid  = $webform_submission->id();
+  $uid  = $webform_submission->getOwnerId();
+  $time = $webform_submission->getCreatedTime(); // Unix timestamp.
+}
+</code></pre>
+
+        <h2 id="example-notify">Example 1 — Send a Custom Slack Notification</h2>
+        <p>
+          A common pattern: ping a Slack channel whenever a high-priority contact form is submitted,
+          without relying on the Webform module's built-in email handler.
+        </p>
+
+<pre><code class="language-php">&lt;?php
+
+function mymodule_webform_submission_insert(WebformSubmissionInterface $webform_submission): void {
+  if ($webform_submission->getWebform()->id() !== 'urgent_request') {
+    return;
+  }
+
+  $data    = $webform_submission->getData();
+  $subject = $data['subject'] ?? '(no subject)';
+  $from    = $data['email']   ?? 'unknown';
+
+  $payload = json_encode([
+    'text' => "New urgent request from {$from}: {$subject}",
+  ]);
+
+  /** @var \GuzzleHttp\ClientInterface $http */
+  $http = \Drupal::httpClient();
+
+  try {
+    $http->post('https://hooks.slack.com/services/YOUR/WEBHOOK/URL', [
+      'body'    => $payload,
+      'headers' => ['Content-Type' => 'application/json'],
+    ]);
+  }
+  catch (\Exception $e) {
+    \Drupal::logger('mymodule')->error('Slack notification failed: @msg', [
+      '@msg' => $e->getMessage(),
+    ]);
+  }
+}
+</code></pre>
+
+        <h2 id="example-custom-table">Example 2 — Write to a Custom Database Table</h2>
+        <p>
+          Sometimes you need data in your own schema — for reporting, external syncs, or avoiding
+          Webform's own query layer.
+        </p>
+
+<pre><code class="language-php">&lt;?php
+
+function mymodule_webform_submission_insert(WebformSubmissionInterface $webform_submission): void {
+  if ($webform_submission->getWebform()->id() !== 'newsletter_signup') {
+    return;
+  }
+
+  $data  = $webform_submission->getData();
+  $email = $data['email'] ?? '';
+
+  if (empty($email)) {
+    return;
+  }
+
+  \Drupal::database()->insert('mymodule_newsletter_queue')
+    ->fields([
+      'email'      => $email,
+      'sid'        => $webform_submission->id(),
+      'created'    => \Drupal::time()->getRequestTime(),
+      'status'     => 'pending',
+    ])
+    ->execute();
+}
+</code></pre>
+
+        <h2 id="example-entity">Example 3 — Create a Related Entity on Submission</h2>
+        <p>
+          This is where it gets powerful. Automatically create a node, a custom entity, or a flag
+          the moment someone submits a form.
+        </p>
+
+<pre><code class="language-php">&lt;?php
+
+use Drupal\node\Entity\Node;
+
+function mymodule_webform_submission_insert(WebformSubmissionInterface $webform_submission): void {
+  if ($webform_submission->getWebform()->id() !== 'project_request') {
+    return;
+  }
+
+  $data  = $webform_submission->getData();
+  $title = $data['project_name'] ?? 'Untitled project';
+
+  $node = Node::create([
+    'type'                => 'project',
+    'title'               => $title,
+    'field_requestor_sid' => $webform_submission->id(),
+    'status'              => 0, // Draft until reviewed.
+    'uid'                 => $webform_submission->getOwnerId(),
+  ]);
+  $node->save();
+}
+</code></pre>
+
+        <div class="callout">
+          <strong>Watch out:</strong> entity creation inside a hook runs inside the same request.
+          For heavy processing (API calls with retries, file processing), push the work into a
+          Drupal Queue using <code>\Drupal::queue('mymodule_queue')-&gt;createItem($data)</code>
+          and process it with a worker. This keeps form submission fast and resilient.
+        </div>
+
+        <h2 id="gotchas">Common Gotchas</h2>
+        <ul>
+          <li>
+            <strong>Draft submissions:</strong> <code>hook_webform_submission_insert</code> fires for draft saves too.
+            Check <code>$webform_submission->isDraft()</code> if you only want to act on final submissions.
+          </li>
+          <li>
+            <strong>Anonymous submissions:</strong> <code>getOwnerId()</code> returns <code>0</code> for anonymous users. Guard accordingly.
+          </li>
+          <li>
+            <strong>Bulk imports:</strong> if submissions are imported via Drush or migrations, this hook fires for each one.
+            If that's a problem, check the source or add a flag field to skip processing.
+          </li>
+          <li>
+            <strong>Don't re-save the submission here.</strong> Calling <code>$webform_submission-&gt;save()</code>
+            inside <code>hook_webform_submission_insert</code> triggers another insert cycle. Use
+            <code>hook_webform_submission_presave</code> if you need to modify data before it hits the DB.
+          </li>
+        </ul>
+
+        <h2 id="related">Related Hooks at a Glance</h2>
+        <table style="width:100%; border-collapse:collapse; margin:1rem 0;">
+          <thead>
+            <tr style="text-align:left; border-bottom:1px solid #888;">
+              <th style="padding:.4rem .6rem;">Hook</th>
+              <th style="padding:.4rem .6rem;">When it fires</th>
+              <th style="padding:.4rem .6rem;">Can modify data?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #444;">
+              <td style="padding:.4rem .6rem;"><code>hook_webform_submission_presave</code></td>
+              <td style="padding:.4rem .6rem;">Before any save (insert or update)</td>
+              <td style="padding:.4rem .6rem;">Yes</td>
+            </tr>
+            <tr style="border-bottom:1px solid #444;">
+              <td style="padding:.4rem .6rem;"><code>hook_webform_submission_insert</code></td>
+              <td style="padding:.4rem .6rem;">After first save only</td>
+              <td style="padding:.4rem .6rem;">No</td>
+            </tr>
+            <tr style="border-bottom:1px solid #444;">
+              <td style="padding:.4rem .6rem;"><code>hook_webform_submission_update</code></td>
+              <td style="padding:.4rem .6rem;">After subsequent saves</td>
+              <td style="padding:.4rem .6rem;">No</td>
+            </tr>
+            <tr>
+              <td style="padding:.4rem .6rem;"><code>hook_webform_submission_postsave</code></td>
+              <td style="padding:.4rem .6rem;">After any save (insert or update)</td>
+              <td style="padding:.4rem .6rem;">No</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 id="conclusion">Conclusion</h2>
+        <p>
+          <code>hook_webform_submission_insert</code> is the cleanest place to react to a brand-new
+          webform submission: the data is committed, the ID exists, and you're not blocking the
+          save transaction. Keep the hook lean — offload anything slow to a queue — and scope it to
+          the webform IDs you actually care about.
+        </p>
+        <p>
+          Have a tricky Drupal hook scenario you're wrestling with? I've also written about
+          <a href="2025-08-25-ai-vs-legacy-drupal.html">AI-generated code colliding with legacy Drupal</a>
+          and <a href="when-webservices-lie.html">hooks firing at the wrong time in complex form workflows</a>.
+        </p>
+
+        <hr/>
+        <p><em>Questions or edge cases I missed? Reach out via LinkedIn or email — always happy to dig into a Drupal puzzle.</em></p>
+        <br>
+        <button class="link-btn"><a href="index.html">← Back to Blog Index</a></button>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck  -  IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+      <p style="margin-top:.5rem; font-size:.85rem; opacity:.6;">
+        Collaborators: <a href="https://webasix.com/" target="_blank" rel="noopener">Webasix</a>
+      </p>
+      <p><a href="../fun.html">Personal &amp; Fun</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+    </div>
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html" class="mobile-nav-link"><i class="fas fa-blog"></i><span>Blog</span></a>
+        <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" class="mobile-nav-link" target="_blank"><i class="fas fa-file-pdf"></i><span>Download CV</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Projects</h3>
+      <div class="mobile-nav-links">
+        <a href="../roots-time/manifesto.html" class="mobile-nav-link"><i class="fas fa-book"></i><span>Roots Time Corporation</span></a>
+        <a href="../monthly-support.html" class="mobile-nav-link"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
+        <a href="../outsourced-it.html" class="mobile-nav-link"><i class="fas fa-laptop-code"></i><span>Outsourced IT</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>
