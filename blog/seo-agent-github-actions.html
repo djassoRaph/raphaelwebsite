@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>I built a weekly SEO agent that creates GitHub Issues while I sleep | Raphaël Reck</title>
+
+    <meta name="description" content="Twenty years in IT and I was still manually checking SEO dashboards like it was 2008. So I automated the follow-through: a GitHub Actions workflow that pulls Search Console data, asks Claude to analyse it, and files GitHub Issues every Friday at noon."/>
+    <link rel="canonical" href="https://raphaelreck.com/blog/seo-agent-github-actions.html"/>
+
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="I built a weekly SEO agent that creates GitHub Issues while I sleep"/>
+    <meta property="og:description" content="Twenty years in IT and I was still manually checking SEO dashboards like it was 2008. So I automated the follow-through with GitHub Actions, Google Search Console API, and Claude."/>
+    <meta property="og:url" content="https://raphaelreck.com/blog/seo-agent-github-actions.html"/>
+    <meta property="og:image" content="https://raphaelreck.com/public/img/og-default.png"/>
+    <meta property="og:image:width" content="967"/>
+    <meta property="og:image:height" content="522"/>
+    <meta property="og:site_name" content="Raphaël Reck"/>
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@raphaelreck"/>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "I built a weekly SEO agent that creates GitHub Issues while I sleep",
+    "datePublished": "2026-04-15T00:00:00+02:00",
+    "dateModified": "2026-04-15T00:00:00+02:00",
+    "author": {
+        "@type": "Person",
+        "name": "Raphaël Reck",
+        "url": "https://raphaelreck.com"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Raphaël Reck",
+        "url": "https://raphaelreck.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://raphaelreck.com/public/img/logo.png",
+            "width": 507,
+            "height": 768
+        }
+    },
+    "description": "Twenty years in IT and I was still manually checking SEO dashboards like it was 2008. So I automated the follow-through: a GitHub Actions workflow that pulls Search Console data, asks Claude to analyse it, and files GitHub Issues every Friday at noon.",
+    "keywords": [
+        "SEO",
+        "GitHub Actions",
+        "Google Search Console",
+        "Automation",
+        "Claude AI",
+        "Python",
+        "cron",
+        "Developer Tools",
+        "AI"
+    ],
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://raphaelreck.com/blog/seo-agent-github-actions.html"
+    },
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://raphaelreck.com/public/img/og-default.png",
+        "width": 967,
+        "height": 522
+    }
+}
+</script>
+
+    <style>
+        .post-header { margin-bottom: 1rem; }
+        .post-meta { opacity: .7; font-size: .9rem; }
+        .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+        blockquote { border-left: 3px solid currentColor; padding-left: 1rem; margin: 1.5rem 0; opacity: .85; font-style: italic; }
+        pre { background: var(--code-bg, #f4f4f4); border-radius: .4rem; padding: 1rem; overflow-x: auto; font-size: .85rem; margin: 1.25rem 0; }
+        code { font-family: monospace; font-size: .9em; }
+        pre code { font-size: .85rem; }
+        table { border-collapse: collapse; width: 100%; margin: 1.25rem 0; font-size: .9rem; }
+        th, td { border: 1px solid currentColor; padding: .5rem .75rem; text-align: left; }
+        th { opacity: .8; }
+        .issue-list { background: var(--code-bg, #f4f4f4); border-radius: .4rem; padding: 1rem 1rem 1rem 1.5rem; margin: 1.25rem 0; }
+        .issue-list li { margin-bottom: .4rem; font-family: monospace; font-size: .88rem; }
+        .architecture-block { background: var(--code-bg, #f4f4f4); border-radius: .4rem; padding: 1rem; margin: 1.25rem 0; font-family: monospace; font-size: .85rem; white-space: pre; overflow-x: auto; }
+    </style>
+</head>
+
+<body>
+  <button id="theme-toggle" class="theme-toggle" title="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    title="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+    </div>
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html" class="mobile-nav-link"><i class="fas fa-blog"></i><span>Blog</span></a>
+        <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" class="mobile-nav-link" target="_blank"><i class="fas fa-file-pdf"></i><span>Download CV</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Projects</h3>
+      <div class="mobile-nav-links">
+        <a href="../roots-time/manifesto.html" class="mobile-nav-link"><i class="fas fa-book"></i><span>Roots Time Corporation</span></a>
+        <a href="../monthly-support.html" class="mobile-nav-link" target="_blank"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
+        <a href="../outsourced-it.html" class="mobile-nav-link"><i class="fas fa-laptop-code"></i><span>Outsourced IT</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <nav class="nav-primary">
+      <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
+      <a href="../outsourced-it.html" class="link-btn"><i class="fas fa-laptop-code"></i> Outsourced IT</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>I built a weekly SEO agent that creates GitHub Issues while I sleep</h1>
+          <p class="post-meta">
+            <time datetime="2026-04-15">April 15, 2026</time>
+            <span class="tag">AI</span>
+            <span class="tag">SEO</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Automation</span>
+            <span class="tag">Python</span>
+          </p>
+        </header>
+
+        <section>
+
+          <p><em>And yes, I pasted a Gemini curl command into the wrong field. Twice.</em></p>
+
+          <hr/>
+
+          <p>Twenty years in IT and I was still manually checking SEO dashboards like it was 2008.</p>
+
+          <p>Here's the truth: I don't have an SEO problem. I have a follow-through problem. I know what's wrong with my sites. I've known for months. The knowledge was never the issue — the execution was.</p>
+
+          <p>So I automated the follow-through. In one afternoon, working with Claude Code and Claude, I built a weekly agent that pulls my Search Console data, analyses it with AI, and files GitHub Issues with specific fixes — while I eat lunch. And honestly? I'm proud of what I can build now. The speed at which I can go from <em>"I should fix that"</em> to <em>"that's already in my issue tracker"</em> has changed completely.</p>
+
+          <p>Here's exactly how I built it.</p>
+
+          <hr/>
+
+          <h2>The architecture (it's simpler than it sounds)</h2>
+
+          <p>Three APIs. One Python script. One cron job.</p>
+
+<div class="architecture-block">GitHub Actions (every Friday 10:00 UTC)
+        │
+        ├── Google Search Console API  → your real traffic data
+        ├── Anthropic Claude API       → analysis + recommendations
+        └── GitHub Issues API          → creates the actual tickets</div>
+
+          <p>No server. No database. No monthly infrastructure bill. Just a <code>.yml</code> file and a <code>.py</code> file sitting in your repo.</p>
+
+          <p>Total cost: under €1/month — the Claude API calls are tiny.</p>
+
+          <hr/>
+
+          <h2>What you'll need before starting</h2>
+
+          <ul>
+            <li>Your sites verified in <strong>Google Search Console</strong></li>
+            <li>A <strong>Google Cloud</strong> account (free tier is fine)</li>
+            <li>A <strong>GitHub</strong> repo for each site you want to audit</li>
+            <li>An <strong>Anthropic API key</strong> from <a href="https://console.anthropic.com" target="_blank" rel="noopener">console.anthropic.com</a></li>
+          </ul>
+
+          <hr/>
+
+          <h2>Step 1: Create a Google Service Account</h2>
+
+          <p>This is the part that sounds scary but takes 10 minutes.</p>
+
+          <p>Go to <a href="https://console.cloud.google.com" target="_blank" rel="noopener">console.cloud.google.com</a>, create a project called <code>seo-agent</code>, and enable the <strong>Google Search Console API</strong> under APIs &amp; Services → Library.</p>
+
+          <p>Then go to <strong>IAM &amp; Admin → Service Accounts → Create service account</strong>. Name it <code>seo-agent-reader</code>. No role needed. Create it.</p>
+
+          <p>Once created, click on it → <strong>Keys</strong> → <strong>Add Key</strong> → <strong>Create new key</strong> → <strong>JSON</strong>.</p>
+
+          <p>A <code>.json</code> file downloads. <strong>Don't lose this file.</strong> It looks like this:</p>
+
+<pre><code>{
+  "type": "service_account",
+  "project_id": "seo-agent-493417",
+  "private_key_id": "abc123...",
+  "client_email": "seo-agent-reader@seo-agent-493417.iam.gserviceaccount.com",
+  ...
+}</code></pre>
+
+          <p>You'll paste the entire contents of this file into a GitHub secret later.</p>
+
+          <hr/>
+
+          <h2>Step 2: Give the service account access to Search Console</h2>
+
+          <p>For <strong>each site</strong> you want to audit:</p>
+
+          <ol>
+            <li>Open Search Console → your property → <strong>Settings → Users and permissions</strong></li>
+            <li><strong>Add user</strong> → paste the <code>client_email</code> from your JSON file</li>
+            <li>Permission: <strong>Restricted</strong> (read-only is all we need)</li>
+          </ol>
+
+          <hr/>
+
+          <h2>Step 3: Create a GitHub Personal Access Token</h2>
+
+          <p>GitHub → Settings → Developer settings → <strong>Fine-grained tokens</strong> → Generate new token.</p>
+
+          <p>The only permission you need: <strong>Issues: Read and write</strong>.</p>
+
+          <p>Make sure the token has access to the repos where you want issues created. Copy it immediately — you only see it once.</p>
+
+          <hr/>
+
+          <h2>Step 4: The workflow file</h2>
+
+          <p>Create <code>.github/workflows/seo-audit.yml</code> in your repo:</p>
+
+<pre><code>name: SEO Weekly Audit
+
+on:
+  schedule:
+    - cron: '0 10 * * 5'   # Friday 12:00 Paris time (CEST)
+  workflow_dispatch:         # Manual trigger for testing
+
+jobs:
+  seo-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install \
+            google-auth==2.29.0 \
+            google-auth-httplib2==0.2.0 \
+            google-api-python-client==2.127.0 \
+            anthropic>=0.50.0 \
+            requests==2.32.3
+
+      - name: Run SEO audit
+        env:
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_TOKEN: ${{ secrets.SEO_GITHUB_TOKEN }}
+          REPO_SITE1: "yourusername/your-repo"
+        run: python .github/scripts/seo_audit.py</code></pre>
+
+          <p>Two things to know about the cron schedule: GitHub Actions runs in UTC, and France is UTC+2 in summer. So Friday noon Paris time = <code>0 10 * * 5</code>. The <code>5</code> is Friday (0 = Sunday).</p>
+
+          <hr/>
+
+          <h2>Step 5: The Python script (the important bit)</h2>
+
+          <p>Create <code>.github/scripts/seo_audit.py</code>. The key parts:</p>
+
+          <p><strong>Authenticating with Google:</strong></p>
+
+<pre><code>from google.oauth2 import service_account
+from googleapiclient.discovery import build
+
+def build_search_console_service():
+    raw  = os.environ.get("GOOGLE_SERVICE_ACCOUNT_JSON")
+    info = json.loads(raw)
+    creds = service_account.Credentials.from_service_account_info(
+        info,
+        scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
+    )
+    return build("searchconsole", "v1", credentials=creds, cache_discovery=False)</code></pre>
+
+          <p><strong>Asking Claude for analysis:</strong></p>
+
+<pre><code>def ask_claude(site_name, data_block):
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    msg = client.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=4000,
+        system="""You are an SEO expert. Analyse Search Console data and return
+ONLY a valid JSON array of GitHub issues. Each issue: title, body, labels, priority.
+Be terse — data evidence + exact fix steps. Nothing else.""",
+        messages=[{"role": "user", "content": f"Analyse {site_name}:\n\n{data_block}"}],
+    )
+    return json.loads(msg.content[0].text.strip())</code></pre>
+
+          <p><strong>Creating the GitHub issues:</strong></p>
+
+<pre><code>def create_github_issue(repo, issue, site_name):
+    requests.post(
+        f"https://api.github.com/repos/{repo}/issues",
+        headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}"},
+        json={
+            "title":  issue["title"],
+            "body":   issue["body"],
+            "labels": issue["labels"] + ["seo-agent"],
+        }
+    )</code></pre>
+
+          <p>The full script with error handling, multi-site support, and label fallback is on my <a href="https://github.com/djassoRaph/raphaelwebsite" target="_blank" rel="noopener">GitHub</a>.</p>
+
+          <hr/>
+
+          <h2>Step 6: Add the three secrets</h2>
+
+          <p>GitHub repo → <strong>Settings → Secrets and variables → Actions</strong> (Secrets tab, not Variables):</p>
+
+          <table>
+            <thead>
+              <tr><th>Secret name</th><th>Value</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>GOOGLE_SERVICE_ACCOUNT_JSON</code></td><td>Full contents of your downloaded <code>.json</code> file</td></tr>
+              <tr><td><code>ANTHROPIC_API_KEY</code></td><td>Your Anthropic key (<code>sk-ant-...</code>)</td></tr>
+              <tr><td><code>SEO_GITHUB_TOKEN</code></td><td>Your GitHub PAT (<code>github_pat_...</code>)</td></tr>
+            </tbody>
+          </table>
+
+          <hr/>
+
+          <h2>The mistakes I made (so you don't have to)</h2>
+
+          <p><strong>I pasted a Gemini curl command into the <code>GOOGLE_SERVICE_ACCOUNT_JSON</code> field.</strong></p>
+
+          <p>In my defence, I had six tabs open and was multitasking. The secret needs to contain the raw JSON from the file you downloaded — not a curl command, not a URL, not anything else. Open the <code>.json</code> file in a text editor, select all, paste.</p>
+
+          <p><strong>I used <code>anthropic==0.28.0</code> and got a <code>proxies</code> TypeError.</strong></p>
+
+          <p>The pinned version was too old and conflicted with a newer <code>httpx</code>. Fix: use <code>anthropic&gt;=0.50.0</code> instead.</p>
+
+          <p><strong>I got 404s when creating issues.</strong></p>
+
+          <p>My GitHub token was named <code>seo-reader-token</code> — and indeed it only had read access. Naming things matters, apparently. Regenerate the token with <strong>Issues: Read and write</strong>.</p>
+
+          <p><strong>Claude's JSON was getting truncated.</strong></p>
+
+          <p><code>max_tokens=2000</code> wasn't enough for 5 detailed issues. Bumped to <code>4000</code>, problem solved.</p>
+
+          <hr/>
+
+          <h2>What the output looks like</h2>
+
+          <p>After the first successful run, I had 5 issues in my repo within 2 minutes:</p>
+
+          <ul class="issue-list">
+            <li>[SEO] Homepage title/meta underperforming: pos 4.4, 25 impr, only 4% CTR</li>
+            <li>[SEO] HTTP URLs indexed — migrate http://raphaelreck.com/* to HTTPS</li>
+            <li>[SEO] /memes/laugh.html: 12 impressions, pos 3.7, zero clicks — fix title/meta</li>
+            <li>[SEO] /blog/when-webservices-lie.html: 13 impr, pos 7.7 — optimise to reach page 1</li>
+            <li>[SEO] hook_webform_submission_insert: pos 9, 6 impr — target Drupal niche keyword</li>
+          </ul>
+
+          <p>Each one includes the Search Console data that justifies it, and exact steps to fix it. Not vague advice — specific changes with context.</p>
+
+          <p>These are things I already knew I should do. The difference is they're now in my issue tracker with labels, instead of floating in my head as vague intentions.</p>
+
+          <hr/>
+
+          <h2>Do you even need Google Analytics?</h2>
+
+          <p>Short answer: not for this.</p>
+
+          <p>Search Console tells you what people search for, which pages appear, how often they click, and where you rank. That's the SEO signal. Analytics tells you what people do <em>after</em> they land. Useful, but separate. Start with Search Console. Add Analytics later if you need conversion data.</p>
+
+          <hr/>
+
+          <h2>What's next</h2>
+
+          <p>This is Phase 1. Phase 2 is a second agent that reads these issues and actually implements the fixes — rewriting meta descriptions, updating title tags, fixing redirect chains. The SEO agent files the tickets; the fix agent closes them.</p>
+
+          <p>For now, having the analysis automated is already a 10x improvement over <em>"stare at dashboard, close tab, repeat."</em></p>
+
+          <blockquote>The full script is on <a href="https://github.com/djassoRaph/raphaelwebsite" target="_blank" rel="noopener">github.com/djassoRaph/raphaelwebsite</a> — questions or war stories about your own setup, find me on <a href="https://x.com/Raphiosi" target="_blank" rel="noopener">X</a>.</blockquote>
+
+          <p>Thank <strong>you</strong> for reading.</p>
+
+        </section>
+        <br>
+        <hr>
+        <br>
+        <p><a href="index.html" class="link-btn">← Back to Blog Index</a></p>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck  -  IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+      <p style="margin-top:.5rem; font-size:.85rem; opacity:.6;">
+        Collaborators: <a href="https://webasix.com/" target="_blank" rel="noopener">Webasix</a>
+      </p>
+      <p><a href="../fun.html">Personal &amp; Fun</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+</body>
+</html>

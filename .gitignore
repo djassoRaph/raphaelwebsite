@@ -27,3 +27,4 @@ scripts/update_blog_files.py
 scripts/
 php-test/  
 public/secret/Pixel Tankards & Tall Tales.mp3
+.claude/settings.json
