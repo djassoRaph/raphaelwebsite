@@ -78,12 +78,24 @@
   <!-- Blog index -->
   <url>
     <loc>https://raphaelreck.com/blog/</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Blog posts -->
+  <url>
+    <loc>https://raphaelreck.com/blog/hook-webform-submission-insert-drupal.html</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://raphaelreck.com/blog/seo-agent-github-actions.html</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://raphaelreck.com/blog/llmr-v2.html</loc>
     <lastmod>2026-04-11</lastmod>
