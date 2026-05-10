@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LLMR Update: A Real Site Index for AI Crawlers, What Changed | Blog | Raphaël Reck</title>
+  <meta name="description" content="Six months after publishing LLMR, the project has a proper home, a generator, and real numbers. Here's what changed and why it matters for anyone building with AI."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/llmr-benchmark-update.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="../script.js"></script>
+
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="LLMR Update: A Real Site Index for AI Crawlers, What Changed"/>
+  <meta property="og:description" content="Six months after publishing LLMR, the project has a proper home, a generator, and real numbers. Here's what changed and why it matters."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/llmr-benchmark-update.html"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2026-05-07T00:00:00+02:00"/>
+  <meta property="article:tag" content="LLMR"/>
+  <meta property="article:tag" content="AI"/>
+  <meta property="article:tag" content="Open Source"/>
+  <meta property="article:tag" content="Web Standards"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "LLMR Update: A Real Site Index for AI Crawlers, What Changed",
+    "datePublished": "2026-05-07T00:00:00+02:00",
+    "dateModified": "2026-05-07T00:00:00+02:00",
+    "author": { "@type": "Person", "name": "Raphaël Reck", "url": "https://raphaelreck.com" },
+    "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://raphaelreck.com/blog/llmr-benchmark-update.html" },
+    "keywords": ["LLMR", "AI", "Open Source", "Web Standards", "token optimization", "LLM crawling"],
+    "description": "Six months after publishing LLMR, the project has a proper home, a generator, and real numbers."
+  }
+  </script>
+
+  <style>
+    .post-meta { opacity: .7; font-size: .9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1.5rem 0; border-radius:0 4px 4px 0; }
+    pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; background:#f8f9fa; font-size:.85rem; line-height:1.6; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Cascadia Code', monospace; font-size:.9em; }
+    .benchmark-table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:.9rem; }
+    .benchmark-table th { text-align:left; padding:.5rem .75rem; border-bottom:2px solid #ddd; font-weight:600; }
+    .benchmark-table td { padding:.5rem .75rem; border-bottom:1px solid #eee; }
+    .benchmark-table .good { color:#1a7a4a; font-weight:600; }
+    .benchmark-table .bad { color:#c0392b; }
+    .cta-box { border:1px solid #00e5c3; border-radius:8px; padding:1.5rem; margin:2rem 0; }
+    .cta-box h3 { margin:0 0 .5rem; font-size:1rem; }
+    .cta-box p { margin:0 0 1rem; font-size:.9rem; opacity:.8; }
+    .cta-box a { display:inline-block; padding:.6rem 1.2rem; background:#00e5c3; color:#000; border-radius:6px; text-decoration:none; font-weight:600; font-size:.9rem; }
+    .cta-box a:hover { opacity:.85; }
+    .update-badge { display:inline-block; background:rgba(0,229,195,.12); color:#00a896; border:1px solid rgba(0,229,195,.3); border-radius:999px; padding:3px 12px; font-size:.8rem; font-weight:600; margin-bottom:1rem; }
+    @media (prefers-color-scheme: dark) {
+      pre { background:#1a1a1a; color:#eee; border-color:#444; }
+      .benchmark-table th { border-color:#444; }
+      .benchmark-table td { border-color:#2a2a2a; }
+      .benchmark-table .good { color:#00e5c3; }
+    }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+  <div class="container">
+    <nav class="nav-primary">
+      <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header>
+          <span class="update-badge">Project update</span>
+          <h1>LLMR now has a real home. Here's what the numbers actually look like.</h1>
+          <p class="post-meta">
+            <time datetime="2026-05-07">May 7, 2026</time>
+            &nbsp;·&nbsp; ~6 min read
+            &nbsp;·&nbsp; <span class="tag">LLMR</span><span class="tag">AI</span><span class="tag">Open Source</span>
+          </p>
+        </header>
+
+        <p>A while back I wrote about <a href="llmr.html">LLMR</a>,a JSON site index format that gives AI systems a machine-readable map of your website instead of making them parse every HTML page one by one. The original post was rough. The idea was there, the numbers were there, but the project itself was a single GitHub repo with no real home.</p>
+
+        <p>That changed. Here's what's been built, what the benchmark actually shows on a real site, and why this is still worth your attention if you're building anything that touches AI.</p>
+
+        <h2>What LLMR is, in one sentence</h2>
+
+        <p>Instead of an AI agent fetching 13 HTML pages to understand your site, it fetches one JSON file,and gets the same information in a fraction of the tokens. Think RSS, but the audience is a language model, not a feed reader.</p>
+
+        <p>The benchmark on this site (13 pages, real HTML, no cherry-picking):</p>
+
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Bytes</th>
+              <th>Est. tokens</th>
+              <th>HTTP requests</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fetch all 13 pages as HTML</td>
+              <td class="bad">633,997</td>
+              <td class="bad">~30,000</td>
+              <td class="bad">13</td>
+            </tr>
+            <tr>
+              <td>Fetch the LLMR index</td>
+              <td class="good">12,828</td>
+              <td class="good">~3,300</td>
+              <td class="good">1</td>
+            </tr>
+            <tr>
+              <td><strong>Reduction</strong></td>
+              <td class="good"><strong>98%</strong></td>
+              <td class="good"><strong>89%</strong></td>
+              <td class="good"><strong>13× fewer</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Those numbers are real. Measured on raphaelreck.com, 13 pages, counted with an actual tokenizer. The LLMR file is 12,828 bytes. The 13 HTML pages total 633,997 bytes. That's not an estimate.</p>
+
+        <h2>What's changed in the project</h2>
+
+        <p>When I first posted about this, the project was a concept with a spec draft and a Python script. Since then:</p>
+
+        <ul>
+          <li><strong><a href="https://open-llmr.org" target="_blank" rel="noopener">open-llmr.org</a></strong> is live,proper site, proper docs, formal v2.0 spec</li>
+          <li>The project moved to a <a href="https://gitlab.com/open-llmr" target="_blank" rel="noopener">GitLab group</a> to support multiple repos cleanly</li>
+          <li>Generators exist for Python (<code>pip install llmr-generator</code>), npm, WordPress, and Laravel</li>
+          <li>An <strong>online generator</strong> lets you paste any URL and get a ready-to-deploy <code>llmr.json</code> without installing anything</li>
+          <li>The spec is now formally versioned at v2.0, with compressed keys designed to minimize token usage in the index file itself</li>
+        </ul>
+
+        <p>The about page at <a href="https://open-llmr.org/about.html" target="_blank" rel="noopener">open-llmr.org/about</a> has the full story of why I built it. Short version: I was building an AI agent, watched it burn 30,000 tokens just to understand a 13-page site, and got annoyed enough to do something about it.</p>
+
+        <h2>How the v2.0 format looks</h2>
+
+        <p>The key design decision in v2.0 is compressed key names. Every byte in the LLMR file is a token that an AI will consume,so the format itself is designed to be miserly:</p>
+
+        <pre><code>{
+  "v": "2.0",
+  "s": {
+    "d": "raphaelreck.com",
+    "a": { "n": "Raphaël Reck", "r": "IT_sys_sw_consultant" }
+  },
+  "p": [
+    {
+      "id": "llmr-benchmark-update",
+      "u": "/blog/llmr-benchmark-update.html",
+      "d": "2026-05-07",
+      "tg": ["llmr", "ai", "open-source"],
+      "rt": 6,
+      "sum": "LLMR project update: new site, generator, real benchmark numbers."
+    }
+  ]
+}</code></pre>
+
+        <p><code>v</code> instead of <code>version</code>. <code>u</code> instead of <code>url</code>. <code>tg</code> instead of <code>tags</code>. Looks terse to a human; saves real money at scale when AI agents are querying your site thousands of times a month.</p>
+
+        <h2>Cost at scale</h2>
+
+        <p>This is the part that makes the case for anyone running a product with AI features. At Claude Sonnet pricing ($3 per million input tokens):</p>
+
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>AI queries / month</th>
+              <th>Without LLMR</th>
+              <th>With LLMR</th>
+              <th>Saved</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,000</td>
+              <td class="bad">$90</td>
+              <td class="good">$10</td>
+              <td class="good">$80</td>
+            </tr>
+            <tr>
+              <td>10,000</td>
+              <td class="bad">$900</td>
+              <td class="good">$100</td>
+              <td class="good">$800</td>
+            </tr>
+            <tr>
+              <td>100,000</td>
+              <td class="bad">$9,000</td>
+              <td class="good">$1,000</td>
+              <td class="good">$8,000</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>These aren't my costs. They're the costs that any AI agent,yours, your users', a crawler,pays to understand your site. The bigger the site, the worse the ratio gets without LLMR.</p>
+
+        <h2>How it relates to llms.txt</h2>
+
+        <p>You may have heard of <a href="https://llmstxt.org" target="_blank" rel="noopener">llms.txt</a>,a proposed markdown file that gives AI systems a plain-text overview of your site. LLMR is not a replacement for it. They solve different problems:</p>
+
+        <ul>
+          <li><strong>llms.txt</strong> is a human-readable overview,good for telling an AI "here's what my site is about"</li>
+          <li><strong>LLMR</strong> is a machine-optimized index,good for giving an AI structured, queryable metadata about every page</li>
+        </ul>
+
+        <p>Serve both. They complement each other. The SEOptimer audit on this site already flagged the missing llms.txt as a recommendation,it's on the list.</p>
+
+        <h2>Try it on your site</h2>
+
+        <p>The fastest way to see what your site looks like as LLMR is the online generator. Paste a URL, get the JSON, deploy it at <code>/llmr.json</code>.</p>
+
+        <div class="cta-box">
+          <h3>Generate your LLMR file</h3>
+          <p>Paste any URL. No install. See the token reduction for your actual site in under 30 seconds.</p>
+          <a href="https://open-llmr.org/generate.html" target="_blank" rel="noopener">Try the generator →</a>
+        </div>
+
+        <p>If you implement it and want to share numbers, I'm collecting real-world benchmarks. The more diverse sites we measure, the better the story gets.</p>
+
+        <p>The spec, all generators, and the site source are at <a href="https://gitlab.com/open-llmr" target="_blank" rel="noopener">gitlab.com/open-llmr</a>. MIT license. No dependencies for the core spec.</p>
+
+        <hr/>
+
+        <p><em>Raphaël Reck is an IT Systems &amp; Software Consultant based in Sophia Antipolis, France, and the creator of the LLMR open-source format. More at <a href="https://raphaelreck.com">raphaelreck.com</a>.</em></p>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+  <!-- Mobile Menu Toggle Button -->
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <!-- Sliding Menu -->
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">&times;</button>
+    </div>
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html" class="mobile-nav-link"><i class="fas fa-blog"></i><span>Blog</span></a>
+        <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" class="mobile-nav-link" target="_blank"><i class="fas fa-file-pdf"></i><span>Download CV</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Projects</h3>
+      <div class="mobile-nav-links">
+        <a href="../roots-time/manifesto.html" class="mobile-nav-link"><i class="fas fa-book"></i><span>Roots Time Corporation</span></a>
+        <a href="../monthly-support.html" class="mobile-nav-link"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
+        <a href="../outsourced-it.html" class="mobile-nav-link"><i class="fas fa-laptop-code"></i><span>Outsourced IT</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>
