@@ -1,48 +1,75 @@
-# Raphaël Reck
+# raphaelreck.com
 
-> IT systems & software consultant based in France. Expert in Drupal, Laravel, system architecture, and debugging. This site is a personal blog and professional portfolio.
-> Senior IT consultant with 20+ years of experience. PHP, Laravel, Drupal specialist. 
-> Monthly IT support retainers for SMBs in Sophia Antipolis and Valbonne (France), 
-> starting at €75/month.
+> No IT department? I provide remote IT support for small businesses — senior-level help from €150/month. No agency, no contract, no junior staff.
 
-Raphaël Reck is a freelance IT consultant and full-stack developer with experience in enterprise web systems, legacy code rescue, infrastructure architecture, and AI-assisted development. Blog posts are written in a personal, direct style — documenting real work, real failures, and real fixes.
+## Home
 
-## Services
+[IT Support for Small Business — Raphaël Reck](https://raphaelreck.com/): No IT department? I provide remote IT support for small businesses — senior-level help from €150/month. No agency, no contract, no junior staff.
 
-- [Consulting](https://raphaelreck.com): Tech audits, team mentoring, roadmap planning
-- [Development](https://raphaelreck.com): Full-stack web apps, APIs, integrations
-- [Web Integration](https://raphaelreck.com): Responsive UI, third-party integration, performance
-- [IT Support](https://raphaelreck.com): Infrastructure monitoring, user support, deployments
-- [Network](https://raphaelreck.com): Wireless, A/V, GPS, surveillance systems
-- [System Architecture](https://raphaelreck.com): Cloud, on-prem, DevOps, security
+## Blog
 
-## Blog — AI & Development
+[Blog | Raphaël Reck](https://raphaelreck.com/blog/): Software blog by Raphaël Reck — AI projects, bugs I've hit, architectural decisions. Posts on tools I build and how I think about tech. Wednesdays.
+[hook_webform_submission_insert: A Practical Drupal Tutorial | Raphaël Reck](https://raphaelreck.com/blog/hook-webform-submission-insert-drupal.html): A hands-on tutorial for hook_webform_submission_insert in Drupal. Learn how to react to new webform submissions with real, copy-paste PHP code examples.
+[Weekly SEO Agent with GitHub Actions & Claude | Raphaël Reck](https://raphaelreck.com/blog/seo-agent-github-actions.html): I automated my SEO follow-through: a cron job fetches Search Console data, Claude analyses it, and GitHub Issues appear every Friday. Under €1/month.
+[LLMR 2.0: One File, 98% Fewer Tokens | Blog | Raphaël Reck](https://raphaelreck.com/blog/llmr-v2.html): LLMR v2.0 is live; a JSON site index that gives AI systems your entire website in one fetch. Think RSS for the AI era. Now with a formal spec, open-llmr.org, and a full ecosystem plan.
+[Building a Raspberry Pi Nanobot: Task Failed Successfully | Raphaël Reck](https://raphaelreck.com/blog/raspberry-pi-nanobot.html): Two days, a dead SD card, an abandoned Acer BIOS, 83 million Mistral tokens, and a bot that only knew how to say 'Task Completed'. Building a personal AI assistant is not like the YouTube tutorials make it look.
+[Magical Drupal messages, Empty Emails and Wrong API Responses. | Blog | Raphaël Reck](https://raphaelreck.com/blog/when-webservices-lie.html): A real debugging story: PowerPoint documentation, Drupal hooks that fire too early, and web services returning completely different data than promised - debugging through client screenshots.
+[What's been in the Wind: Two Projects, One Developer Block | Blog | Raphaël Reck](https://raphaelreck.com/blog/2025-12-07-whats_in_the_wind.html): From Egyptian pyramids to production pipelines: how pausing one game project led to launching two new ones :  a civic engagement platform and an open-source social MMO.
+[Godot: From 2D buggy ideas to Functional Isometric 3D scene ! | Blog | Raphaël Reck](https://raphaelreck.com/blog/yaygodot.html): A real debugging story: how AI assistants (GPT, Claude, Gemini) helped fix character collisions and movement in a Godot 3D project, turning a buggy scene into a functional game prototype.
+[Constituant: Building Democracy 2.0 While Admitting It's Broken | Raphaël Reck](https://raphaelreck.com/blog/constituant.fr.html): How I'm building a civic engagement platform that lets French citizens vote on real legislation - while being brutally honest about its limitations and long-term vision.
+[Introducing LLMR: RSS for the AI Era | Blog | Raphaël Reck](https://raphaelreck.com/blog/llmr.html): A new format to make websites AI-readable: LLMR reduces token consumption by 96%, cutting costs from $960 to $36/month for AI queries. Think RSS, but for LLMs.
+[Juggling Fireballs | Blog | Raphaël Reck](https://raphaelreck.com/blog/2025-10-08-juggling-fireballs.html): A reflection on managing a heavy workload alone while my 'working buddy' is out, and the lessons learned when the pressure is on.
+[You can't get them all. | Blog | Raphaël Reck](https://raphaelreck.com/blog/you-cant-get-them-all.html): Being on too many frontlines makes you immobile. A reflection on priorities, expertise, and learning to choose what matters.
+[Laravel, just make it work! | Blog | Raphaël Reck](https://raphaelreck.com/blog/laravel040925.html): A real debugging story: inheriting an unfinished Laravel codebase with foreign key nightmares, misleading table names, and validation bugs that took days to track down.
+[Productivity. And debugging. | Blog | Raphaël Reck](https://raphaelreck.com/blog/Productivityanddebugging.html): Working on automatically updating my blog with git push. This launches a workflow on GitHub, then pushes everything to FTP via a script.
+[When AI‑Generated Code Meets Legacy Drupal: A Horror Story | Blog | Raphaël Reck](https://raphaelreck.com/blog/2025-08-25-ai-vs-legacy-drupal.html): A real debugging story: conflicting email systems, redirect loops, and AI-generated boilerplate breaking a legacy Drupal workflow - and how we fixed it.
+[Holidays and side projects | Blog | Raphaël Reck](https://raphaelreck.com/blog/HolidaysSideProject.html): Sigh, summer is soon over. Working on side projects with GPT and Claude - what took 3 days to fail with GPT, worked with Claude in one!
+[Blog | Raphaël Reck](https://raphaelreck.com/blog/blankblog.html): 
+[Why I switched from GPT to Claude for coding | Blog | Raphaël Reck](https://raphaelreck.com/blog/GPTtoClaude.html): After using GPT for a while, I found that Claude's approach to coding tasks was more aligned with my workflow. Except now it doesn't anymore, and I'm not sure why.
+[Claude behaves unexpectedly! | Blog | Raphaël Reck](https://raphaelreck.com/blog/claudio.html): A surprising experience with Claude AI going into full production mode and creating an entire game project when I just wanted to bounce around ideas about procedural map generation.
+[Unfortunately, for you, however you are maidenless. | Raphaël Reck](https://raphaelreck.com/blog/maidenless.html): Reflections on working without AI assistance, productivity challenges, over-engineering, and building proper boilerplates during a Docker migration.
+[CET headaches again. And procrastination. | Blog | Raphaël Reck](https://raphaelreck.com/blog/CETheadaches.html): Struggling with productivity, working on a house bidding website, smart mirror projects, and delivering code to clients in Marseille without Git.
+[Sharing is caring | 30 years at a keyboard | Raphaël Reck](https://raphaelreck.com/blog/originstory.html): From sneaking out of bed to watch MS-DOS boot, to building wind turbines in Haiti and architecting systems for Fortune 500 companies. This is who I am and how I got here.
+[SVN/Git Wrangling, Laravel Rage, and CET Headaches | Blog | Raphaël Reck](https://raphaelreck.com/blog/SVNgit.html): This week was chaos and cleanup: migrating SVN to Git, Laravel app deployment issues, and CET webform problems in production.
+[Bitcoin Scam Attempt: How a Script Kiddy Tried to Extort Me for $200 | Blog | Raphaël Reck](https://raphaelreck.com/blog/bitcoinscam.html): Online scams are everywhere. Here's the story of how one script kiddy tried to extort me for $200 in Bitcoin, what happened to a friend who tested the file in a VM, and what you can do to stay safe.
+[Old thought: Keep it simple | Blog | Raphaël Reck](https://raphaelreck.com/blog/frameworks.html): I believe the web should be simple. I don't like frameworks. They bloat, obfuscate, and complicate things that HTML already did well decades ago.
 
-- [LLM Resume (llmr)](https://raphaelreck.com/blog/llmr.html): A new format to make websites AI-readable, reducing token consumption by 96% and cutting AI query costs
-- [Claudio](https://raphaelreck.com/blog/claudio.html): When AI goes overboard — Claude creates an entire game project from a simple idea discussion
-- [AI vs Legacy Drupal](https://raphaelreck.com/blog/2025-08-25-ai-vs-legacy-drupal.html): Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow
-- [Yay Godot](https://raphaelreck.com/blog/yaygodot.html): Using AI to debug collision, physics, and scripting issues to build a working 3D character controller
-- [GPT to Claude](https://raphaelreck.com/blog/GPTtoClaude.html): Switching from GPT to Claude for coding tasks and why Claude's approach was a better fit
-- [Holidays Side Project](https://raphaelreck.com/blog/HolidaysSideProject.html): Working on side projects with GPT and Claude — what took 3 days to fail with one took hours to ship with the other
+## Fun.html
 
-## Blog — Drupal & Laravel
+[Personal & Fun | Raphael Reck](https://raphaelreck.com/fun.html): Personal projects and side interests from Raphael Reck — Universal Darwinism, memes, and other non-professional curiosities.
 
-- [When Web Services Lie](https://raphaelreck.com/blog/when-webservices-lie.html): PowerPoint documentation, Drupal hooks firing too early, and web services returning inconsistent data
-- [Laravel Foreign Key Nightmares](https://raphaelreck.com/blog/laravel040925.html): Foreign key issues, table names that lie, and validation bugs in a legacy Laravel codebase
-- [SVN to Git](https://raphaelreck.com/blog/SVNgit.html): Migrating SVN to Git, Laravel app deployment issues, and CET webforms chaos
+## Monthly support.html
 
-## Blog — Projects & Essays
+[Remote IT Support for Small Business | Raphaël Reck](https://raphaelreck.com/monthly-support.html): Senior IT engineer on monthly service for small businesses. Remote-first, no agency overhead, no junior staff. Fixed price. Available when you need it.
 
-- [Origin Story](https://raphaelreck.com/blog/originstory.html): From sneaking out of bed to watch MS-DOS boot, to building wind turbines in Haiti and architecting software systems
-- [Constituant.fr](https://raphaelreck.com/blog/constituant.fr.html): A civic tech experiment in radical transparency — building a platform for citizens to vote on real legislative proposals
-- [What's in the Wind](https://raphaelreck.com/blog/2025-12-07-whats_in_the_wind.html): Pivoting from burnout to building — launching a civic engagement platform and an open-source social media alternative
-- [Frameworks](https://raphaelreck.com/blog/frameworks.html): Why the web should be simple and why frameworks bloat, obfuscate, and complicate things
+## Outsourced it.html
 
-## Optional
+[Outsourced IT Support for Small Business | Raphaël Reck](https://raphaelreck.com/outsourced-it.html): Outsourced IT support for small businesses. Senior engineer, remote-first, fixed monthly fee, no agency overhead. Real help, no junior staff.
 
-- [You Can't Get Them All](https://raphaelreck.com/blog/you-cant-get-them-all.html): Being on too many frontlines makes you immobile — a reflection on priorities and expertise
-- [Juggling Fireballs](https://raphaelreck.com/blog/2025-10-08-juggling-fireballs.html): Managing a heavy workload alone and the lessons learned from working without a team
-- [Maidenless](https://raphaelreck.com/blog/maidenless.html): Thoughts on productivity when AI tools fail and the importance of boilerplate
-- [Bitcoin Scam](https://raphaelreck.com/blog/bitcoinscam.html): How one script kiddy tried to extort me for $200 in Bitcoin and failed
-- [CET Headaches](https://raphaelreck.com/blog/CETheadaches.html): Struggling with productivity, a house bidding website, smart mirror projects, and deliverables
-- [Productivity and Debugging](https://raphaelreck.com/blog/Productivityanddebugging.html): Automatically updating a blog with git push via a GitHub Actions workflow
+## No it department.html
+
+[No IT Department? Here's What to Do | Raphaël Reck](https://raphaelreck.com/no-it-department.html): Running a business with no IT department? You're not alone. Learn what your options are, what they cost, and why most small businesses get better results without an agency.
+
+## Smb it help.html
+
+[IT Help for Small Companies | Without the Agency | Raphaël Reck](https://raphaelreck.com/smb-it-help.html): IT help for small companies that don't need an agency, a contract, or a full-time hire. Senior engineer on monthly plan. Remote-first, plain English, fixed price.
+
+## No contract it.html
+
+[Remote IT Support With No Long-Term Contract | Raphaël Reck](https://raphaelreck.com/no-contract-it.html): Remote IT support for small businesses with no long-term contract. Month-to-month, no lock-in, no minimum term. Senior engineer on call when you need it.
+
+## It cost calculator.html
+
+[IT Support Cost Calculator for Small Business | Raphaël Reck](https://raphaelreck.com/it-cost-calculator.html): Find out what IT support should cost for a business like yours. Answer 5 quick questions — get a realistic estimate and an honest recommendation.
+
+## Ai automation.html
+
+[AI Business Automation | Raphaël Reck](https://raphaelreck.com/ai-automation.html): AI automation for small businesses — invoicing, reminders, email triage, built with n8n and Claude. Running 24/7, controlled from your phone.
+
+## Roots time
+
+[Roots Time Corporation – Manifesto](https://raphaelreck.com/roots-time/manifesto.html): The Roots Time Corporation manifesto: human-first principles, digital sovereignty, and building with purpose over profit.
+
+## Memes
+
+[Universal Darwinism — 87 Memes on Evolution, Code & Life | Raphaël Reck](https://raphaelreck.com/memes/laugh.html): 87 memes on survival, software, stoicism, and the absurd — curated from the floor of the internet. No rights claimed. Just vibes.
