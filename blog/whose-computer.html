@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Whose computer is this, actually? | Blog | Raphaël Reck</title>
+    <meta name="description" content="On portable applications, admin rights, and the quiet difference between the computer you use every day and the one you actually own."/>
+    <link rel="canonical" href="https://raphaelreck.com/blog/whose-computer.html"/>
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script defer src="../script.js"></script>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Whose computer is this, actually?"/>
+    <meta property="og:description" content="On portable applications, admin rights, and the quiet difference between the computer you use every day and the one you actually own."/>
+    <meta property="og:url" content="https://raphaelreck.com/blog/whose-computer.html"/>
+    <meta property="og:site_name" content="Raphaël Reck"/>
+    <meta property="article:author" content="Raphaël Reck"/>
+    <meta property="article:published_time" content="2026-05-18T00:00:00+02:00"/>
+    <meta property="article:tag" content="Portable Apps"/>
+    <meta property="article:tag" content="Sovereignty"/>
+    <meta property="article:tag" content="Sysadmin"/>
+    <meta property="article:tag" content="Windows"/>
+
+    <style>
+        .post-header { margin-bottom: 1rem; }
+        .post-meta { opacity: .7; font-size: .9rem; }
+        .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+        pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+        .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+        .warn { border-left:4px solid #d97706; padding:.75rem 1rem; background:rgba(217,119,6,.06); margin:1rem 0; border-radius:4px; }
+        .post-image { display:block; max-width:100%; height:auto; margin:1.5rem auto; border-radius:.5rem; }
+        .post-image-narrow { display:block; max-width:420px; width:100%; height:auto; margin:1.5rem auto; border-radius:.5rem; }
+        .image-caption { text-align:center; font-size:.85rem; opacity:.65; margin-top:-.75rem; margin-bottom:1.5rem; font-style:italic; }
+        blockquote { border-left: 3px solid currentColor; padding-left: 1rem; margin: 1.5rem 0; opacity: .85; font-style: italic; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Whose computer is this, actually?",
+        "datePublished": "2026-05-18T00:00:00+02:00",
+        "dateModified": "2026-05-18T00:00:00+02:00",
+        "author": { "@type": "Person", "name": "Raphaël Reck" },
+        "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://raphaelreck.com/blog/whose-computer.html" },
+        "keywords": ["Portable Apps", "Sovereignty", "Sysadmin", "Windows", "MobaXterm", "USB", "Admin Rights"],
+        "description": "On portable applications, admin rights, and the quiet difference between the computer you use every day and the one you actually own."
+    }
+    </script>
+</head>
+
+<body>
+  <button id="theme-toggle" class="theme-toggle" title="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <button id="mobile-menu-toggle" class="mobile-menu-toggle" title="Toggle navigation menu" aria-expanded="false">
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </button>
+
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+    </div>
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html" class="mobile-nav-link"><i class="fas fa-blog"></i><span>Blog</span></a>
+        <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" class="mobile-nav-link" target="_blank"><i class="fas fa-file-pdf"></i><span>Download CV</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Projects</h3>
+      <div class="mobile-nav-links">
+        <a href="../roots-time/manifesto.html" class="mobile-nav-link"><i class="fas fa-book"></i><span>Roots Time Corporation</span></a>
+        <a href="../monthly-support.html" class="mobile-nav-link" target="_blank"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <nav class="nav-primary">
+      <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>Whose computer is this, actually?</h1>
+          <p class="post-meta">
+            <time datetime="2026-05-18">May 18, 2026</time>
+            <span class="tag">Portable Apps</span>
+            <span class="tag">Sovereignty</span>
+            <span class="tag">Sysadmin</span>
+            <span class="tag">Windows</span>
+          </p>
+        </header>
+
+        <section>
+          <img src="../public/img/my-computer-this-pc-meme.png"
+               alt="Meme: Windows 2009 desktop icon labelled 'My Computer' next to Windows 2026 desktop icon labelled 'This PC', with the caption 'Yeah. We see what you did there...'"
+               class="post-image-narrow" />
+          <p class="image-caption">A small rename. A larger statement.</p>
+
+          <p>There's a small linguistic trick that Microsoft played on us all.</p>
+
+          <p>People say <em>"my computer."</em></p>
+
+          <p>They mean the laptop on the desk in front of them.</p>
+
+          <p>Then a Windows update reboots. And it installs something Microsoft decided to have on your computer. Or IT pushes a new endpoint agent that eats 10% of the CPU. Or a manager asks for the BitLocker key and it turns out you don't have it. Or the company decides Copilot is now mandatory and the toggle is greyed out and it breaks every 5 prompts. (Legit, it happened to me.)</p>
+
+          <p>That's the moment the word <em>my</em> got got. It was always <em>this</em> computer. Not <em>your</em> computer. Specifically those corporation computers...</p>
+
+          <p>Microsoft, to their credit, has been honest about this for longer than most people realise. In Windows 8.1, back in 2013, they renamed the desktop icon from <strong>My Computer</strong> to <strong>This PC</strong>. Same icon. Same shortcut. One word swapped. The change shipped, nobody really noticed, and we all moved on. But the word matters. <em>My</em> implies ownership. <em>This</em> is just a pointer. (Ready for a subscription based product?) A pronoun for a thing in front of you that might belong to anyone.</p>
+
+          <p>It's a small detail. It's also been the truth for over a decade.</p>
+
+          <h2>The middle ground</h2>
+
+          <p>The Linux folks are already typing their replies... I have WSL. I've had Linux. I run Windows on this machine because the clients I work with run Windows.</p>
+
+          <p>What I'm trying to say is two things. And it goes to pair with the saying:</p>
+
+          <blockquote>"Just because you do not take an interest in politics doesn't mean politics won't take an interest in you." <a href="https://www.goodreads.com/quotes/19444-just-because-you-do-not-take-an-interest-in-politics" target="_blank" rel="noopener">Source.</a></blockquote>
+
+          <p>First, I'm trying to say that your PC isn't yours anymore. And it's a lot of work to "harness it"... To remove the bloat and "improve" it to a working function. Most recent PCs/portable computers I open, when I execute a command it takes seconds for the program to launch. On my personal PC it's instant... because I've done the ground work to clear up the bloat, manually.</p>
+
+          <p>For example, the search bar in Windows has turned into a chaos, you cannot search like you used to. Use this when you want to find a file on your computer: <a href="https://www.voidtools.com/downloads/" target="_blank" rel="noopener">Voidtools — Everything</a>. It's the good old file search from 2000's XP.</p>
+
+          <p>Second, is when you can't have admin access, and you have to bypass it. It's the trick of using portable programs...</p>
+
+          <p>The trick of using a machine that isn't fully yours, without pretending it is. Which is most of us, most of the time. Even your "personal" laptop runs an OS made by a company that decided last week to <a href="https://support.microsoft.com/en-us/windows/retrace-your-steps-with-recall-aa03f8a0-a78b-4b3e-b0a1-2eb8ac48701c" target="_blank" rel="noopener">take screenshots of your screen for AI training</a>, and didn't ask first.</p>
+
+          <p>There's other solutions like USB bootable Linux drives etc... but let's not go down that rabbit hole.</p>
+
+          <p>How do you manage a PC that you can't install programs on?</p>
+
+          <p><small>Yes this is SEO bait. ;)</small></p>
+
+          <p>What can I do if the computer is not mine?</p>
+
+          <p>The middle ground has a name in old sysadmin circles. <strong>Portable applications.</strong></p>
+
+          <h2>What a portable app actually is</h2>
+
+          <p>A portable application is a program that doesn't install. It lives in a folder. You double-click an .exe, it runs. It doesn't install; you delete it, it's gone. You close it, nothing is left behind. No registry entries it forgot to clean up, no scattered files in <code>%APPDATA%</code>, no service that keeps phoning home after you uninstalled the parent.</p>
+
+          <p>Copy the folder to a USB stick, plug into another machine, double-click. Same app. Same settings. No admin rights needed in most cases, because there's nothing to install in the first place.</p>
+
+          <p>If you came up in IT in the 2000s you remember this style. It was just <em>how software worked</em> before everyone decided installers needed to be 800 MB and request elevated privileges to add a clock widget.</p>
+
+          <h2>MobaXterm, for example</h2>
+
+          <p>The tool I reach for most often in this category is <a href="https://mobaxterm.mobatek.net/" target="_blank" rel="noopener">MobaXterm</a>. SSH, RDP, VNC, SFTP, a built-in X server, a bash-style local terminal, all in one executable that runs from a USB stick without admin rights.</p>
+
+          <p>Is it the most beloved tool in the world? No. The Linux crowd has Tilix, the macOS people have iTerm2, the Windows Terminal + WSL2 combination has gotten genuinely good (I use both). I know. I've used most of them. MobaXterm wins for me in one specific scenario: I am on a machine I do not fully control, I need to connect to multiple servers across SSH and RDP, and I do not have time to fight with the IT policy that prevents me from installing PuTTY.</p>
+
+          <p>Drop the portable folder on a USB stick. Or sync it via a personal cloud folder. Or just keep it in your Documents. Launch. Work. Walk away. No trace.</p>
+
+          <div class="callout">
+            <strong>The point isn't MobaXterm specifically.</strong> The point is the <em>category</em>. <a href="https://portableapps.com" target="_blank" rel="noopener">PortableApps.com</a> has been cataloguing this kind of software since the mid-2000s. Firefox, VLC, 7-Zip, KeePass, GIMP, Notepad++, Audacity, all of them have portable versions. You can build a full working environment that lives on a 64 GB USB stick and follows you between machines.
+          </div>
+
+          <h2>It's important to know this</h2>
+
+          <img src="../public/img/xp-vs-win11-mycomputer.png"
+               alt="Side-by-side comparison: Windows XP Start menu showing 'My Computer' next to Windows 11 File Explorer showing 'This PC'"
+               class="post-image-narrow" />
+          <p class="image-caption">Windows XP, then Windows 11. The same shortcut, with a quietly different relationship to the user.</p>
+
+          <p>In 2008, portable apps were a convenience. A neat trick for people who used internet cafés or borrowed their cousin's PC to check email.</p>
+
+          <p>In 2026, the whole architecture and Windows interface is different. The operating system you run is making decisions about what data leaves your machine, what gets fed to AI training pipelines, what telemetry gets phoned home, which features are opt-in and which are opt-out. You don't always get to vote.</p>
+
+          <p>A portable application is a small act of jurisdictional reclaim. (Remember Clippy? He was just trying to help.) The data the app handles stays in the folder. The app doesn't register itself with the OS. It doesn't get included in whatever inventory scan ships your installed-software list off to a marketing analytics endpoint. It is, in reality, <em>yours</em>, in a way that an installed app on a corporate laptop never quite is.</p>
+
+          <p>That's not paranoia. That's just understanding the difference between a tool you carry and a tool that has been issued to you.</p>
+
+          <h2>What I'm trying to get across with this</h2>
+
+          <div class="warn">
+            <strong>This is not a magic privacy trick.</strong> A few things to be clear about before someone in the comments calls me out, fairly. Make the computer yours ! 
+          </div>
+
+          <ul>
+            <li><strong>Portable doesn't mean private.</strong> A portable browser still sends data to the websites you visit. A portable SSH client still sends your keystrokes to the remote server. The portability is about the <em>local</em> machine.</li>
+            <li><strong>Some corporate environments block external executables entirely.</strong> If your IT department has whitelisted only approved binaries, your USB stick is a paperweight. That's not the IT department being mean; that's a reasonable security posture for the company. Respect it.</li>
+            <li><strong>Some apps fake being portable.</strong> They still write to the registry, drop temp files, or require a one-time admin elevation. Test before you trust.</li>
+            <li><strong>USB sticks fail.</strong> Encrypt the stick (VeraCrypt, BitLocker To Go) and back up the folder. A lost stick with credentials on it is a worse problem than the one you were trying to solve.</li>
+          </ul>
+
+          <h2>Where this fits in a bigger pattern</h2>
+
+          <p>I keep coming back to a phrase I use with clients: <em>la valise digitale.</em> The digital suitcase. The principle is that anything I build for a client should be packed up and handed over at any time, with no surprises. Their domain registered in their name. Their hosting transferable. Their data exportable in a format their next consultant can read without calling me.</p>
+
+          <p>Portable applications are the same principle, scaled down to a single workstation. The work you do should be packable. The tools you rely on should be replaceable. The machine you sit at should not be the only place those tools exist.</p>
+
+          <p>This is not a doomsday prep mindset. It's just professional hygiene. The day you actually need this is the day a hard drive dies, a laptop gets stolen at an airport, a corporate IT policy locks you out of a tool mid-deadline, or an OS update reboots you during a client demo and decides your settings should reset to defaults because Microsoft thinks it knows better.</p>
+
+          <p>That day is usually a Tuesday.</p>
+
+          <h2>A small starter list</h2>
+
+          <p>If you've never built a portable kit, here's a minimal one to start with. None of these require admin rights to run, and all of them fit comfortably on a 16 GB stick with room to spare.</p>
+
+          <ul>
+            <li><strong><a href="https://mobaxterm.mobatek.net/download.html" target="_blank" rel="noopener">MobaXterm Home Edition (portable)</a></strong> — terminal, SSH, X server, RDP, SFTP in one binary.</li>
+            <li><strong><a href="https://keepassxc.org/download/#windows" target="_blank" rel="noopener">KeePassXC portable</a></strong> — password manager, encrypted local vault, no cloud.</li>
+            <li><strong><a href="https://windows-notepad.en.softonic.com/" target="_blank" rel="noopener">Good old notepad!</a></strong> — text editor, regex find-and-replace, syntax highlighting. Make it portable.</li>
+            <li><strong><a href="https://www.7-zip.org/download.html" target="_blank" rel="noopener">7-Zip portable</a></strong> — archives, encrypted .7z, drag-and-drop. PortableApps.com hosts a maintained portable build.</li>
+            <li><strong><a href="https://portableapps.com/apps/internet/firefox_portable" target="_blank" rel="noopener">Firefox Portable</a></strong> — a browser that doesn't sync to a profile you don't control. Use the PortableApps.com build; it's the legitimate, maintained packaging.</li>
+            <li><strong><a href="https://code.visualstudio.com/docs/editor/portable" target="_blank" rel="noopener">VS Code portable</a></strong> — yes, VS Code has a portable mode. Move the <code>data</code> folder next to the executable.</li>
+          </ul>
+
+          <p>Six tools. Maybe an hour to set up. The first time you plug the stick into a borrowed machine and your whole working environment is there, you'll wonder why you weren't doing this all along. And they don't bloat your CPU — that alone is worth the hour.</p>
+
+          <hr>
+
+          <br>
+          <p><a href="index.html" class="link-btn">← Back to Blog Index</a></p>
+        </section>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck | IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+</body>
+</html>
