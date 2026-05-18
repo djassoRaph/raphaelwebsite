@@ -24,30 +24,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://raphaelreck.com/outsourced-it.html</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://raphaelreck.com/no-it-department.html</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://raphaelreck.com/smb-it-help.html</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://raphaelreck.com/no-contract-it.html</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://raphaelreck.com/it-cost-calculator.html</loc>
     <lastmod>2026-03-30</lastmod>
@@ -84,6 +61,12 @@
   </url>
 
   <!-- Blog posts -->
+  <url>
+    <loc>https://raphaelreck.com/blog/whose-computer.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <url>
     <loc>https://raphaelreck.com/blog/hook-webform-submission-insert-drupal.html</loc>
     <lastmod>2026-04-16</lastmod>
@@ -170,12 +153,6 @@
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/HolidaysSideProject.html</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://raphaelreck.com/blog/blankblog.html</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

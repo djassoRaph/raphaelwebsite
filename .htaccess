@@ -25,3 +25,11 @@ Options -Indexes
 RedirectMatch 301 ^/roots-time/?$ https://raphaelreck.com/roots-time/manifesto.html
 RedirectMatch 301 ^/memes/?$ https://raphaelreck.com/fun.html
 RedirectMatch 301 ^/scripts/?$ https://raphaelreck.com/
+
+# SMB cluster consolidation — May 2026
+# Four pages merged into monthly-support.html; 410 Gone signals
+# intentional removal to Google rather than a temporary 404.
+RewriteRule ^outsourced-it\.html$ - [G,L]
+RewriteRule ^no-it-department\.html$ - [G,L]
+RewriteRule ^smb-it-help\.html$ - [G,L]
+RewriteRule ^no-contract-it\.html$ - [G,L]
