@@ -141,10 +141,19 @@ body {
 }
 
 .hero-image {
+  display: block;
   max-width: 280px;
   border-radius: 12px;
   box-shadow: var(--shadow-lg);
   transition: transform 0.3s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .hero-image:hover {
@@ -499,6 +508,7 @@ body {
 
   .hero-image {
     max-width: 100%;
+    width: 100%;
   }
 
   .hero-text h1 {

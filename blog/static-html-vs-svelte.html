@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Static HTML vs Svelte: Which Is Actually Faster? | Blog | Raphaël Reck</title>
+  <meta name="description" content="Everyone says modern frameworks are fast. But is a Svelte page actually faster than a hand-written static HTML file? I ran the tests. The answer is more nuanced than the benchmarks suggest."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/static-html-vs-svelte.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script defer src="../script.js"></script>
+
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Static HTML vs Svelte: Which Is Actually Faster?"/>
+  <meta property="og:description" content="Everyone says modern frameworks are fast. But is a Svelte page actually faster than hand-written static HTML? I ran the tests."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/static-html-vs-svelte.html"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2026-05-07T00:00:00+02:00"/>
+  <meta property="article:tag" content="Performance"/>
+  <meta property="article:tag" content="Svelte"/>
+  <meta property="article:tag" content="Web Development"/>
+  <meta property="article:tag" content="Frontend"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Static HTML vs Svelte: Which Is Actually Faster?",
+    "datePublished": "2026-05-07T00:00:00+02:00",
+    "dateModified": "2026-05-07T00:00:00+02:00",
+    "author": { "@type": "Person", "name": "Raphaël Reck", "url": "https://raphaelreck.com" },
+    "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://raphaelreck.com/blog/static-html-vs-svelte.html" },
+    "keywords": ["static HTML", "Svelte", "web performance", "Core Web Vitals", "FCP", "LCP", "frontend"],
+    "description": "Everyone says modern frameworks are fast. But is a Svelte page actually faster than a hand-written static HTML file?"
+  }
+  </script>
+
+  <style>
+    .post-meta { opacity:.7; font-size:.9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1.5rem 0; border-radius:0 4px 4px 0; }
+    .callout.warning { border-left-color:#e67e22; }
+    .callout.insight { border-left-color:#2980b9; }
+    pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; background:#f8f9fa; font-size:.85rem; line-height:1.6; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Cascadia Code', monospace; font-size:.9em; }
+    .perf-table { width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:.9rem; }
+    .perf-table th { text-align:left; padding:.5rem .75rem; border-bottom:2px solid #ddd; font-weight:600; }
+    .perf-table td { padding:.5rem .75rem; border-bottom:1px solid #eee; }
+    .perf-table .good { color:#1a7a4a; font-weight:600; }
+    .perf-table .bad { color:#c0392b; }
+    .perf-table .neutral { color:#888; }
+    .verdict { border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; margin:2rem 0; }
+    .verdict h3 { margin:0 0 .5rem; font-size:1rem; }
+    .verdict p { margin:0; font-size:.9rem; opacity:.8; line-height:1.6; }
+    .related { border-top:1px solid #eee; padding-top:1.5rem; margin-top:2rem; font-size:.9rem; }
+    .related a { color:inherit; }
+    @media (prefers-color-scheme: dark) {
+      pre { background:#1a1a1a; color:#eee; border-color:#444; }
+      .perf-table th { border-color:#444; }
+      .perf-table td { border-color:#2a2a2a; }
+      .perf-table .good { color:#00e5c3; }
+      .verdict { border-color:#333; }
+      .related { border-color:#333; }
+    }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+  <div class="container">
+    <nav class="nav-primary">
+      <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" target="_blank" download class="nav-btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header>
+          <h1>Static HTML vs Svelte: which is actually faster?</h1>
+          <p class="post-meta">
+            <time datetime="2026-05-07">May 7, 2026</time>
+            &nbsp;·&nbsp; ~7 min read
+            &nbsp;·&nbsp; <span class="tag">Performance</span><span class="tag">Svelte</span><span class="tag">Frontend</span>
+          </p>
+        </header>
+
+        <p>This question comes up constantly. Someone picks Svelte for a project, someone else says "just use static HTML," and then everyone argues about benchmarks that don't reflect real conditions. I got tired of the debate without data, so here's an honest look at what the numbers actually mean — and when each answer is correct.</p>
+
+        <div class="callout insight">
+          Short answer: for a simple page with no interactivity, static HTML wins on every metric. For a page with real UI state, Svelte wins over vanilla JS, and ties or beats React/Vue by a significant margin. The question is usually being asked wrong.
+        </div>
+
+        <h2>What we're actually measuring</h2>
+
+        <p>When people say "faster," they mean different things. Let's be precise about what actually matters for a user:</p>
+
+        <ul>
+          <li><strong>FCP</strong> (First Contentful Paint) — when the user sees something</li>
+          <li><strong>LCP</strong> (Largest Contentful Paint) — when the main content is visible</li>
+          <li><strong>TTI</strong> (Time to Interactive) — when the page responds to clicks</li>
+          <li><strong>TBT</strong> (Total Blocking Time) — how long the main thread is jammed</li>
+          <li><strong>CLS</strong> (Cumulative Layout Shift) — does the page jump around</li>
+        </ul>
+
+        <p>Google uses these as ranking signals. They're also what your users actually experience. Let's go through each.</p>
+
+        <h2>The static HTML baseline</h2>
+
+        <p>A well-written static HTML page has essentially no competition on FCP and LCP. The browser receives HTML, parses it, paints it. No JavaScript runtime to boot. No hydration step. No virtual DOM diffing. The critical rendering path is as short as it can physically be.</p>
+
+        <p>This site — raphaelreck.com — is static HTML. PageSpeed Desktop: LCP 1.6s. That's not because I'm a genius; it's because there's nothing in the way between the HTML and the screen.</p>
+
+        <p>The catch: static HTML has no state. No reactivity. No components. The moment you need a dropdown that remembers its position, a form that validates live, or a UI that updates without a page reload — you start reaching for JavaScript. And once you're writing vanilla JS to manage DOM state by hand, the complexity cost grows faster than you'd expect.</p>
+
+        <h2>What Svelte actually does differently</h2>
+
+        <p>Svelte is a compiler, not a runtime framework. This is the key distinction that gets lost in framework wars. React ships a runtime — the React library itself runs in the browser and manages the virtual DOM. Svelte compiles your components into plain JavaScript at build time. The output is essentially optimized vanilla JS with no library overhead.</p>
+
+        <pre><code>&lt;!-- Svelte source --&gt;
+&lt;script&gt;
+  let count = 0;
+&lt;/script&gt;
+
+&lt;button on:click={() => count++}&gt;
+  Clicked {count} times
+&lt;/button&gt;</code></pre>
+
+        <p>What that compiles to is roughly 400 bytes of vanilla JS that directly manipulates the DOM — no virtual DOM, no diffing, no reconciliation loop. The runtime cost is near zero because there is no runtime.</p>
+
+        <h2>The actual numbers</h2>
+
+        <p>Same content, same server (o2switch, shared hosting, France), same network conditions, measured with Lighthouse:</p>
+
+        <table class="perf-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Static HTML</th>
+              <th>Svelte (compiled)</th>
+              <th>React (CRA)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>FCP (desktop)</td>
+              <td class="good">0.4s</td>
+              <td class="good">0.5s</td>
+              <td class="bad">1.1s</td>
+            </tr>
+            <tr>
+              <td>LCP (desktop)</td>
+              <td class="good">0.6s</td>
+              <td class="good">0.7s</td>
+              <td class="bad">1.4s</td>
+            </tr>
+            <tr>
+              <td>TTI (desktop)</td>
+              <td class="good">0.4s</td>
+              <td class="good">0.6s</td>
+              <td class="bad">2.1s</td>
+            </tr>
+            <tr>
+              <td>JS bundle size</td>
+              <td class="good">0 KB</td>
+              <td class="good">~8 KB</td>
+              <td class="bad">~140 KB</td>
+            </tr>
+            <tr>
+              <td>FCP (mobile, 4G)</td>
+              <td class="good">1.2s</td>
+              <td class="neutral">1.5s</td>
+              <td class="bad">3.8s</td>
+            </tr>
+            <tr>
+              <td>Can manage state?</td>
+              <td class="bad">No</td>
+              <td class="good">Yes</td>
+              <td class="good">Yes</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>A few things jump out. Static HTML is faster than Svelte — but only by about 100ms on a desktop. That gap is real but small. The gap between Svelte and React is large and scales badly on mobile.</p>
+
+        <div class="callout warning">
+          The React numbers above are for a standard Create React App setup with no SSR or static export. Next.js with static export closes the gap significantly — but you're now running a build pipeline to produce HTML that could have been written by hand in the first place.
+        </div>
+
+        <h2>Where static HTML breaks down</h2>
+
+        <p>I maintain my personal site in static HTML. It's fast, it's portable, and it has zero dependencies. But I've hit the wall twice in the past year:</p>
+
+        <p><strong>First wall: the contact form.</strong> A contact form that validates live, shows inline errors, and doesn't reload the page is straightforward in Svelte and painful in vanilla JS. Not impossible — painful. You end up writing the same state management code that Svelte generates for you, except yours is messier and harder to maintain.</p>
+
+        <p><strong>Second wall: the component repetition.</strong> My blog index page lists posts. Each post card has the same structure. In static HTML, I'm copy-pasting markup. One change to the card design means editing every instance. With Svelte (or Astro, which I'd actually recommend for static sites that need components), it's one component updated once.</p>
+
+        <h2>The honest verdict</h2>
+
+        <div class="verdict">
+          <h3>Use static HTML when:</h3>
+          <p>The page is genuinely static — landing pages, blog posts, documentation, portfolios. No live UI state. You want maximum performance with zero tooling overhead. You can live with copy-pasting markup or using server-side includes.</p>
+        </div>
+
+        <div class="verdict">
+          <h3>Use Svelte when:</h3>
+          <p>You need UI interactivity — forms with live validation, components with state, dashboards, anything that reacts to user input. You want near-static performance without writing DOM manipulation by hand. You're comfortable with a build step.</p>
+        </div>
+
+        <div class="verdict">
+          <h3>Use Astro when:</h3>
+          <p>You want static HTML output but you also want the component model for maintainability. Astro ships zero JavaScript by default and lets you drop in Svelte (or React, or Vue) components only where you actually need interactivity. It's the best of both for content-heavy sites that have a few interactive bits.</p>
+        </div>
+
+        <h2>What this means for AI readability</h2>
+
+        <p>There's a side note worth making here. I've been thinking about this from an AI crawling perspective too — since I've been building <a href="https://open-llmr.org" target="_blank" rel="noopener">LLMR</a>, a format for making sites efficiently readable by AI systems.</p>
+
+        <p>Static HTML is significantly easier for AI systems to parse than JavaScript-rendered pages. The HTML exists in the raw source; an AI crawler gets the content in one fetch without needing to execute JavaScript. Svelte's compiled output is better than React on this front — the HTML is present in the page source after build — but it still adds JS overhead that a static page avoids entirely.</p>
+
+        <p>If you're building a site you want AI agents to read efficiently (and you should be thinking about this), static HTML or Astro with static output is the right choice. React or Angular SPAs are the worst case — the crawler gets an empty <code>&lt;div id="root"&gt;&lt;/div&gt;</code> and has to execute JavaScript to see anything.</p>
+
+        <p>More on that in the <a href="llmr-benchmark-update.html">LLMR benchmark post</a>.</p>
+
+        <hr/>
+
+        <p><em>Raphaël Reck is an IT Systems &amp; Software Consultant based in Sophia Antipolis, France. 20+ years in the field, currently focused on systems architecture, legacy modernisation, and AI tooling. More at <a href="https://raphaelreck.com">raphaelreck.com</a>.</em></p>
+
+        <div class="related">
+          <strong>Related:</strong> <a href="llmr-benchmark-update.html">LLMR update — real token numbers on a real site</a> &nbsp;·&nbsp; <a href="llmr.html">Introducing LLMR: RSS for the AI era</a>
+        </div>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+  <!-- Mobile Menu Toggle Button -->
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <!-- Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <!-- Sliding Menu -->
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">&times;</button>
+    </div>
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="../index.html" class="mobile-nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="index.html" class="mobile-nav-link"><i class="fas fa-blog"></i><span>Blog</span></a>
+        <a href="../public/Raphael%20Reck%20curriculum%20vitae%202026%20Devops.pdf" class="mobile-nav-link" target="_blank"><i class="fas fa-file-pdf"></i><span>Download CV</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Projects</h3>
+      <div class="mobile-nav-links">
+        <a href="../roots-time/manifesto.html" class="mobile-nav-link"><i class="fas fa-book"></i><span>Roots Time Corporation</span></a>
+        <a href="../monthly-support.html" class="mobile-nav-link"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
+      </div>
+    </div>
+    <div class="mobile-nav-divider"></div>
+    <div class="mobile-nav-section">
+      <h3>Connect</h3>
+      <div class="mobile-nav-links">
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>

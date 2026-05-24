@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>I asked the AI what I should ask the AI | Blog | Raphaël Reck</title>
+    <meta name="description" content="A reverse prompt that flipped how I work with AI, why I use it as a memory-keeper and not a coach, and the small differences between models that actually matter."/>
+    <link rel="canonical" href="https://raphaelreck.com/blog/reverse-prompt.html"/>
+    <link rel="stylesheet" href="../style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script defer src="../script.js"></script>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="I asked the AI what I should ask the AI"/>
+    <meta property="og:description" content="A reverse prompt that flipped how I work with AI, why I use it as a memory-keeper and not a coach, and the small differences between models that actually matter."/>
+    <meta property="og:url" content="https://raphaelreck.com/blog/reverse-prompt.html"/>
+    <meta property="og:site_name" content="Raphaël Reck"/>
+    <meta property="article:author" content="Raphaël Reck"/>
+    <meta property="article:published_time" content="2026-05-18T00:00:00+02:00"/>
+    <meta property="article:tag" content="AI"/>
+    <meta property="article:tag" content="Prompt Engineering"/>
+    <meta property="article:tag" content="Productivity"/>
+    <meta property="article:tag" content="Claude"/>
+
+    <style>
+        .post-header { margin-bottom: 1rem; }
+        .post-meta { opacity: .7; font-size: .9rem; }
+        .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+        pre { overflow:auto; padding:1rem; border:1px solid #333; border-radius:.5rem; }
+        code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+        .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+        .prompt-box { border-left: 4px solid #4caf50; padding: 1rem 1.25rem; background: rgba(76,175,80,.05); margin: 1.25rem 0; border-radius: 4px; font-style: italic; }
+        .prompt-wrap { position: relative; }
+        .copy-btn { display: inline-flex; align-items: center; gap: .35rem; margin-top: .5rem; padding: .3rem .85rem; font-size: .8rem; border: 1px solid #4caf50; border-radius: 999px; background: transparent; color: #4caf50; cursor: pointer; transition: background .15s, color .15s; }
+        .copy-btn:hover { background: #4caf50; color: #fff; }
+        .copy-btn.copied { border-color: #888; color: #888; }
+        .meme-img { display:block; max-width: 480px; width:100%; margin: 1.25rem auto; border-radius: 6px; }
+        .img-caption { text-align:center; font-size:.8rem; opacity:.5; margin-top:-.75rem; margin-bottom:1rem; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "I asked the AI what I should ask the AI",
+        "datePublished": "2026-05-18T00:00:00+02:00",
+        "dateModified": "2026-05-18T00:00:00+02:00",
+        "author": { "@type": "Person", "name": "Raphaël Reck" },
+        "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://raphaelreck.com/blog/reverse-prompt.html" },
+        "keywords": ["AI", "Prompt Engineering", "Claude", "Productivity", "Memory", "Workflow"],
+        "description": "A reverse prompt that flipped how I work with AI, why I use it as a memory-keeper and not a coach, and the small differences between models that actually matter."
+    }
+    </script>
+</head>
+
+<body>
+  <button id="theme-toggle" class="theme-toggle" title="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <button id="mobile-menu-toggle" class="mobile-menu-toggle" title="Toggle navigation menu" aria-expanded="false">
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </button>
+
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+  <nav id="mobile-menu" class="mobile-menu">
+    <!-- mobile nav handled by include in production -->
+  </nav>
+
+  <div class="container">
+    <?php include __DIR__ . '/../includes/nav.php'; ?>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>I asked the AI what I should ask the AI</h1>
+          <p class="post-meta">
+            <time datetime="2026-05-18">May 18, 2026</time>
+            <span class="tag">AI</span>
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">Productivity</span>
+            <span class="tag">Claude</span>
+          </p>
+        </header>
+
+        <section>
+          <p>Everyone on the internet right now is shouting the same thing at their favourite chatbot.</p>
+
+          <p><em>"Claude, make my SEO perfect."</em> <em>"ChatGPT, improve my visibility."</em> <em>"Write me a viral LinkedIn post."</em></p>
+
+          <p>It's the digital equivalent of walking into a gym, pointing at the heaviest machine, and saying <em>"make me fit."</em> It's not wrong, exactly. It's just not a question anyone can usefully answer.</p>
+
+          <p>So does it work? I don't think so. You can try though. Practice makes perfect.</p>
+          
+          <h2>The internet I grew up on</h2>
+
+          <p>When I hit cookie banners and paywalls, I feel a little nostalgic for the old internet — the wild west of the early web, as they called it.</p>
+          
+          <p>What I actually loved about computers as a kid was not productivity. It was the opposite. The early web was a chaotic link of self made broken GeoCities sites, forum signatures with three animated GIFs, and treasure troves of weird knowledge no algorithm was sorting for me. You clicked a link because the link looked interesting, and you ended up reading about the lost cosmonauts of the Soviet space program at 2 AM.</p>
+
+          <p>That instinct — the curiosity loop — is what I look for in AI tools today. Not "make me efficient." Make me <em>curious again</em>. Help me chase the thread. Help me understand more.</p>
+
+          <h2>The reverse prompt</h2>
+
+          <p>A few weeks ago, someone posted a prompt on Reddit, originally from X. I had tried before to stop asking the AI for outputs and start asking for inputs instead — but it never really clicked. Then I tried this:</p>
+
+          <div class="prompt-wrap">
+            <div class="prompt-box" id="prompt1">
+              "Based on what you know about me and my goals, what more information can I provide so you can help me achieve those goals faster and take as much off my plate as possible?"
+            </div>
+            <button class="copy-btn" onclick="copyPrompt('prompt1', this)"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+
+          <p>The answers were not glamorous. No magic productivity trick. It asked me for the kind of clients I actually wanted, what my pricing floor was, which projects were active and which were zombies, what my non-negotiables were on a working day. Questions. The kind of questions a competent senior employee would ask their new manager in the first week, so they could stop guessing.</p>
+
+          <p>You can ask the AI to write you a blog post, and it will produce 600 words of 'fluff'. Or you can spend the same 600 words telling it who you are, what you care about, and what you are actually trying to build. Then everything that comes after gets sharper.</p>
+
+          <p>And it's still not perfect. But ... practice makes perfect.</p>
+
+          <div class="callout">
+            <strong>Copy this</strong> next time you sit down with your AI of choice, do not ask it to do anything. Ask it what it would need to know to help you better. Then answer those questions honestly. You will learn at least as much about yourself as you do about the tool.
+          </div>
+
+          <h2>What the tool is actually good for</h2>
+
+          <p>I have a private project where I think out loud with the AI. Goals, plans, half-formed ideas. I steer it, it pushes back (because I asked it to), and the conversation gets stored. That last part is the point.</p>
+
+          <p>I used to write everything in notebooks. I still do, sometimes, but only in the right setting. A terrace in the sun, a real coffee, no Mac, no Starbucks. The serious kind of coffee where the cup is small and the espresso is not afraid of itself. (Bitter &amp; Strong.) That is when pen and paper still wins. The rest of the time, my thoughts were ending up scattered across five notebooks, three sticky notes, and a graveyard of "untitled" text files. Like a physicist's desk, but without the Nobel prize to justify it. <a href="https://time.com/3494553/the-day-albert-einstein-died-a-photographers-story/" target="_blank" rel="noopener">(Ralph Morse photographed Einstein's actual desk the day he died — it is worth a search. It looks exactly like you would expect.)</a></p>
+
+          <p>What AI does well, for me, is the bottling. It takes the scattered version of an idea and gives me back something with edges. Guard rails. A shape I can argue with. I do not need it to be right. I need it to be <em>specific enough that I know whether I agree</em>.</p>
+
+          <p>It is not my coach. It is not my therapist. It is not my girlfriend. I have a therapist, who is a real one. I have a girlfriend, who is also a real one. They both push back in ways an AI cannot, because they remember things from outside the conversation, and they have skin in the game.</p>
+
+          <p>The AI is useful for a narrower thing: helping me find the word I am reaching for when my vocabulary is failing me. I think in three languages, sometimes badly in all three at once. A good model is a fast bilingual dictionary plus a thesaurus plus a patient editor. That is not nothing. But it is not a coach.</p>
+
+          <p>This distinction matters, because the loudest voices online are currently telling people to treat AI as a life partner, an advisor, a confidant. Some of those people are selling you something. Most of them are not thinking carefully. The tool is good. It is also a tool.</p>
+
+          <p>In 2022, a Google engineer named <a href="https://www.cnn.com/2022/07/23/business/google-ai-engineer-fired-sentient" target="_blank" rel="noopener">Blake Lemoine</a> became convinced that the company's LaMDA chatbot was sentient after months of conversations with it. Google fired him. The AI community largely agreed he was wrong. I bring this up not to mock him — the conversations he published are genuinely eerie to read; but because it is a useful data point. The model was doing what models do: predicting the next most plausible token, shaped by billions of human words. It sounded like a person because it had read everything people had ever written about being a person. That is not consciousness. That is a very good mirror. Be careful what you project into mirrors.</p>
+
+          <h2>I've tried them "all"</h2>
+
+          <p>I have tried several. Grok, Mistral, a few open-source ones, a Chinese model whose name I cannot confidently pronounce. They all work. They are all impressive. Some of them have moments where you think <em>"oh, thank you for thinking of that too"</em> — not because they are clever, but because they preemptively answered the next question you had not typed yet.</p>
+
+          <p>The reason I keep coming back to Claude, specifically, is harder to explain. It feels like it knows when it has finished one thing and moves on to the next. Other models either need a "did you do it?" checkpoint after every step, or they stop halfway and wait for you to ask the obvious next question. Claude assumes. Not always correctly. But the assumption is usually the right shape, and that saves me the round trip of validating — even if I do validate step by step sometimes anyway, which is token-expensive and slightly defeats the purpose.</p>
+
+          <p>I would rather correct a confident guess than coax a hesitant one out of a tool that already knows the answer.</p>
+
+          <h2>The one prompt I would actually recommend</h2>
+
+          <p>If you take one thing from this post, take this. Open whatever AI you use most. If it has memory or projects, open the project. Then paste:</p>
+
+          <div class="prompt-wrap">
+            <div class="prompt-box" id="prompt2">
+              "Read everything you have on me. Tell me what you think my three biggest goals are, what you think is currently blocking each of them, and what one piece of information from me would help you the most on each."
+            </div>
+            <button class="copy-btn" onclick="copyPrompt('prompt2', this)"><i class="fas fa-copy"></i> Copy</button>
+          </div>
+
+          <p>You will get back something either uncannily accurate or amusingly wrong — and which one you get tells you exactly how much you have actually shared with it. If you barely told it anything, it will invent a version of you from the gaps. If you did the work, it hands you back a mirror. Both are useful. The accurate version tells you what you have actually been working on, which is rarely what you think you have been working on. The wrong version tells you what you have been performing for the AI instead of telling it.</p>
+
+          <p>This is, incidentally, the same failure mode as the mushroom meme that has been circulating for a few years now; the one where someone holds up a bright red poisonous mushroom, the AI cheerfully confirms it is safe to eat, the person dies, and the AI offers to tell them more about toxic fungi. The AI was not lying. It was confidently pattern-matching on insufficient context. Garbage in, graveyard out.</p>
+
+          <img src="../public/img/mushroom-meme.jpg" alt="AI mushroom meme: AI confidently says a poisonous mushroom is safe, person dies, AI offers to teach about poisonous fungi" class="meme-img" />
+          <p class="img-caption">You get the idea. (Image generated with Nanobanana.)</p>
+
+          <p>Then update the memory. Update the project. Tell it what you actually meant.</p>
+
+          <p>The tool is only as good as what you have bothered to tell it. Same as a colleague. Same as a client. Same as you.</p>
+
+          <hr>
+          <p><em>If you found this useful, or completely wrong, I would genuinely like to know. Reach out via LinkedIn or email — links in the footer.</em></p>
+          <br>
+          <p><a href="index.html" class="link-btn">← Back to Blog Index</a></p>
+        </section>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck | IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+  <script>
+    function copyPrompt(id, btn) {
+      const text = document.getElementById(id).innerText.trim();
+      navigator.clipboard.writeText(text).then(function() {
+        btn.classList.add('copied');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        setTimeout(function() {
+          btn.classList.remove('copied');
+          btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
