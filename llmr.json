@@ -1,6 +1,6 @@
 {
   "v": "2.0",
-  "ts": 1778154893,
+  "ts": 1779667200,
   "s": {
     "d": "raphaelreck.com",
     "ti": "IT Support for Small Business — Raphaël Reck",
@@ -8,7 +8,7 @@
       "n": "Raphaël Reck"
     },
     "ct": {
-      "BlogPosting": 26,
+      "BlogPosting": 27,
       "Service": 6,
       "CollectionPage": 1,
       "WebPage": 5,
@@ -17,6 +17,41 @@
     }
   },
   "p": [
+    {
+      "id": "reverse-prompt",
+      "u": "/blog/reverse-prompt.html",
+      "t": "BlogPosting",
+      "ti": "I asked the AI what I should ask the AI | Blog | Raphaël Reck",
+      "d": "2026-05-24",
+      "sum": "A reverse prompt that flipped how I work with AI, why I use it as a memory-keeper and not a coach, and the small differences between models that actually matter.",
+      "kw": [
+        "AI",
+        "prompt",
+        "Claude",
+        "memory",
+        "workflow",
+        "reverse",
+        "productivity",
+        "LLM",
+        "models",
+        "tools"
+      ],
+      "wc": 920,
+      "rt": 5,
+      "sd": 1,
+      "h1": "I asked the AI what I should ask the AI",
+      "a": "Raphaël Reck",
+      "emb": [
+        0.31,
+        -0.47,
+        0.68,
+        0.15,
+        -0.62,
+        0.83,
+        -0.29,
+        0.44
+      ]
+    },
     {
       "id": "llmr-benchmark-update",
       "u": "/blog/llmr-benchmark-update.html",
@@ -1418,8 +1453,8 @@
     }
   ],
   "stats": {
-    "total_pages": 40,
-    "total_words": 34725,
+    "total_pages": 41,
+    "total_words": 35645,
     "avg_read_time": 4.5,
     "pages_with_code": 16
   }

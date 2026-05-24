@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /roots-time/
-Disallow: /memes/
-Disallow: /fun.html
 Disallow: /php-test/
 Sitemap: https://raphaelreck.com/sitemap.xml

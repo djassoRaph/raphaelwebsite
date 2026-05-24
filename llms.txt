@@ -9,6 +9,7 @@
 ## Blog
 
 [Blog | Raphaël Reck](https://raphaelreck.com/blog/): Software blog by Raphaël Reck — AI projects, bugs I've hit, architectural decisions. Posts on tools I build and how I think about tech. Wednesdays.
+[I asked the AI what I should ask the AI | Blog | Raphaël Reck](https://raphaelreck.com/blog/reverse-prompt.html): A reverse prompt that flipped how I work with AI, why I use it as a memory-keeper and not a coach, and the small differences between models that actually matter.
 [hook_webform_submission_insert: A Practical Drupal Tutorial | Raphaël Reck](https://raphaelreck.com/blog/hook-webform-submission-insert-drupal.html): A hands-on tutorial for hook_webform_submission_insert in Drupal. Learn how to react to new webform submissions with real, copy-paste PHP code examples.
 [Weekly SEO Agent with GitHub Actions & Claude | Raphaël Reck](https://raphaelreck.com/blog/seo-agent-github-actions.html): I automated my SEO follow-through: a cron job fetches Search Console data, Claude analyses it, and GitHub Issues appear every Friday. Under €1/month.
 [LLMR 2.0: One File, 98% Fewer Tokens | Blog | Raphaël Reck](https://raphaelreck.com/blog/llmr-v2.html): LLMR v2.0 is live; a JSON site index that gives AI systems your entire website in one fetch. Think RSS for the AI era. Now with a formal spec, open-llmr.org, and a full ecosystem plan.
