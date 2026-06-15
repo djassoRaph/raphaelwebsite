@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Homepage -->
   <url>
     <loc>https://raphaelreck.com/</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,7 +11,6 @@
   <!-- Other top-level pages -->
   <url>
     <loc>https://raphaelreck.com/fun.html</loc>
-    <lastmod>2026-02-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -20,20 +18,17 @@
   <!-- Funnel pages -->
   <url>
     <loc>https://raphaelreck.com/monthly-support.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://raphaelreck.com/it-cost-calculator.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/ai-automation.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -41,13 +36,11 @@
   <!-- Other pages -->
   <url>
     <loc>https://raphaelreck.com/roots-time/manifesto.html</loc>
-    <lastmod>2025-06-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/memes/laugh.html</loc>
-    <lastmod>2025-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -55,7 +48,6 @@
   <!-- Blog index -->
   <url>
     <loc>https://raphaelreck.com/blog/</loc>
-    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -63,163 +55,136 @@
   <!-- Blog posts -->
   <url>
     <loc>https://raphaelreck.com/blog/reverse-prompt.html</loc>
-    <lastmod>2026-05-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/whose-computer.html</loc>
-    <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/llmr-benchmark-update.html</loc>
-    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/static-html-vs-svelte.html</loc>
-    <lastmod>2026-05-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/hook-webform-submission-insert-drupal.html</loc>
-    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/seo-agent-github-actions.html</loc>
-    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/llmr-v2.html</loc>
-    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/raspberry-pi-nanobot.html</loc>
-    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/when-webservices-lie.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/2025-12-07-whats_in_the_wind.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/yaygodot.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/constituant.fr.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/llmr.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/2025-10-08-juggling-fireballs.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/you-cant-get-them-all.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/laravel040925.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/Productivityanddebugging.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/2025-08-25-ai-vs-legacy-drupal.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/HolidaysSideProject.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/GPTtoClaude.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/claudio.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/maidenless.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/CETheadaches.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/originstory.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/SVNgit.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/bitcoinscam.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raphaelreck.com/blog/frameworks.html</loc>
-    <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
