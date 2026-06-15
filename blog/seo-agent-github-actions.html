@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Weekly SEO Agent with GitHub Actions &amp; Claude | Raphaël Reck</title>
+    <title>Weekly SEO Agent with GitHub Actions &amp; Claude | RaphaÃ«l Reck</title>
 
-    <meta name="description" content="I automated my SEO follow-through: a cron job fetches Search Console data, Claude analyses it, and GitHub Issues appear every Friday. Under €1/month."/>
+    <meta name="description" content="I automated my SEO follow-through: a cron job fetches Search Console data, Claude analyses it, and GitHub Issues appear every Friday. Under â‚¬1/month."/>
     <link rel="canonical" href="https://raphaelreck.com/blog/seo-agent-github-actions.html"/>
 
     <link rel="stylesheet" href="../style.css" />
@@ -20,7 +20,7 @@
     <meta property="og:image" content="https://raphaelreck.com/public/img/og-default.png"/>
     <meta property="og:image:width" content="967"/>
     <meta property="og:image:height" content="522"/>
-    <meta property="og:site_name" content="Raphaël Reck"/>
+    <meta property="og:site_name" content="RaphaÃ«l Reck"/>
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image"/>
@@ -36,12 +36,12 @@
     "dateModified": "2026-05-05T00:00:00+02:00",
     "author": {
         "@type": "Person",
-        "name": "Raphaël Reck",
+        "name": "RaphaÃ«l Reck",
         "url": "https://raphaelreck.com"
     },
     "publisher": {
         "@type": "Organization",
-        "name": "Raphaël Reck",
+        "name": "RaphaÃ«l Reck",
         "url": "https://raphaelreck.com",
         "logo": {
             "@type": "ImageObject",
@@ -114,7 +114,7 @@
   <nav id="mobile-menu" class="mobile-menu">
     <div class="mobile-menu-header">
       <h2 class="mobile-menu-title">Navigation</h2>
-      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+      <button id="mobile-menu-close" class="mobile-menu-close">Ã—</button>
     </div>
     <div class="mobile-nav-section">
       <h3>Main</h3>
@@ -150,7 +150,7 @@
       <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
     </nav>
     <nav class="nav-secondary">
-      <a href="../index.html" target="_blank" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
       <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
       <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
     </nav>
@@ -177,9 +177,9 @@
 
           <p>Twenty years in IT and I was still manually checking SEO dashboards like it was 2008.</p>
 
-          <p>Here's the truth: I don't have an SEO problem. I have a follow-through problem. I know what's wrong with my sites. I've known for months. The knowledge was never the issue — the execution was.</p>
+          <p>Here's the truth: I don't have an SEO problem. I have a follow-through problem. I know what's wrong with my sites. I've known for months. The knowledge was never the issue â€” the execution was.</p>
 
-          <p>So I automated the follow-through. In one afternoon, working with Claude Code and Claude, I built a weekly agent that pulls my Search Console data, analyses it with AI, and files GitHub Issues with specific fixes — while I eat lunch. And honestly? I'm proud of what I can build now. The speed at which I can go from <em>"I should fix that"</em> to <em>"that's already in my issue tracker"</em> has changed completely.</p>
+          <p>So I automated the follow-through. In one afternoon, working with Claude Code and Claude, I built a weekly agent that pulls my Search Console data, analyses it with AI, and files GitHub Issues with specific fixes â€” while I eat lunch. And honestly? I'm proud of what I can build now. The speed at which I can go from <em>"I should fix that"</em> to <em>"that's already in my issue tracker"</em> has changed completely.</p>
 
           <p>Here's exactly how I built it.</p>
 
@@ -190,14 +190,14 @@
           <p>Three APIs. One Python script. One cron job.</p>
 
 <div class="architecture-block">GitHub Actions (every Friday 10:00 UTC)
-        │
-        ├── Google Search Console API  → your real traffic data
-        ├── Anthropic Claude API       → analysis + recommendations
-        └── GitHub Issues API          → creates the actual tickets</div>
+        â”‚
+        â”œâ”€â”€ Google Search Console API  â†’ your real traffic data
+        â”œâ”€â”€ Anthropic Claude API       â†’ analysis + recommendations
+        â””â”€â”€ GitHub Issues API          â†’ creates the actual tickets</div>
 
           <p>No server. No database. No monthly infrastructure bill. Just a <code>.yml</code> file and a <code>.py</code> file sitting in your repo.</p>
 
-          <p>Total cost: under €1/month — the Claude API calls are tiny.</p>
+          <p>Total cost: under â‚¬1/month â€” the Claude API calls are tiny.</p>
 
           <hr/>
 
@@ -216,11 +216,11 @@
 
           <p>This is the part that sounds scary but takes 10 minutes.</p>
 
-          <p>Go to <a href="https://console.cloud.google.com" target="_blank" rel="noopener">console.cloud.google.com</a>, create a project called <code>seo-agent</code>, and enable the <strong>Google Search Console API</strong> under APIs &amp; Services → Library.</p>
+          <p>Go to <a href="https://console.cloud.google.com" target="_blank" rel="noopener">console.cloud.google.com</a>, create a project called <code>seo-agent</code>, and enable the <strong>Google Search Console API</strong> under APIs &amp; Services â†’ Library.</p>
 
-          <p>Then go to <strong>IAM &amp; Admin → Service Accounts → Create service account</strong>. Name it <code>seo-agent-reader</code>. No role needed. Create it.</p>
+          <p>Then go to <strong>IAM &amp; Admin â†’ Service Accounts â†’ Create service account</strong>. Name it <code>seo-agent-reader</code>. No role needed. Create it.</p>
 
-          <p>Once created, click on it → <strong>Keys</strong> → <strong>Add Key</strong> → <strong>Create new key</strong> → <strong>JSON</strong>.</p>
+          <p>Once created, click on it â†’ <strong>Keys</strong> â†’ <strong>Add Key</strong> â†’ <strong>Create new key</strong> â†’ <strong>JSON</strong>.</p>
 
           <p>A <code>.json</code> file downloads. <strong>Don't lose this file.</strong> It looks like this:</p>
 
@@ -241,8 +241,8 @@
           <p>For <strong>each site</strong> you want to audit:</p>
 
           <ol>
-            <li>Open Search Console → your property → <strong>Settings → Users and permissions</strong></li>
-            <li><strong>Add user</strong> → paste the <code>client_email</code> from your JSON file</li>
+            <li>Open Search Console â†’ your property â†’ <strong>Settings â†’ Users and permissions</strong></li>
+            <li><strong>Add user</strong> â†’ paste the <code>client_email</code> from your JSON file</li>
             <li>Permission: <strong>Restricted</strong> (read-only is all we need)</li>
           </ol>
 
@@ -250,11 +250,11 @@
 
           <h2>Step 3: Create a GitHub Personal Access Token</h2>
 
-          <p>GitHub → Settings → Developer settings → <strong>Fine-grained tokens</strong> → Generate new token.</p>
+          <p>GitHub â†’ Settings â†’ Developer settings â†’ <strong>Fine-grained tokens</strong> â†’ Generate new token.</p>
 
           <p>The only permission you need: <strong>Issues: Read and write</strong>.</p>
 
-          <p>Make sure the token has access to the repos where you want issues created. Copy it immediately — you only see it once.</p>
+          <p>Make sure the token has access to the repos where you want issues created. Copy it immediately â€” you only see it once.</p>
 
           <hr/>
 
@@ -328,7 +328,7 @@ def build_search_console_service():
         max_tokens=4000,
         system="""You are an SEO expert. Analyse Search Console data and return
 ONLY a valid JSON array of GitHub issues. Each issue: title, body, labels, priority.
-Be terse — data evidence + exact fix steps. Nothing else.""",
+Be terse â€” data evidence + exact fix steps. Nothing else.""",
         messages=[{"role": "user", "content": f"Analyse {site_name}:\n\n{data_block}"}],
     )
     return json.loads(msg.content[0].text.strip())</code></pre>
@@ -352,7 +352,7 @@ Be terse — data evidence + exact fix steps. Nothing else.""",
 
           <h2>Step 6: Add the three secrets</h2>
 
-          <p>GitHub repo → <strong>Settings → Secrets and variables → Actions</strong> (Secrets tab, not Variables):</p>
+          <p>GitHub repo â†’ <strong>Settings â†’ Secrets and variables â†’ Actions</strong> (Secrets tab, not Variables):</p>
 
           <table>
             <thead>
@@ -371,7 +371,7 @@ Be terse — data evidence + exact fix steps. Nothing else.""",
 
           <p><strong>I pasted a Gemini curl command into the <code>GOOGLE_SERVICE_ACCOUNT_JSON</code> field.</strong></p>
 
-          <p>In my defence, I had six tabs open and was multitasking. The secret needs to contain the raw JSON from the file you downloaded — not a curl command, not a URL, not anything else. Open the <code>.json</code> file in a text editor, select all, paste.</p>
+          <p>In my defence, I had six tabs open and was multitasking. The secret needs to contain the raw JSON from the file you downloaded â€” not a curl command, not a URL, not anything else. Open the <code>.json</code> file in a text editor, select all, paste.</p>
 
           <p><strong>I used <code>anthropic==0.28.0</code> and got a <code>proxies</code> TypeError.</strong></p>
 
@@ -379,7 +379,7 @@ Be terse — data evidence + exact fix steps. Nothing else.""",
 
           <p><strong>I got 404s when creating issues.</strong></p>
 
-          <p>My GitHub token was named <code>seo-reader-token</code> — and indeed it only had read access. Naming things matters, apparently. Regenerate the token with <strong>Issues: Read and write</strong>.</p>
+          <p>My GitHub token was named <code>seo-reader-token</code> â€” and indeed it only had read access. Naming things matters, apparently. Regenerate the token with <strong>Issues: Read and write</strong>.</p>
 
           <p><strong>Claude's JSON was getting truncated.</strong></p>
 
@@ -393,13 +393,13 @@ Be terse — data evidence + exact fix steps. Nothing else.""",
 
           <ul class="issue-list">
             <li>[SEO] Homepage title/meta underperforming: pos 4.4, 25 impr, only 4% CTR</li>
-            <li>[SEO] HTTP URLs indexed — migrate http://raphaelreck.com/* to HTTPS</li>
-            <li>[SEO] /memes/laugh.html: 12 impressions, pos 3.7, zero clicks — fix title/meta</li>
-            <li>[SEO] /blog/when-webservices-lie.html: 13 impr, pos 7.7 — optimise to reach page 1</li>
-            <li>[SEO] hook_webform_submission_insert: pos 9, 6 impr — target Drupal niche keyword</li>
+            <li>[SEO] HTTP URLs indexed â€” migrate http://raphaelreck.com/* to HTTPS</li>
+            <li>[SEO] /memes/laugh.html: 12 impressions, pos 3.7, zero clicks â€” fix title/meta</li>
+            <li>[SEO] /blog/when-webservices-lie.html: 13 impr, pos 7.7 â€” optimise to reach page 1</li>
+            <li>[SEO] hook_webform_submission_insert: pos 9, 6 impr â€” target Drupal niche keyword</li>
           </ul>
 
-          <p>Each one includes the Search Console data that justifies it, and exact steps to fix it. Not vague advice — specific changes with context.</p>
+          <p>Each one includes the Search Console data that justifies it, and exact steps to fix it. Not vague advice â€” specific changes with context.</p>
 
           <p>These are things I already knew I should do. The difference is they're now in my issue tracker with labels, instead of floating in my head as vague intentions.</p>
 
@@ -415,11 +415,11 @@ Be terse — data evidence + exact fix steps. Nothing else.""",
 
           <h2>What's next</h2>
 
-          <p>This is Phase 1. Phase 2 is a second agent that reads these issues and actually implements the fixes — rewriting meta descriptions, updating title tags, fixing redirect chains. The SEO agent files the tickets; the fix agent closes them.</p>
+          <p>This is Phase 1. Phase 2 is a second agent that reads these issues and actually implements the fixes â€” rewriting meta descriptions, updating title tags, fixing redirect chains. The SEO agent files the tickets; the fix agent closes them.</p>
 
           <p>For now, having the analysis automated is already a 10x improvement over <em>"stare at dashboard, close tab, repeat."</em></p>
 
-          <blockquote>The full script is on <a href="https://github.com/djassoRaph/raphaelwebsite" target="_blank" rel="noopener">github.com/djassoRaph/raphaelwebsite</a> — questions or war stories about your own setup, find me on <a href="https://x.com/Raphiosi" target="_blank" rel="noopener">X</a>.</blockquote>
+          <blockquote>The full script is on <a href="https://github.com/djassoRaph/raphaelwebsite" target="_blank" rel="noopener">github.com/djassoRaph/raphaelwebsite</a> â€” questions or war stories about your own setup, find me on <a href="https://x.com/Raphiosi" target="_blank" rel="noopener">X</a>.</blockquote>
 
           <p>Thank <strong>you</strong> for reading.</p>
 
@@ -427,7 +427,7 @@ Be terse — data evidence + exact fix steps. Nothing else.""",
         <br>
         <hr>
         <br>
-        <p><a href="index.html" class="link-btn">← Back to Blog Index</a></p>
+        <p><a href="index.html" class="link-btn">â† Back to Blog Index</a></p>
       </article>
     </main>
 

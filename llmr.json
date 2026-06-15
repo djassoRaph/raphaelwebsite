@@ -1187,74 +1187,6 @@
       ]
     },
     {
-      "id": "no-contract-it",
-      "u": "/no-contract-it.html",
-      "t": "Service",
-      "ti": "Remote IT Support With No Long-Term Contract | Raphaël Reck",
-      "sum": "IT support that doesn't require a 12-month commitment. Month-to-month, no lock-in, no minimum term. Senior engineer available when you need it.",
-      "kw": [
-        "IT support no contract",
-        "doesn",
-        "remote IT support no long term contract",
-        "because",
-        "senior",
-        "freelance IT support no contract",
-        "engineer",
-        "IT support flexible small business",
-        "month",
-        "month to month IT support"
-      ],
-      "wc": 514,
-      "rt": 3,
-      "sd": 1,
-      "h1": "Remote IT Support With No Long-Term Contract",
-      "a": "Raphael Reck",
-      "emb": [
-        -0.29,
-        0.97,
-        0.51,
-        0.72,
-        -0.17,
-        0.59,
-        0.25,
-        0.98
-      ]
-    },
-    {
-      "id": "outsourced-it",
-      "u": "/outsourced-it.html",
-      "t": "Service",
-      "ti": "Outsourced IT Support for Small Business | Raphaël Reck",
-      "sum": "No IT department? Think of it like having an IT angel on your shoulder available when you need it, invisible when you don't.",
-      "kw": [
-        "department",
-        "business",
-        "small business tech support",
-        "senior IT engineer monthly support",
-        "before",
-        "support",
-        "IT support no IT department",
-        "remote IT consultant",
-        "outsourced",
-        "something"
-      ],
-      "wc": 549,
-      "rt": 3,
-      "sd": 1,
-      "h1": "Outsourced IT Support That Feels Like Having an Angel on Your Shoulder",
-      "a": "Raphael Reck",
-      "emb": [
-        0.77,
-        -0.31,
-        -0.8,
-        -0.62,
-        0.49,
-        0.52,
-        0.31,
-        0.88
-      ]
-    },
-    {
       "id": "index",
       "u": "/public/index.html",
       "ti": "Assets | Raphaël Reck",
@@ -1382,45 +1314,11 @@
         -0.53,
         0.32
       ]
-    },
-    {
-      "id": "smb-it-help",
-      "u": "/smb-it-help.html",
-      "t": "Service",
-      "ti": "IT Help for Small Companies | Without the Agency | Raphaël Reck",
-      "sum": "Small companies don't need IT agencies. They need one senior engineer who knows their setup and picks up the phone. Fixed monthly cost, remote-first, no overhead.",
-      "kw": [
-        "small business tech help",
-        "senior",
-        "knows",
-        "IT consultant small business",
-        "SMB IT support",
-        "someone",
-        "agency",
-        "know",
-        "small company IT help",
-        "setup"
-      ],
-      "wc": 641,
-      "rt": 3,
-      "sd": 1,
-      "h1": "IT Help for Small Companies | Why You Don't Need an Agency",
-      "a": "Raphael Reck",
-      "emb": [
-        -0.2,
-        0.23,
-        0.07,
-        0.89,
-        -0.28,
-        0.58,
-        0.99,
-        0.33
-      ]
     }
   ],
   "stats": {
-    "total_pages": 41,
-    "total_words": 35645,
+    "total_pages": 38,
+    "total_words": 33941,
     "avg_read_time": 4.5,
     "pages_with_code": 16
   }
