@@ -28,3 +28,7 @@ scripts/
 php-test/  
 public/secret/Pixel Tankards & Tall Tales.mp3
 .claude/settings.json
+
+secret/dashboard/config.php
+google-service-account*.json
+secret/dashboard/*.json
