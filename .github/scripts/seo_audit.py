@@ -145,22 +145,45 @@ Each object has these exact keys:
   - "body"      : issue body in Markdown — be concise, no fluff, data + fix steps only
   - "labels"    : array of strings
   - "priority"  : "high" | "medium" | "low"
+  - "page_key"  : a STABLE identifier for the underlying page or problem, used for
+                  de-duplication across weekly runs. You MUST reuse the exact same
+                  page_key every week for the same underlying issue — do not invent
+                  a new one just because the numbers changed. Rules:
+                  * For a specific page: use its exact URL path, e.g. "/blog/hook-webform-submission-insert-drupal.html"
+                  * For the homepage: use "/"
+                  * For a site-wide/technical issue (not tied to one page), use a short
+                    fixed slug you commit to reusing, e.g. "sitewide-http-https-redirect",
+                    "sitewide-desktop-mobile-ctr-gap", "cv-pdf-indexed"
 Be terse. No preamble. No pleasantries. Data evidence + exact fix. Nothing else.
 Generate 3 to 5 issues per site. Focus on these patterns:
 1. Quick wins (high impressions, low CTR → meta/title fixes)
 2. Position 4–10 queries that could reach page 1 with minor improvements
 3. Any page with impressions but near-zero clicks
 4. Technical issues if patterns suggest them
-     
+
+IMPORTANT: you will also be given a list of page_keys that already have an OPEN
+tracking issue in the repo, with their issue numbers. If the underlying problem
+you'd otherwise report matches one of those page_keys, do NOT invent a new issue —
+report it with that exact same page_key so it gets appended as a progress update to
+the existing issue instead of filed as a new one. Only use a new page_key for a
+genuinely new page or problem not already tracked.
 """
 
-def ask_claude(site_name: str, data_block: str) -> list[dict]:
+def ask_claude(site_name: str, data_block: str, existing_keys: dict) -> list[dict]:
     """Send Search Console data to Claude, get back a list of issue dicts."""
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+    if existing_keys:
+        tracked_block = "\n".join(f"  - {k}  (already tracked in #{v})" for k, v in existing_keys.items())
+    else:
+        tracked_block = "  (none yet — this is the first run)"
 
     user_message = f"""Analyse this Google Search Console data for {site_name} and generate SEO issues.
 
 {data_block}
+
+PAGE_KEYS ALREADY TRACKED BY AN OPEN ISSUE (reuse these exactly if the same problem recurs):
+{tracked_block}
 
 Remember: return ONLY a JSON array of issue objects. No other text."""
 
@@ -192,24 +215,94 @@ Remember: return ONLY a JSON array of issue objects. No other text."""
 
 
 # ─────────────────────────────────────────────
-# GITHUB — create issues
+# GITHUB — dedup, create issues, comment on existing ones
 # ─────────────────────────────────────────────
-def create_github_issue(repo: str, issue: dict, site_name: str):
-    """POST a single issue to GitHub. Adds a 'seo-agent' label automatically."""
-    token = os.environ.get("GH_TOKEN")
-    if not token:
-        sys.exit("ERROR: GH_TOKEN secret is missing.")
+KEY_MARKER = "<!-- seo-agent-key: {key} -->"
+KEY_MARKER_RE_PREFIX = "<!-- seo-agent-key: "
 
-    url     = f"https://api.github.com/repos/{repo}/issues"
-    headers = {
+
+def _gh_headers(token: str) -> dict:
+    return {
         "Authorization": f"Bearer {token}",
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28",
     }
 
+
+def fetch_open_seo_issues(repo: str) -> dict:
+    """
+    Return {page_key: issue_number} for every OPEN issue in the repo that
+    carries a 'seo-agent' label and an embedded page_key marker in its body.
+    This is what lets future runs update an existing issue instead of
+    filing a new one for the same underlying problem.
+    """
+    token = os.environ.get("GH_TOKEN")
+    if not token:
+        sys.exit("ERROR: GH_TOKEN secret is missing.")
+
+    keys = {}
+    url = f"https://api.github.com/repos/{repo}/issues"
+    params = {"state": "open", "labels": "seo-agent", "per_page": 100}
+
+    try:
+        resp = requests.get(url, headers=_gh_headers(token), params=params, timeout=15)
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"    Warning: could not fetch existing issues for dedup: {e}")
+        return keys
+
+    for issue in resp.json():
+        body = issue.get("body") or ""
+        for line in body.splitlines():
+            line = line.strip()
+            if line.startswith(KEY_MARKER_RE_PREFIX):
+                key = line[len(KEY_MARKER_RE_PREFIX):].split("-->")[0].strip()
+                if key:
+                    keys[key] = issue["number"]
+                break
+
+    return keys
+
+
+def comment_on_issue(repo: str, issue_number: int, issue: dict, site_name: str):
+    """Append a progress-update comment to an already-tracked issue instead of
+    filing a duplicate."""
+    token = os.environ.get("GH_TOKEN")
+    url = f"https://api.github.com/repos/{repo}/issues/{issue_number}/comments"
+
+    comment = (
+        f"> **SEO Agent** — weekly update on {datetime.utcnow().strftime('%Y-%m-%d')}"
+        f" for `{site_name}` (still open, same underlying issue)\n\n"
+        + issue.get("body", "")
+    )
+
+    resp = requests.post(url, headers=_gh_headers(token), json={"body": comment}, timeout=15)
+    if resp.status_code == 201:
+        print(f"    ↻ Updated existing issue #{issue_number}: {issue.get('title', '')}")
+    else:
+        print(f"    ❌ Failed to comment on #{issue_number} ({resp.status_code}): {resp.text[:200]}")
+
+
+def create_github_issue(repo: str, issue: dict, site_name: str, existing_keys: dict):
+    """POST a single issue to GitHub, unless its page_key is already tracked by
+    an open issue — in which case update that issue instead. Adds a 'seo-agent'
+    label automatically."""
+    token = os.environ.get("GH_TOKEN")
+    if not token:
+        sys.exit("ERROR: GH_TOKEN secret is missing.")
+
+    page_key = (issue.get("page_key") or "").strip()
+
+    if page_key and page_key in existing_keys:
+        comment_on_issue(repo, existing_keys[page_key], issue, site_name)
+        return
+
+    url     = f"https://api.github.com/repos/{repo}/issues"
     labels = list(issue.get("labels", [])) + ["seo-agent"]
 
+    key_line = KEY_MARKER.format(key=page_key) if page_key else ""
     body_prefix = (
+        f"{key_line}\n"
         f"> **SEO Agent** — auto-generated on {datetime.utcnow().strftime('%Y-%m-%d')}"
         f" for `{site_name}`\n\n"
     )
@@ -220,19 +313,23 @@ def create_github_issue(repo: str, issue: dict, site_name: str):
         "labels": labels,
     }
 
-    resp = requests.post(url, headers=headers, json=payload, timeout=15)
+    resp = requests.post(url, headers=_gh_headers(token), json=payload, timeout=15)
 
     if resp.status_code == 201:
         issue_url = resp.json().get("html_url", "")
         print(f"    ✅ Created: {payload['title']}")
         print(f"       {issue_url}")
+        if page_key:
+            existing_keys[page_key] = resp.json().get("number")
     elif resp.status_code == 422:
         # Label might not exist yet — retry without labels
         print(f"    ⚠  Label error, retrying without labels...")
         payload["labels"] = []
-        resp2 = requests.post(url, headers=headers, json=payload, timeout=15)
+        resp2 = requests.post(url, headers=_gh_headers(token), json=payload, timeout=15)
         if resp2.status_code == 201:
             print(f"    ✅ Created (no labels): {payload['title']}")
+            if page_key:
+                existing_keys[page_key] = resp2.json().get("number")
         else:
             print(f"    ❌ Failed: {resp2.status_code} — {resp2.text[:200]}")
     else:
@@ -259,17 +356,21 @@ def main():
         formatted = format_for_prompt(site, data)
         print(f"  Data block ({len(data['queries'])} queries, {len(data['pages'])} pages)")
 
+        print(f"  Fetching already-tracked open SEO issues for dedup...")
+        existing_keys = fetch_open_seo_issues(site["github_repo"])
+        print(f"  {len(existing_keys)} page(s) already tracked: {list(existing_keys.keys())}")
+
         print(f"  Asking Claude for analysis...")
-        issues = ask_claude(name, formatted)
+        issues = ask_claude(name, formatted, existing_keys)
         print(f"  Claude generated {len(issues)} issue(s)")
 
         if not issues:
             print(f"  Skipping issue creation (no valid issues returned)\n")
             continue
 
-        print(f"  Creating GitHub issues in {site['github_repo']}...")
+        print(f"  Creating/updating GitHub issues in {site['github_repo']}...")
         for issue in issues:
-            create_github_issue(site["github_repo"], issue, name)
+            create_github_issue(site["github_repo"], issue, name, existing_keys)
 
         print()
 

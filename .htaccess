@@ -33,3 +33,14 @@ RewriteRule ^outsourced-it\.html$ - [G,L]
 RewriteRule ^no-it-department\.html$ - [G,L]
 RewriteRule ^smb-it-help\.html$ - [G,L]
 RewriteRule ^no-contract-it\.html$ - [G,L]
+
+# CV consolidation — Aug 2026
+# /cv.html is now the canonical, indexable landing page (issue #92).
+# Orphan/unlinked older CV PDF: redirect its indexed impressions to /cv.html.
+RewriteRule ^public/raphael-reck\.pdf$ https://raphaelreck.com/cv.html [R=301,L]
+
+# Keep PDFs out of search results — they carry no meta tags/internal links
+# and only fragment ranking signals that /cv.html now consolidates.
+<FilesMatch "\.pdf$">
+  Header set X-Robots-Tag "noindex, nofollow"
+</FilesMatch>
