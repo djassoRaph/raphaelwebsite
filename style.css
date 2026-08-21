@@ -1145,3 +1145,8 @@ section.transparency p {
 #cookie-banner button:hover {
   background: var(--color-border);
 }
+
+#cookie-privacy-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+}

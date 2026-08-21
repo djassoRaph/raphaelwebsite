@@ -346,25 +346,38 @@
   </div>
 
   <div id="cookie-banner">
-    I hate cookies.
+    <span id="cookie-banner-text">I hate cookies.</span>
     <button id="cookie-yes" type="button">Yes</button>
     <button id="cookie-no" type="button">No</button>
+    <a href="privacy-policy.html" id="cookie-privacy-link" style="display:none;">Privacy Policy</a>
   </div>
 
   <script>
-    // Tiny cookie banner: either button just dismisses it
+    // Tiny cookie banner: "No" just dismisses it. "Yes" reveals the privacy policy link, since apparently that's funny.
     (function () {
       const banner = document.getElementById('cookie-banner');
+      const text = document.getElementById('cookie-banner-text');
+      const yesBtn = document.getElementById('cookie-yes');
+      const noBtn = document.getElementById('cookie-no');
+      const privacyLink = document.getElementById('cookie-privacy-link');
+
       if (localStorage.getItem('cookieBannerDismissed')) {
         banner.style.display = 'none';
         return;
       }
-      const dismiss = () => {
+
+      noBtn.addEventListener('click', () => {
         banner.style.display = 'none';
         localStorage.setItem('cookieBannerDismissed', '1');
-      };
-      document.getElementById('cookie-yes').addEventListener('click', dismiss);
-      document.getElementById('cookie-no').addEventListener('click', dismiss);
+      });
+
+      yesBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieBannerDismissed', '1');
+        text.textContent = 'Knew it.';
+        yesBtn.style.display = 'none';
+        noBtn.style.display = 'none';
+        privacyLink.style.display = 'inline';
+      });
     })();
   </script>
 
