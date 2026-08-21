@@ -112,10 +112,10 @@
       <a href="blog/index.html" class="nav-btn">
         <i class="fas fa-blog"></i> Blog
       </a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn">
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" rel="noopener" class="nav-btn">
         <i class="fab fa-linkedin"></i> LinkedIn
       </a>
-      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn">
+      <a href="https://github.com/djassoRaph" target="_blank" rel="noopener" class="nav-btn">
         <i class="fab fa-github"></i> GitHub
       </a>
     </nav>
@@ -220,7 +220,7 @@
     <section class="featured-projects">
       <h2 class="section-title">Featured Projects</h2>
       <div class="projects-grid">
-        <a href="https://github.com/djassoRaph/constituant" target="_blank" class="project-card">
+        <a href="https://github.com/djassoRaph/constituant" target="_blank" rel="noopener" class="project-card">
           <div class="project-icon center">
             <i class="fas fa-landmark"></i>
           </div>
@@ -229,7 +229,7 @@
           <span class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></span>
         </a>
 
-        <a href="https://open-llmr.org" target="_blank" class="project-card">
+        <a href="https://open-llmr.org" target="_blank" rel="noopener" class="project-card">
           <div class="project-icon center">
             <i class="fas fa-robot"></i>
           </div>
@@ -238,7 +238,7 @@
           <span class="project-link">Visit open-llmr.org <i class="fas fa-arrow-right"></i></span>
         </a>
 
-        <a href="https://alma-fait.fr" target="_blank" class="project-card">
+        <a href="https://alma-fait.fr" target="_blank" rel="noopener" class="project-card">
           <div class="project-icon center">
             <i class="fas fa-wand-magic-sparkles"></i>
           </div>
@@ -344,6 +344,29 @@
       <p><a href="fun.html">Personal &amp; Fun</a></p>
     </footer>
   </div>
+
+  <div id="cookie-banner">
+    I hate cookies.
+    <button id="cookie-yes" type="button">Yes</button>
+    <button id="cookie-no" type="button">No</button>
+  </div>
+
+  <script>
+    // Tiny cookie banner: either button just dismisses it
+    (function () {
+      const banner = document.getElementById('cookie-banner');
+      if (localStorage.getItem('cookieBannerDismissed')) {
+        banner.style.display = 'none';
+        return;
+      }
+      const dismiss = () => {
+        banner.style.display = 'none';
+        localStorage.setItem('cookieBannerDismissed', '1');
+      };
+      document.getElementById('cookie-yes').addEventListener('click', dismiss);
+      document.getElementById('cookie-no').addEventListener('click', dismiss);
+    })();
+  </script>
 
   <script>
     // Theme Toggle Functionality
@@ -476,11 +499,11 @@
   <div class="mobile-nav-section">
     <h3>Connect</h3>
     <div class="mobile-nav-links">
-      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank">
+      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank" rel="noopener">
         <i class="fab fa-github"></i>
         <span>GitHub</span>
       </a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank">
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank" rel="noopener">
         <i class="fab fa-linkedin"></i>
         <span>LinkedIn</span>
       </a>

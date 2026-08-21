@@ -1110,3 +1110,38 @@ section.transparency p {
 .skip-link:focus {
   top: 0;
 }
+
+/* Cookie banner: as thin as text allows */
+#cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--color-surface-elevated);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-tertiary);
+  font-size: 9px;
+  z-index: 999;
+}
+
+#cookie-banner button {
+  font-size: 9px;
+  line-height: 12px;
+  padding: 0 5px;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+#cookie-banner button:hover {
+  background: var(--color-border);
+}

@@ -7,7 +7,8 @@
   <meta name="description" content="Two days, a dead SD card, an abandoned Acer BIOS, 83 million Mistral tokens, and a bot that only knew how to say 'Task Completed'. Building a personal AI assistant is not like the YouTube tutorials make it look."/>
   <link rel="canonical" href="https://raphaelreck.com/blog/raspberry-pi-nanobot.html"/>
   <link rel="stylesheet" href="../style.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article"/>
@@ -149,8 +150,8 @@
     <div class="mobile-nav-section">
       <h3>Connect</h3>
       <div class="mobile-nav-links">
-        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
-        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank" rel="noopener"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
       </div>
     </div>
   </nav>
@@ -159,8 +160,8 @@
     <nav class="nav-primary">
       <a href="../cv.html" class="nav-btn"><i class="fas fa-file-pdf"></i> View CV</a>
       <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" rel="noopener" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" rel="noopener" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
     </nav>
     <nav class="nav-secondary">
       <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
@@ -192,6 +193,8 @@
           src="../public/img/taskfailedsuccessfully.png"
           alt="Windows XP dialog: Task failed successfully."
           class="hero-image"
+          width="154" height="100"
+          loading="eager" fetchpriority="high"
         />
 
         <h2>Step 0: Find a card reader (two hours I'll never get back)</h2>
@@ -207,9 +210,11 @@
         <p>Their own serial number. On their own website. For a machine they manufactured and sold.</p>
 
         <img
-          src="../public/img/aceraspir.png"
+          src="../public/img/aceraspir.jpg"
           alt="Acer Aspire 5733 bottom panel, serial number that Acer's own website refuses to recognize."
           class="inline-image"
+          width="900" height="675"
+          loading="lazy"
         />
         <p class="image-caption">Feel free to try it yourself: <a href="https://www.acer.com/fr-fr/support/drivers-and-manuals" target="_blank" rel="noopener">acer.com/fr-fr/support/drivers-and-manuals</a>. Manufacturing date: November 2010.</p>
 
@@ -235,6 +240,8 @@
           src="../public/img/russianroulette.png"
           alt="Raspberry Pi terminal log via SSH, the bot crashing mid-answer."
           class="inline-image"
+          width="657" height="420"
+          loading="lazy"
         />
         <p class="image-caption">It crashed mid-answer. Incredible.</p>
 
@@ -280,12 +287,16 @@ for this model.","type":"service_tier_capacity_exceeded","param":null,"code":"35
           src="../public/img/mistral-usage.png"
           alt="Mistral API usage chart for April 2026 showing token consumption over time."
           class="inline-image"
+          width="684" height="675"
+          loading="lazy"
         />
 
         <img
           src="../public/img/api-usage.png"
           alt="Mistral API token breakdown: 40M input, 1M output, 42M cached : 83.79M total."
           class="inline-image"
+          width="567" height="424"
+          loading="lazy"
         />
 
         <ul>

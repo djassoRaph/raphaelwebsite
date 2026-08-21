@@ -7,7 +7,8 @@
     <meta name="description" content="On portable applications, admin rights, and the quiet difference between the computer you use every day and the one you actually own."/>
     <link rel="canonical" href="https://raphaelreck.com/blog/whose-computer.html"/>
     <link rel="stylesheet" href="../style.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article"/>
@@ -47,10 +48,11 @@
         "datePublished": "2026-05-18T00:00:00+02:00",
         "dateModified": "2026-05-18T00:00:00+02:00",
         "author": { "@type": "Person", "name": "Raphaël Reck" },
-        "publisher": { "@type": "Person", "name": "Raphaël Reck" },
+        "publisher": { "@type": "Organization", "name": "Raphaël Reck", "logo": "https://raphaelreck.com/public/img/logo.png" },
         "mainEntityOfPage": { "@type": "WebPage", "@id": "https://raphaelreck.com/blog/whose-computer.html" },
         "keywords": ["Portable Apps", "Sovereignty", "Sysadmin", "Windows", "MobaXterm", "USB", "Admin Rights"],
-        "description": "On portable applications, admin rights, and the quiet difference between the computer you use every day and the one you actually own."
+        "description": "On portable applications, admin rights, and the quiet difference between the computer you use every day and the one you actually own.",
+    "image": "https://raphaelreck.com/public/img/og-default.png"
     }
     </script>
 </head>
@@ -84,15 +86,15 @@
       <h3>Projects</h3>
       <div class="mobile-nav-links">
         <a href="../roots-time/manifesto.html" class="mobile-nav-link"><i class="fas fa-book"></i><span>Roots Time Corporation</span></a>
-        <a href="../monthly-support.html" class="mobile-nav-link" target="_blank"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
+        <a href="../monthly-support.html" class="mobile-nav-link" target="_blank" rel="noopener"><i class="fas fa-headset"></i><span>Monthly Tech Support</span></a>
       </div>
     </div>
     <div class="mobile-nav-divider"></div>
     <div class="mobile-nav-section">
       <h3>Connect</h3>
       <div class="mobile-nav-links">
-        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank"><i class="fab fa-github"></i><span>GitHub</span></a>
-        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+        <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank" rel="noopener"><i class="fab fa-github"></i><span>GitHub</span></a>
+        <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
       </div>
     </div>
   </nav>
@@ -101,8 +103,8 @@
     <nav class="nav-primary">
       <a href="../cv.html" class="nav-btn"><i class="fas fa-file-pdf"></i> View CV</a>
       <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
-      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://github.com/djassoRaph" target="_blank" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" rel="noopener" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" rel="noopener" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
     </nav>
     <nav class="nav-secondary">
       <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
@@ -126,7 +128,7 @@
         <section>
           <img src="../public/img/my-computer-this-pc-meme.png"
                alt="Meme: Windows 2009 desktop icon labelled 'My Computer' next to Windows 2026 desktop icon labelled 'This PC', with the caption 'Yeah. We see what you did there...'"
-               class="post-image-narrow" />
+               class="post-image-narrow" width="1080" height="1137" loading="eager" fetchpriority="high" />
           <p class="image-caption">A small rename. A larger statement.</p>
 
           <p>There's a small linguistic trick that Microsoft played on us all.</p>
@@ -193,7 +195,7 @@
 
           <img src="../public/img/xp-vs-win11-mycomputer.png"
                alt="Side-by-side comparison: Windows XP Start menu showing 'My Computer' next to Windows 11 File Explorer showing 'This PC'"
-               class="post-image-narrow" />
+               class="post-image-narrow" width="291" height="173" loading="lazy" />
           <p class="image-caption">Windows XP, then Windows 11. The same shortcut, with a quietly different relationship to the user.</p>
 
           <p>In 2008, portable apps were a convenience. A neat trick for people who used internet cafés or borrowed their cousin's PC to check email.</p>
