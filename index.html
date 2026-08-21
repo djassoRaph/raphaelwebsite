@@ -345,6 +345,29 @@
     </footer>
   </div>
 
+  <div id="cookie-banner">
+    I hate cookies.
+    <button id="cookie-yes" type="button">Yes</button>
+    <button id="cookie-no" type="button">No</button>
+  </div>
+
+  <script>
+    // Tiny cookie banner: either button just dismisses it
+    (function () {
+      const banner = document.getElementById('cookie-banner');
+      if (localStorage.getItem('cookieBannerDismissed')) {
+        banner.style.display = 'none';
+        return;
+      }
+      const dismiss = () => {
+        banner.style.display = 'none';
+        localStorage.setItem('cookieBannerDismissed', '1');
+      };
+      document.getElementById('cookie-yes').addEventListener('click', dismiss);
+      document.getElementById('cookie-no').addEventListener('click', dismiss);
+    })();
+  </script>
+
   <script>
     // Theme Toggle Functionality
     const themeToggle = document.getElementById('theme-toggle');
