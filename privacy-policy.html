@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Raphaël Reck</title>
+    <meta name="description" content="Privacy policy for raphaelreck.com, operated by Roots Time Corporation. What we collect, what we don't, and your rights.">
+    <link rel="canonical" href="https://raphaelreck.com/privacy-policy.html">
+    <meta property="og:title" content="Privacy Policy | Raphaël Reck"/>
+    <meta property="og:description" content="What we collect, what we don't, and your rights."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://raphaelreck.com/privacy-policy.html"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@raphaelreck"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <div class="container">
+    <main id="main-content">
+    <nav class="nav-primary">
+      <a href="index.html" class="nav-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home
+      </a>
+      <a href="blog/" class="nav-btn">
+        <i class="fas fa-blog"></i> Blog
+      </a>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-text">
+        <h1>Privacy Policy</h1>
+        <p>Operated by Roots Time Corporation (Raphaël Reck), based in France. What we collect, what we don't, and your rights.</p>
+      </div>
+    </div>
+
+    <section class="services-section">
+      <h2 class="section-title">What we collect</h2>
+      <p style="max-width:680px; margin:0 auto 1.5rem auto; opacity:.85;">
+        If you use the contact form, we collect your name, email address, the enquiry type you select, and whatever you write in the message. That's it. It goes straight to an inbox by email. We don't store it in a database, sell it, share it with anyone else, or use it for anything other than replying to you.
+      </p>
+
+      <h2 class="section-title">Cookies</h2>
+      <p style="max-width:680px; margin:0 auto 1.5rem auto; opacity:.85;">
+        We don't use tracking cookies. The only thing saved in your browser is a light/dark theme preference and whether you've dismissed the cookie banner, both stored locally on your device (<code>localStorage</code>), never sent to us or anyone else.
+      </p>
+
+      <h2 class="section-title">Third parties</h2>
+      <p style="max-width:680px; margin:0 auto 1.5rem auto; opacity:.85;">
+        Icons are loaded from a CDN (cdnjs.cloudflare.com). That's the only external request this site makes on your behalf.
+      </p>
+
+      <h2 class="section-title">Your rights</h2>
+      <p style="max-width:680px; margin:0 auto 1.5rem auto; opacity:.85;">
+        Since we're EU/France-based, you have the right to ask what we have on you, correct it, or have it deleted. Given we only ever have what you typed into a contact form, this is usually a five-minute email away: <a href="mailto:contact@raphaelreck.com">contact@raphaelreck.com</a>.
+      </p>
+
+      <h2 class="section-title">Changes</h2>
+      <p style="max-width:680px; margin:0 auto; opacity:.85;">
+        If anything here changes, this page will change with it. No newsletter, no notification, just check back if you care.
+      </p>
+    </section>
+
+        </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck | IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+      <p><a href="fun.html">Personal &amp; Fun</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    }
+  </script>
+  <script src="mobile-nav.js"></script>
+  <button
+    id="mobile-menu-toggle"
+    class="mobile-menu-toggle"
+    aria-label="Toggle navigation menu"
+    aria-expanded="false">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+  <nav id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <h2 class="mobile-menu-title">Navigation</h2>
+      <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+    </div>
+    <div class="mobile-nav-section">
+      <h3>Main</h3>
+      <div class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+        <a href="blog/" class="mobile-nav-link">
+          <i class="fas fa-blog"></i>
+          <span>Blog</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>
