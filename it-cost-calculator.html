@@ -322,7 +322,14 @@
 
     <!-- Hero -->
     <div class="hero">
-      <img src="public/raphaelreck.png" alt="Photo of Raphael Reck" class="hero-image" width="486" height="355">
+      <picture class="hero-image">
+        <source srcset="public/raphaelreck.webp" type="image/webp">
+        <img src="public/raphaelreck.png"
+             alt="Photo of Raphaël Reck"
+             width="486" height="355"
+             loading="eager"
+             fetchpriority="high">
+      </picture>
       <div class="hero-text">
         <h1>What Should IT Support Cost for Your Business?</h1>
         <p>Five questions. Two minutes. A straight answer — no sales pitch.</p>
