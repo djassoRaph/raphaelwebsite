@@ -8,7 +8,7 @@
       "n": "Raphaël Reck"
     },
     "ct": {
-      "BlogPosting": 27,
+      "BlogPosting": 28,
       "Service": 6,
       "CollectionPage": 1,
       "WebPage": 5,
@@ -17,6 +17,41 @@
     }
   },
   "p": [
+    {
+      "id": "bmad-loops-and-the-initiative-problem",
+      "u": "/blog/bmad-loops-and-the-initiative-problem.html",
+      "t": "BlogPosting",
+      "ti": "BMAD, Loops, and the Initiative Problem | Blog | Raphaël Reck",
+      "d": "2026-09-03",
+      "sum": "Picking a back-burner project back up with the BMAD-method, running into agents that won't take initiative, and wondering whether that's the framework or my own closing prompts.",
+      "kw": [
+        "BMAD",
+        "agents",
+        "AI",
+        "party mode",
+        "context",
+        "workflow",
+        "loops",
+        "Hermes",
+        "soul.md",
+        "initiative"
+      ],
+      "wc": 950,
+      "rt": 6,
+      "sd": 1,
+      "h1": "BMAD, Loops, and the Initiative Problem",
+      "a": "Raphaël Reck",
+      "emb": [
+        0.27,
+        -0.51,
+        0.62,
+        0.19,
+        -0.58,
+        0.79,
+        -0.33,
+        0.41
+      ]
+    },
     {
       "id": "reverse-prompt",
       "u": "/blog/reverse-prompt.html",

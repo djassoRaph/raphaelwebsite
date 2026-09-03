@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wsl php *)",
+      "Bash(MSYS_NO_PATHCONV=1 wsl php -l \"/mnt/f/raphael reck societe roots time corporation/raphaelreck-SITE INTERNET/secret/dashboard/api.php\")",
+      "Bash(MSYS_NO_PATHCONV=1 wsl php -l \"/mnt/f/raphael reck societe roots time corporation/raphaelreck-SITE INTERNET/secret/dashboard/config.php\")",
+      "Bash(MSYS_NO_PATHCONV=1 wsl curl -s -i http://127.0.0.1:8099/api.php)",
+      "Bash(MSYS_NO_PATHCONV=1 wsl curl -s -i -H \"Origin: https://raphaelreck.com\" http://127.0.0.1:8099/api.php)",
+      "Bash(MSYS_NO_PATHCONV=1 wsl curl -s -i http://127.0.0.1:8099/config.php)",
+      "Bash(MSYS_NO_PATHCONV=1 wsl curl -s -o /dev/null -w \"HTTP %{http_code}, content-type: %{content_type}, size: %{size_download} bytes\\\\n\" http://127.0.0.1:8099/)"
+    ],
+    "additionalDirectories": [
+      "f:\\raphael reck societe roots time corporation\\raphaelreck-SITE INTERNET\\secret\\dashboard"
+    ]
+  }
+}
