@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The mouse isn't yours | Blog | Raphaël Reck</title>
+  <meta name="description" content="A lost wireless mouse dongle, a two-hour support runaround, and the proprietary-pairing trap that turns a working mouse into landfill. Why I spec Bluetooth now."/>
+  <link rel="canonical" href="https://raphaelreck.com/blog/the-mouse-isnt-yours.html"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
+
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="The mouse isn't yours"/>
+  <meta property="og:description" content="A lost wireless mouse dongle, a two-hour support runaround, and the proprietary-pairing trap that turns a working mouse into landfill."/>
+  <meta property="og:url" content="https://raphaelreck.com/blog/the-mouse-isnt-yours.html"/>
+  <meta property="og:image" content="https://raphaelreck.com/public/img/og-default.png"/>
+  <meta property="og:image:width" content="967"/>
+  <meta property="og:image:height" content="522"/>
+  <meta property="og:site_name" content="Raphaël Reck"/>
+  <meta property="article:author" content="Raphaël Reck"/>
+  <meta property="article:published_time" content="2026-09-23T00:00:00+02:00"/>
+  <meta property="article:tag" content="Hardware"/>
+  <meta property="article:tag" content="Right to Repair"/>
+  <meta property="article:tag" content="Bluetooth"/>
+
+  <style>
+    .post-header { margin-bottom: 1rem; }
+    .post-meta { opacity: .7; font-size: .9rem; }
+    .tag { display:inline-block; margin-right:.5rem; font-size:.8rem; padding:.15rem .5rem; border:1px solid currentColor; border-radius:999px; }
+    .callout { border-left:4px solid #888; padding:.75rem 1rem; background:rgba(127,127,127,.06); margin:1rem 0; }
+
+    .dongle-ticket { max-width:520px; margin:2rem 0; border:1px solid var(--color-border); border-radius:12px; padding:1.1rem 1.2rem; background:var(--color-surface); color:var(--color-text-primary); font-size:14px; line-height:1.45; }
+    .dongle-ticket .dt-head { display:flex; align-items:center; justify-content:space-between; gap:8px; color:var(--color-text-tertiary); font-size:13px; }
+    .dongle-ticket .dt-badge { font-weight:600; background:rgba(217,119,6,.14); color:var(--color-warning); padding:3px 10px; border-radius:8px; font-size:12px; }
+    .dongle-ticket .dt-title { font-size:16px; font-weight:600; margin:6px 0 14px; }
+    .dongle-ticket .dt-metrics { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
+    .dongle-ticket .dt-card { background:rgba(127,127,127,.08); border-radius:8px; padding:.7rem .85rem; }
+    .dongle-ticket .dt-card .k { font-size:12px; color:var(--color-text-tertiary); margin:0 0 2px; }
+    .dongle-ticket .dt-card .v { font-size:22px; font-weight:600; margin:0; }
+    .dongle-ticket table { width:100%; table-layout:fixed; border-collapse:collapse; font-size:13px; line-height:1.4; }
+    .dongle-ticket th { text-align:left; color:var(--color-text-tertiary); font-weight:600; padding:0 6px 8px 0; }
+    .dongle-ticket td { padding:8px 6px 8px 0; vertical-align:top; border-top:1px solid var(--color-border); word-wrap:break-word; }
+    .dongle-ticket .col-step { width:34%; }
+    .dongle-ticket .col-time { width:17%; }
+    .dongle-ticket .col-result { width:49%; padding-right:0; }
+    .dongle-ticket tr.last td { background:rgba(217,119,6,.10); color:var(--color-warning); font-weight:600; }
+    .dongle-ticket .dt-quote { margin-top:14px; padding:10px 12px; background:rgba(127,127,127,.08); border-radius:8px; }
+    .dongle-ticket .dt-quote .q-label { font-size:12px; color:var(--color-text-tertiary); margin:0 0 4px; }
+    .dongle-ticket .dt-quote .q-text { font-family:Georgia,"Times New Roman",serif; font-style:italic; font-size:15px; margin:0; color:var(--color-text-secondary); }
+    .dongle-ticket .dt-note { font-size:12px; color:var(--color-text-tertiary); margin:12px 0 0; }
+    .dongle-ticket .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    @media (max-width:420px) { .dongle-ticket .dt-card .v { font-size:20px; } }
+  </style>
+
+  <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "The mouse isn't yours",
+    "datePublished": "2026-09-23T00:00:00+02:00",
+    "dateModified": "2026-09-23T00:00:00+02:00",
+    "author": {
+        "@type": "Person",
+        "name": "Raphaël Reck",
+        "url": "https://raphaelreck.com"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Raphaël Reck",
+        "url": "https://raphaelreck.com",
+        "logo": "https://raphaelreck.com/public/img/logo.png"
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://raphaelreck.com/blog/the-mouse-isnt-yours.html"
+    },
+    "keywords": [
+        "Hardware",
+        "Right to Repair",
+        "Bluetooth",
+        "Wireless mouse dongle",
+        "Proprietary pairing"
+    ],
+    "description": "A lost wireless mouse dongle, a two-hour support runaround, and the proprietary-pairing trap that turns a working mouse into landfill. Why I spec Bluetooth now.",
+    "image": "https://raphaelreck.com/public/img/og-default.png"
+}
+</script>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:creator" content="@raphaelreck"/>
+  <meta name="twitter:title" content="The mouse isn't yours"/>
+  <meta name="twitter:description" content="A lost dongle, a two-hour support runaround, and the proprietary-pairing trap. Why I spec Bluetooth now."/>
+</head>
+<body>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></button>
+  <div class="container">
+    <nav class="nav-primary">
+      <a href="../cv.html" class="nav-btn"><i class="fas fa-file-pdf"></i> View CV</a>
+      <a href="index.html" class="nav-btn"><i class="fas fa-blog"></i> Blog</a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" target="_blank" rel="noopener" class="nav-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/djassoRaph" target="_blank" rel="noopener" class="nav-btn"><i class="fab fa-github"></i> GitHub</a>
+    </nav>
+    <nav class="nav-secondary">
+      <a href="../index.html" class="link-btn"><i class="fas fa-arrow-left"></i> Home Page</a>
+      <a href="../roots-time/manifesto.html" class="link-btn"><i class="fas fa-book-open"></i> Roots Time Corporation</a>
+      <a href="../monthly-support.html" class="link-btn"><i class="fas fa-headset"></i> Monthly Tech Support</a>
+    </nav>
+
+    <main>
+      <article class="blog-post">
+        <header class="post-header">
+          <h1>The mouse isn't yours</h1>
+          <p class="post-meta">
+            <time datetime="2026-09-23">September 23, 2026</time>
+            <span>~3 min read</span>
+            <span class="tag">Hardware</span>
+            <span class="tag">Right to Repair</span>
+            <span class="tag">Bluetooth</span>
+          </p>
+        </header>
+
+        <p>Back in June, I lost a mouse dongle. Not the computer mouse; the mouse is fine. Just the little USB receiver that pairs it. Two hours later I was googling "universal dongle" to solve a problem HP could have closed in thirty seconds.</p>
+
+        <p>Here is the chain. HP's AI support could not help, so it handed me to commercial. Commercial handed me to one of their wholesalers in Paris. The wholesaler handed me to an individual retailer. The retailer told me they do not do that part. So I ended up on Google, searching for a "universal dongle": third-party receivers that claim to pair with any wireless mouse. Maybe one would work with mine. I was not sure, and I was even less sure of the pairing procedure if it did.</p>
+
+        <figure class="dongle-ticket">
+          <div class="dt-head">
+            <span>Ticket &middot; lost dongle</span>
+            <span class="dt-badge">Resolved</span>
+          </div>
+          <p class="dt-title">Who actually helped?</p>
+
+          <div class="dt-metrics">
+            <div class="dt-card"><p class="k">Time lost</p><p class="v">~2 hrs</p></div>
+            <div class="dt-card"><p class="k">Solved by HP</p><p class="v">0 of 4</p></div>
+          </div>
+
+          <table>
+            <caption class="sr-only">Each support step, the time it cost, and its result. AI support, HP commercial, a Paris wholesaler and a local retailer all deflected; it ended with a Google search for a universal dongle that might not work.</caption>
+            <thead>
+              <tr><th class="col-step">Step</th><th class="col-time">Time</th><th class="col-result">Result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="col-step">AI support</td><td class="col-time">15 min</td><td class="col-result">Spelled my name out, letter by letter</td></tr>
+              <tr><td class="col-step">HP commercial</td><td class="col-time">10 min</td><td class="col-result">Sent me to a wholesaler</td></tr>
+              <tr><td class="col-step">Wholesaler, Paris</td><td class="col-time">8 min</td><td class="col-result">Sent me to a retailer</td></tr>
+              <tr><td class="col-step">Local retailer</td><td class="col-time">10 min</td><td class="col-result">Left a message; silence</td></tr>
+              <tr class="last"><td class="col-step">Google search</td><td class="col-time">&mdash;</td><td class="col-result">"Universal dongle"; no idea if it works</td></tr>
+            </tbody>
+          </table>
+
+          <div class="dt-quote">
+            <p class="q-label">On the line with the AI</p>
+            <p class="q-text">"R for Raphael, A for Alphonse, P for Pierre, H for Hector..."</p>
+          </div>
+
+          <p class="dt-note">2 to 3 min on hold between every call.</p>
+        </figure>
+
+        <p>Nobody in that chain was built to help. Each link existed to pass the buck; to throw the ball somewhere else and confirm, politely, that the answer was no. That is not support. It is a maze with a customer-shaped exit at the far end, and the exit opens onto a Google search.</p>
+
+        <p>And that is the pattern with corporate support in general: the quality is low because support was never the point. The whole machine is tuned to sell you the next product, not to make the current one good enough to keep. A company that cared about its products would treat a lost receiver as a thirty-second sale and a customer kept; instead it is a problem to route away until you give up and buy a new mouse.</p>
+
+        <h2>So is it really yours?</h2>
+
+        <p>It reminds me of Clippy. Not the paperclip itself; the instinct behind it. A company so sure it knows what you need that it never checks whether the thing still works. HP sells the mouse; it will not sell the receiver that makes the mouse a mouse. So is it really yours? You bought it; you own the plastic. But the moment one proprietary part goes missing, the manufacturer shrugs and the device becomes landfill, unless a factory in Shenzhen decides to care. I made the same argument about software in <a href="whose-computer.html">Whose computer is this, actually?</a>; this is the hardware version.</p>
+
+        <p>Which is the real question: what is HP's goal here? Computers? Printers? Mice? It is hard to tell, because none of those lines seems to come with the boring follow-through that ownership implies; spare parts, replacements, a path back to working. A company that sells hardware but will not sell the parts to keep it alive is not in the hardware business. It is in the replacement business. On this evidence, I am not sure HP should be in the peripherals market at all.</p>
+
+        <h2>The technical lesson</h2>
+
+        <p>The technical lesson is simpler than the rant. That mouse uses a proprietary pairing protocol; lose the matched dongle and the device is dead until you track down that exact receiver. It turned into a paper weight for a couple of months. Logitech's Unifying receivers carry the same trap. A Bluetooth mouse does not; pair it to anything, forever, with no dongle to lose. So when you spec peripherals, for yourself or for a team, the choice is not about brand. It is about whether you want to own the device or rent it from whoever still stocks the dongle.</p>
+
+        <hr>
+      
+        <p><em>PS: I found the dongle again. xD</em></p>
+        <button class="link-btn"><a href="index.html">← Back to Blog Index</a></button>
+      </article>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2026 Raphael Reck  -  IT Consultant. All rights reserved.</p>
+      <p>
+        <script>
+          const user = "contact";
+          const domain = "raphaelreck.com";
+          const mail = `${user}@${domain}`;
+          document.write(`<a href='mailto:${mail}'>${mail}</a>`);
+        </script>
+      </p>
+      <p style="margin-top:.5rem; font-size:.85rem; opacity:.6;">
+        Collaborators: <a href="https://webasix.com/" target="_blank" rel="noopener">Webasix</a>
+      </p>
+      <p><a href="../fun.html">Personal &amp; Fun</a></p>
+    </footer>
+  </div>
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    htmlElement.setAttribute('data-theme', currentTheme);
+    updateIcon(currentTheme);
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateIcon(newTheme);
+    });
+    function updateIcon(theme) {
+      if (theme === 'dark') { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); }
+      else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+    }
+  </script>
+  <script src="../mobile-nav.js"></script>
+  <!-- Mobile Menu Toggle Button -->
+<button
+  id="mobile-menu-toggle"
+  class="mobile-menu-toggle"
+  aria-label="Toggle navigation menu"
+  aria-expanded="false">
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</button>
+
+<!-- Overlay -->
+<div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+<!-- Sliding Menu -->
+<nav id="mobile-menu" class="mobile-menu">
+  <div class="mobile-menu-header">
+    <h2 class="mobile-menu-title">Navigation</h2>
+    <button id="mobile-menu-close" class="mobile-menu-close">×</button>
+  </div>
+
+  <!-- Primary Navigation -->
+  <div class="mobile-nav-section">
+    <h3>Main</h3>
+    <div class="mobile-nav-links">
+      <a href="../index.html" class="mobile-nav-link">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="index.html" class="mobile-nav-link">
+        <i class="fas fa-blog"></i>
+        <span>Blog</span>
+      </a>
+      <a href="../cv.html" class="mobile-nav-link">
+        <i class="fas fa-file-pdf"></i>
+        <span>View CV</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider"></div>
+
+  <!-- Projects -->
+  <div class="mobile-nav-section">
+    <h3>Projects</h3>
+    <div class="mobile-nav-links">
+      <a href="../roots-time/manifesto.html" class="mobile-nav-link">
+        <i class="fas fa-book"></i>
+        <span>Roots Time Corporation</span>
+      </a>
+      <a href="../monthly-support.html" class="mobile-nav-link">
+        <i class="fas fa-headset"></i>
+        <span>Monthly Tech Support</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="mobile-nav-divider"></div>
+
+  <!-- Social -->
+  <div class="mobile-nav-section">
+    <h3>Connect</h3>
+    <div class="mobile-nav-links">
+      <a href="https://github.com/djassoRaph" class="mobile-nav-link" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+        <span>GitHub</span>
+      </a>
+      <a href="https://www.linkedin.com/in/raphael-reck-link/" class="mobile-nav-link" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

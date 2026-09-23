@@ -8,7 +8,7 @@
       "n": "Raphaël Reck"
     },
     "ct": {
-      "BlogPosting": 28,
+      "BlogPosting": 29,
       "Service": 6,
       "CollectionPage": 1,
       "WebPage": 5,
@@ -17,6 +17,41 @@
     }
   },
   "p": [
+    {
+      "id": "the-mouse-isnt-yours",
+      "u": "/blog/the-mouse-isnt-yours.html",
+      "t": "BlogPosting",
+      "ti": "The mouse isn't yours | Blog | Raphaël Reck",
+      "d": "2026-09-23",
+      "sum": "A lost wireless mouse dongle, a two-hour support runaround, and the proprietary-pairing trap that turns a working mouse into landfill. Why I spec Bluetooth now.",
+      "kw": [
+        "hardware",
+        "right to repair",
+        "Bluetooth",
+        "wireless mouse",
+        "USB dongle",
+        "proprietary pairing",
+        "HP",
+        "Logitech Unifying",
+        "customer support",
+        "peripherals"
+      ],
+      "wc": 620,
+      "rt": 3,
+      "sd": 1,
+      "h1": "The mouse isn't yours",
+      "a": "Raphaël Reck",
+      "emb": [
+        0.33,
+        -0.69,
+        0.9,
+        0.44,
+        -0.42,
+        -0.47,
+        0.96,
+        0.68
+      ]
+    },
     {
       "id": "bmad-loops-and-the-initiative-problem",
       "u": "/blog/bmad-loops-and-the-initiative-problem.html",
