@@ -5,11 +5,16 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -23,11 +28,18 @@ jobs:
         run: ls -lh public/
 
       - name: Upload full site via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        # Pinned to the commit behind v4.3.5: this step receives the FTP password,
+        # so a re-pointed tag must not be able to swap in different code.
+        uses: SamKirkland/FTP-Deploy-Action@8e83cea8672e3fbcbb9fdafff34debf6ae4c5f65 # v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
+          protocol: ftps
+          # The FTP certificate is issued to carambole.o2switch.net, not raphaelreck.com.
+          # "loose" encrypts without checking the hostname; set FTP_SERVER to
+          # carambole.o2switch.net and switch to "strict" to verify it as well.
+          security: loose
           local-dir: ./
           exclude: |
             **/.git*/**
