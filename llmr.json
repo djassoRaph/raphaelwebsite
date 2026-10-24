@@ -1,56 +1,97 @@
 {
-  "v": "2.0",
-  "ts": 1779667200,
+  "v": "2.1",
+  "ts": 1792877520,
   "s": {
     "d": "raphaelreck.com",
-    "ti": "IT Support for Small Business — Raphaël Reck",
+    "ti": "Raphaël Reck — Remote IT Consultant, 20+ Years",
+    "desc": "Remote IT consultant with 20+ years in IT (7+ at enterprise/Fortune 500 scale — Amadeus, Orange). Backend, networks, automation, AI integration for SMBs. EN/FR.",
     "a": {
-      "n": "Raphaël Reck"
+      "n": "Raphael Reck"
     },
+    "llms_txt": "https://raphaelreck.com/llms.txt",
     "ct": {
-      "BlogPosting": 29,
-      "Service": 6,
+      "Person": 1,
       "CollectionPage": 1,
-      "WebPage": 5,
+      "BlogPosting": 29,
+      "ProfilePage": 1,
+      "Service": 2,
+      "WebPage": 3,
       "WebApplication": 1,
       "Article": 1
     }
   },
   "p": [
     {
+      "id": "index",
+      "u": "/",
+      "t": "Person",
+      "ti": "Raphaël Reck — Remote IT Consultant, 20+ Years",
+      "sum": "Remote IT consultant with 20+ years in IT (7+ at enterprise/Fortune 500 scale — Amadeus, Orange). Backend, networks, automation, AI integration for SMBs. EN/FR.",
+      "kw": [
+        "amadeus",
+        "backend",
+        "consultant",
+        "enterprise",
+        "independent",
+        "orange",
+        "reck",
+        "remote",
+        "scale",
+        "years"
+      ],
+      "wc": 243,
+      "rt": 1,
+      "tc": 1,
+      "sd": 1,
+      "h1": "Raphael RECK"
+    },
+    {
+      "id": "blog",
+      "u": "/blog/",
+      "t": "CollectionPage",
+      "ti": "Blog | Raphaël Reck",
+      "sum": "Documenting my work in software, including side projects, AI explorations, and development insights.",
+      "kw": [
+        "actually",
+        "back",
+        "between",
+        "blog",
+        "every",
+        "here",
+        "mouse",
+        "project",
+        "real",
+        "work"
+      ],
+      "wc": 805,
+      "rt": 4,
+      "tc": 1,
+      "sd": 1,
+      "h1": "Web Blog"
+    },
+    {
       "id": "the-mouse-isnt-yours",
       "u": "/blog/the-mouse-isnt-yours.html",
       "t": "BlogPosting",
       "ti": "The mouse isn't yours | Blog | Raphaël Reck",
       "d": "2026-09-23",
-      "sum": "A lost wireless mouse dongle, a two-hour support runaround, and the proprietary-pairing trap that turns a working mouse into landfill. Why I spec Bluetooth now.",
+      "sum": "A lost wireless mouse dongle, a two-hour support runaround, and the proprietary-pairing trap that turns a working mouse into landfill.",
       "kw": [
-        "hardware",
-        "right to repair",
+        "Hardware",
+        "Right to Repair",
         "Bluetooth",
-        "wireless mouse",
-        "USB dongle",
-        "proprietary pairing",
-        "HP",
-        "Logitech Unifying",
-        "customer support",
-        "peripherals"
+        "commercial",
+        "dongle",
+        "handed",
+        "lost",
+        "mouse",
+        "retailer",
+        "support"
       ],
-      "wc": 620,
-      "rt": 3,
+      "wc": 1152,
+      "rt": 6,
       "sd": 1,
-      "h1": "The mouse isn't yours",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.33,
-        -0.69,
-        0.9,
-        0.44,
-        -0.42,
-        -0.47,
-        0.96,
-        0.68
-      ]
+      "h1": "The mouse isn't yours"
     },
     {
       "id": "bmad-loops-and-the-initiative-problem",
@@ -60,32 +101,48 @@
       "d": "2026-09-03",
       "sum": "Picking a back-burner project back up with the BMAD-method, running into agents that won't take initiative, and wondering whether that's the framework or my own closing prompts.",
       "kw": [
-        "BMAD",
-        "agents",
         "AI",
-        "party mode",
-        "context",
-        "workflow",
-        "loops",
-        "Hermes",
-        "soul.md",
+        "BMAD",
+        "Agents",
+        "Workflow",
+        "actually",
+        "agent",
+        "agents",
+        "back",
+        "bmad",
         "initiative"
       ],
-      "wc": 950,
-      "rt": 6,
+      "wc": 1884,
+      "rt": 9,
+      "tc": 1,
+      "cb": 3,
       "sd": 1,
-      "h1": "BMAD, Loops, and the Initiative Problem",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.27,
-        -0.51,
-        0.62,
-        0.19,
-        -0.58,
-        0.79,
-        -0.33,
-        0.41
-      ]
+      "h1": "BMAD, Loops, and the Initiative Problem"
+    },
+    {
+      "id": "cv",
+      "u": "/cv.html",
+      "t": "ProfilePage",
+      "ti": "Raphaël Reck — CV | Senior Full-Stack & DevOps Engineer",
+      "d": "2026-08-20",
+      "sum": "20+ years in IT, including 7+ years building backend systems for Amadeus, Orange, and SMB clients. Remote, France-based. GitLab CI/CD Certified.",
+      "kw": [
+        "certified",
+        "engineer",
+        "french",
+        "gitlab",
+        "including",
+        "javascript",
+        "professional",
+        "remote",
+        "senior",
+        "years"
+      ],
+      "wc": 197,
+      "rt": 1,
+      "tc": 1,
+      "sd": 1,
+      "h1": "Raphaël Reck"
     },
     {
       "id": "reverse-prompt",
@@ -96,67 +153,70 @@
       "sum": "A reverse prompt that flipped how I work with AI, why I use it as a memory-keeper and not a coach, and the small differences between models that actually matter.",
       "kw": [
         "AI",
-        "prompt",
+        "Prompt Engineering",
+        "Productivity",
         "Claude",
-        "memory",
-        "workflow",
-        "reverse",
-        "productivity",
-        "LLM",
-        "models",
-        "tools"
+        "actually",
+        "asked",
+        "blog",
+        "internet",
+        "make",
+        "prompt"
       ],
-      "wc": 920,
-      "rt": 5,
+      "wc": 1133,
+      "rt": 6,
       "sd": 1,
-      "h1": "I asked the AI what I should ask the AI",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.31,
-        -0.47,
-        0.68,
-        0.15,
-        -0.62,
-        0.83,
-        -0.29,
-        0.44
-      ]
+      "h1": "I asked the AI what I should ask the AI"
+    },
+    {
+      "id": "whose-computer",
+      "u": "/blog/whose-computer.html",
+      "t": "BlogPosting",
+      "ti": "Whose computer is this, actually? | Blog | Raphaël Reck",
+      "d": "2026-05-18",
+      "sum": "On portable applications, admin rights, and the quiet difference between the computer you use every day and the one you actually own.",
+      "kw": [
+        "Portable Apps",
+        "Sovereignty",
+        "Sysadmin",
+        "Windows",
+        "actually",
+        "computer",
+        "microsoft",
+        "portable",
+        "small",
+        "stick"
+      ],
+      "wc": 1138,
+      "rt": 6,
+      "cb": 2,
+      "sd": 1,
+      "h1": "Whose computer is this, actually?"
     },
     {
       "id": "llmr-benchmark-update",
       "u": "/blog/llmr-benchmark-update.html",
       "t": "BlogPosting",
-      "ti": "LLMR Update: A Real Site Index for AI Crawlers — What Changed | Blog | Raphaël Reck",
+      "ti": "LLMR Update: A Real Site Index for AI Crawlers, What Changed | Blog | Raphaël Reck",
       "d": "2026-05-07",
       "sum": "Six months after publishing LLMR, the project has a proper home, a generator, and real numbers. Here's what changed and why it matters.",
       "kw": [
-        "real",
-        "project",
+        "LLMR",
+        "AI",
+        "Open Source",
+        "Web Standards",
+        "changed",
+        "html",
         "index",
         "instead",
-        "LLMR",
-        "Web Standards",
-        "Open Source",
-        "site",
-        "pages",
-        "changed"
+        "llmr",
+        "numbers"
       ],
-      "wc": 1757,
+      "wc": 1741,
       "rt": 9,
       "cb": 11,
       "sd": 1,
-      "h1": "LLMR now has a real home. Here's what the numbers actually look like.",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.22,
-        0.29,
-        0.77,
-        0.46,
-        0.57,
-        0.94,
-        0.27,
-        -0.77
-      ]
+      "h1": "LLMR now has a real home. Here's what the numbers actually look like."
     },
     {
       "id": "static-html-vs-svelte",
@@ -166,34 +226,23 @@
       "d": "2026-05-07",
       "sum": "Everyone says modern frameworks are fast. But is a Svelte page actually faster than hand-written static HTML? I ran the tests.",
       "kw": [
-        "javascript",
-        "faster",
-        "virtual",
-        "Frontend",
-        "html",
-        "actually",
-        "runtime",
         "Performance",
+        "Svelte",
         "Web Development",
-        "time"
+        "Frontend",
+        "actually",
+        "faster",
+        "html",
+        "javascript",
+        "page",
+        "runtime"
       ],
       "wc": 2247,
       "rt": 11,
       "tc": 1,
       "cb": 3,
       "sd": 1,
-      "h1": "Static HTML vs Svelte: which is actually faster?",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.14,
-        0.23,
-        0.72,
-        -0.88,
-        0.44,
-        -0.27,
-        0.46,
-        -0.67
-      ]
+      "h1": "Static HTML vs Svelte: which is actually faster?"
     },
     {
       "id": "seo-agent-github-actions",
@@ -203,33 +252,23 @@
       "d": "2026-05-05",
       "sum": "Twenty years in IT and I was still manually checking SEO dashboards like it was 2008. So I automated the follow-through with GitHub Actions, Google Search Console API, and Claude.",
       "kw": [
-        "file",
-        "search",
-        "github",
-        "console",
         "agent",
-        "create",
-        "weekly",
         "claude",
+        "console",
+        "create",
+        "file",
+        "github",
         "like",
-        "step"
+        "search",
+        "step",
+        "weekly"
       ],
       "wc": 651,
       "rt": 3,
       "tc": 1,
       "cb": 35,
       "sd": 1,
-      "h1": "I built a weekly SEO agent that creates GitHub Issues do other stuff",
-      "emb": [
-        0.84,
-        -0.81,
-        -0.14,
-        0.48,
-        0.81,
-        -0.55,
-        0.01,
-        -0.85
-      ]
+      "h1": "I built a weekly SEO agent that creates GitHub Issues do other stuff"
     },
     {
       "id": "hook-webform-submission-insert-drupal",
@@ -239,15 +278,15 @@
       "d": "2026-04-16",
       "sum": "A hands-on tutorial for hook_webform_submission_insert in Drupal. Real, copy-paste PHP code examples for reacting to new form submissions.",
       "kw": [
+        "Drupal",
         "Webform",
         "PHP",
         "custom",
         "data",
-        "hook",
-        "webform",
-        "Drupal",
+        "drupal",
+        "fires",
         "form",
-        "tutorial",
+        "hook",
         "save"
       ],
       "wc": 1450,
@@ -255,18 +294,7 @@
       "tc": 1,
       "cb": 31,
       "sd": 1,
-      "h1": "hook_webform_submission_insert: A Practical Drupal Tutorial",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.57,
-        -0.3,
-        0.47,
-        -0.05,
-        0.72,
-        0.55,
-        -0.53,
-        -0.03
-      ]
+      "h1": "hook_webform_submission_insert: A Practical Drupal Tutorial"
     },
     {
       "id": "llmr-v2",
@@ -276,34 +304,23 @@
       "d": "2026-04-11",
       "sum": "LLMR v2.0 is live; a JSON site index that gives AI systems your entire website in one fetch. Now with a formal spec, open-llmr.org, and a full ecosystem plan.",
       "kw": [
-        "file",
-        "fetch",
-        "json",
-        "systems",
-        "spec",
-        "blog",
-        "LLMR",
+        "AI",
         "Web Standards",
         "Open Source",
-        "site"
+        "LLMR",
+        "blog",
+        "bytes",
+        "fetch",
+        "file",
+        "json",
+        "llmr"
       ],
       "wc": 2275,
       "rt": 11,
       "tc": 1,
       "cb": 20,
       "sd": 1,
-      "h1": "LLMR 2.0: One File, 98% Fewer Tokens",
-      "a": "Raphaël Reck",
-      "emb": [
-        -0.36,
-        0.54,
-        -0.55,
-        -0.19,
-        -0.88,
-        0.77,
-        0.79,
-        -0.53
-      ]
+      "h1": "LLMR 2.0: One File, 98% Fewer Tokens"
     },
     {
       "id": "raspberry-pi-nanobot",
@@ -313,34 +330,23 @@
       "d": "2026-04-08",
       "sum": "Two days, a dead SD card, an abandoned Acer BIOS, 83 million Mistral tokens, and a bot that only knew how to say 'Task Completed'.",
       "kw": [
-        "task",
-        "Mistral",
-        "Consumer Rights",
-        "step",
-        "building",
-        "raspberry",
+        "Raspberry Pi",
+        "AI",
         "Nanobot",
-        "nanobot",
-        "failed",
-        "bios"
+        "Mistral",
+        "Debugging",
+        "Consumer Rights",
+        "acer",
+        "bios",
+        "building",
+        "card"
       ],
       "wc": 765,
       "rt": 4,
       "tc": 1,
       "cb": 3,
       "sd": 1,
-      "h1": "Building a Raspberry Pi Nanobot: Task Failed Successfully",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.47,
-        0.32,
-        -0.6,
-        0.36,
-        0.29,
-        0.96,
-        0.6,
-        -0.93
-      ]
+      "h1": "Building a Raspberry Pi Nanobot: Task Failed Successfully"
     },
     {
       "id": "originstory",
@@ -350,32 +356,22 @@
       "d": "2026-02-26",
       "sum": "From sneaking out of bed to watch MS-DOS boot, to building wind turbines in Haiti and architecting systems for Fortune 500 companies.",
       "kw": [
-        "windows",
-        "internet",
-        "years",
-        "keyboard",
-        "computer",
-        "phone",
         "before",
+        "computer",
+        "internet",
+        "keyboard",
+        "line",
+        "phone",
         "screen",
         "them",
-        "line"
+        "windows",
+        "years"
       ],
       "wc": 1740,
       "rt": 9,
       "cb": 6,
       "sd": 1,
-      "h1": "Sharing is caring | 30 years at a keyboard",
-      "emb": [
-        0.48,
-        0.0,
-        0.42,
-        -0.69,
-        -0.81,
-        0.39,
-        -0.15,
-        -0.78
-      ]
+      "h1": "Sharing is caring | 30 years at a keyboard"
     },
     {
       "id": "constituant.fr",
@@ -385,68 +381,23 @@
       "d": "2025-12-25",
       "sum": "A civic tech experiment in radical transparency - building a platform for citizens to vote on real legislation, with all the messy truths included.",
       "kw": [
-        "building",
-        "real",
-        "citizens",
-        "while",
-        "those",
         "broken",
+        "building",
+        "citizens",
         "constituant",
+        "democracy",
         "first",
+        "real",
+        "those",
         "vote",
-        "democracy"
+        "while"
       ],
       "wc": 1021,
       "rt": 5,
       "cb": 8,
       "sd": 1,
       "h1": "Constituant: Building Democracy 2.0 While Admitting It's Broken",
-      "l": "fr",
-      "emb": [
-        0.38,
-        0.81,
-        -0.79,
-        -0.43,
-        0.05,
-        0.27,
-        -0.97,
-        -0.07
-      ]
-    },
-    {
-      "id": "blankblog",
-      "u": "/blog/blankblog.html",
-      "t": "BlogPosting",
-      "ti": "Blog | Raphaël Reck",
-      "d": "2025-12-10",
-      "sum": "blankblog",
-      "kw": [
-        "reserved",
-        "reck",
-        "raphael",
-        "Godot",
-        "blog",
-        "navigation",
-        "blankblog",
-        "Debugging",
-        "rights",
-        "consultant"
-      ],
-      "wc": 10,
-      "rt": 1,
-      "sd": 1,
-      "h1": "Header1.",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.93,
-        0.22,
-        0.02,
-        -0.88,
-        -0.97,
-        0.25,
-        -0.1,
-        0.08
-      ]
+      "l": "fr"
     },
     {
       "id": "maidenless",
@@ -457,31 +408,21 @@
       "sum": "Thoughts on productivity when AI tools fail, debugging legacy stacks, and the importance of boilerplates in modern development workflows.",
       "kw": [
         "assistance",
-        "maidenless",
-        "work",
-        "research",
-        "working",
-        "topic",
-        "myself",
         "however",
+        "maidenless",
+        "myself",
+        "really",
+        "research",
+        "topic",
         "unfortunately",
-        "really"
+        "work",
+        "working"
       ],
       "wc": 505,
       "rt": 3,
       "tc": 1,
       "sd": 1,
-      "h1": "Unfortunately, for you, however you are maidenless.",
-      "emb": [
-        0.65,
-        -0.61,
-        -0.89,
-        0.34,
-        -0.47,
-        -0.53,
-        -0.04,
-        0.49
-      ]
+      "h1": "Unfortunately, for you, however you are maidenless."
     },
     {
       "id": "2025-12-07-whats_in_the_wind",
@@ -491,33 +432,22 @@
       "d": "2025-12-07",
       "sum": "Pivoting from burnout to building: launching a civic engagement platform and an open-source social MMO while navigating the transition from debugging to DevOps.",
       "kw": [
-        "game",
-        "where",
+        "Projects",
+        "Open Source",
+        "Game Development",
+        "DevOps",
         "block",
         "building",
-        "Game Development",
-        "work",
-        "projects",
-        "project",
         "debugging",
-        "Projects"
+        "developer",
+        "game",
+        "project"
       ],
       "wc": 2095,
       "rt": 10,
       "tc": 1,
       "sd": 1,
-      "h1": "What's been in the Wind: Two Projects, One Developer Block",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.62,
-        -0.58,
-        0.54,
-        0.22,
-        -0.41,
-        0.56,
-        0.38,
-        0.57
-      ]
+      "h1": "What's been in the Wind: Two Projects, One Developer Block"
     },
     {
       "id": "llmr",
@@ -527,34 +457,23 @@
       "d": "2025-10-30",
       "sum": "A new format to make websites AI-readable, reducing token consumption by 96% and cutting AI query costs dramatically.",
       "kw": [
-        "introducing",
-        "readable",
+        "AI",
+        "Web Standards",
         "Innovation",
-        "content",
-        "tokens",
-        "websites",
         "blog",
+        "content",
         "costs",
-        "month",
-        "Web Standards"
+        "format",
+        "introducing",
+        "llmr",
+        "month"
       ],
       "wc": 2041,
       "rt": 10,
       "tc": 1,
       "cb": 12,
       "sd": 1,
-      "h1": "Introducing LLMR: RSS for the AI Era",
-      "a": "Raphaël Reck",
-      "emb": [
-        -0.96,
-        0.84,
-        0.42,
-        -0.01,
-        0.44,
-        0.53,
-        -0.99,
-        -0.68
-      ]
+      "h1": "Introducing LLMR: RSS for the AI Era"
     },
     {
       "id": "2025-10-08-juggling-fireballs",
@@ -564,33 +483,22 @@
       "d": "2025-10-08",
       "sum": "A reflection on managing a heavy workload alone while my 'working buddy' is out, and the lessons learned when the pressure is on.",
       "kw": [
+        "Productivity",
         "Life",
-        "buddy",
-        "work",
-        "need",
-        "working",
-        "tools",
+        "Debugging",
+        "Burnout",
         "Teamwork",
-        "juggling",
+        "buddy",
+        "fire",
         "fireballs",
-        "Debugging"
+        "juggling",
+        "managing"
       ],
       "wc": 1406,
       "rt": 7,
       "tc": 1,
       "sd": 1,
-      "h1": "Juggling Fireballs",
-      "a": "Raphaël Reck",
-      "emb": [
-        -0.91,
-        0.5,
-        0.41,
-        0.23,
-        -0.97,
-        0.13,
-        -0.56,
-        -0.66
-      ]
+      "h1": "Juggling Fireballs"
     },
     {
       "id": "you-cant-get-them-all",
@@ -600,32 +508,21 @@
       "d": "2025-09-22",
       "sum": "Being on too many frontlines makes you immobile. A reflection on priorities, expertise, and learning to choose what matters.",
       "kw": [
+        "Productivity",
         "Life",
+        "Aikido",
         "Priorities",
-        "priorities",
-        "many",
-        "through",
+        "discipline",
+        "first",
         "instant",
-        "training",
-        "results",
-        "time",
-        "first"
+        "many",
+        "priorities",
+        "results"
       ],
       "wc": 1049,
       "rt": 5,
       "sd": 1,
-      "h1": "You can't get them all.",
-      "a": "Raphaël Reck",
-      "emb": [
-        -1.0,
-        -0.87,
-        0.13,
-        -0.99,
-        -0.13,
-        -0.21,
-        0.15,
-        -0.2
-      ]
+      "h1": "You can't get them all."
     },
     {
       "id": "claudio",
@@ -635,33 +532,22 @@
       "d": "2025-09-06",
       "sum": "When AI goes overboard: Claude creates an entire game project from a simple idea discussion, complete with hallucinated files and over-engineered systems.",
       "kw": [
-        "Development",
         "Claude",
-        "file",
-        "entire",
-        "work",
-        "systems",
-        "project",
+        "AI",
+        "Development",
         "Godot",
-        "overboard",
-        "complete"
+        "claude",
+        "complete",
+        "entire",
+        "file",
+        "files",
+        "overboard"
       ],
       "wc": 2112,
       "rt": 11,
       "cb": 2,
       "sd": 1,
-      "h1": "Claude behaves unexpectedly!",
-      "a": "Raphaël Reck",
-      "emb": [
-        -0.82,
-        0.4,
-        0.84,
-        -0.75,
-        0.85,
-        0.12,
-        -0.01,
-        -0.12
-      ]
+      "h1": "Claude behaves unexpectedly!"
     },
     {
       "id": "laravel040925",
@@ -671,34 +557,23 @@
       "d": "2025-09-04",
       "sum": "Foreign key nightmares, table names that lie, and validation bugs in a legacy Laravel codebase - debugging enterprise code with misleading documentation.",
       "kw": [
-        "names",
-        "bugs",
-        "work",
-        "code",
-        "validation",
         "Laravel",
-        "laravel",
-        "foreign",
         "Debugging",
-        "nightmares"
+        "Legacy Systems",
+        "Enterprise",
+        "bugs",
+        "code",
+        "foreign",
+        "laravel",
+        "make",
+        "names"
       ],
       "wc": 2160,
       "rt": 11,
       "tc": 1,
       "cb": 24,
       "sd": 1,
-      "h1": "Laravel, just make it work!",
-      "a": "Raphaël Reck",
-      "emb": [
-        -0.63,
-        -0.71,
-        -0.1,
-        -0.49,
-        -0.39,
-        0.47,
-        -0.53,
-        -0.79
-      ]
+      "h1": "Laravel, just make it work!"
     },
     {
       "id": "when-webservices-lie",
@@ -708,34 +583,23 @@
       "d": "2025-08-30",
       "sum": "PowerPoint documentation, Drupal hooks firing too early, and web services returning different data than promised - what went wrong and how we fixed it.",
       "kw": [
-        "powerpoint",
-        "wrong",
-        "workflow",
-        "screenshots",
-        "work",
-        "double",
         "Drupal",
+        "Web Services",
+        "Debugging",
         "documentation",
+        "double",
+        "drupal",
         "hooks",
-        "Debugging"
+        "powerpoint",
+        "screenshots",
+        "trust"
       ],
       "wc": 2775,
       "rt": 14,
       "tc": 1,
       "cb": 24,
       "sd": 1,
-      "h1": "Magical Drupal messages, Empty Emails and Wrong API Responses.",
-      "a": "Raphaël Reck",
-      "emb": [
-        -0.74,
-        -0.12,
-        0.7,
-        -0.26,
-        -0.28,
-        0.27,
-        0.34,
-        -0.08
-      ]
+      "h1": "Magical Drupal messages, Empty Emails and Wrong API Responses."
     },
     {
       "id": "yaygodot",
@@ -745,33 +609,22 @@
       "d": "2025-08-30",
       "sum": "Learn how I used AI to debug collision, physics, and scripting issues to build a working 3D character controller in Godot from scratch.",
       "kw": [
-        "isometric",
-        "ideas",
-        "reck",
-        "godot",
-        "working",
         "Godot",
-        "buggy",
-        "scene",
+        "AI",
         "Debugging",
-        "first"
+        "buggy",
+        "claude",
+        "first",
+        "functional",
+        "godot",
+        "ideas",
+        "isometric"
       ],
       "wc": 345,
       "rt": 2,
       "tc": 1,
       "sd": 1,
-      "h1": "Godot: From 2D buggy ideas to Functional Isometric 3D scene !",
-      "a": "Raphaël Reck",
-      "emb": [
-        -0.98,
-        -0.66,
-        0.36,
-        0.81,
-        0.71,
-        -0.66,
-        0.02,
-        -0.04
-      ]
+      "h1": "Godot: From 2D buggy ideas to Functional Isometric 3D scene !"
     },
     {
       "id": "2025-08-25-ai-vs-legacy-drupal",
@@ -781,34 +634,23 @@
       "d": "2025-08-25",
       "sum": "Conflicting email systems, redirect loops, and AI boilerplate in a legacy Drupal workflow - what went wrong and how we fixed it.",
       "kw": [
-        "boilerplate",
-        "custom",
-        "email",
-        "code",
-        "project",
-        "generic",
         "Drupal",
-        "handler",
+        "AI",
         "Debugging",
-        "form"
+        "boilerplate",
+        "code",
+        "custom",
+        "drupal",
+        "email",
+        "form",
+        "generic"
       ],
       "wc": 1929,
       "rt": 10,
       "tc": 1,
       "cb": 11,
       "sd": 1,
-      "h1": "When AI‑Generated Code Meets Legacy Drupal: A Horror Story",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.4,
-        0.73,
-        -0.09,
-        -0.07,
-        -0.34,
-        -0.72,
-        0.94,
-        -0.99
-      ]
+      "h1": "When AI‑Generated Code Meets Legacy Drupal: A Horror Story"
     },
     {
       "id": "GPTtoClaude",
@@ -818,31 +660,21 @@
       "d": "2025-08-25",
       "sum": "After using GPT for a while, I found that Claude's approach to coding tasks was more aligned with my workflow. Except now it doesn't anymore, and I'm not sure why.",
       "kw": [
-        "coding",
         "aligned",
-        "tasks",
-        "reck",
-        "while",
-        "using",
-        "found",
         "approach",
+        "claude",
+        "coding",
+        "found",
+        "reck",
         "switched",
-        "claude"
+        "tasks",
+        "using",
+        "while"
       ],
       "wc": 51,
       "rt": 1,
       "sd": 1,
-      "h1": "Why I switched from GPT to Claude for coding",
-      "emb": [
-        0.58,
-        -0.94,
-        0.61,
-        0.1,
-        -0.28,
-        -0.79,
-        0.66,
-        0.54
-      ]
+      "h1": "Why I switched from GPT to Claude for coding"
     },
     {
       "id": "bitcoinscam",
@@ -852,34 +684,23 @@
       "d": "2025-08-18",
       "sum": "Online scams are everywhere. Here's the story of how one script kiddy tried to extort me for $200 in Bitcoin.",
       "kw": [
-        "here",
-        "extort",
+        "bitcoin",
         "everywhere",
+        "extort",
+        "extortion",
+        "here",
         "kiddy",
+        "online",
         "scams",
         "script",
-        "online",
-        "bitcoin",
-        "tried",
-        "extortion"
+        "tried"
       ],
       "wc": 459,
       "rt": 2,
       "tc": 1,
       "cb": 2,
       "sd": 1,
-      "h1": "Bitcoin Scam Attempt: How a Script Kiddy Tried to Extort Me for $200",
-      "a": "Raphaël Reck",
-      "emb": [
-        0.7,
-        -1.0,
-        -0.22,
-        -1.0,
-        0.99,
-        -0.56,
-        0.24,
-        -0.95
-      ]
+      "h1": "Bitcoin Scam Attempt: How a Script Kiddy Tried to Extort Me for $200"
     },
     {
       "id": "HolidaysSideProject",
@@ -889,31 +710,21 @@
       "d": "2025-08-17",
       "sum": "Sigh, summer is soon over. Working on side projects with GPT and Claude - what took 3 days to fail with GPT, worked with Claude in one!",
       "kw": [
-        "side",
-        "holidays",
-        "reck",
+        "claude",
         "days",
+        "holidays",
         "projects",
-        "working",
-        "soon",
+        "reck",
+        "side",
         "sigh",
+        "soon",
         "summer",
-        "claude"
+        "working"
       ],
       "wc": 123,
       "rt": 1,
       "sd": 1,
-      "h1": "Holidays and side projects",
-      "emb": [
-        0.45,
-        0.97,
-        0.57,
-        -0.97,
-        0.64,
-        0.24,
-        -0.96,
-        0.08
-      ]
+      "h1": "Holidays and side projects"
     },
     {
       "id": "CETheadaches",
@@ -923,32 +734,22 @@
       "d": "2025-07-30",
       "sum": "Struggling with productivity, working on a house bidding website, smart mirror projects, and delivering code to clients in Marseille without Git.",
       "kw": [
-        "still",
-        "reck",
-        "code",
         "again",
-        "working",
-        "marseille",
+        "bidding",
+        "code",
         "headaches",
-        "other",
+        "house",
+        "marseille",
         "procrastination",
-        "website"
+        "reck",
+        "website",
+        "working"
       ],
-      "wc": 124,
+      "wc": 160,
       "rt": 1,
       "tc": 1,
       "sd": 1,
-      "h1": "CET headaches again. And procrastination.",
-      "emb": [
-        -0.63,
-        -0.57,
-        -0.07,
-        -0.1,
-        0.12,
-        -0.78,
-        -0.81,
-        -0.94
-      ]
+      "h1": "CET headaches again. And procrastination."
     },
     {
       "id": "Productivityanddebugging",
@@ -959,67 +760,47 @@
       "sum": "Working on automatically updating my blog with git push. This launches a workflow on GitHub, then pushes everything to FTP via a script.",
       "kw": [
         "automatically",
-        "reck",
-        "workflow",
-        "productivity",
-        "working",
         "blog",
-        "push",
         "debugging",
+        "launches",
+        "productivity",
+        "push",
+        "reck",
         "script",
-        "launches"
+        "workflow",
+        "working"
       ],
       "wc": 82,
       "rt": 1,
       "tc": 1,
       "sd": 1,
-      "h1": "Productivity. And debugging.",
-      "emb": [
-        -0.68,
-        -0.05,
-        -0.35,
-        -0.35,
-        -0.51,
-        0.75,
-        0.86,
-        -0.01
-      ]
+      "h1": "Productivity. And debugging."
     },
     {
       "id": "SVNgit",
       "u": "/blog/SVNgit.html",
       "t": "BlogPosting",
-      "ti": "SVN/Git Wrangling, Laravel Rage, and CET Headaches | Blog | Raphaël Reck",
+      "ti": "SVN/Git Wrangling, Laravel Rage, and HR IT Headaches | Blog | Raphaël Reck",
       "d": "2025-07-06",
-      "sum": "This week was chaos and cleanup: migrating SVN to Git, Laravel app deployment issues, and CET webform problems in production.",
+      "sum": "This week was chaos and cleanup: migrating SVN to Git, Laravel app deployment issues, and HR IT webform problems in production.",
       "kw": [
-        "wrangling",
-        "issues",
-        "migrating",
-        "webform",
-        "headaches",
-        "laravel",
-        "rage",
         "chaos",
         "cleanup",
-        "week"
+        "headaches",
+        "issues",
+        "laravel",
+        "migrating",
+        "rage",
+        "webform",
+        "week",
+        "wrangling"
       ],
-      "wc": 290,
-      "rt": 1,
+      "wc": 306,
+      "rt": 2,
       "tc": 1,
       "cb": 1,
       "sd": 1,
-      "h1": "SVN/Git Wrangling, Laravel Rage, and CET Headaches",
-      "emb": [
-        0.86,
-        -0.35,
-        -0.39,
-        0.19,
-        0.05,
-        0.41,
-        -0.78,
-        0.53
-      ]
+      "h1": "SVN/Git Wrangling, Laravel Rage, and HR IT Headaches"
     },
     {
       "id": "frameworks",
@@ -1029,31 +810,21 @@
       "d": "2025-07-01",
       "sum": "I believe the web should be simple. I don't like frameworks. They bloat, obfuscate, and complicate things that HTML already did well decades ago.",
       "kw": [
+        "believe",
         "bloat",
-        "reck",
-        "frameworks",
         "complicate",
+        "frameworks",
         "keep",
-        "obfuscate",
-        "thought",
-        "simple",
         "like",
-        "believe"
+        "obfuscate",
+        "reck",
+        "simple",
+        "thought"
       ],
       "wc": 46,
       "rt": 1,
       "sd": 1,
-      "h1": "Old thought: Keep it simple",
-      "emb": [
-        -0.17,
-        0.33,
-        0.12,
-        0.22,
-        0.02,
-        -0.99,
-        0.6,
-        -0.79
-      ]
+      "h1": "Old thought: Keep it simple"
     },
     {
       "id": "ai-automation",
@@ -1063,66 +834,21 @@
       "sum": "Stop doing admin by hand. I build automation systems that handle invoicing, reminders, email triage, and more — running 24/7, controlled from your phone.",
       "kw": [
         "automation",
-        "invoice",
-        "Raphael Reck",
-        "n8n",
-        "Telegram bot",
         "business",
+        "email",
+        "invoice",
         "phone",
-        "invoice automation",
+        "send",
         "sends",
-        "send"
+        "system",
+        "telegram",
+        "week"
       ],
-      "wc": 751,
-      "rt": 4,
+      "wc": 944,
+      "rt": 5,
       "tc": 1,
       "sd": 1,
-      "h1": "AI Business Automation",
-      "a": "Raphael Reck",
-      "emb": [
-        0.0,
-        -0.89,
-        0.3,
-        0.94,
-        0.21,
-        -0.58,
-        -0.78,
-        0.68
-      ]
-    },
-    {
-      "id": "index",
-      "u": "/blog/index.html",
-      "t": "CollectionPage",
-      "ti": "Blog | Raphaël Reck",
-      "sum": "Documenting my work in software, including side projects, AI explorations, and development insights.",
-      "kw": [
-        "here",
-        "follow",
-        "productivity",
-        "read",
-        "blog",
-        "through",
-        "problem",
-        "exactly",
-        "claude",
-        "like"
-      ],
-      "wc": 778,
-      "rt": 4,
-      "tc": 1,
-      "sd": 1,
-      "h1": "Web Blog",
-      "emb": [
-        -0.13,
-        -0.5,
-        0.12,
-        -0.84,
-        -0.97,
-        0.37,
-        0.29,
-        0.23
-      ]
+      "h1": "AI Business Automation"
     },
     {
       "id": "fun",
@@ -1130,31 +856,21 @@
       "ti": "Personal & Fun | Raphael Reck",
       "sum": "The non-work side of things.",
       "kw": [
-        "side",
-        "reck",
-        "work",
-        "things",
-        "raphael",
+        "beyond",
+        "interests",
         "navigation",
         "personal",
-        "interests",
+        "raphael",
+        "reck",
         "resume",
-        "beyond"
+        "side",
+        "things",
+        "work"
       ],
       "wc": 76,
       "rt": 1,
       "tc": 1,
-      "h1": "Beyond the Resume",
-      "emb": [
-        0.05,
-        -0.92,
-        0.32,
-        -0.8,
-        0.28,
-        -0.53,
-        -0.18,
-        -0.57
-      ]
+      "h1": "Beyond the Resume"
     },
     {
       "id": "it-cost-calculator",
@@ -1163,32 +879,21 @@
       "ti": "IT Support Cost Calculator for Small Business | Raphaël Reck",
       "sum": "Find out what IT support should cost for a business like yours. Answer 5 quick questions — get a realistic estimate and an honest recommendation.",
       "kw": [
-        "monthly IT support fee",
-        "wrong",
-        "business",
-        "work",
         "answer",
-        "small business IT cost",
-        "remote IT support price",
+        "business",
+        "company",
+        "cost",
         "honest",
-        "IT support cost calculator",
-        "cost"
+        "questions",
+        "something",
+        "support",
+        "work",
+        "wrong"
       ],
       "wc": 218,
       "rt": 1,
       "sd": 1,
-      "h1": "What Should IT Support Cost for Your Business?",
-      "a": "Raphael Reck",
-      "emb": [
-        0.27,
-        -0.05,
-        -0.4,
-        -0.61,
-        0.97,
-        0.44,
-        -0.01,
-        -0.45
-      ]
+      "h1": "What Should IT Support Cost for Your Business?"
     },
     {
       "id": "laugh",
@@ -1196,160 +901,67 @@
       "ti": "Universal Darwinism — 87 Memes on Evolution, Code & Life | Raphaël Reck",
       "sum": "87 memes on survival, software, stoicism, and the absurd — curated from the floor of the internet. No rights claimed. Just vibes.",
       "kw": [
-        "software",
         "curated",
-        "reck",
-        "survival",
-        "floor",
-        "evolution",
-        "stoicism",
-        "memes",
         "darwinism",
+        "evolution",
+        "floor",
+        "memes",
+        "reck",
+        "software",
+        "stoicism",
+        "survival",
         "universal"
       ],
       "wc": 62,
       "rt": 1,
       "tc": 1,
-      "h1": "Universal Darwinism Gallery",
-      "emb": [
-        -0.06,
-        -0.71,
-        -0.68,
-        0.75,
-        0.92,
-        -0.51,
-        -0.5,
-        0.02
-      ]
+      "h1": "Universal Darwinism Gallery"
     },
     {
       "id": "monthly-support",
       "u": "/monthly-support.html",
       "t": "Service",
       "ti": "Remote IT Support for Small Business | Raphaël Reck",
-      "sum": "Senior IT engineer on monthly service for small businesses. Remote-first, no agency overhead, no junior staff. Fixed price. Available when you need it.",
+      "sum": "Senior IT engineer on monthly service for small businesses. Remote-first, fixed-price plans, direct access to the person doing the work — no agency, no junior staff in between.",
       "kw": [
-        "senior",
-        "remote",
-        "someone",
-        "need",
-        "startup IT support",
-        "monthly",
         "companies",
-        "small business IT",
-        "remote IT consultant",
-        "available"
+        "first",
+        "monthly",
+        "reck",
+        "remote",
+        "senior",
+        "small",
+        "someone",
+        "support",
+        "work"
       ],
-      "wc": 391,
-      "rt": 2,
+      "wc": 592,
+      "rt": 3,
       "sd": 1,
-      "h1": "Monthly IT Support",
-      "a": "Raphael Reck",
-      "emb": [
-        0.7,
-        -0.97,
-        0.63,
-        -0.62,
-        -0.91,
-        -0.89,
-        -0.58,
-        0.07
-      ]
+      "h1": "Monthly IT Support"
     },
     {
-      "id": "index",
-      "u": "/public/index.html",
-      "ti": "Assets | Raphaël Reck",
-      "sum": "Assets | Raphaël Reck",
+      "id": "privacy-policy",
+      "u": "/privacy-policy.html",
+      "ti": "Privacy Policy | Raphaël Reck",
+      "sum": "What we collect, what we don't, and your rights.",
       "kw": [
-        "used",
-        "throughout",
-        "images",
+        "anyone",
+        "changes",
+        "collect",
+        "cookies",
+        "else",
+        "email",
+        "policy",
+        "privacy",
         "reck",
-        "contains",
-        "directory",
-        "site",
-        "resources",
-        "assets",
-        "static"
+        "rights"
       ],
-      "wc": 27,
-      "rt": 1,
-      "h1": "Static Assets",
-      "emb": [
-        0.58,
-        0.9,
-        -0.83,
-        0.47,
-        -0.86,
-        0.58,
-        0.05,
-        -0.07
-      ]
-    },
-    {
-      "id": "index",
-      "u": "/public/secret/eternalguildgame/index.html",
-      "ti": "Eternal Guild — Prototype",
-      "sum": "A browser-based tavern management game prototype. Hire adventurers, send them on quests, keep the mead flowing, and try not to go broke.",
-      "kw": [
-        "game",
-        "adventurers",
-        "guild",
-        "based",
-        "browser",
-        "browser game",
-        "prototype",
-        "eternal",
-        "tavern",
-        "hire"
-      ],
-      "rt": 1,
-      "cb": 1,
-      "h1": "Eternal Guild",
-      "a": "Raphael Reck",
-      "emb": [
-        -0.6,
-        -0.89,
-        0.96,
-        -0.34,
-        0.14,
-        -0.76,
-        0.11,
-        0.26
-      ]
-    },
-    {
-      "id": "index",
-      "u": "/public/secret/index.html",
-      "ti": "Eternal Guild | Raphaël Reck",
-      "sum": "A browser-based tavern management game. Hire adventurers, send them on quests, keep the mead flowing, and try not to go broke.",
-      "kw": [
-        "game",
-        "adventurers",
-        "based",
-        "guild",
-        "browser",
-        "reck",
-        "eternal",
-        "send",
-        "hire",
-        "them"
-      ],
-      "wc": 58,
+      "wc": 165,
       "rt": 1,
       "tc": 1,
-      "h1": "Eternal Guild",
-      "emb": [
-        0.99,
-        -0.58,
-        -0.05,
-        0.38,
-        0.96,
-        -0.69,
-        0.44,
-        0.74
-      ]
+      "cb": 1,
+      "h1": "Privacy Policy"
     },
     {
       "id": "manifesto",
@@ -1358,38 +970,27 @@
       "ti": "Roots Time Corporation – Manifesto",
       "sum": "A company rooted in resilience, reflection, and renewal. Our manifesto details our commitment to human-first principles and ethical technology.",
       "kw": [
-        "Digital Sovereignty",
-        "Manifesto",
-        "Tech Ethics",
-        "Software Development",
-        "Roots Time",
-        "Human-First",
-        "human",
         "code",
+        "corporation",
+        "corporations",
+        "first",
+        "human",
+        "manifesto",
+        "principles",
+        "rooted",
         "roots",
-        "manifesto"
+        "time"
       ],
       "wc": 486,
       "rt": 2,
       "sd": 1,
-      "h1": "Roots Time Corporation – Manifesto",
-      "a": "Raphaël Reck",
-      "emb": [
-        -0.46,
-        -0.23,
-        -0.96,
-        0.6,
-        0.61,
-        -0.53,
-        -0.53,
-        0.32
-      ]
+      "h1": "Roots Time Corporation – Manifesto"
     }
   ],
   "stats": {
-    "total_pages": 38,
-    "total_words": 33941,
-    "avg_read_time": 4.5,
-    "pages_with_code": 16
+    "total_pages": 39,
+    "total_words": 38629,
+    "avg_read_time": 5.1,
+    "pages_with_code": 18
   }
 }
