@@ -24,6 +24,14 @@ jobs:
       - name: Run blog build script
         run: python3 scripts/publish_blog.py
 
+      - name: Install LLMR generator
+        # llmr-generator 2.1.0, pinned to a commit: a moved branch or tag must not
+        # change the code that writes files into the deploy.
+        run: python3 -m pip install "git+https://gitlab.com/open-llmr/python.git@02f2f6e035ad4c7f01bf22d0d4aa7aece68386d8"
+
+      - name: Build llmr.json and llms.txt
+        run: python3 scripts/generate_llmr.py
+
       - name: List public/ folder contents
         run: ls -lh public/
 
@@ -41,15 +49,18 @@ jobs:
           # carambole.o2switch.net and switch to "strict" to verify it as well.
           security: loose
           local-dir: ./
+          # .txt files deploy (llms.txt, robots.txt); secret files are excluded by name.
           exclude: |
             **/.git*/**
             **/.github/**
             **/scripts/**
             **/*.py
-            **/*.txt
             .gitignore
             export.txt
             token.txt
+            secret/dashboard/config.php
+            secret/dashboard/*.json
+            **/google-service-account*.json
             -old.jpg
             grayscale_raphael.jpg
             portrait.jpeg
