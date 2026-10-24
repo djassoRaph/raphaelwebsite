@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Tests for generate_llmr.py.
+Tests for generate_llmr.py and the deploy step that runs it.
 
 Needs the llmr-generator commit pinned in .github/workflows/publish.yml.
 From the repo root:
@@ -9,6 +9,7 @@ From the repo root:
 """
 
 import json
+import re
 import shutil
 import subprocess
 import sys
@@ -20,6 +21,8 @@ SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
 
 import generate_llmr  # noqa: E402
+
+WORKFLOW = SCRIPTS.parent / ".github" / "workflows" / "publish.yml"
 
 HOME_HEAD = ('<meta name="description" content="Site description.">'
              '<meta property="og:description" content="Site card text.">'
@@ -138,6 +141,28 @@ class BrokenPageTest(SiteTestCase):
         self.assertNotEqual(run.returncode, 0)
         self.assertIn("index.html", run.stderr)
         self.assertFalse((self.root / "llmr.json").exists())
+
+
+class WorkflowTest(unittest.TestCase):
+    def setUp(self):
+        self.yml = WORKFLOW.read_text(encoding="utf-8")
+
+    def test_generator_is_built_with_pinned_build_tools(self):
+        """F3: no build isolation, so no latest setuptools/wheel from PyPI in the deploy job."""
+        tools = re.search(r'pip install "setuptools==[\d.]+" "wheel==[\d.]+"\n', self.yml)
+        generator = re.search(r'pip install --no-build-isolation '
+                              r'"git\+https://gitlab\.com/open-llmr/python\.git@02f2f6e[0-9a-f]*"', self.yml)
+        self.assertIsNotNone(tools)
+        self.assertIsNotNone(generator)
+        self.assertLess(tools.start(), generator.start())
+        for line in self.yml.splitlines():
+            if "pip install" in line and "git+" in line:
+                self.assertIn("--no-build-isolation", line)
+
+    def test_claude_folders_are_not_uploaded(self):
+        """F5: public/.claude/settings.json is tracked but must not reach the server."""
+        exclude = self.yml.split("exclude: |", 1)[1].split("\n\n", 1)[0]
+        self.assertIn("**/.claude/**", [line.strip() for line in exclude.splitlines()])
 
 
 if __name__ == "__main__":

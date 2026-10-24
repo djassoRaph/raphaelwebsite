@@ -26,8 +26,12 @@ jobs:
 
       - name: Install LLMR generator
         # llmr-generator 2.1.0, pinned to a commit: a moved branch or tag must not
-        # change the code that writes files into the deploy.
-        run: python3 -m pip install "git+https://gitlab.com/open-llmr/python.git@02f2f6e035ad4c7f01bf22d0d4aa7aece68386d8"
+        # change the code that writes files into the deploy. Its build tools are
+        # pinned too: --no-build-isolation builds it with the setuptools and wheel
+        # installed here instead of the latest ones from PyPI.
+        run: |
+          python3 -m pip install "setuptools==75.8.2" "wheel==0.45.1"
+          python3 -m pip install --no-build-isolation "git+https://gitlab.com/open-llmr/python.git@02f2f6e035ad4c7f01bf22d0d4aa7aece68386d8"
 
       - name: Build llmr.json and llms.txt
         run: python3 scripts/generate_llmr.py
@@ -53,6 +57,7 @@ jobs:
           exclude: |
             **/.git*/**
             **/.github/**
+            **/.claude/**
             **/scripts/**
             **/*.py
             .gitignore
