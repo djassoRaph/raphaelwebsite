@@ -1,4 +1,9 @@
+# robots.txt — raphaelreck.com
 User-agent: *
 Allow: /
 Disallow: /php-test/
+
 Sitemap: https://raphaelreck.com/sitemap.xml
+
+# LLM-readable site index (LLMR): its own line, never on a Sitemap: line.
+LLMR: https://raphaelreck.com/llmr.json
