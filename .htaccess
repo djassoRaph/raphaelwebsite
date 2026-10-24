@@ -39,11 +39,26 @@ RewriteRule ^no-contract-it\.html$ - [G,L]
 # Orphan/unlinked older CV PDF: redirect its indexed impressions to /cv.html.
 RewriteRule ^public/raphael-reck\.pdf$ https://raphaelreck.com/cv.html [R=301,L]
 
+# LLMR index consolidation — Oct 2026
+# /llmr.json is the one LLMR index (generated on deploy, paired with /llms.txt).
+# Old names and copies, root or under /public/, are gone: send their links there.
+# /site.llmr, /site.llmr.json, /public/site.llmr, /public/site.llmr.json
+RewriteRule ^(public/)?site\.llmr(\.json)?$ https://raphaelreck.com/llmr.json [R=301,L]
+# /public/llmr.json (the root /llmr.json itself never matches either rule)
+RewriteRule ^public/llmr\.json$ https://raphaelreck.com/llmr.json [R=301,L]
+
 # Keep PDFs out of search results — they carry no meta tags/internal links
 # and only fragment ranking signals that /cv.html now consolidates.
 <FilesMatch "\.pdf$">
   Header set X-Robots-Tag "noindex, nofollow"
 </FilesMatch>
+
+# --- Charset for text indexes ---
+# llms.txt, robots.txt and llmr.json are UTF-8 ("ë", "—"); without a charset
+# in Content-Type, clients may decode them as Latin-1.
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .txt .json
+</IfModule>
 
 # --- Security headers ---
 <IfModule mod_headers.c>
