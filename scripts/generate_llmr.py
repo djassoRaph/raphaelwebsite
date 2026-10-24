@@ -3,18 +3,26 @@
 Build llmr.json (LLMR v2.1) and llms.txt for raphaelreck.com.
 
 CI runs this before every deploy (.github/workflows/publish.yml), from the repo
-root, with the llmr-generator package pinned there:
+root, with the llmr-generator package and its build tools pinned there:
 
-    pip install "git+https://gitlab.com/open-llmr/python.git@<commit>"
+    pip install "setuptools==<version>" "wheel==<version>"
+    pip install --no-build-isolation "git+https://gitlab.com/open-llmr/python.git@<commit>"
     python3 scripts/generate_llmr.py
 
 Both files are written to the repo root and link to each other: llmr.json
 through s.llms_txt, llms.txt through its "## Optional" line. They list the
 same pages: every public content page, the homepage as "/". Private areas,
-tooling folders and noindex pages are left out.
+tooling folders and noindex pages are left out. A page the generator fails
+on is skipped with the reason printed; only a failure on index.html stops
+the build (exit status 1).
+
+A page's summary is its <meta name="description">; og:description is used
+only when a page has none.
 
 llms.txt is only regenerated while it carries the generator marker line;
 delete that line to edit the file by hand (or pass --force to take it back).
+
+Tests: python3 -m unittest discover -s scripts -p "test_*.py"
 """
 
 import argparse
@@ -26,7 +34,7 @@ from pathlib import Path
 
 from llmr.generator import build_page, extract_keywords, generate, is_noindex
 from llmr.llms_txt import is_generated, links_to_llmr, llmr_link_line, render_llms_txt, write_llms_txt
-from llmr.parser import parse_html
+from llmr.parser import HTMLMetadataExtractor
 
 DOMAIN = "raphaelreck.com"
 SITE_URL = "https://" + DOMAIN
@@ -39,6 +47,37 @@ ROOT = Path(__file__).resolve().parent.parent
 # (public/, secret/, php-test/), tooling and dependencies. Hidden folders
 # (.git, .github, .claude, ...) are skipped as well.
 EXCLUDED_DIRS = {"public", "secret", "php-test", "scripts", "node_modules"}
+
+
+class PageParser(HTMLMetadataExtractor):
+    """The pinned parser, also noting <meta name="description"> on its own.
+
+    The pinned parser keeps whichever of meta description and og:description
+    comes last, on most pages here the og:description written for social cards.
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.meta_description = ""
+
+    def handle_starttag(self, tag, attrs):
+        super().handle_starttag(tag, attrs)
+        if tag == "meta":
+            a = dict(attrs)
+            if (a.get("name") or "").lower() == "description" and a.get("content"):
+                self.meta_description = a["content"]
+
+
+def parse_page(html):
+    """parse_html(), except that <meta name="description"> is the description.
+
+    The parser's own value (og:description) stays as the fallback.
+    """
+    p = PageParser()
+    p.feed(html)
+    if p.meta_description:
+        p.description = p.meta_description
+    return p
 
 
 def find_pages(root):
@@ -101,33 +140,42 @@ def same_name(a, b):
     return fold(a) == fold(b)
 
 
-def build_llmr():
+def build_llmr(root=ROOT):
     homepage = None
     pages = []
     skipped = []
     used_ids = set()
 
-    for path in find_pages(ROOT):
-        rel = path.relative_to(ROOT).as_posix()
-        parsed = parse_html(path.read_text(encoding="utf-8", errors="replace"))
-        if is_noindex(parsed):
-            skipped.append((rel, "noindex"))
-            continue
-        if not parsed.title:
-            skipped.append((rel, "no <title>, not a content page"))
-            continue
+    for path in find_pages(root):
+        rel = path.relative_to(root).as_posix()
+        # The pinned parser and build_page raise on some valid markup (a JSON-LD
+        # array, a bare <html lang>): one such page is left out, not the deploy.
+        try:
+            parsed = parse_page(path.read_text(encoding="utf-8", errors="replace"))
+            if is_noindex(parsed):
+                skipped.append((rel, "noindex"))
+                continue
+            if not parsed.title:
+                skipped.append((rel, "no <title>, not a content page"))
+                continue
 
-        pid = base_id = page_id(rel)
-        n = 2
-        while pid in used_ids:
-            pid = "{}-{}".format(base_id, n)
-            n += 1
+            pid = base_id = page_id(rel)
+            n = 2
+            while pid in used_ids:
+                pid = "{}-{}".format(base_id, n)
+                n += 1
+
+            page = build_page(parsed, page_url(rel), pid)
+            page.pop("emb", None)  # hash placeholder, not a real embedding
+            if "kw" in page:
+                page["kw"] = stable_keywords(parsed)
+        except Exception as e:
+            reason = "generator failed ({}: {})".format(type(e).__name__, e)
+            if rel == "index.html":
+                sys.exit("Error: index.html: {}; it gives the site title and description.".format(reason))
+            skipped.append((rel, reason))
+            continue
         used_ids.add(pid)
-
-        page = build_page(parsed, page_url(rel), pid)
-        page.pop("emb", None)  # hash placeholder, not a real embedding
-        if "kw" in page:
-            page["kw"] = stable_keywords(parsed)
         pages.append(page)
         if rel == "index.html":
             homepage = parsed
