@@ -50,10 +50,11 @@ EXCLUDED_DIRS = {"public", "secret", "php-test", "scripts", "node_modules"}
 
 
 class PageParser(HTMLMetadataExtractor):
-    """The pinned parser, also noting <meta name="description"> on its own.
+    """The generator's parser, also noting <meta name="description"> on its own.
 
-    The pinned parser keeps whichever of meta description and og:description
-    comes last, on most pages here the og:description written for social cards.
+    llmr-generator 2.1.0 kept whichever of meta description and og:description
+    came last (here mostly the og:description written for social cards); 2.3.0
+    already prefers the meta description, so this override is a no-op there.
     """
 
     def __init__(self):
@@ -109,9 +110,9 @@ def page_id(rel_path):
 def stable_keywords(parsed, limit=10):
     """Keywords in a fixed order: the page's meta keywords, then content words.
 
-    extract_keywords() returns list(set(...))[:limit], so with string hashing
-    randomised its pick and order change between runs. Same sources here, in
-    an order that does not.
+    In llmr-generator 2.1.0, extract_keywords() returned list(set(...))[:limit],
+    so with string hashing randomised its pick and order changed between runs
+    (2.3.0 fixed that). Same sources here, in an order that never changes.
     """
     meta = list(dict.fromkeys(parsed.keywords))
     saved, parsed.keywords = parsed.keywords, []
@@ -148,8 +149,8 @@ def build_llmr(root=ROOT):
 
     for path in find_pages(root):
         rel = path.relative_to(root).as_posix()
-        # The pinned parser and build_page raise on some valid markup (a JSON-LD
-        # array, a bare <html lang>): one such page is left out, not the deploy.
+        # If the generator fails on a page (2.1.0 did on a JSON-LD array or a bare
+        # <html lang>), that page is left out, not the deploy.
         try:
             parsed = parse_page(path.read_text(encoding="utf-8", errors="replace"))
             if is_noindex(parsed):
