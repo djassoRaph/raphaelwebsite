@@ -16,6 +16,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
@@ -28,9 +29,33 @@ HOME_HEAD = ('<meta name="description" content="Site description.">'
              '<meta property="og:description" content="Site card text.">'
              '<meta name="author" content="Raphael Reck">')
 
-# Valid markup the pinned generator raises on.
-JSON_LD_ARRAY = '<script type="application/ld+json">[{"@type": "Article"}]</script>'
-BARE_LANG = "lang"
+# Pages carrying these markers make the generator raise (patched below), so the
+# skip logic is tested the same way whatever markup the pinned version chokes on:
+# FAIL_ME in the <title> fails build_page, PARSE_FAIL in the HTML fails parse_page.
+FAIL_ME = "FAIL-ME"
+PARSE_FAIL = "PARSE-FAIL"
+
+
+def failing(real, mark, text_of):
+    """Wrap build_page or parse_page so it raises when `mark` is in text_of(first argument)."""
+    def wrapped(arg, *rest, **kw):
+        if mark in text_of(arg):
+            raise AttributeError("simulated generator failure")
+        return real(arg, *rest, **kw)
+    return wrapped
+
+
+# Runs the copied script with build_page failing for FAIL_ME pages.
+FAILING_SCRIPT = (
+    "import sys; sys.path.insert(0, 'scripts'); import generate_llmr\n"
+    "real = generate_llmr.build_page\n"
+    "def build_page(parsed, *rest, **kw):\n"
+    "    if {!r} in (parsed.title or ''):\n"
+    "        raise AttributeError('simulated generator failure')\n"
+    "    return real(parsed, *rest, **kw)\n"
+    "generate_llmr.build_page = build_page\n"
+    "generate_llmr.main()\n"
+).format(FAIL_ME)
 
 
 def page(title, head="", html_attrs='lang="en"'):
@@ -93,8 +118,17 @@ class SummaryTest(SiteTestCase):
 class BrokenPageTest(SiteTestCase):
     """F2: a page the generator fails on is skipped; only index.html is fatal."""
 
+    def setUp(self):
+        super().setUp()
+        patches = (("build_page", FAIL_ME, lambda parsed: parsed.title or ""),
+                   ("parse_page", PARSE_FAIL, lambda html: html))
+        for name, mark, text_of in patches:
+            patcher = mock.patch.object(generate_llmr, name, failing(getattr(generate_llmr, name), mark, text_of))
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
     def test_page_failing_in_build_page_is_skipped_with_its_reason(self):
-        self.write("blog/bad.html", page("Bad", JSON_LD_ARRAY))
+        self.write("blog/bad.html", page("Bad " + FAIL_ME))
         self.write("blog/good.html", page("Good"))
         pages, skipped, _ = self.build()
         self.assertNotIn("/blog/bad.html", pages)
@@ -102,19 +136,19 @@ class BrokenPageTest(SiteTestCase):
         self.assertIn("AttributeError", skipped["blog/bad.html"])
 
     def test_page_failing_in_the_parser_is_skipped_with_its_reason(self):
-        self.write("bad.html", page("Bad", html_attrs=BARE_LANG))
+        self.write("bad.html", page("Bad") + "<!-- {} -->".format(PARSE_FAIL))
         pages, skipped, _ = self.build()
         self.assertNotIn("/bad.html", pages)
         self.assertIn("generator failed", skipped["bad.html"])
 
     def test_skipped_page_does_not_take_an_id(self):
-        self.write("a/post.html", page("Broken", JSON_LD_ARRAY))
+        self.write("a/post.html", page("Broken " + FAIL_ME))
         self.write("b/post.html", page("Fine"))
         pages, _, _ = self.build()
         self.assertEqual(pages["/b/post.html"]["id"], "post")
 
     def test_broken_index_html_stops_the_build(self):
-        self.write("index.html", page("Home", HOME_HEAD + JSON_LD_ARRAY))
+        self.write("index.html", page("Home " + FAIL_ME, HOME_HEAD))
         with self.assertRaises(SystemExit) as cm:
             self.build()
         self.assertIn("index.html", str(cm.exception.code))
@@ -122,11 +156,11 @@ class BrokenPageTest(SiteTestCase):
     def run_script(self):
         (self.root / "scripts").mkdir()
         shutil.copy(SCRIPTS / "generate_llmr.py", self.root / "scripts")
-        return subprocess.run([sys.executable, "scripts/generate_llmr.py"], cwd=self.root,
+        return subprocess.run([sys.executable, "-c", FAILING_SCRIPT], cwd=self.root,
                               capture_output=True, text=True, encoding="utf-8")
 
     def test_script_exits_0_and_writes_the_files_without_the_broken_page(self):
-        self.write("bad.html", page("Bad", JSON_LD_ARRAY))
+        self.write("bad.html", page("Bad " + FAIL_ME))
         self.write("good.html", page("Good"))
         run = self.run_script()
         self.assertEqual(run.returncode, 0, run.stderr)
@@ -136,7 +170,7 @@ class BrokenPageTest(SiteTestCase):
         self.assertTrue((self.root / "llms.txt").is_file())
 
     def test_script_exits_non_zero_when_index_html_fails(self):
-        self.write("index.html", page("Home", HOME_HEAD, html_attrs=BARE_LANG))
+        self.write("index.html", page("Home " + FAIL_ME, HOME_HEAD))
         run = self.run_script()
         self.assertNotEqual(run.returncode, 0)
         self.assertIn("index.html", run.stderr)
@@ -151,7 +185,7 @@ class WorkflowTest(unittest.TestCase):
         """F3: no build isolation, so no latest setuptools/wheel from PyPI in the deploy job."""
         tools = re.search(r'pip install "setuptools==[\d.]+" "wheel==[\d.]+"\n', self.yml)
         generator = re.search(r'pip install --no-build-isolation '
-                              r'"git\+https://gitlab\.com/open-llmr/python\.git@02f2f6e[0-9a-f]*"', self.yml)
+                              r'"git\+https://gitlab\.com/open-llmr/python\.git@[0-9a-f]{40}"', self.yml)
         self.assertIsNotNone(tools)
         self.assertIsNotNone(generator)
         self.assertLess(tools.start(), generator.start())

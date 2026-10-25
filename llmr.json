@@ -1,6 +1,6 @@
 {
   "v": "2.1",
-  "ts": 1792880001,
+  "ts": 1792912993,
   "s": {
     "d": "raphaelreck.com",
     "ti": "Raphaël Reck — Remote IT Consultant, 20+ Years",
@@ -130,7 +130,7 @@
         "devops",
         "engineer",
         "full",
-        "gitlab",
+        "including",
         "professional",
         "reck",
         "remote",
@@ -182,10 +182,10 @@
         "Windows",
         "actually",
         "computer",
+        "every",
         "microsoft",
         "portable",
-        "small",
-        "stick"
+        "small"
       ],
       "wc": 1138,
       "rt": 6,
@@ -256,11 +256,11 @@
         "claude",
         "console",
         "create",
-        "file",
         "follow",
         "github",
         "search",
         "step",
+        "through",
         "weekly"
       ],
       "wc": 651,
@@ -284,10 +284,10 @@
         "custom",
         "data",
         "drupal",
-        "fires",
+        "entity",
+        "example",
         "hook",
-        "react",
-        "save"
+        "react"
       ],
       "wc": 1450,
       "rt": 7,
@@ -383,12 +383,12 @@
       "kw": [
         "broken",
         "building",
-        "citizens",
         "constituant",
         "democracy",
         "french",
         "long",
         "real",
+        "vision",
         "vote",
         "while"
       ],
@@ -460,7 +460,7 @@
         "Web Standards",
         "Innovation",
         "blog",
-        "content",
+        "consumption",
         "costs",
         "format",
         "introducing",
@@ -535,12 +535,12 @@
         "AI",
         "Development",
         "Godot",
+        "behaves",
         "claude",
         "complete",
         "entire",
         "file",
-        "files",
-        "ideas"
+        "files"
       ],
       "wc": 2112,
       "rt": 11,
@@ -590,7 +590,7 @@
         "documentation",
         "double",
         "drupal",
-        "hooks",
+        "integration",
         "powerpoint"
       ],
       "wc": 2775,
@@ -684,14 +684,14 @@
       "sum": "Online scams are everywhere. Here's the story of how one script kiddy tried to extort me for $200 in Bitcoin, what happened to a friend who tested the file in a VM, and what you can do to stay safe.",
       "kw": [
         "bitcoin",
-        "everywhere",
         "extort",
-        "extortion",
-        "file",
+        "friend",
+        "here",
         "kiddy",
         "online",
         "scams",
         "script",
+        "story",
         "tried"
       ],
       "wc": 459,
